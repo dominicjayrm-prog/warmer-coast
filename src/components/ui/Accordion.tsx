@@ -11,7 +11,7 @@ export interface AccordionItem {
 export function Accordion({ items, className }: { items: AccordionItem[]; className?: string }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className={cn('flex flex-col gap-3', className)}>
+    <div className={cn('flex flex-col gap-3', className)} data-speakable="faq">
       {items.map((item, i) => {
         const isOpen = open === i;
         return (
@@ -22,7 +22,7 @@ export function Accordion({ items, className }: { items: AccordionItem[]; classN
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
             >
-              <span className="display text-[19px] font-semibold tracking-tight text-ink">
+              <span className="display text-[19px] font-semibold tracking-tight text-ink" itemProp="name">
                 {item.q}
               </span>
               <span

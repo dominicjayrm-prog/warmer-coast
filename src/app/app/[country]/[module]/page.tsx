@@ -4,8 +4,9 @@ import { notFound, redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { Badge } from '@/components/ui/Badge';
 import { COUNTRY_META, COUNTRIES, type Country } from '@/lib/site';
-import { PLAYBOOK_MODULES, getModule } from '@/lib/playbook-modules';
+import { listModules } from '@/lib/modules-db';
 import { ModuleChecklist } from '@/components/app/ModuleChecklist';
+import { getEntitlements, hasAccess } from '@/lib/entitlements';
 
 export const metadata: Metadata = {
   title: 'Module',
@@ -19,18 +20,24 @@ export default async function ModulePage({
 }) {
   if (!COUNTRIES.includes(params.country as Country)) notFound();
   const country = params.country as Country;
-  const mod = getModule(country, params.module);
-  if (!mod) notFound();
-
-  const meta = COUNTRY_META[country];
-  const allModules = PLAYBOOK_MODULES[country];
-  const idx = allModules.findIndex((m) => m.slug === mod.slug);
-  const prev = idx > 0 ? allModules[idx - 1] : null;
-  const next = idx < allModules.length - 1 ? allModules[idx + 1] : null;
 
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/login');
+  if (!user) redirect(`/login?next=/app/${country}/${params.module}`);
+
+  const ent = await getEntitlements();
+  if (!hasAccess(ent, country)) {
+    redirect(`/playbook/${country}?gated=1`);
+  }
+
+  const allModules = await listModules(country);
+  const mod = allModules.find((m) => m.slug === params.module);
+  if (!mod) notFound();
+
+  const meta = COUNTRY_META[country];
+  const idx = allModules.findIndex((m) => m.slug === mod.slug);
+  const prev = idx > 0 ? allModules[idx - 1] : null;
+  const next = idx < allModules.length - 1 ? allModules[idx + 1] : null;
 
   const { data: checklistRows } = await supabase
     .from('wc_user_checklist')
@@ -90,7 +97,10 @@ export default async function ModulePage({
             {mod.sections.map((s) => (
               <section key={s.title}>
                 <h2 className="display text-[22px] font-semibold tracking-tight text-ink">{s.title}</h2>
-                <p className="mt-2">{s.body}</p>
+                <div
+                  className="prose prose-base max-w-none mt-2 text-ink/90 prose-headings:display prose-headings:tracking-tight prose-a:text-warm"
+                  dangerouslySetInnerHTML={{ __html: s.body }}
+                />
               </section>
             ))}
           </div>

@@ -9,9 +9,31 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about' },
 };
 
+const personDom = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Dom Roworth',
+  jobTitle: 'Founder, ex-FCA financial planner',
+  worksFor: { '@type': 'Organization', name: 'WarmerCoast' },
+  url: 'https://warmercoast.com/about',
+  address: { '@type': 'PostalAddress', addressLocality: 'Cádiz', addressCountry: 'ES' },
+};
+
+const personSofia = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Sofia',
+  jobTitle: 'Co-founder',
+  worksFor: { '@type': 'Organization', name: 'WarmerCoast' },
+  url: 'https://warmercoast.com/about',
+  address: { '@type': 'PostalAddress', addressLocality: 'Cádiz', addressCountry: 'ES' },
+};
+
 export default function Page() {
   return (
     <article className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personDom) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSofia) }} />
       <section className="bg-white py-14 sm:py-20">
         <div className="container-content max-w-3xl">
           <Badge tone="warm" uppercase>About</Badge>
