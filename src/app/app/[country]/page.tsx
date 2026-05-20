@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { COUNTRY_META, COUNTRIES, type Country } from '@/lib/site';
 import { listModules } from '@/lib/modules-db';
+import { getEntitlements, hasAccess } from '@/lib/entitlements';
 
 export const metadata: Metadata = {
   title: 'Playbook',
@@ -16,11 +17,17 @@ export default async function CountryPlaybook({ params }: { params: { country: s
   if (!COUNTRIES.includes(params.country as Country)) notFound();
   const country = params.country as Country;
   const meta = COUNTRY_META[country];
-  const modules = await listModules(country);
 
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) redirect('/login');
+  if (!user) redirect(`/login?next=/app/${country}`);
+
+  const ent = await getEntitlements();
+  if (!hasAccess(ent, country)) {
+    redirect(`/playbook/${country}?gated=1`);
+  }
+
+  const modules = await listModules(country);
 
   const { data: progress } = await supabase
     .from('wc_user_progress')
