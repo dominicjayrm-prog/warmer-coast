@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Spanish banking for Brits | NIE, padrón, multi-currency, UK bills',
   description:
     'Opening a Spanish bank account as a UK national. Documents, best banks for expats, multi-currency setups, paying UK bills from Spain.',
+  alternates: { canonical: '/spain/banking' },
 };
 
 export default function Page() {

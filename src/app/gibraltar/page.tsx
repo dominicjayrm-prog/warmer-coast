@@ -13,10 +13,11 @@ export default function GibraltarPillar() {
     <PillarTemplate
       country="gibraltar"
       hero={{
-        eyebrow: 'Gibraltar pillar guide',
-        h1: 'Move to Gibraltar with |Cat 2 capped tax |and the frontier reality handled properly',
+        eyebrow: 'Gibraltar · pillar guide',
+        h1Lead: 'Move to Gibraltar',
+        h1Accent: 'from the UK.',
         intro:
-          'British adults relocating to or working from Gibraltar. Category 2 high-net-worth residency, HEPSS for specialist employees, frontier-worker mechanics into Spain, banking in a finance hub, schools, and the post-Brexit border reality.',
+          'British adults relocating to or working from Gibraltar. Category 2 high-net-worth residency, HEPSS for specialist employees, frontier-worker mechanics into Spain, banking, schools, and the post-Brexit border reality.',
       }}
       subPillars={[
         { href: '/gibraltar/residency', label: 'Residency', blurb: 'Cat 2, HEPSS, ordinary residency.' },

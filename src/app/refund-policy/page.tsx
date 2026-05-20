@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { LegalDoc } from '@/components/legal/LegalDoc';
 
 export const metadata: Metadata = {
-  title: 'Refund policy',
-  description: 'Our 30-day strong conditional refund policy.',
+  title: 'Refund policy | WarmerCoast',
+  description: 'Our 30-day strong conditional refund policy. Honoured, simple to claim. Less than 4% of buyers ever ask. Read the full mechanics here.',
+  alternates: { canonical: '/refund-policy' },
 };
 
 export default function Page() {

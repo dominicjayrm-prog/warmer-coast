@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 export const metadata: Metadata = {
   title: 'Free relocation calculators for British movers to Iberia',
   description: 'Eight free interactive calculators: Beckham Law, cost of living, visa eligibility, country comparison, pension transfer, property tax, schools.',
+  alternates: { canonical: '/calculators' },
 };
 
 const tools = [

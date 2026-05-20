@@ -67,7 +67,7 @@ export function PlaybookSalesTemplate({
               <Badge tone="dark" uppercase>Playbook</Badge>
               <Badge tone="warm">★ 4.9 (247 buyers)</Badge>
             </div>
-            <h1 className="display text-display-1 font-medium tracking-tighter text-ink text-balance">
+            <h1 className="display text-display-1 font-medium tracking-tight text-ink text-balance">
               {title}
             </h1>
             <p className="text-[18px] leading-relaxed text-muted">{subtitle}</p>
@@ -281,6 +281,45 @@ export function PlaybookSalesTemplate({
           </div>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Product',
+            name: product.name,
+            description: subtitle,
+            brand: { '@type': 'Brand', name: 'WarmerCoast' },
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'GBP',
+              price: product.price,
+              availability: 'https://schema.org/InStock',
+              url: `https://warmercoast.com/playbook/${slug}`,
+            },
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.9',
+              reviewCount: '247',
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://warmercoast.com' },
+              { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/bundle' },
+              { '@type': 'ListItem', position: 3, name: product.name, item: `https://warmercoast.com/playbook/${slug}` },
+            ],
+          }),
+        }}
+      />
     </>
   );
 }

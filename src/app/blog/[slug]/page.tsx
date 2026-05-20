@@ -84,7 +84,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           <Badge tone="warm">{post.category}</Badge>
           <span className="text-xs text-muted">{post.read_time_minutes} min read</span>
         </div>
-        <h1 className="display mt-4 text-display-1 font-medium tracking-tighter text-ink text-balance">
+        <h1 className="display mt-4 text-display-1 font-medium tracking-tight text-ink text-balance">
           {post.title}
         </h1>
         <p className="mt-5 text-[18px] leading-relaxed text-muted">{post.excerpt}</p>

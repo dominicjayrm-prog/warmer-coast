@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Visa eligibility quiz | Spain, Portugal, Gibraltar for Brits',
   description:
     '12-question visa eligibility quiz. Branching logic, recommendation by country and route. Email-gated final result.',
+  alternates: { canonical: '/calculators/visa-eligibility' },
 };
 
 export default function Page() {

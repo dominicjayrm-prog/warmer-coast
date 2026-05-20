@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'Blog · WarmerCoast',
   description:
     'Long-form, sourced articles on UK to Iberia relocation. Tax, visas, banking, schools, real cost of living.',
+  alternates: { canonical: '/blog' },
 };
 
 interface Post {

@@ -26,16 +26,27 @@ interface Props {
   country: Country;
   hero: {
     eyebrow: string;
-    h1: string;
+    h1Lead: string;
+    h1Accent: string;
+    h1Tail?: string;
     intro: string;
   };
   subPillars: SubPillarLink[];
   sections: PillarSection[];
   faqs: AccordionItem[];
+  breadcrumbName?: string;
 }
 
 export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Props) {
   const meta = COUNTRY_META[country];
+  const playbookSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://warmercoast.com' },
+      { '@type': 'ListItem', position: 2, name: meta.name, item: `https://warmercoast.com/${country}` },
+    ],
+  };
   return (
     <>
       <section className="relative overflow-hidden">
@@ -54,16 +65,12 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
               </Badge>
               <Badge tone="neutral">Free guide · {sections.length}-part pillar</Badge>
             </div>
-            <h1 className="display text-display-1 font-medium tracking-tighter text-ink text-balance">
-              {hero.h1.split('|').map((part, i) =>
-                i === 1 ? (
-                  <span key={i} className="italic" style={{ color: meta.accent }}>
-                    {part}
-                  </span>
-                ) : (
-                  <span key={i}>{part}</span>
-                ),
-              )}
+            <h1 className="display text-display-1 font-medium tracking-tight text-ink text-balance">
+              {hero.h1Lead}{' '}
+              <span className="italic" style={{ color: meta.accent }}>
+                {hero.h1Accent}
+              </span>
+              {hero.h1Tail ? <>{' '}{hero.h1Tail}</> : null}
             </h1>
             <p className="text-[18px] leading-relaxed text-muted">{hero.intro}</p>
             <div className="flex flex-wrap gap-3">
@@ -216,6 +223,25 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
           </Link>
         </div>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(playbookSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: typeof f.a === 'string' ? f.a : '' },
+            })),
+          }),
+        }}
+      />
     </>
   );
 }

@@ -17,7 +17,7 @@ export default function Page({
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content max-w-2xl text-center">
         <Badge tone="success" uppercase>You&apos;re in</Badge>
-        <h1 className="display mt-4 text-display-1 font-medium tracking-tighter text-ink text-balance">
+        <h1 className="display mt-4 text-display-1 font-medium tracking-tight text-ink text-balance">
           Welcome to WarmerCoast.
         </h1>
         <p className="mt-5 text-[18px] text-muted">

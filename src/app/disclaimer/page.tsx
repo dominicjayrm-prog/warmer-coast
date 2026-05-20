@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { LegalDoc } from '@/components/legal/LegalDoc';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer',
-  description: 'WarmerCoast educational content disclaimer.',
+  title: 'Disclaimer | WarmerCoast',
+  description: 'WarmerCoast is educational content, not regulated financial, legal, tax or immigration advice. Who to engage for situation-specific guidance.',
+  alternates: { canonical: '/disclaimer' },
 };
 
 export default function Page() {

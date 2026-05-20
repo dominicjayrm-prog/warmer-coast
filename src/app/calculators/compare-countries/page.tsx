@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Spain vs Portugal vs Gibraltar | Decide where to move',
   description:
     'Interactive comparison: tax, cost, visa, weather, English-speaking, healthcare, family-friendliness. Weight what matters and see your best fit.',
+  alternates: { canonical: '/calculators/compare-countries' },
 };
 
 export default function Page() {

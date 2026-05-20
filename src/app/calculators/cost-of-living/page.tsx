@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Cost of living comparator | UK vs Spain, Portugal, Gibraltar 2026',
   description:
     'Compare monthly cost of living between any UK city and 10 Iberian destinations. Real 2026 numbers, sourced. See annual and 5-year savings.',
+  alternates: { canonical: '/calculators/cost-of-living' },
 };
 
 export default function Page() {

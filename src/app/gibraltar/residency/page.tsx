@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Gibraltar residency | Cat 2, HEPSS, ordinary',
   description: 'How to become a Gibraltar resident. Category 2, HEPSS, ordinary residence. Net worth thresholds, approved accommodation, vetting timelines.',
+  alternates: { canonical: '/gibraltar/residency' },
 };
 
 export default function Page() {

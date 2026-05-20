@@ -5,6 +5,7 @@ import { PropertyTaxCalc } from './PropertyTaxCalc';
 export const metadata: Metadata = {
   title: 'Iberian property purchase tax calculator | IBI, ITP, IMI',
   description: 'Estimate property purchase tax and ongoing annual property tax in Spain, Portugal and Gibraltar. ITP, IVA, IBI, IMI, IMT, stamp duty.',
+  alternates: { canonical: '/calculators/property-tax' },
 };
 
 export default function Page() {

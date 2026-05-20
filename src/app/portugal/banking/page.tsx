@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Portuguese banking for Brits | NIF, Millennium, ActivoBank, Wise',
   description: 'Opening a Portuguese bank account as a UK national. NIF first, then bank choice. Millennium BCP, ActivoBank, multi-currency strategies.',
+  alternates: { canonical: '/portugal/banking' },
 };
 
 export default function Page() {

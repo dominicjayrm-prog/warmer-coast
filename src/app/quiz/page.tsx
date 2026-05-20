@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Should you move abroad? 12-question quiz for British adults',
   description:
     'A 12-question quiz that recommends your best fit between Spain, Portugal, Gibraltar, or staying in the UK. Email-gated final result with personalised playbook recommendation.',
+  alternates: { canonical: '/quiz' },
 };
 
 export default function Page() {

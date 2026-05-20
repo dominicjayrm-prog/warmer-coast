@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Portugal cost of living 2026 for Brits | Algarve, Lisbon, Porto',
   description: 'Real Portuguese cost of living in 2026 across the Algarve, Lisbon, Porto, Coimbra. Sourced numbers, benchmarked against UK reference cities.',
+  alternates: { canonical: '/portugal/cost-of-living' },
 };
 
 export default function Page() {

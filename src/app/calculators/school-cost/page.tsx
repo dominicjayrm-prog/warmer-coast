@@ -5,6 +5,7 @@ import { SchoolCostCalc } from './SchoolCostCalc';
 export const metadata: Metadata = {
   title: 'International school cost estimator | Iberia for British families',
   description: 'Estimate annual international school fees across Costa del Sol, Algarve, Gibraltar, Madrid, Barcelona, Lisbon. British, American, IB.',
+  alternates: { canonical: '/calculators/school-cost' },
 };
 
 export default function Page() {

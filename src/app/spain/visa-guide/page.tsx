@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Spain visa guide for British citizens 2026 | NLV, DNV, work, golden',
   description:
     'Every Spanish visa route open to UK applicants in 2026. Non-lucrative, digital nomad, work, golden, family. Documents, costs, timelines, gotchas.',
+  alternates: { canonical: '/spain/visa-guide' },
 };
 
 export default function Page() {

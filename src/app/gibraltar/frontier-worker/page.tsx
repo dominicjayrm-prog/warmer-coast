@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Gibraltar frontier-worker mechanics | Living Spain, working Gibraltar',
   description: 'The post-Brexit frontier-worker reality. Tax, social security, day-counting, the border crossing, treaty mechanics.',
+  alternates: { canonical: '/gibraltar/frontier-worker' },
 };
 
 export default function Page() {

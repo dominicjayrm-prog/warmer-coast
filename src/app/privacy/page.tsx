@@ -4,6 +4,7 @@ import { LegalDoc } from '@/components/legal/LegalDoc';
 export const metadata: Metadata = {
   title: 'Privacy policy',
   description: 'How WarmerCoast collects, uses and protects your data. GDPR compliant.',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function Page() {

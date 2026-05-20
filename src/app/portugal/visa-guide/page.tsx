@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Portugal visa guide for Brits | D7, D8, Golden, work',
   description: 'Every Portuguese visa route open to UK applicants in 2026. D7, D8 digital nomad, golden alternatives, work, family. Documents, costs, timelines.',
+  alternates: { canonical: '/portugal/visa-guide' },
 };
 
 export default function Page() {
