@@ -47,6 +47,38 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
       { '@type': 'ListItem', position: 2, name: meta.name, item: `https://warmercoast.com/${country}` },
     ],
   };
+  const howToSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to move to ${meta.name} from the UK`,
+    description: hero.intro,
+    totalTime: 'P12M',
+    step: sections.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.title,
+      text: s.intro,
+      url: `https://warmercoast.com/${country}#${s.id}`,
+    })),
+  };
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `Move to ${meta.name} from the UK`,
+    description: hero.intro,
+    author: {
+      '@type': 'Person',
+      name: 'Dom Roworth',
+      url: 'https://warmercoast.com/about',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'WarmerCoast',
+      url: 'https://warmercoast.com',
+    },
+    datePublished: '2026-01-15',
+    dateModified: new Date().toISOString().slice(0, 10),
+  };
   return (
     <>
       <section className="relative overflow-hidden">
@@ -73,6 +105,13 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
               {hero.h1Tail ? <>{' '}{hero.h1Tail}</> : null}
             </h1>
             <p className="text-[18px] leading-relaxed text-muted">{hero.intro}</p>
+            <div className="flex items-center gap-2 text-xs text-faint">
+              <span>By <a href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dom Roworth and Sofia</a></span>
+              <span>·</span>
+              <span>Reviewed {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</span>
+              <span>·</span>
+              <span>2026 figures</span>
+            </div>
             <div className="flex flex-wrap gap-3">
               <Link
                 href={`/playbook/${country}`}
@@ -230,6 +269,14 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -239,6 +286,10 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
               name: f.q,
               acceptedAnswer: { '@type': 'Answer', text: typeof f.a === 'string' ? f.a : '' },
             })),
+            speakable: {
+              '@type': 'SpeakableSpecification',
+              cssSelector: ['[data-speakable="faq"]'],
+            },
           }),
         }}
       />
