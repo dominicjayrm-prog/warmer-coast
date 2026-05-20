@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { TestimonialActions } from '@/components/admin/TestimonialActions';
@@ -16,7 +16,7 @@ interface Testimonial {
 }
 
 export default async function TestimonialsAdmin() {
-  const supabase = createClient();
+  const supabase = adminDb();
   const { data } = await supabase
     .from('wc_testimonials')
     .select('id,product_slug,rating,quote,display_name,display_location,approved,featured,created_at')

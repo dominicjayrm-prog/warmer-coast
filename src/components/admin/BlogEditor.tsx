@@ -20,7 +20,9 @@ export function BlogEditor({ initialContent = '', onChange }: Props) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        heading: { levels: [1, 2, 3] },
+        // H1 reserved for the post title (rendered by the page).
+        // Body content uses H2/H3/H4 only - prevents duplicate H1 SEO penalty.
+        heading: { levels: [2, 3, 4] },
         codeBlock: { HTMLAttributes: { class: 'rounded-card bg-surface p-4 text-sm' } },
         blockquote: { HTMLAttributes: { class: 'border-l-4 border-warm pl-4 italic text-muted' } },
       }),
@@ -112,9 +114,9 @@ function Toolbar({ editor }: { editor: Editor }) {
   return (
     <div className="sticky top-14 z-10 flex flex-wrap items-center gap-1 border-b border-border bg-white px-3 py-2">
       <Group>
-        <Btn label="H1" onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} active={editor.isActive('heading', { level: 1 })} />
-        <Btn label="H2" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive('heading', { level: 2 })} />
-        <Btn label="H3" onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} active={editor.isActive('heading', { level: 3 })} />
+        <Btn label="H2" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive('heading', { level: 2 })} title="Section heading" />
+        <Btn label="H3" onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} active={editor.isActive('heading', { level: 3 })} title="Sub-heading" />
+        <Btn label="H4" onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()} active={editor.isActive('heading', { level: 4 })} title="Minor heading" />
         <Btn label="¶" onClick={() => editor.chain().focus().setParagraph().run()} active={editor.isActive('paragraph')} title="Paragraph" />
       </Group>
 
@@ -183,8 +185,8 @@ function InlineMenu({ editor }: { editor: Editor }) {
       <Btn label="B" onClick={() => editor.chain().focus().toggleBold().run()} active={editor.isActive('bold')} bold compact />
       <Btn label="I" onClick={() => editor.chain().focus().toggleItalic().run()} active={editor.isActive('italic')} italic compact />
       <Btn label="U" onClick={() => editor.chain().focus().toggleUnderline().run()} active={editor.isActive('underline')} underline compact />
-      <Btn label="H2" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive('heading', { level: 2 })} compact />
-      <Btn label="H3" onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()} active={editor.isActive('heading', { level: 3 })} compact />
+      <Btn label="H2" onClick={() => editor.chain().focus().setHeading({ level: 2 }).run()} active={editor.isActive('heading', { level: 2 })} compact />
+      <Btn label="H3" onClick={() => editor.chain().focus().setHeading({ level: 3 }).run()} active={editor.isActive('heading', { level: 3 })} compact />
       <Btn label="🔗" onClick={() => {
         const url = window.prompt('URL') ?? '';
         if (url) editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { createClient } from '@/lib/supabase/server';
-import { isAdminEmail } from '@/lib/admin';
+import { isAdminEmail, adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 
 export const runtime = 'nodejs';
@@ -60,15 +61,20 @@ export async function POST(request: Request) {
     updated_at: now,
   };
 
-  const { data, error } = await supabase
+  const db = adminDb();
+  const { data, error } = await db
     .from('blog_posts')
     .insert(insert)
-    .select('id')
+    .select('id,slug')
     .single();
 
   if (error) {
     console.error('post insert error', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+
+  revalidatePath('/blog');
+  if (data?.slug) revalidatePath(`/blog/${data.slug}`);
+
   return NextResponse.json({ id: data.id });
 }

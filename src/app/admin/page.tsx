@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 
 export default async function AdminDashboard() {
-  const supabase = createClient();
+  const supabase = adminDb();
 
   const [postsTotal, postsPublished, leadsTotal, leadsThisWeek, testimonialsPending, purchasesTotal] =
     await Promise.all([

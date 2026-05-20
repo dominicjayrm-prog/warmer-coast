@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -17,7 +17,7 @@ interface Post {
 }
 
 export default async function BlogList() {
-  const supabase = createClient();
+  const supabase = adminDb();
   const { data } = await supabase
     .from('blog_posts')
     .select('id,slug,title,category,status,published_at,updated_at,author_name,read_time_minutes')

@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 
@@ -15,7 +15,7 @@ interface Purchase {
 }
 
 export default async function PurchasesPage() {
-  const supabase = createClient();
+  const supabase = adminDb();
   const { data } = await supabase
     .from('wc_purchases')
     .select('id,stripe_session_id,stripe_customer_id,product_slug,amount_paid,currency,status,created_at,refunded_at')

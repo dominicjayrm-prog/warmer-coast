@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
@@ -16,7 +16,7 @@ interface Lead {
 }
 
 export default async function LeadsPage({ searchParams }: { searchParams: { source?: string } }) {
-  const supabase = createClient();
+  const supabase = adminDb();
   let query = supabase
     .from('leads')
     .select('id,email,name,enquiry_type,message,source,status,created_at')

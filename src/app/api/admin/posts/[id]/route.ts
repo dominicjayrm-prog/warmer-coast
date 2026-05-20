@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { createClient } from '@/lib/supabase/server';
-import { isAdminEmail } from '@/lib/admin';
+import { isAdminEmail, adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 
 export const runtime = 'nodejs';
@@ -26,6 +27,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   if (!isAdminEmail(user?.email)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
   }
+  const db = adminDb();
 
   const body = (await request.json()) as Body;
   const now = new Date().toISOString();
@@ -51,16 +53,23 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     updated_at: now,
   };
 
-  const { error } = await supabase
+  const { data, error } = await db
     .from('blog_posts')
     .update(patch)
     .eq('id', params.id)
-    .eq('site', SITE.siteKey);
+    .eq('site', SITE.siteKey)
+    .select('slug')
+    .maybeSingle();
 
   if (error) {
     console.error('post update error', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+
+  revalidatePath('/blog');
+  if (data?.slug) revalidatePath(`/blog/${data.slug}`);
+  if (body.slug && body.slug !== data?.slug) revalidatePath(`/blog/${body.slug}`);
+
   return NextResponse.json({ ok: true });
 }
 
@@ -70,11 +79,18 @@ export async function DELETE(_request: Request, { params }: { params: { id: stri
   if (!isAdminEmail(user?.email)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 403 });
   }
-  const { error } = await supabase
+  const db = adminDb();
+  const { data, error } = await db
     .from('blog_posts')
     .delete()
     .eq('id', params.id)
-    .eq('site', SITE.siteKey);
+    .eq('site', SITE.siteKey)
+    .select('slug')
+    .maybeSingle();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  revalidatePath('/blog');
+  if (data?.slug) revalidatePath(`/blog/${data.slug}`);
+
   return NextResponse.json({ ok: true });
 }

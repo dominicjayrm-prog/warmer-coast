@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { isAdminEmail } from '@/lib/admin';
+import { isAdminEmail, adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 
 export const runtime = 'nodejs';
@@ -20,11 +20,12 @@ export async function GET(request: Request) {
   if (!isAdminEmail(user?.email)) {
     return new Response('Unauthorized', { status: 403 });
   }
+  const db = adminDb();
 
   const url = new URL(request.url);
   const source = url.searchParams.get('source');
 
-  let query = supabase
+  let query = db
     .from('leads')
     .select('email,name,source,enquiry_type,status,message,created_at')
     .eq('site', SITE.siteKey)

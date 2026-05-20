@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { ActivityRowActions } from '@/components/admin/ActivityRowActions';
@@ -13,7 +13,7 @@ interface Row {
 }
 
 export default async function ActivityPage() {
-  const supabase = createClient();
+  const supabase = adminDb();
   const { data } = await supabase
     .from('wc_activity_log')
     .select('id,event_type,product_slug,anonymised_name,is_seed,created_at')

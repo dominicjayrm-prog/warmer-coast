@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { requireAdmin } from '@/lib/admin';
+import { requireAdmin, hasServiceRole } from '@/lib/admin';
 import { AdminNavLinks } from '@/components/admin/AdminNavLinks';
 
 export const metadata: Metadata = {
@@ -12,6 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const user = await requireAdmin();
+  const serviceRole = hasServiceRole();
 
   return (
     <div className="min-h-screen bg-surface">
@@ -34,6 +35,15 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </div>
         </div>
       </header>
+      {!serviceRole && (
+        <div className="bg-warning/10 border-b border-warning/40 text-ink">
+          <div className="container-content py-3 text-sm">
+            <strong className="font-semibold">Set up needed:</strong>{' '}
+            Add the <code className="rounded bg-white px-1.5 py-0.5 text-xs border border-border">SUPABASE_SERVICE_ROLE_KEY</code>{' '}
+            env var on Vercel so the admin can read and write all data. Without it: list views look empty and saves fail silently.
+          </div>
+        </div>
+      )}
       <main className="container-content py-8">{children}</main>
     </div>
   );

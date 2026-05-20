@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { SITE } from '@/lib/site';
 import { Badge } from '@/components/ui/Badge';
 import { PostForm } from '@/components/admin/PostForm';
@@ -22,7 +22,7 @@ interface Post {
 }
 
 export default async function EditPostPage({ params }: { params: { id: string } }) {
-  const supabase = createClient();
+  const supabase = adminDb();
   const { data } = await supabase
     .from('blog_posts')
     .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,content,read_time_minutes,status,author_name,tags')
