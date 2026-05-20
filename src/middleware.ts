@@ -4,20 +4,20 @@ import { NextResponse, type NextRequest } from 'next/server';
 // Only run auth refresh on routes that actually need it. Keeping the matcher
 // narrow means a middleware crash can never take down the marketing site.
 export const config = {
-  matcher: ['/app/:path*', '/account/:path*'],
+  matcher: ['/app/:path*', '/account/:path*', '/admin/:path*'],
 };
 
 export async function middleware(request: NextRequest) {
   const response = NextResponse.next({ request: { headers: request.headers } });
   const path = request.nextUrl.pathname;
-  const isProtected = path.startsWith('/app') || path.startsWith('/account');
+  const isProtected =
+    path.startsWith('/app') || path.startsWith('/account') || path.startsWith('/admin');
 
   if (!isProtected) return response;
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !key) {
-    // Without Supabase creds we can't auth-check; send to login.
     const redirectUrl = new URL('/login', request.url);
     redirectUrl.searchParams.set('next', path);
     return NextResponse.redirect(redirectUrl);
@@ -43,6 +43,16 @@ export async function middleware(request: NextRequest) {
       const redirectUrl = new URL('/login', request.url);
       redirectUrl.searchParams.set('next', path);
       return NextResponse.redirect(redirectUrl);
+    }
+
+    if (path.startsWith('/admin')) {
+      const allow = (process.env.ADMIN_EMAILS ?? '')
+        .split(',')
+        .map((s) => s.trim().toLowerCase())
+        .filter(Boolean);
+      if (!allow.includes((data.user.email ?? '').toLowerCase())) {
+        return NextResponse.redirect(new URL('/?error=unauthorized', request.url));
+      }
     }
   } catch (e) {
     console.error('middleware auth failure', e);
