@@ -38,10 +38,26 @@ interface Props {
   breadcrumbName?: string;
 }
 
-const HERO_IMAGE: Record<Country, string> = {
-  spain: '/cadiz-coastline.png',
-  portugal: '/portugal-algarve.png',
-  gibraltar: '/gibraltar-rock.png',
+interface HeroImage {
+  src: string;
+  /** CSS transform applied to the <img>. Used to shift Gibraltar's
+   *  Rock leftward out from behind the calculator card. */
+  transform?: string;
+  transformOrigin?: string;
+}
+
+const HERO_IMAGE: Record<Country, HeroImage> = {
+  spain: { src: '/cadiz-coastline.png' },
+  portugal: { src: '/portugal-algarve.png' },
+  // Source image has the Rock at ~65-90% horizontally; without this
+  // transform it sits entirely behind the calculator card. Scale 1.5x
+  // from right origin so the image grows leftward, then translate left
+  // so the Rock peak lands in the visible gap between text and card.
+  gibraltar: {
+    src: '/gibraltar-rock.png',
+    transform: 'scale(1.5) translateX(-18%)',
+    transformOrigin: 'right center',
+  },
 };
 
 export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Props) {
@@ -93,15 +109,20 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
         {/* Country hero photo, positioned right so subject is visible behind
             the calculator card; left side is sea/sky which the white gradient
             blends into for headline legibility. */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
           <Image
-            src={heroImage}
+            src={heroImage.src}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-right"
             quality={85}
+            className="object-cover object-right"
+            style={
+              heroImage.transform
+                ? { transform: heroImage.transform, transformOrigin: heroImage.transformOrigin }
+                : undefined
+            }
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/0 lg:via-white/85 lg:to-white/0" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/40" />
