@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/server';
 export const metadata: Metadata = {
   title: 'Reviews · WarmerCoast',
   description: 'Verified reviews from buyers of the Spain, Portugal, Gibraltar and Bundle playbooks.',
+  alternates: { canonical: '/reviews' },
 };
 
 export const revalidate = 600;

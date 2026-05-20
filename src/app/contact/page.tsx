@@ -5,6 +5,7 @@ import { ContactForm } from './ContactForm';
 export const metadata: Metadata = {
   title: 'Contact WarmerCoast',
   description: 'Get in touch with Dom and Sofia. We reply to every email within 48 hours.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function Page() {

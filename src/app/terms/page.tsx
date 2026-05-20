@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { LegalDoc } from '@/components/legal/LegalDoc';
 
 export const metadata: Metadata = {
-  title: 'Terms of service',
-  description: 'WarmerCoast terms of service.',
+  title: 'Terms of service | WarmerCoast',
+  description: 'WarmerCoast terms of service. Educational content licence, refund mechanics, limitation of liability, governing law (England and Wales).',
+  alternates: { canonical: '/terms' },
 };
 
 export default function Page() {

@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Gibraltar tax for British movers | Cat 2 cap, HEPSS, ATR system',
   description: 'How Gibraltar tax actually works. The ATR vs gross-income-based system, Cat 2 capping, HEPSS effective ceiling, UK pension treatment.',
+  alternates: { canonical: '/gibraltar/tax' },
 };
 
 export default function Page() {

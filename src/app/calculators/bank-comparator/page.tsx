@@ -16,6 +16,7 @@ const banks = [
 export const metadata: Metadata = {
   title: 'Bank comparator for British movers to Spain, Portugal, Gibraltar',
   description: 'Compare Spanish, Portuguese, and Gibraltar banks plus Wise/Revolut multi-currency options for British movers.',
+  alternates: { canonical: '/calculators/bank-comparator' },
 };
 
 export default function Page() {
@@ -53,7 +54,7 @@ export default function Page() {
                       <td className="px-4 py-3 text-muted">{b.fees}</td>
                       <td className="px-4 py-3 text-muted">{b.multiCurrency}</td>
                       <td className="px-4 py-3 text-warm">{'★'.repeat(b.appQuality)}</td>
-                      <td className="px-4 py-3 text-warm">{b.branchAccess ? '★'.repeat(b.branchAccess) : '—'}</td>
+                      <td className="px-4 py-3 text-warm">{b.branchAccess ? '★'.repeat(b.branchAccess) : '-'}</td>
                       <td className="px-4 py-3 text-warm">{'★'.repeat(b.expatFriendly)}</td>
                     </tr>
                   ))}

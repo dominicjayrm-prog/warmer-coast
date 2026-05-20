@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'The Portugal Playbook for British movers · £397',
   description:
     'The structured Portugal relocation playbook. IFICI / NHR 2.0, D7, D8, IRS, banking, schools. £397, instant access, 30-day strong refund.',
+  alternates: { canonical: '/playbook/portugal' },
 };
 
 export default function Page() {

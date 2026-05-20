@@ -16,10 +16,22 @@ interface Props {
   intro: string;
   spokes?: SpokeLink[];
   bullets?: string[];
+  subPillarSlug?: string;
 }
 
-export function SubPillarTemplate({ country, eyebrow, h1, intro, spokes, bullets }: Props) {
+export function SubPillarTemplate({ country, eyebrow, h1, intro, spokes, bullets, subPillarSlug }: Props) {
   const meta = COUNTRY_META[country];
+  const breadcrumb = subPillarSlug
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://warmercoast.com' },
+          { '@type': 'ListItem', position: 2, name: meta.name, item: `https://warmercoast.com/${country}` },
+          { '@type': 'ListItem', position: 3, name: eyebrow, item: `https://warmercoast.com/${country}/${subPillarSlug}` },
+        ],
+      }
+    : null;
   return (
     <>
       <section className="bg-white py-14 sm:py-20">
@@ -94,6 +106,13 @@ export function SubPillarTemplate({ country, eyebrow, h1, intro, spokes, bullets
           </Link>
         </div>
       </section>
+
+      {breadcrumb && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+        />
+      )}
     </>
   );
 }

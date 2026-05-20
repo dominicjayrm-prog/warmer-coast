@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Spain cost of living 2026 for British movers | Real numbers by region',
   description:
     'Real 2026 cost of living for British movers across Andalucía, Valencia, Cataluña, Madrid and the islands. Sourced from ONS, Numbeo and on-the-ground checks.',
+  alternates: { canonical: '/spain/cost-of-living' },
 };
 
 export default function Page() {

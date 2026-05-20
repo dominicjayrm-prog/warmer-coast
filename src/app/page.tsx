@@ -13,9 +13,9 @@ import { COUNTRY_META } from '@/lib/site';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'WarmerCoast | Move to Spain, Portugal or Gibraltar without the costly mistakes',
+  title: 'Move to Spain, Portugal or Gibraltar from the UK | WarmerCoast',
   description:
-    'Three relocation playbooks for British adults moving to Iberia. Tax, visas, banking, schools. Built in Cádiz by people who actually did it.',
+    'Honest UK to Iberia relocation playbooks. Beckham Law, NHR 2.0, Gibraltar Cat 2. Visas, tax, banking, schools, sourced. Built in Cádiz.',
   alternates: { canonical: SITE.url },
 };
 
@@ -177,16 +177,13 @@ function Hero() {
             <Badge tone="neutral">Built in Cádiz</Badge>
           </div>
 
-          <h1 className="display text-display-1 font-medium tracking-tighter text-ink text-balance">
-            Move <span className="italic text-warm">somewhere warmer</span> without the £20k of
-            tax mistakes most Brits make in year one.
+          <h1 className="display text-display-1 font-medium tracking-tight text-ink text-balance">
+            Move <span className="italic text-warm">somewhere warmer.</span>
           </h1>
 
-          <p className="max-w-xl text-[18px] leading-relaxed text-muted">
-            Three deep, sourced relocation playbooks for British adults moving to Spain, Portugal
-            or Gibraltar. The visas, the tax structuring, the banking, the schools, the order of
-            operations. No guru funnel, no fake countdowns, just the playbook two of us actually
-            used.
+          <p className="max-w-xl text-[19px] leading-relaxed text-muted">
+            Honest UK to Spain, Portugal and Gibraltar relocation playbooks. Visas, tax, banking,
+            schools, sequenced and sourced. Without the £20k of year-one mistakes most Brits make.
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -662,10 +659,9 @@ function ClosingCTA() {
       <div className="container-content relative grid gap-10 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <Badge tone="warm" uppercase>Final word</Badge>
-          <h2 className="display mt-4 text-display-1 font-medium tracking-tighter text-balance">
-            One bad{' '}
-            <span className="italic text-warm-light">tax year</span>{' '}
-            costs more than every playbook combined.
+          <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-balance">
+            One bad <span className="italic text-warm-light">tax year</span> costs more than every
+            playbook combined.
           </h2>
           <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-white/70">
             You&apos;re going to spend hundreds of hours researching this move anyway. Three of those

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'The Spain Playbook for British movers · £397',
   description:
     'The structured Spain relocation playbook. Beckham Law, visas, banking, schools, year-one tax. £397, instant access, 30-day strong refund.',
+  alternates: { canonical: '/playbook/spain' },
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'The Iberia Bundle · all three playbooks · £797',
   description:
     'Spain, Portugal and Gibraltar in one. The bundle for buyers who want to compare and decide before committing, plus the cross-border interactions module.',
+  alternates: { canonical: '/playbook/bundle' },
 };
 
 export default function Page() {

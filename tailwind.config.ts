@@ -36,9 +36,9 @@ const config: Config = {
         tight: '-0.03em',
       },
       fontSize: {
-        'display-1': ['clamp(48px, 7vw, 88px)', { lineHeight: '1.02', letterSpacing: '-0.035em' }],
-        'display-2': ['clamp(36px, 5vw, 64px)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'display-3': ['clamp(28px, 3.5vw, 40px)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'display-1': ['clamp(40px, 5.2vw, 68px)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        'display-2': ['clamp(30px, 3.8vw, 48px)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
+        'display-3': ['clamp(24px, 2.8vw, 34px)', { lineHeight: '1.15', letterSpacing: '-0.015em' }],
       },
       maxWidth: {
         prose: '68ch',

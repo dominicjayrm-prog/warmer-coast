@@ -13,10 +13,11 @@ export default function PortugalPillar() {
     <PillarTemplate
       country="portugal"
       hero={{
-        eyebrow: 'Portugal pillar guide',
-        h1: 'Move to Portugal with |NHR 2.0 |intact, the D7 sorted, and the IRS surprises avoided',
+        eyebrow: 'Portugal · pillar guide',
+        h1Lead: 'Move to Portugal',
+        h1Accent: 'from the UK.',
         intro:
-          'British adults moving to the Algarve, Lisbon, Porto, or smaller coastal towns. The IFICI / NHR 2.0 successor regime, the D7 and D8 visa routes, the IRS basics, the SNS, and the practical reality once you arrive.',
+          'British adults moving to the Algarve, Lisbon, Porto, or smaller coastal towns. The IFICI / NHR 2.0 successor regime, the D7 and D8 visa routes, IRS basics, the SNS, and the practical reality once you arrive.',
       }}
       subPillars={[
         { href: '/portugal/visa-guide', label: 'Visa guide', blurb: 'D7, D8, golden, work, family.' },

@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Gibraltar banking | Finance hub access, Sterling and Euro accounts',
   description: 'Banking in Gibraltar as a resident or frontier-worker. Sterling and Euro accounts, the major institutions, due diligence reality.',
+  alternates: { canonical: '/gibraltar/banking' },
 };
 
 export default function Page() {

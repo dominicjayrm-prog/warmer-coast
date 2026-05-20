@@ -6,7 +6,7 @@ export default function NotFound() {
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content max-w-xl text-center">
         <Badge tone="neutral" uppercase>404</Badge>
-        <h1 className="display mt-4 text-display-1 font-medium tracking-tighter text-ink text-balance">
+        <h1 className="display mt-4 text-display-1 font-medium tracking-tight text-ink text-balance">
           That page <span className="italic text-warm">isn&apos;t here</span>.
         </h1>
         <p className="mt-4 text-[17px] text-muted">

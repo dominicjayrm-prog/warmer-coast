@@ -13,10 +13,11 @@ export default function SpainPillar() {
     <PillarTemplate
       country="spain"
       hero={{
-        eyebrow: 'Spain pillar guide',
-        h1: 'Move to Spain from the UK |without losing |£20k a year to the wrong tax structure',
+        eyebrow: 'Spain · pillar guide',
+        h1Lead: 'Move to Spain',
+        h1Accent: 'from the UK.',
         intro:
-          'British adults moving to Andalucía, Valencia, Madrid, Cataluña or the islands. The visa routes that actually exist in 2026, the Beckham Law mechanics, the post-Brexit residency reality, the modelo 720 trap, and the order to do everything in.',
+          'British adults moving to Andalucía, Valencia, Madrid, Cataluña or the islands. The visa routes that actually exist in 2026, the Beckham Law mechanics, the post-Brexit reality, and the order to do everything in.',
       }}
       subPillars={[
         {

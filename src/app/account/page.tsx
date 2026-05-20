@@ -41,10 +41,10 @@ export default async function AccountPage() {
             <CardBody>
               <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">Profile</div>
               <dl className="mt-4 grid gap-3 text-sm">
-                <Row label="Name" value={profile?.full_name ?? '—'} />
-                <Row label="UK city" value={profile?.uk_city ?? '—'} />
-                <Row label="Target country" value={profile?.target_country ?? '—'} />
-                <Row label="Moving timeframe" value={profile?.moving_timeframe ?? '—'} />
+                <Row label="Name" value={profile?.full_name ?? '-'} />
+                <Row label="UK city" value={profile?.uk_city ?? '-'} />
+                <Row label="Target country" value={profile?.target_country ?? '-'} />
+                <Row label="Moving timeframe" value={profile?.moving_timeframe ?? '-'} />
               </dl>
               <p className="mt-4 text-xs text-faint">
                 Profile editing UI will live here. For now Supabase service-role updates direct.

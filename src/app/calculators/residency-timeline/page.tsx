@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Residency timeline calculator | When you become tax resident',
   description:
     'When does Spain/Portugal/Gibraltar consider you tax resident? Day-counting calculator with the 183-day rule and centre of interests.',
+  alternates: { canonical: '/calculators/residency-timeline' },
 };
 
 export default function Page() {

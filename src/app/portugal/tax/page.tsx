@@ -4,6 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Portugal tax for British movers | NHR 2.0 (IFICI), IRS, pensions',
   description: 'How Portuguese tax works for UK movers. IFICI / NHR 2.0 eligibility, IRS brackets, pension treatment, capital gains, double tax treaty mechanics.',
+  alternates: { canonical: '/portugal/tax' },
 };
 
 export default function Page() {

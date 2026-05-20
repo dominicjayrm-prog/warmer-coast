@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Spain tax residency for British movers | Beckham Law, modelo 720, 183 days',
   description:
     'How Spanish tax residency works for UK citizens. 183-day rule, centre of interests, modelo 720, Beckham Law, double tax treaty mechanics.',
+  alternates: { canonical: '/spain/tax-residency' },
 };
 
 export default function Page() {

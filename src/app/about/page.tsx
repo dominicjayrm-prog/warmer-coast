@@ -6,6 +6,7 @@ import { Card, CardBody } from '@/components/ui/Card';
 export const metadata: Metadata = {
   title: 'About Dom and Sofia | WarmerCoast',
   description: 'Dom spent eight years as a UK financial planner. Sofia is from Cádiz. Together they built the WarmerCoast playbooks.',
+  alternates: { canonical: '/about' },
 };
 
 export default function Page() {
@@ -14,7 +15,7 @@ export default function Page() {
       <section className="bg-white py-14 sm:py-20">
         <div className="container-content max-w-3xl">
           <Badge tone="warm" uppercase>About</Badge>
-          <h1 className="display mt-4 text-display-1 font-medium tracking-tighter text-ink text-balance">
+          <h1 className="display mt-4 text-display-1 font-medium tracking-tight text-ink text-balance">
             Built in <span className="italic text-warm">Cádiz</span>, by two people who moved here the hard way.
           </h1>
           <p className="mt-5 text-[18px] leading-relaxed text-muted">
