@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState, type FormEvent } from 'react';
 import { BlogEditor } from './BlogEditor';
 import { Card, CardBody } from '@/components/ui/Card';
+import { SeoScanner } from './SeoScanner';
 
 interface PostInput {
   id?: string;
@@ -14,6 +15,7 @@ interface PostInput {
   meta_title: string;
   meta_description: string;
   cover_image: string;
+  cover_image_alt: string;
   content: string;
   read_time_minutes: number;
   status: 'draft' | 'published';
@@ -34,6 +36,7 @@ const defaultPost: PostInput = {
   meta_title: '',
   meta_description: '',
   cover_image: '',
+  cover_image_alt: '',
   content: '',
   read_time_minutes: 5,
   status: 'draft',
@@ -69,8 +72,10 @@ export function PostForm({ initial, mode }: Props) {
       status: publish !== undefined ? (publish ? 'published' : 'draft') : post.status,
       meta_title: post.meta_title || post.title,
       meta_description: post.meta_description || post.excerpt.slice(0, 155),
+      cover_image_alt: post.cover_image_alt || post.title,
       read_time_minutes:
-        Number(post.read_time_minutes) || Math.max(1, Math.round(stripHtml(post.content).split(/\s+/).length / 220)),
+        Number(post.read_time_minutes) ||
+        Math.max(1, Math.round(stripHtml(post.content).split(/\s+/).length / 220)),
     };
     try {
       const url = mode === 'create' ? '/api/admin/posts' : `/api/admin/posts/${initial?.id}`;
@@ -163,7 +168,7 @@ export function PostForm({ initial, mode }: Props) {
               <input
                 value={post.cover_image}
                 onChange={(e) => update('cover_image', e.target.value)}
-                placeholder="https://... or upload via editor"
+                placeholder="https://... or /blog-images/..."
                 className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
               />
               {post.cover_image && (
@@ -173,6 +178,19 @@ export function PostForm({ initial, mode }: Props) {
                   style={{ backgroundImage: `url(${post.cover_image})` }}
                 />
               )}
+            </Field>
+            <Field label="Cover image alt text (SEO + accessibility)">
+              <input
+                value={post.cover_image_alt}
+                onChange={(e) => update('cover_image_alt', e.target.value)}
+                placeholder="Describe the image in one sentence"
+                className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
+              />
+              <span className="text-[11px] text-faint">
+                {post.cover_image_alt.length === 0
+                  ? 'Empty - will fall back to post title.'
+                  : `${post.cover_image_alt.length} chars - aim for 80-125.`}
+              </span>
             </Field>
             <Field label="Author name">
               <input
@@ -196,20 +214,20 @@ export function PostForm({ initial, mode }: Props) {
         <Card variant="bordered">
           <CardBody className="flex flex-col gap-3">
             <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">SEO</div>
-            <Field label="Meta title (60 chars max)">
+            <Field label="Meta title (60 chars ideal)">
               <input
                 value={post.meta_title}
                 onChange={(e) => update('meta_title', e.target.value)}
-                maxLength={70}
+                maxLength={80}
                 className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
               />
               <span className="text-[11px] text-faint">{post.meta_title.length}/60</span>
             </Field>
-            <Field label="Meta description (155 chars max)">
+            <Field label="Meta description (155 chars ideal)">
               <textarea
                 value={post.meta_description}
                 onChange={(e) => update('meta_description', e.target.value)}
-                maxLength={170}
+                maxLength={200}
                 rows={3}
                 className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm resize-none"
               />
@@ -217,6 +235,17 @@ export function PostForm({ initial, mode }: Props) {
             </Field>
           </CardBody>
         </Card>
+
+        <SeoScanner
+          title={post.title}
+          metaTitle={post.meta_title}
+          metaDescription={post.meta_description}
+          slug={post.slug}
+          excerpt={post.excerpt}
+          coverImage={post.cover_image}
+          coverImageAlt={post.cover_image_alt}
+          content={post.content}
+        />
 
         <Card variant="bordered">
           <CardBody className="flex flex-col gap-3">
@@ -250,7 +279,7 @@ export function PostForm({ initial, mode }: Props) {
             </div>
             {error && <p className="text-xs text-gibraltar">{error}</p>}
             <p className="text-[11px] text-faint">
-              Posts publish to <code className="rounded bg-surface px-1">/blog/{post.slug || 'slug'}</code>.
+              Publishes to <code className="rounded bg-surface px-1">/blog/{post.slug || 'slug'}</code>.
             </p>
           </CardBody>
         </Card>

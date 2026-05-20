@@ -14,6 +14,7 @@ interface Post {
   meta_title: string;
   meta_description: string;
   cover_image: string;
+  cover_image_alt: string | null;
   content: string;
   read_time_minutes: number;
   status: string;
@@ -25,7 +26,7 @@ export default async function EditPostPage({ params }: { params: { id: string } 
   const supabase = adminDb();
   const { data } = await supabase
     .from('blog_posts')
-    .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,content,read_time_minutes,status,author_name,tags')
+    .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,cover_image_alt,content,read_time_minutes,status,author_name,tags')
     .eq('id', params.id)
     .eq('site', SITE.siteKey)
     .maybeSingle();
@@ -69,6 +70,7 @@ export default async function EditPostPage({ params }: { params: { id: string } 
             meta_title: post.meta_title,
             meta_description: post.meta_description,
             cover_image: post.cover_image,
+            cover_image_alt: post.cover_image_alt ?? '',
             content: post.content,
             read_time_minutes: post.read_time_minutes,
             status: post.status === 'published' ? 'published' : 'draft',

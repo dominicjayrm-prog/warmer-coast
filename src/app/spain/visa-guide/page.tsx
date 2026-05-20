@@ -28,6 +28,11 @@ export default function Page() {
         {
           id: 'nlv',
           title: 'Non-Lucrative Visa (NLV): the passive-income route',
+          glance: {
+            value: '~€2,400/mo',
+            label: 'Minimum passive income (400% IPREM annually)',
+            note: 'No work in or for Spain permitted',
+          },
           body: (
             <>
               <p>
@@ -58,6 +63,11 @@ export default function Page() {
         {
           id: 'dnv',
           title: 'Digital Nomad Visa (DNV): the remote-worker route and Beckham Law bridge',
+          glance: {
+            value: '€2,849/mo',
+            label: '200% of Spanish SMI · Beckham Law eligible',
+            note: 'Modelo 149 election within 6 months of Social Security registration',
+          },
           body: (
             <>
               <p>
