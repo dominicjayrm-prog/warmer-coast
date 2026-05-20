@@ -49,7 +49,7 @@ export default function Page() {
                   href="https://www.gov.uk/income-tax-rates"
                   className="underline-offset-2 hover:underline"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                 >
                   gov.uk · UK income tax rates
                 </a>
@@ -59,7 +59,7 @@ export default function Page() {
                   href="https://sede.agenciatributaria.gob.es/"
                   className="underline-offset-2 hover:underline"
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                 >
                   Agencia Tributaria · régimen impatriados
                 </a>

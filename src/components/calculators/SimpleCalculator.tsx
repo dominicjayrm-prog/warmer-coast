@@ -96,7 +96,7 @@ export function SimpleCalculator({ inputs, initialValues, compute, notes, source
               <ul className="mt-1 list-disc pl-4">
                 {sources.map((s) => (
                   <li key={s.href}>
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="underline-offset-2 hover:underline">
+                    <a href={s.href} target="_blank" rel="nofollow noopener noreferrer" className="underline-offset-2 hover:underline">
                       {s.label} ↗
                     </a>
                   </li>

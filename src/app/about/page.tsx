@@ -88,7 +88,7 @@ export default function AboutPage() {
                   <a
                     href="https://www.linkedin.com/in/dominicroworth/"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="nofollow noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-3 py-1.5 font-semibold text-ink hover:border-ink"
                   >
                     LinkedIn <span aria-hidden>↗</span>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   <a
                     href="https://www.instagram.com/dj.rar"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="nofollow noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-3 py-1.5 font-semibold text-ink hover:border-ink"
                   >
                     Instagram <span aria-hidden>↗</span>
