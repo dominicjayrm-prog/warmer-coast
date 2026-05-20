@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
 import { Badge } from '@/components/ui/Badge';
@@ -166,9 +167,30 @@ export default function HomePage() {
 function Hero() {
   return (
     <section className="relative overflow-hidden">
+      {/* Background photo of Cádiz coastline. Positioned so the buildings sit
+          on the right; the left side is sea/sky which the gradient hides. */}
       <div
         aria-hidden
-        className="sun-glow pointer-events-none absolute -top-32 right-[-10%] h-[420px] w-[420px] rounded-full blur-3xl"
+        className="pointer-events-none absolute inset-0"
+      >
+        <Image
+          src="/cadiz-coastline.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-right"
+          quality={85}
+        />
+        {/* White gradient: opaque on the left (where the headline sits) fading
+            to transparent so the Cádiz photo shows on the right. Vertical
+            ramp at the bottom blends into the next section cleanly. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/0 lg:via-white/85 lg:to-white/0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/40" />
+      </div>
+      <div
+        aria-hidden
+        className="sun-glow pointer-events-none absolute -top-32 right-[-10%] h-[420px] w-[420px] rounded-full blur-3xl opacity-40"
       />
       <div className="container-content relative grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:py-24">
         <div className="flex flex-col gap-7">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { ReactNode } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
@@ -37,8 +38,15 @@ interface Props {
   breadcrumbName?: string;
 }
 
+const HERO_IMAGE: Record<Country, string> = {
+  spain: '/cadiz-coastline.png',
+  portugal: '/portugal-algarve.png',
+  gibraltar: '/gibraltar-rock.png',
+};
+
 export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Props) {
   const meta = COUNTRY_META[country];
+  const heroImage = HERO_IMAGE[country];
   const playbookSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -82,9 +90,25 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
   return (
     <>
       <section className="relative overflow-hidden">
+        {/* Country hero photo, positioned right so subject is visible behind
+            the calculator card; left side is sea/sky which the white gradient
+            blends into for headline legibility. */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <Image
+            src={heroImage}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-right"
+            quality={85}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/0 lg:via-white/85 lg:to-white/0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/40" />
+        </div>
         <div
           aria-hidden
-          className="pointer-events-none absolute right-[-10%] top-[-20%] h-[460px] w-[460px] rounded-full blur-3xl opacity-50"
+          className="pointer-events-none absolute right-[-10%] top-[-20%] h-[460px] w-[460px] rounded-full blur-3xl opacity-25"
           style={{
             background: `radial-gradient(circle at center, ${meta.accent} 0%, transparent 70%)`,
           }}
