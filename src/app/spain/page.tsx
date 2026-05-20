@@ -81,7 +81,7 @@ export default function SpainPillar() {
                 Today four routes cover 95% of UK applicants. The non-lucrative visa for
                 financially independent applicants. The digital nomad visa for remote employees
                 or self-employed workers earning at least the relevant threshold (approximately
-                €2,762 monthly for solo applicants in 2026). Standard work visas, which require
+                €2,849 monthly for solo applicants in 2026, +75% IPREM per dependent). Standard work visas, which require
                 an offer letter from a Spanish entity. And family reunification, for those with
                 a Spanish or EU spouse.
               </p>

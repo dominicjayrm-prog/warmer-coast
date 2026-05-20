@@ -42,8 +42,30 @@ export default function Page() {
         { title: 'Vetted asesor fiscal referrals', body: 'Three independent asesores we\'ve personally vetted. No kickbacks.' },
       ]}
       guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask, which is why we can keep this policy."
+      timeline={[
+        { when: '6-12 months out', what: 'File HMRC Form P85, review UK ISAs and pension drawdown, decide whether to sell UK property before or after the move.' },
+        { when: '3-6 months out', what: 'Choose visa route (NLV or DNV), apostille birth/marriage certificates, secure sworn translations.' },
+        { when: '1-3 months out', what: 'Book consulate appointment, finalise income documentation, sort medical certificate and criminal record check.' },
+        { when: 'First 30 days in Spain', what: 'Obtain NIE, register padrón at the town hall, register social security if employed.' },
+        { when: 'Within 6 months of social security', what: 'File Modelo 149 to elect Beckham Law. This deadline is absolute - miss it and you lose Beckham Law for your whole stay.' },
+        { when: 'Year 1, by 30 June', what: 'File Modelo 100 (IRPF return). By 31 March if Modelo 720 (foreign assets) applies.' },
+      ]}
+      documents={[
+        { name: 'Form P85', purpose: 'HMRC departure notification' },
+        { name: 'Visa application form', purpose: 'NLV or DNV at Spanish consulate' },
+        { name: 'Apostilled birth/marriage', purpose: 'Required for residency registration' },
+        { name: 'Sworn translation (jurado)', purpose: 'For every non-Spanish document' },
+        { name: 'Medical certificate', purpose: 'Specific format demanded by Spanish consulates' },
+        { name: 'Criminal record check (ACRO)', purpose: 'Apostilled, less than 6 months old' },
+        { name: 'NIE application (EX-15)', purpose: 'Foreigner identification number' },
+        { name: 'Padrón certificate', purpose: 'Town hall residency registration' },
+        { name: 'Modelo 030', purpose: 'Hacienda tax address registration' },
+        { name: 'Modelo 149', purpose: 'Beckham Law election, 6-month deadline' },
+        { name: 'Modelo 100', purpose: 'Annual IRPF return' },
+        { name: 'Modelo 720', purpose: 'Foreign asset declaration (if applicable)' },
+      ]}
       faqs={[
-        { q: 'Is the playbook updated for 2026?', a: 'Yes. Last full review January 2026. Includes DNV thresholds, Beckham Law eligibility expansion, Modelo 720 post-ECJ-ruling regime.' },
+        { q: 'Is the playbook updated for 2026?', a: 'Yes. Last full review May 2026. Includes the current DNV income threshold of €2,849/month, the 2026 IPREM figures, Modelo 720 post-ECJ-ruling penalty regime, and the latest Beckham Law eligibility rules.' },
         { q: 'How long do I have access?', a: 'Forever. The dashboard stays live. Updates included for 12 months from purchase, then optional renewal for ongoing access to changes.' },
         { q: 'Can I share with my spouse?', a: 'Yes. One purchase, household use. We don\'t police logins.' },
         { q: 'Is this regulated tax advice?', a: 'No. It is sourced educational content. For decisions specific to your situation, the playbook recommends an asesor fiscal and includes vetted referrals.' },

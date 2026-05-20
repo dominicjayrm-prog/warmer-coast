@@ -40,11 +40,31 @@ export default function Page() {
         { title: 'Vetted Cat 2 specialist referrals', body: 'Three Gibraltar-based specialists we\'ve personally vetted.' },
       ]}
       guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes or structural pitfalls you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask."
+      timeline={[
+        { when: '6-12 months out', what: 'File HMRC Form P85, compile source-of-funds dossier for Cat 2 vetting, choose between Cat 2 (HNW) and HEPSS (specialist senior role) and frontier-worker routes.' },
+        { when: '3-6 months out', what: 'Secure approved Gibraltar residential accommodation (own or rent), prepare £2m net worth documentation for Cat 2.' },
+        { when: '1-3 months out', what: 'File Cat 2 application via Finance Centre Director, or have employer file HEPSS. Vetting takes 3-6 months.' },
+        { when: 'July 15, 2026 onwards', what: 'New UK-EU treaty provisionally applies: no land border checks with Spain, Schengen rules at port/airport, frontier-worker logistics massively simpler.' },
+        { when: 'First 60 days', what: 'Receive Cat 2 / HEPSS approval, open Gibraltar bank account (Sterling + Euro), register with Income Tax Office.' },
+        { when: 'Year 1', what: 'File Allowance-Based or Gross-Income-Based assessment, maintain qualifying accommodation, annual compliance return.' },
+      ]}
+      documents={[
+        { name: 'Form P85', purpose: 'HMRC departure notification' },
+        { name: 'Cat 2 application', purpose: 'Filed via Finance Centre Director' },
+        { name: 'Source-of-funds dossier', purpose: '£2m net worth documentation' },
+        { name: 'Proof of approved accommodation', purpose: 'Own or rent qualifying Gibraltar property' },
+        { name: 'HEPSS application', purpose: 'Employer-filed for senior specialist roles' },
+        { name: 'Tax Identification Number (TIN)', purpose: 'Registration with Income Tax Office' },
+        { name: 'A1 social security certificate', purpose: 'For frontier-workers (UK-EU coordination)' },
+        { name: 'Day-counting log', purpose: 'Critical for avoiding accidental Spanish residency' },
+        { name: 'Annual compliance return', purpose: 'Cat 2 and HEPSS holders' },
+        { name: 'Civil status documents', purpose: 'Apostilled where issued outside Gibraltar' },
+      ]}
       faqs={[
-        { q: 'Is the Gibraltar playbook actually different enough to justify £497?', a: 'Yes. Cat 2, HEPSS and frontier-worker mechanics are far narrower than Spain or Portugal content, and the premium is partly because the market is small. We charge what makes the work worth doing.' },
-        { q: 'Cat 2 net worth: how strict is the £2m?', a: 'Strict. The Finance Centre Director will not approve below that bar. The playbook walks through documenting it correctly.' },
-        { q: 'Can I do this without an immigration lawyer?', a: 'Many do, especially HEPSS where the employer drives the application. Cat 2 we recommend you brief a specialist before filing, the playbook gives you the questions to ask.' },
-        { q: 'How does the border actually work post-Brexit?', a: 'Bespoke arrangements evolving since 2020. Module 4 documents the current state and the practical day-to-day reality of crossing.' },
+        { q: 'How does the new UK-EU treaty change things?', a: 'Massively, in a good way. Provisional application from 15 July 2026 removes the physical Spain border, drops the fence at La Línea, and applies Schengen rules at Gibraltar\'s port and airport instead. Customs union with the EU. Frontier-workers and short-term visitors no longer hit EES delays. Sovereignty over Gibraltar is unchanged.' },
+        { q: 'Is the Gibraltar playbook worth £497 vs the others at £397?', a: 'Yes if you fit the buyer. Cat 2 net worth is £2m+. HEPSS is senior specialist roles only. Frontier-worker has new 2026 dynamics. The market is narrow and the playbook reflects that depth. If your situation doesn\'t fit those three, the Spain playbook is cheaper and probably more useful.' },
+        { q: 'Cat 2 net worth: how strict is the £2m?', a: 'Strict. The Finance Centre Director will not approve below that bar. The playbook walks through what counts (liquid assets, real estate, investments) and what doesn\'t (future earnings, pension entitlements not yet drawn).' },
+        { q: 'Can I do this without an immigration lawyer?', a: 'HEPSS: usually yes, the employer drives the application. Cat 2: we recommend briefing a Gibraltar-licensed specialist before filing because vetting is a one-shot process. The playbook gives you the exact questions to ask them and includes three vetted referrals.' },
       ]}
     />
   );
