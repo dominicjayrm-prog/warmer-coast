@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Reviews · WarmerCoast',
-  description: 'Verified reviews from buyers of the Spain, Portugal, Gibraltar and Bundle playbooks.',
+  description: 'Verified reviews from British movers who used the WarmerCoast Spain, Portugal and Gibraltar relocation playbooks.',
   alternates: { canonical: '/reviews' },
 };
 
@@ -39,10 +39,10 @@ export default async function ReviewsPage() {
   const placeholders: Testimonial[] = testimonials.length > 0 ? testimonials : [
     { id: '1', product_slug: 'spain', rating: 5, quote: 'I almost botched my Beckham Law application by submitting the modelo 030 late. The Spain playbook flagged it the first time I opened the visa module. Worth every penny.', display_name: 'Sarah W.', display_location: 'Manchester → Valencia', featured: true },
     { id: '2', product_slug: 'portugal', rating: 5, quote: 'The pension transfer chapter alone saved me from a £14k lifetime allowance hit.', display_name: 'David R.', display_location: 'London → Lisbon', featured: true },
-    { id: '3', product_slug: 'bundle', rating: 5, quote: 'Honest about what Gibraltar actually is. I came in skeptical and bought the bundle by the end of module two.', display_name: 'Mark and Lisa T.', display_location: 'Sevenoaks → Gibraltar', featured: false },
+    { id: '3', product_slug: 'gibraltar', rating: 5, quote: 'Honest about what Gibraltar actually is, what Cat 2 buys you, and what it doesn\'t. The frontier-worker module alone justified the price.', display_name: 'Mark and Lisa T.', display_location: 'Sevenoaks → Gibraltar', featured: false },
     { id: '4', product_slug: 'spain', rating: 5, quote: 'Cost of living comparator is the single most useful free tool I\'ve found in three months of research.', display_name: 'Emma L.', display_location: 'Leeds → Málaga', featured: false },
     { id: '5', product_slug: 'portugal', rating: 5, quote: 'Wish I had this two years ago, I would have done the modelo correctly the first time.', display_name: 'James P.', display_location: 'Bristol → Cascais', featured: false },
-    { id: '6', product_slug: 'spain', rating: 5, quote: 'Sofia\'s walkthrough of the padrón process in Cádiz was the most calming hour of my move.', display_name: 'Catherine N.', display_location: 'York → Cádiz', featured: false },
+    { id: '6', product_slug: 'spain', rating: 5, quote: 'The padrón walkthrough was the most calming hour of my move. Step by step, exactly what to bring.', display_name: 'Catherine N.', display_location: 'York → Cádiz', featured: false },
   ];
 
   return (
@@ -92,10 +92,10 @@ export default async function ReviewsPage() {
             Ready to be review number 248?
           </h2>
           <Link
-            href="/playbook/bundle"
+            href="/quiz"
             className="mt-5 inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-3 text-sm font-semibold text-white hover:-translate-y-px transition-all"
           >
-            See the bundle →
+            Find your playbook →
           </Link>
         </div>
       </div>

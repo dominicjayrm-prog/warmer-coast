@@ -89,8 +89,19 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(function Slider(
         ref={ref}
         id={id}
         type="range"
-        className={cn('w-full appearance-none bg-transparent', className)}
-        style={{ accentColor: accent }}
+        className={cn('wc-slider w-full', className)}
+        style={
+          {
+            '--accent': accent,
+            // Progress fill: gradient from accent to track-bg at the
+            // current value position. Computed at render via inline style.
+            ['--pct' as string]: `${
+              ((Number(rest.value ?? rest.defaultValue ?? rest.min ?? 0) - Number(rest.min ?? 0)) /
+                Math.max(1, Number(rest.max ?? 100) - Number(rest.min ?? 0))) *
+              100
+            }%`,
+          } as React.CSSProperties
+        }
         {...rest}
       />
     </div>

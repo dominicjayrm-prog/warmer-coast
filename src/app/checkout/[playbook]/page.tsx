@@ -19,7 +19,7 @@ export default function Page({ params }: { params: { playbook: string } }) {
   if (!(params.playbook in PRODUCTS)) notFound();
   const slug = params.playbook as ProductSlug;
   const product = PRODUCTS[slug];
-  const accent = slug === 'bundle' ? '#E67E3C' : COUNTRY_META[slug as 'spain' | 'portugal' | 'gibraltar'].accent;
+  const accent = COUNTRY_META[slug].accent;
 
   return (
     <section className="bg-white py-20 sm:py-28">

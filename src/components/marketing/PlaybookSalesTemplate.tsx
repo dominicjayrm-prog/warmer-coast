@@ -36,22 +36,8 @@ export function PlaybookSalesTemplate({
   faqs,
 }: Props) {
   const product = PRODUCTS[slug];
-  const accent =
-    slug === 'spain'
-      ? COUNTRY_META.spain.accent
-      : slug === 'portugal'
-        ? COUNTRY_META.portugal.accent
-        : slug === 'gibraltar'
-          ? COUNTRY_META.gibraltar.accent
-          : '#E67E3C';
-  const accentSoft =
-    slug === 'spain'
-      ? COUNTRY_META.spain.accentSoft
-      : slug === 'portugal'
-        ? COUNTRY_META.portugal.accentSoft
-        : slug === 'gibraltar'
-          ? COUNTRY_META.gibraltar.accentSoft
-          : '#FFE9D5';
+  const accent = COUNTRY_META[slug].accent;
+  const accentSoft = COUNTRY_META[slug].accentSoft;
 
   return (
     <>
@@ -106,33 +92,7 @@ export function PlaybookSalesTemplate({
             </div>
           </div>
 
-          {slug !== 'bundle' && <LiveTaxCalculator initialCountry={slug} />}
-          {slug === 'bundle' && (
-            <Card variant="elevated">
-              <CardBody>
-                <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
-                  What you get in the bundle
-                </div>
-                <ul className="mt-4 flex flex-col gap-3 text-[15px] text-ink">
-                  <li className="flex items-center gap-3"><span>🇪🇸</span> Spain Playbook (£397 alone)</li>
-                  <li className="flex items-center gap-3"><span>🇵🇹</span> Portugal Playbook (£397 alone)</li>
-                  <li className="flex items-center gap-3"><span>🇬🇮</span> Gibraltar Playbook (£497 alone)</li>
-                  <li className="flex items-center gap-3"><span>🔁</span> Cross-border interactions module</li>
-                  <li className="flex items-center gap-3"><span>🧭</span> &ldquo;Which country&rdquo; decision tool</li>
-                </ul>
-                <div className="mt-5 rounded-card p-4" style={{ background: accentSoft }}>
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-sm text-ink/70">Separately</span>
-                    <span className="line-through text-ink/60">£1,291</span>
-                  </div>
-                  <div className="flex items-baseline justify-between font-semibold">
-                    <span>Bundle</span>
-                    <span className="display text-2xl" style={{ color: accent }}>£797</span>
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
-          )}
+          <LiveTaxCalculator initialCountry={slug} />
         </div>
       </section>
 
@@ -314,7 +274,7 @@ export function PlaybookSalesTemplate({
             '@type': 'BreadcrumbList',
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://warmercoast.com' },
-              { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/bundle' },
+              { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/spain' },
               { '@type': 'ListItem', position: 3, name: product.name, item: `https://warmercoast.com/playbook/${slug}` },
             ],
           }),

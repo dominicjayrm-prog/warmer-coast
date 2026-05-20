@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/cn';
 
 const playbooks = [
-  { href: '/playbook/spain', label: 'Spain', sub: '£397' },
-  { href: '/playbook/portugal', label: 'Portugal', sub: '£397' },
-  { href: '/playbook/gibraltar', label: 'Gibraltar', sub: '£497' },
-  { href: '/playbook/bundle', label: 'All three (bundle)', sub: 'Save £494' },
+  { href: '/playbook/spain', label: 'Move to Spain', sub: '£397' },
+  { href: '/playbook/portugal', label: 'Move to Portugal', sub: '£397' },
+  { href: '/playbook/gibraltar', label: 'Move to Gibraltar', sub: '£497' },
 ];
 
 const tools = [
@@ -112,10 +111,10 @@ export function Nav() {
             Log in
           </Link>
           <Link
-            href="/playbook/bundle"
+            href="/quiz"
             className="inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-2.5 text-[14px] font-semibold text-white shadow-card transition-all hover:shadow-elevated hover:-translate-y-px"
           >
-            Get the playbook
+            Find your playbook
             <span aria-hidden>→</span>
           </Link>
         </div>
@@ -167,11 +166,11 @@ export function Nav() {
               <Link href="/login" className="block py-2 font-semibold" onClick={() => setOpenMobile(false)}>Log in</Link>
             </MobileSection>
             <Link
-              href="/playbook/bundle"
+              href="/quiz"
               onClick={() => setOpenMobile(false)}
               className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-pill bg-ink py-3 font-semibold text-white"
             >
-              Get the playbook →
+              Find your playbook →
             </Link>
           </div>
         </div>

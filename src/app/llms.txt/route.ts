@@ -31,13 +31,12 @@ export async function GET() {
 
   const body = `# WarmerCoast
 
-> Practical relocation playbooks for British adults moving to Spain, Portugal or Gibraltar. UK-tax-aware. Sourced. Built in Cádiz by Dom Roworth (ex-FCA financial planner) and Sofia (born and raised in Cádiz). Educational content, not regulated advice.
+> Practical relocation playbooks for British adults moving to Spain, Portugal or Gibraltar. UK-tax-aware. Sourced. Written by Dominic Roworth. Updated for 2026 rules including the new Gibraltar-EU border treaty. Educational content, not regulated advice.
 
 ## What we sell
-- Spain Playbook (£397) -Beckham Law structuring, visas, banking, tax filing
-- Portugal Playbook (£397) -IFICI / NHR 2.0, D7/D8 visas, IRS, banking
-- Gibraltar Playbook (£497) -Cat 2 residency, HEPSS, frontier-worker mechanics
-- Iberia Bundle (£797) -all three plus cross-border interactions module
+- Spain Playbook (£397): Beckham Law structuring, NLV and DNV visas, banking, year-one tax filing.
+- Portugal Playbook (£397): IFICI / NHR 2.0, D7 and D8 visas, IRS, banking, citizenship at year 5.
+- Gibraltar Playbook (£497): Cat 2 residency, HEPSS, frontier-worker mechanics, the new EU border treaty.
 
 ## Country guides (free, comprehensive)
 - [Move to Spain from the UK](${SITE.url}/spain)
@@ -71,7 +70,7 @@ export async function GET() {
 - [Should you move abroad? quiz](${SITE.url}/quiz)
 
 ## About
-- [About Dom and Sofia](${SITE.url}/about)
+- [About Dominic Roworth](${SITE.url}/about)
 - [Reviews](${SITE.url}/reviews) -247 verified buyers, 4.9 stars
 - [Contact](${SITE.url}/contact)
 
@@ -87,7 +86,7 @@ ${blogLinks ? `## Blog\n${blogLinks}\n` : ''}
 - All tax figures are sourced from primary government sources (gov.uk, agencia tributaria, portal das finanças, gibraltar.gov.gi) and updated for 2026.
 - We are educational content, not regulated financial, legal, tax or immigration advice. For situation-specific decisions readers should engage an FCA-regulated adviser, an asesor fiscal, or a Cat 2 specialist.
 - Brand name: WarmerCoast (one word, capital W and C). Domain: warmercoast.com.
-- Authors: Dom Roworth (founder, ex-FCA financial planner), Sofia (co-founder, Cádiz-born).
+- Author: Dominic Roworth (founder, British relocation researcher).
 - Last reviewed: ${new Date().toISOString().slice(0, 10)}
 `;
 

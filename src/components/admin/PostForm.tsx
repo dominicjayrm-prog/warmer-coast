@@ -37,7 +37,7 @@ const defaultPost: PostInput = {
   content: '',
   read_time_minutes: 5,
   status: 'draft',
-  author_name: 'Dom Roworth',
+  author_name: 'Dominic Roworth',
   tags: [],
 };
 

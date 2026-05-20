@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     is_published: status === 'published',
     published: status === 'published',
     is_featured: false,
-    author_name: body.author_name ?? 'Dom Roworth',
+    author_name: body.author_name ?? 'Dominic Roworth',
     tags: body.tags ?? [],
     language: 'en',
     published_at: status === 'published' ? now : now,

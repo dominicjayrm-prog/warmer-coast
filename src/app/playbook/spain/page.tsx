@@ -38,7 +38,7 @@ export default function Page() {
       ]}
       bonuses={[
         { title: 'Spain Starter Checklist (PDF)', body: 'The exact 14-page pre-move list. Printable. Updated 2026.' },
-        { title: 'Cádiz padrón walkthrough (video)', body: 'Sofia walks through a real padrón appointment, what to bring, what they actually ask.' },
+        { title: 'Padrón walkthrough (video)', body: 'A real padrón appointment, recorded and narrated. What to bring, what they actually ask, what to do if they push back.' },
         { title: 'Vetted asesor fiscal referrals', body: 'Three independent asesores we\'ve personally vetted. No kickbacks.' },
       ]}
       guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask, which is why we can keep this policy."
@@ -47,7 +47,7 @@ export default function Page() {
         { q: 'How long do I have access?', a: 'Forever. The dashboard stays live. Updates included for 12 months from purchase, then optional renewal for ongoing access to changes.' },
         { q: 'Can I share with my spouse?', a: 'Yes. One purchase, household use. We don\'t police logins.' },
         { q: 'Is this regulated tax advice?', a: 'No. It is sourced educational content. For decisions specific to your situation, the playbook recommends an asesor fiscal and includes vetted referrals.' },
-        { q: 'What if I decide on Portugal halfway through?', a: 'Email us, we\'ll credit the £397 toward the bundle (£797), so you only pay the £400 delta.' },
+        { q: 'What if I decide on Portugal halfway through?', a: 'Email us within 30 days and we\'ll swap your Spain access for Portugal free. After 30 days you keep Spain and get the Portugal playbook at a 25% loyalty discount.' },
       ]}
     />
   );

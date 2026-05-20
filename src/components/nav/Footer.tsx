@@ -5,10 +5,10 @@ const columns = [
   {
     title: 'Playbooks',
     links: [
-      { href: '/playbook/spain', label: 'Spain Playbook' },
-      { href: '/playbook/portugal', label: 'Portugal Playbook' },
-      { href: '/playbook/gibraltar', label: 'Gibraltar Playbook' },
-      { href: '/playbook/bundle', label: 'All three (bundle)' },
+      { href: '/playbook/spain', label: 'Move to Spain · £397' },
+      { href: '/playbook/portugal', label: 'Move to Portugal · £397' },
+      { href: '/playbook/gibraltar', label: 'Move to Gibraltar · £497' },
+      { href: '/quiz', label: 'Which country fits you?' },
     ],
   },
   {
@@ -36,7 +36,7 @@ const columns = [
   {
     title: 'Company',
     links: [
-      { href: '/about', label: 'About Dom and Sofia' },
+      { href: '/about', label: 'About Dominic' },
       { href: '/reviews', label: 'Reviews' },
       { href: '/blog', label: 'Blog' },
       { href: '/contact', label: 'Contact' },
@@ -66,9 +66,8 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm text-white/60">
-              Practical, opinionated relocation playbooks for British adults moving to Spain,
-              Portugal or Gibraltar. Built by people who actually did it, in Cádiz, with a UK
-              tax background.
+              Honest UK to Iberia relocation playbooks. Visas, tax residency, banking, healthcare,
+              schools. Updated for 2026 rules including the new Gibraltar-EU border treaty.
             </p>
             <div className="mt-6 max-w-sm">
               <NewsletterCapture variant="dark" source="footer" />

@@ -40,24 +40,15 @@ interface Props {
 
 interface HeroImage {
   src: string;
-  /** CSS transform applied to the <img>. Used to shift Gibraltar's
-   *  Rock leftward out from behind the calculator card. */
-  transform?: string;
-  transformOrigin?: string;
+  objectPosition?: string;
 }
 
 const HERO_IMAGE: Record<Country, HeroImage> = {
-  spain: { src: '/cadiz-coastline.png' },
-  portugal: { src: '/portugal-algarve.png' },
-  // Source image has the Rock at ~65-90% horizontally; without this
-  // transform it sits entirely behind the calculator card. Scale 1.5x
-  // from right origin so the image grows leftward, then translate left
-  // so the Rock peak lands in the visible gap between text and card.
-  gibraltar: {
-    src: '/gibraltar-rock.png',
-    transform: 'scale(1.5) translateX(-18%)',
-    transformOrigin: 'right center',
-  },
+  spain: { src: '/cadiz-coastline.png', objectPosition: 'right center' },
+  portugal: { src: '/portugal.jpg', objectPosition: 'right center' },
+  // New Gibraltar image has the Rock on the left, so we anchor left and
+  // the calculator card overlays the empty sea on the right.
+  gibraltar: { src: '/gibraltar.jpg', objectPosition: 'left center' },
 };
 
 export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Props) {
@@ -92,7 +83,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
     description: hero.intro,
     author: {
       '@type': 'Person',
-      name: 'Dom Roworth',
+      name: 'Dominic Roworth',
       url: 'https://warmercoast.com/about',
     },
     publisher: {
@@ -117,14 +108,17 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
             priority
             sizes="100vw"
             quality={85}
-            className="object-cover object-right"
-            style={
-              heroImage.transform
-                ? { transform: heroImage.transform, transformOrigin: heroImage.transformOrigin }
-                : undefined
-            }
+            className="object-cover"
+            style={{ objectPosition: heroImage.objectPosition ?? 'right center' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/0 lg:via-white/85 lg:to-white/0" />
+          {country === 'gibraltar' ? (
+            // Gibraltar image has Rock on the LEFT; mirror the gradient so the
+            // headline sits over a softer overlay on the left and the card has
+            // clean white on the right.
+            <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/40 to-white lg:from-white/55 lg:via-white/30 lg:to-white" />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/0 lg:via-white/85 lg:to-white/0" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/40" />
         </div>
         <div
@@ -151,7 +145,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
             </h1>
             <p className="text-[18px] leading-relaxed text-muted">{hero.intro}</p>
             <div className="flex items-center gap-2 text-xs text-faint">
-              <span>By <a href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dom Roworth and Sofia</a></span>
+              <span>By <a href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dominic Roworth</a></span>
               <span>·</span>
               <span>Reviewed {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</span>
               <span>·</span>

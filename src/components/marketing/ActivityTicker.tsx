@@ -44,7 +44,6 @@ function formatActivity(row: ActivityRow): string {
     spain: 'the Spain playbook',
     portugal: 'the Portugal playbook',
     gibraltar: 'the Gibraltar playbook',
-    bundle: 'the full bundle',
   };
   const product = row.product_slug ? productLabel[row.product_slug] ?? 'a playbook' : '';
   switch (row.event_type) {
