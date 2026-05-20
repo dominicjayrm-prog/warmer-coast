@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 
 export const metadata: Metadata = {
-  title: 'Spain tax residency for British movers | Beckham Law, modelo 720, 183 days',
+  title: 'Spain Tax Residency for UK Movers 2026 | Beckham Law, Modelo 720, 183 Days',
   description:
-    'How Spanish tax residency works for UK citizens. 183-day rule, centre of interests, modelo 720, Beckham Law, double tax treaty mechanics.',
+    'How Spanish tax residency works for British citizens in 2026. 183-day rule, centre of economic interests, Modelo 720 foreign-asset declaration, Beckham Law 24% flat rate, UK-Spain double tax treaty mechanics.',
   alternates: { canonical: '/spain/tax-residency' },
 };
 
@@ -12,14 +12,15 @@ export default function Page() {
   return (
     <SubPillarTemplate
       country="spain"
-      eyebrow="Tax residency"
-      h1="Spanish tax residency for British movers"
-      intro="The single most important topic for getting your move right. Tax residency is binary and triggers obligations and opportunities that can cost or save £20,000 in year one alone."
+      eyebrow="Tax residency · 2026"
+      h1="Spanish tax residency for British movers · 2026"
+      intro="The single most important topic for getting your move right. Tax residency is binary and triggers obligations and opportunities that can cost or save £20,000 in year one alone. Two triggers: 183 days physical presence in a calendar year, or centre of economic interests being in Spain."
       bullets={[
-        '183-day rule and centre of economic interests',
-        'Beckham Law: when it makes sense and when it does not',
-        'Modelo 720: declaring foreign assets above €50k thresholds',
-        'UK-Spain double tax treaty mechanics for pensions and property',
+        '183-day rule: arrival and departure days both count; "sporadic absences" outside Spain still count unless you prove tax residency elsewhere',
+        'Beckham Law (Régimen impatriado): 24% flat rate on Spanish-source employment income up to €600,000, 6 years total, Modelo 149 election within 6 months of Social Security registration (absolute deadline)',
+        'Modelo 720: foreign-asset declaration when any of bank accounts / securities / real estate exceeds €50,000, deadline 31 March each year, post-2022 ECJ ruling penalties proportionate',
+        'UK-Spain DTA Article 17: government pensions taxed only in UK; state/private pensions taxed only in Spain once resident',
+        'ISA wrapper: not recognised in Spain, income/gains become taxable, wind down before crossing residency line',
       ]}
       spokes={[
         { href: '/spain/tax-residency/183-day-rule', label: '183-day rule explained', excerpt: 'How Spain actually counts days, what \"sporadic absences\" means.' },

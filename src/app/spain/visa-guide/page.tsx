@@ -16,10 +16,12 @@ export default function Page() {
       h1="Spanish visa guide for British citizens · 2026"
       intro="Brexit made Brits third-country nationals. Four visa routes now cover almost every UK applicant. Pick the wrong one and you waste six months and €2,000 in legal fees."
       bullets={[
-        'Non-lucrative visa: no work, passive income proof',
-        'Digital nomad visa: remote work, Beckham Law compatible',
-        'Work visa: employer-sponsored, slowest route',
-        'Golden Visa property route closed in 2025',
+        'Non-lucrative visa (NLV): passive income ~€2,400 per month (400% IPREM annually), no work in or for Spain allowed',
+        'Digital nomad visa (DNV): €2,849 per month income (200% SMI), Beckham Law compatible, max 20% Spanish-source client income',
+        'Work visa: employer-sponsored, 4-8 month timeline, requires Public Employment Service confirmation',
+        'Golden Visa: residential property route closed since 2025, investment routes (€1m government bonds, qualifying business investment) still open',
+        'Family reunification: derived right via Spanish or EU resident spouse/parent',
+        'Sources: Agencia Tributaria, Spanish consulates in London/Edinburgh/Manchester, BOE',
       ]}
       spokes={[
         { href: '/spain/visa-guide/non-lucrative', label: 'Non-lucrative visa (NLV)', excerpt: 'The passive income route. Document checklist, income thresholds, renewal mechanics.' },

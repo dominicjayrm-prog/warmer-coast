@@ -21,9 +21,9 @@ export const metadata: Metadata = {
 };
 
 const trustChips = [
-  { icon: '★ 4.9', label: 'from 247 verified buyers' },
-  { icon: '🇪🇸 🇵🇹 🇬🇮', label: 'three deep-country playbooks' },
-  { icon: '£', label: '30-day conditional refund' },
+  { icon: '★ 4.9', label: 'verified buyer rating' },
+  { icon: '✓', label: '30-day strong refund' },
+  { icon: '⏱', label: '12 months of updates included' },
 ];
 
 const playbooks = [
@@ -185,7 +185,7 @@ function Hero() {
         {/* White gradient: opaque on the left (where the headline sits) fading
             to transparent so the Cádiz photo shows on the right. Vertical
             ramp at the bottom blends into the next section cleanly. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/0 lg:via-white/85 lg:to-white/0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/70 to-white/0 lg:from-white/90 lg:via-white/45 lg:to-white/0" />
         <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-white/40" />
       </div>
       <div
@@ -195,17 +195,18 @@ function Hero() {
       <div className="container-content relative grid gap-12 py-14 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:py-24">
         <div className="flex flex-col gap-7">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone="warm" uppercase>2026 ready · NHR 2.0 included</Badge>
-            <Badge tone="neutral">Built in Cádiz</Badge>
+            <Badge tone="warm" uppercase>2026 ready · UK-EU Gibraltar treaty included</Badge>
           </div>
 
           <h1 className="display text-display-1 font-medium tracking-tight text-ink text-balance">
-            Move <span className="italic text-warm">somewhere warmer.</span>
+            Move to Spain, Portugal or Gibraltar.{' '}
+            <span className="italic text-warm">Without the £20k mistakes.</span>
           </h1>
 
-          <p className="max-w-xl text-[19px] leading-relaxed text-muted">
-            Honest UK to Spain, Portugal and Gibraltar relocation playbooks. Visas, tax, banking,
-            schools, sequenced and sourced. Without the £20k of year-one mistakes most Brits make.
+          <p className="max-w-xl text-[19px] font-medium leading-relaxed text-ink/85">
+            Sourced, sequenced relocation playbooks for British adults. The visa file, the tax
+            structuring, the banking, the schools, the right order. Built for 2026 rules
+            including IFICI, Beckham Law, and the new Gibraltar-EU border treaty.
           </p>
 
           <div className="flex flex-wrap gap-3">

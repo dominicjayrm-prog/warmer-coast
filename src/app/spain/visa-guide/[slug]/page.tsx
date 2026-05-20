@@ -18,7 +18,7 @@ const spokes: Record<string, { title: string; intro: string; body: string[] }> =
     title: 'Spain Digital Nomad Visa (DNV): full mechanics',
     intro: 'The post-2023 route for remote workers and qualifying self-employed.',
     body: [
-      'Minimum monthly income around €2,762 (200% of Spanish minimum wage) for solo applicants, with uplifts for dependants. Updated annually.',
+      'Minimum monthly income €2,849 in 2026 (200% of the Spanish minimum interprofessional wage, SMI), for solo applicants. Dependants add roughly 75% of IPREM each (~€480 per dependent). Updated annually with the SMI.',
       'Eligibility for Beckham Law is the structural prize. 24% flat rate on qualifying income for six years.',
       'Applicable to employees of a non-Spanish entity, or self-employed with no more than 20% Spanish-source income.',
     ],
