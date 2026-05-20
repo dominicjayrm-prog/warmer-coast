@@ -259,7 +259,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
                             <a
                               href={src.href}
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="nofollow noopener noreferrer"
                               className="underline-offset-2 hover:text-ink hover:underline"
                             >
                               {src.label} ↗

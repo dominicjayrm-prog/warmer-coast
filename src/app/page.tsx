@@ -121,8 +121,10 @@ export default function HomePage() {
       <Hero />
       <SocialProofStrip />
       <TimeframeGate />
+      <UrgencyAnchor />
       <Promises />
       <PlaybookGrid />
+      <WhyUs />
       <CountrySummary />
       <FreeTools />
       <HowItWorks />
@@ -130,6 +132,7 @@ export default function HomePage() {
       <FoundersBlurb />
       <FAQSection />
       <ClosingCTA />
+      <StickyMobileCTA />
 
       {/* JSON-LD */}
       <script
@@ -731,5 +734,138 @@ function ClosingCTA() {
         </div>
       </div>
     </section>
+  );
+}
+
+function UrgencyAnchor() {
+  // Days until 15 July 2026, the provisional application of the UK-EU
+  // Gibraltar treaty. Calculated at render so it always reflects the
+  // current countdown.
+  const treaty = new Date('2026-07-15T00:00:00Z');
+  const diffDays = Math.max(0, Math.ceil((treaty.getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
+  const past = diffDays === 0 && Date.now() > treaty.getTime();
+  return (
+    <section className="border-y border-warm/30 bg-warm-glow/40">
+      <div className="container-content py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="flex items-start gap-3 sm:items-center">
+          <span aria-hidden className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-pill bg-warm text-white text-sm font-bold">
+            !
+          </span>
+          <div>
+            <div className="text-[11px] font-semibold uppercase tracking-[0.12em] text-warm">
+              2026 update
+            </div>
+            <div className="text-[15px] font-semibold text-ink mt-0.5">
+              {past
+                ? 'The UK-EU Gibraltar treaty is in force. Frontier rules and Schengen border changes apply.'
+                : `UK-EU Gibraltar treaty starts in ${diffDays} day${diffDays === 1 ? '' : 's'}. New Schengen border rules and frontier-worker changes from 15 July 2026.`}
+            </div>
+          </div>
+        </div>
+        <Link
+          href="/gibraltar/frontier-worker"
+          className="shrink-0 inline-flex items-center gap-1.5 rounded-pill border border-warm bg-white px-4 py-2 text-sm font-semibold text-warm hover:bg-warm hover:text-white transition-all"
+        >
+          Read the breakdown →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function WhyUs() {
+  const rows = [
+    {
+      label: 'Hours to clarity',
+      diy: '40-200 hours of scattered Reddit, Facebook and YouTube',
+      adviser: '1-2 hours per £400-an-hour session',
+      us: '4-12 hours of structured, sourced reading',
+    },
+    {
+      label: 'Cost',
+      diy: 'Free (in money) but you pay in mistakes',
+      adviser: '£1,500-£4,000 for a full UK-Iberia tax plan',
+      us: '£397-£497, one-time',
+    },
+    {
+      label: '2026-accurate',
+      diy: 'Half the top results are 2022 NHR-era nonsense',
+      adviser: 'Yes, but only what you remember to ask',
+      us: 'Every figure dated; updates included for 12 months',
+    },
+    {
+      label: 'Sources',
+      diy: 'Anonymous strangers, occasional gov.uk link',
+      adviser: 'Verbal, no audit trail',
+      us: 'Inline citations from gov.uk, Agencia Tributaria, Portal das Finanças, Gibraltar ITO',
+    },
+    {
+      label: 'Risk of major mistake',
+      diy: 'High — missed Beckham window, wrong visa, sold UK house wrong year',
+      adviser: 'Low if you ask the right questions',
+      us: 'Low — playbook walks you through each decision in order',
+    },
+  ];
+  return (
+    <section className="bg-white py-20 sm:py-28">
+      <div className="container-content">
+        <div className="max-w-2xl">
+          <Badge tone="neutral" uppercase>The honest comparison</Badge>
+          <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
+            DIY research vs paid adviser vs WarmerCoast
+          </h2>
+          <p className="mt-3 text-[17px] text-muted">
+            We are not the right answer for everyone. If you already work with an FCA-regulated
+            adviser who handles cross-border relocation, stick with them. If you are months in
+            and confident in your research, you may already have what you need. For everyone
+            else, this is the honest trade-off.
+          </p>
+        </div>
+
+        <div className="mt-10 overflow-x-auto">
+          <table className="w-full text-sm border border-border rounded-card overflow-hidden">
+            <thead>
+              <tr className="bg-surface text-left">
+                <th className="px-4 py-3 font-semibold text-ink w-1/4">&nbsp;</th>
+                <th className="px-4 py-3 font-semibold text-muted">DIY research</th>
+                <th className="px-4 py-3 font-semibold text-muted">Paid adviser</th>
+                <th className="px-4 py-3 font-semibold text-warm">WarmerCoast</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr key={r.label} className="border-t border-border">
+                  <td className="px-4 py-4 font-semibold text-ink align-top">{r.label}</td>
+                  <td className="px-4 py-4 text-muted align-top">{r.diy}</td>
+                  <td className="px-4 py-4 text-muted align-top">{r.adviser}</td>
+                  <td className="px-4 py-4 text-ink align-top">{r.us}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <p className="mt-6 text-xs text-faint">
+          We will tell you when an adviser is the right answer for your specific case. The
+          playbook gives you the exact questions to ask them and includes vetted referrals.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function StickyMobileCTA() {
+  // Persistent mobile-only bottom CTA on the homepage. Hidden on desktop
+  // (lg:) and inside admin/app/checkout routes via its scope.
+  return (
+    <div className="fixed bottom-3 left-3 right-3 z-40 lg:hidden">
+      <Link
+        href="/quiz"
+        className="flex items-center justify-center gap-2 rounded-pill bg-ink px-5 py-3.5 text-[15px] font-semibold text-white shadow-elevated"
+      >
+        Find your playbook · free quiz
+        <span aria-hidden>→</span>
+      </Link>
+    </div>
   );
 }
