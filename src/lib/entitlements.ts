@@ -4,16 +4,14 @@ import { isAdminEmail } from '@/lib/admin';
 
 export interface Entitlements {
   ownedCountries: Set<Country>;
-  hasBundle: boolean;
   isAdmin: boolean;
 }
 
 /**
- * Look up which playbooks the current user has access to.
+ * Which playbooks the current user has access to.
  *
  * Rules:
  *  - A single-country purchase grants that country.
- *  - A bundle purchase grants all three countries.
  *  - Refunded purchases do not count.
  *  - Admin emails (ADMIN_EMAILS env) get full access for testing.
  */
@@ -22,12 +20,9 @@ export async function getEntitlements(): Promise<Entitlements | null> {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
-  const isAdmin = isAdminEmail(user.email);
-
-  if (isAdmin) {
+  if (isAdminEmail(user.email)) {
     return {
       ownedCountries: new Set<Country>(['spain', 'portugal', 'gibraltar']),
-      hasBundle: true,
       isAdmin: true,
     };
   }
@@ -38,20 +33,14 @@ export async function getEntitlements(): Promise<Entitlements | null> {
     .eq('user_id', user.id);
 
   const owned = new Set<Country>();
-  let hasBundle = false;
   ((data as { product_slug: string; status: string }[] | null) ?? []).forEach((p) => {
     if (p.status !== 'completed') return;
-    if (p.product_slug === 'bundle') {
-      hasBundle = true;
-      owned.add('spain');
-      owned.add('portugal');
-      owned.add('gibraltar');
-    } else if (p.product_slug === 'spain' || p.product_slug === 'portugal' || p.product_slug === 'gibraltar') {
+    if (p.product_slug === 'spain' || p.product_slug === 'portugal' || p.product_slug === 'gibraltar') {
       owned.add(p.product_slug as Country);
     }
   });
 
-  return { ownedCountries: owned, hasBundle, isAdmin: false };
+  return { ownedCountries: owned, isAdmin: false };
 }
 
 export function hasAccess(ent: Entitlements | null, country: Country): boolean {

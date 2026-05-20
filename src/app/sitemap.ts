@@ -22,7 +22,6 @@ const staticRoutes = [
   '/playbook/spain',
   '/playbook/portugal',
   '/playbook/gibraltar',
-  '/playbook/bundle',
   '/calculators',
   '/calculators/beckham-law',
   '/calculators/cost-of-living',

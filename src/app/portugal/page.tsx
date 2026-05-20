@@ -49,17 +49,24 @@ export default function PortugalPillar() {
           title: 'D7 vs D8 vs Golden Visa in 2026',
           intro: 'Three routes cover almost every UK applicant.',
           body: (
-            <p>
-              The D7 (passive income visa) suits retirees and applicants with substantial
-              dividend, rental or pension income. The D8 (digital nomad visa) requires evidence
-              of remote employment or self-employment at a minimum of four times the Portuguese
-              minimum wage. The Golden Visa still exists but excludes residential property since
-              the 2023 reform, leaving qualifying fund investments as the realistic route.
-            </p>
+            <>
+              <p>
+                The D7 (passive income visa) suits retirees and applicants with substantial
+                dividend, rental or pension income. 2026 minimum: <strong>€820 per month</strong>{' '}
+                (€9,840 per year).
+              </p>
+              <p>
+                The D8 (digital nomad visa) requires remote employment or qualifying
+                self-employment income at <strong>€3,680 per month</strong> (4× the 2026
+                Portuguese minimum wage of €920) plus savings of at least €11,040 (12× minimum
+                wage). The Golden Visa still exists but excludes residential property since
+                October 2023, leaving qualifying fund investments as the realistic route.
+              </p>
+            </>
           ),
           bullets: [
-            'D7: passive income proof, accessible to retirees',
-            'D8: remote work, fastest route for working applicants',
+            'D7: €820 per month passive income, accessible to retirees',
+            'D8: €3,680 per month + €11,040 savings, remote work',
             'Golden Visa: investment-only, no residential property since 2023',
             'Family reunification: based on existing Portuguese or EU resident',
           ],
@@ -68,7 +75,7 @@ export default function PortugalPillar() {
           id: 'ifici',
           title: 'IFICI (NHR 2.0): who actually qualifies',
           intro:
-            'The original NHR closed to new applicants in March 2024. The replacement, IFICI, is narrower but useful.',
+            'The original NHR closed to new applicants from 2024. The replacement, IFICI, restricts the 20% flat rate to specific qualifying activities. UK tax residency must have been established after 1 January 2024 to be eligible.',
           body: (
             <p>
               IFICI offers a 20% flat rate on Portuguese-source employment and self-employment
@@ -130,7 +137,7 @@ export default function PortugalPillar() {
       faqs={[
         {
           q: 'Is the old NHR really gone?',
-          a: 'For new applicants, yes. Applicants who registered before the March 2024 cutoff retain their original 10-year status. IFICI is the current option.',
+          a: 'For new applicants, yes. People who registered under the original NHR before the 2024 cutoff retain their 10-year status. IFICI is the current option and is narrower: it requires you to work in a qualifying activity (tech, R&D, scientific research, qualifying engineering or higher education) AND establish Portuguese tax residency after 1 January 2024.',
         },
         {
           q: 'Can I still get residency by buying a flat in Lisbon?',

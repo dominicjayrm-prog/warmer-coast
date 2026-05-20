@@ -3,7 +3,7 @@ export const SITE = {
   domain: 'warmercoast.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://warmercoast.com',
   siteKey: process.env.WARMERCOAST_SITE_KEY || 'warmercoast.com',
-  founder: 'Dom Roworth',
+  founder: 'Dominic Roworth',
   description:
     'Practical relocation playbooks for British adults moving to Spain, Portugal, or Gibraltar. Tax, visas, banking, schools, the whole move planned.',
   defaultOgImage: '/og/default.png',
@@ -64,7 +64,6 @@ export const PRODUCTS = {
   spain: { slug: 'spain', name: 'Spain Playbook', price: 397, currency: 'GBP' },
   portugal: { slug: 'portugal', name: 'Portugal Playbook', price: 397, currency: 'GBP' },
   gibraltar: { slug: 'gibraltar', name: 'Gibraltar Playbook', price: 497, currency: 'GBP' },
-  bundle: { slug: 'bundle', name: 'All Three Playbooks (Bundle)', price: 797, currency: 'GBP' },
 } as const;
 
 export type ProductSlug = keyof typeof PRODUCTS;

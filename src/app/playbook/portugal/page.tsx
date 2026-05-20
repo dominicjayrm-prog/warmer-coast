@@ -41,8 +41,30 @@ export default function Page() {
         { title: 'Vetted advogado referrals', body: 'Three Portuguese lawyers we\'ve personally vetted. No kickbacks.' },
       ]}
       guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials."
+      timeline={[
+        { when: '6-12 months out', what: 'File HMRC Form P85, review UK ISAs, decide on D7 vs D8 vs Golden Visa route, plan IFICI eligibility if applicable.' },
+        { when: '3-6 months out', what: 'Obtain Portuguese NIF (tax number) before arrival via fiscal representative, apostille required documents, prove minimum income (€820/mo for D7, €3,680/mo for D8).' },
+        { when: '1-3 months out', what: 'Book consulate appointment, finalise rental agreement or property contract, gather criminal record check.' },
+        { when: 'First 30 days in Portugal', what: 'Register residence with SEF / AIMA, obtain NISS if working, register with SNS for healthcare.' },
+        { when: 'Year 1', what: 'Register for IFICI within first year if qualifying activity, file annual IRS return.' },
+        { when: 'Year 5', what: 'Apply for Portuguese citizenship if eligible (faster than Spain, A2 language test required).' },
+      ]}
+      documents={[
+        { name: 'Form P85', purpose: 'HMRC departure notification' },
+        { name: 'NIF application', purpose: 'Portuguese tax number, obtainable pre-arrival' },
+        { name: 'Visa application (D7 or D8)', purpose: 'Filed at the Portuguese consulate in London' },
+        { name: 'Apostilled birth/marriage', purpose: 'For residence registration and visa' },
+        { name: 'Criminal record check', purpose: 'ACRO certificate, apostilled' },
+        { name: 'Proof of income', purpose: '€820/mo (D7) or €3,680/mo (D8)' },
+        { name: 'Proof of savings', purpose: '€11,040 for D8 applicants' },
+        { name: 'Health insurance', purpose: 'Private cover until SNS registration' },
+        { name: 'Rental contract or escritura', purpose: 'Proof of Portuguese address' },
+        { name: 'IFICI registration', purpose: 'If qualifying activity, within first year' },
+        { name: 'Annual IRS return', purpose: 'Filed by 30 June each year' },
+        { name: 'NISS application', purpose: 'Social security if working' },
+      ]}
       faqs={[
-        { q: 'Is IFICI as good as the old NHR?', a: 'For qualifying activities and most employment income, broadly similar. For pensioners, no, the favourable 10-year pension treatment is gone for new arrivals.' },
+        { q: 'Is IFICI as good as the old NHR?', a: 'For qualifying activities (tech, R&D, science, qualifying engineering, higher education) and most employment income, broadly similar at 20% flat. For pensioners and non-qualifying-activity workers, no - the favourable 10-year pension treatment is gone for new arrivals. We help you check eligibility on the first call.' },
         { q: 'D7 or D8?', a: 'D7 if your income is passive (pensions, dividends, rental). D8 if you have remote employment or qualifying self-employment. The playbook has a decision tree.' },
         { q: 'How long does the D8 take?', a: '3 to 5 months currently, faster than D7 in most consulates.' },
         { q: 'Can I switch from D7 to D8 later?', a: 'Yes, but it\'s simpler to apply for the right one initially. The playbook walks through the criteria.' },

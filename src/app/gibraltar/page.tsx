@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { PillarTemplate } from '@/components/marketing/PillarTemplate';
 
 export const metadata: Metadata = {
-  title: 'Move to Gibraltar from the UK | Cat 2, HEPSS, frontier-worker',
+  title: 'Move to Gibraltar from the UK 2026 | Cat 2, HEPSS, EU treaty border',
   description:
-    'The Gibraltar relocation guide. Category 2 individual residency, HEPSS for specialists, frontier-worker mechanics, banking, schooling, the Spain crossing.',
+    'How to move to Gibraltar from the UK in 2026. Category 2 high-net-worth residency, HEPSS for specialists, frontier-worker mechanics, the new UK-EU treaty and Schengen border rules from 15 July 2026.',
   alternates: { canonical: 'https://warmercoast.com/gibraltar' },
 };
 
@@ -13,11 +13,11 @@ export default function GibraltarPillar() {
     <PillarTemplate
       country="gibraltar"
       hero={{
-        eyebrow: 'Gibraltar · pillar guide',
+        eyebrow: 'Gibraltar · 2026 pillar guide',
         h1Lead: 'Move to Gibraltar',
         h1Accent: 'from the UK.',
         intro:
-          'British adults relocating to or working from Gibraltar. Category 2 high-net-worth residency, HEPSS for specialist employees, frontier-worker mechanics into Spain, banking, schools, and the post-Brexit border reality.',
+          'Updated for the UK-EU treaty taking effect 15 July 2026. Category 2 capped tax for high net worth, HEPSS for senior specialists, frontier-worker mechanics into Spain with the new Schengen-aligned border, banking in a regulated finance hub, schools.',
       }}
       subPillars={[
         { href: '/gibraltar/residency', label: 'Residency', blurb: 'Cat 2, HEPSS, ordinary residency.' },
@@ -26,6 +26,40 @@ export default function GibraltarPillar() {
         { href: '/gibraltar/banking', label: 'Banking', blurb: 'GibTel sector banks, Sterling and Euro.' },
       ]}
       sections={[
+        {
+          id: 'eu-treaty-2026',
+          title: 'The UK-EU treaty (the biggest change in 20 years)',
+          intro:
+            'On 1 April 2026 the EU Council greenlit the long-negotiated UK-EU treaty on Gibraltar. Provisional application starts 15 July 2026. This changes the day-to-day reality of moving to or working from Gibraltar more than any single rule change since 2004.',
+          body: (
+            <>
+              <p>
+                The treaty removes the physical land border between Gibraltar and Spain. The fence
+                at the La Línea crossing comes down. Schengen border-control rules apply at
+                Gibraltar&apos;s port and airport instead. A customs union is established between
+                Gibraltar and the EU.
+              </p>
+              <p>
+                For UK citizens moving to Gibraltar, the practical effect is enormous. Frontier
+                workers no longer face the post-Brexit EES day-count anxiety. Crossings that took
+                40 minutes during summer peak should drop to under 5. Banking, supply chains, and
+                cross-border business activity all simplify. Gibraltar&apos;s sovereignty under
+                the UK is unchanged.
+              </p>
+              <p>
+                For Cat 2 and HEPSS applicants who plan to live in Gibraltar and work in
+                Gibraltar, this is mostly a positive convenience update. For UK citizens
+                considering the frontier-worker route (living in La Línea or Sotogrande, working
+                in Gibraltar), it&apos;s a transformative shift.
+              </p>
+            </>
+          ),
+          sources: [
+            { label: 'House of Commons Library briefing CBP-10572', href: 'https://commonslibrary.parliament.uk/research-briefings/cbp-10572/' },
+            { label: 'EU Council press release 1 April 2026', href: 'https://www.consilium.europa.eu/en/press/press-releases/2026/04/01/eu-uk-relations-member-states-greenlight-eu-uk-deal-on-gibraltar/' },
+            { label: 'HM Government of Gibraltar', href: 'https://www.gibraltar.gov.gi/' },
+          ],
+        },
         {
           id: 'who-this-is-for',
           title: 'Who Gibraltar actually suits',

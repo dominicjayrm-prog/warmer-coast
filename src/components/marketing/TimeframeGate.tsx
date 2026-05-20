@@ -35,7 +35,7 @@ export function TimeframeGate() {
       researching: 'Still researching',
     };
     const next: Record<Choice, { href: string; label: string }> = {
-      '0-6m': { href: '/playbook/bundle', label: 'See the bundle' },
+      '0-6m': { href: '/quiz', label: 'Find your playbook' },
       '6-18m': { href: '/calculators/compare-countries', label: 'Compare countries' },
       researching: { href: '/quiz', label: 'Take the 12-q quiz' },
     };

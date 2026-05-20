@@ -22,6 +22,10 @@ interface Props {
   bonuses: { title: string; body: string }[];
   guarantee: string;
   faqs: AccordionItem[];
+  /** Documents and forms the playbook walks you through step-by-step. */
+  documents?: { name: string; purpose: string }[];
+  /** A high-level "what you'll be doing in week X" timeline. */
+  timeline?: { when: string; what: string }[];
 }
 
 export function PlaybookSalesTemplate({
@@ -34,24 +38,12 @@ export function PlaybookSalesTemplate({
   bonuses,
   guarantee,
   faqs,
+  documents,
+  timeline,
 }: Props) {
   const product = PRODUCTS[slug];
-  const accent =
-    slug === 'spain'
-      ? COUNTRY_META.spain.accent
-      : slug === 'portugal'
-        ? COUNTRY_META.portugal.accent
-        : slug === 'gibraltar'
-          ? COUNTRY_META.gibraltar.accent
-          : '#E67E3C';
-  const accentSoft =
-    slug === 'spain'
-      ? COUNTRY_META.spain.accentSoft
-      : slug === 'portugal'
-        ? COUNTRY_META.portugal.accentSoft
-        : slug === 'gibraltar'
-          ? COUNTRY_META.gibraltar.accentSoft
-          : '#FFE9D5';
+  const accent = COUNTRY_META[slug].accent;
+  const accentSoft = COUNTRY_META[slug].accentSoft;
 
   return (
     <>
@@ -106,33 +98,7 @@ export function PlaybookSalesTemplate({
             </div>
           </div>
 
-          {slug !== 'bundle' && <LiveTaxCalculator initialCountry={slug} />}
-          {slug === 'bundle' && (
-            <Card variant="elevated">
-              <CardBody>
-                <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
-                  What you get in the bundle
-                </div>
-                <ul className="mt-4 flex flex-col gap-3 text-[15px] text-ink">
-                  <li className="flex items-center gap-3"><span>🇪🇸</span> Spain Playbook (£397 alone)</li>
-                  <li className="flex items-center gap-3"><span>🇵🇹</span> Portugal Playbook (£397 alone)</li>
-                  <li className="flex items-center gap-3"><span>🇬🇮</span> Gibraltar Playbook (£497 alone)</li>
-                  <li className="flex items-center gap-3"><span>🔁</span> Cross-border interactions module</li>
-                  <li className="flex items-center gap-3"><span>🧭</span> &ldquo;Which country&rdquo; decision tool</li>
-                </ul>
-                <div className="mt-5 rounded-card p-4" style={{ background: accentSoft }}>
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-sm text-ink/70">Separately</span>
-                    <span className="line-through text-ink/60">£1,291</span>
-                  </div>
-                  <div className="flex items-baseline justify-between font-semibold">
-                    <span>Bundle</span>
-                    <span className="display text-2xl" style={{ color: accent }}>£797</span>
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
-          )}
+          <LiveTaxCalculator initialCountry={slug} />
         </div>
       </section>
 
@@ -175,6 +141,74 @@ export function PlaybookSalesTemplate({
           </div>
         </div>
       </section>
+
+      {timeline && timeline.length > 0 && (
+        <section className="bg-surface/60 py-20 sm:py-24">
+          <div className="container-content">
+            <div className="max-w-2xl">
+              <Badge tone="warm" uppercase>Move timeline</Badge>
+              <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
+                What you&apos;ll actually be doing, week by week
+              </h2>
+              <p className="mt-3 text-[16px] text-muted">
+                Most moves take 6 to 12 months from decision to first tax filing. Here&apos;s the
+                rough cadence the playbook walks you through.
+              </p>
+            </div>
+            <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {timeline.map((t, i) => (
+                <li key={i}>
+                  <Card variant="bordered" className="h-full">
+                    <CardBody>
+                      <div className="text-xs font-semibold uppercase tracking-[0.1em]" style={{ color: accent }}>
+                        {t.when}
+                      </div>
+                      <div className="mt-2 text-[15px] leading-relaxed text-ink">{t.what}</div>
+                    </CardBody>
+                  </Card>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {documents && documents.length > 0 && (
+        <section className="bg-white py-20 sm:py-24">
+          <div className="container-content">
+            <div className="max-w-2xl">
+              <Badge tone="sea" uppercase>The paperwork</Badge>
+              <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
+                Every document, every form, walked through
+              </h2>
+              <p className="mt-3 text-[16px] text-muted">
+                No vague &ldquo;you&apos;ll need ID and proof of address&rdquo; nonsense. For each
+                of the following the playbook explains exactly what to bring, what they ask, where
+                to file, and the deadline.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {documents.map((d) => (
+                <div key={d.name} className="rounded-card border border-border bg-white p-4">
+                  <div className="flex items-start gap-2.5">
+                    <span
+                      className="mt-1 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md text-[11px] font-semibold text-white"
+                      style={{ background: accent }}
+                      aria-hidden
+                    >
+                      ✓
+                    </span>
+                    <div>
+                      <div className="text-sm font-semibold text-ink">{d.name}</div>
+                      <div className="text-xs text-muted">{d.purpose}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="bg-surface/60 py-20 sm:py-24">
         <div className="container-content grid gap-10 lg:grid-cols-2">
@@ -314,7 +348,7 @@ export function PlaybookSalesTemplate({
             '@type': 'BreadcrumbList',
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://warmercoast.com' },
-              { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/bundle' },
+              { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/spain' },
               { '@type': 'ListItem', position: 3, name: product.name, item: `https://warmercoast.com/playbook/${slug}` },
             ],
           }),

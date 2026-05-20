@@ -107,7 +107,7 @@ const faqs = [
   },
   {
     q: 'What if I buy the wrong country?',
-    a: 'Honest answer: it happens. That is why the bundle exists, and why the comparison tool is free and unconditional. If you buy the Spain playbook and decide Portugal is right after module 2, email us and we will credit the £397 toward the bundle.',
+    a: 'Honest answer: it happens. That is why the country comparison tool and the quiz are both free and unlimited use. If you buy a playbook then decide on a different country within 30 days, email us and we will swap your access at no charge. After 30 days we will offer a 25% loyalty discount on the second country.',
   },
   {
     q: 'Refund policy?',
@@ -174,7 +174,7 @@ function Hero() {
         className="pointer-events-none absolute inset-0"
       >
         <Image
-          src="/cadiz-coastline.png"
+          src="/hero-landing.jpg"
           alt=""
           fill
           priority
@@ -210,10 +210,10 @@ function Hero() {
 
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/playbook/bundle"
+              href="/playbook/spain"
               className="inline-flex items-center gap-2 rounded-pill bg-ink px-6 py-3.5 text-[15px] font-semibold text-white shadow-card transition-all hover:-translate-y-px hover:shadow-elevated"
             >
-              See the bundle · £797
+              See the playbooks
               <span aria-hidden>→</span>
             </Link>
             <Link
@@ -284,11 +284,11 @@ function PlaybookGrid() {
           <div className="max-w-2xl">
             <Badge tone="warm" uppercase>The three playbooks</Badge>
             <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
-              Pick a country. Or save £494 with the bundle.
+              Pick the country. We do the rest.
             </h2>
           </div>
-          <Link href="/playbook/bundle" className="text-sm font-semibold text-ink hover:text-warm">
-            Why the bundle saves money →
+          <Link href="/quiz" className="text-sm font-semibold text-ink hover:text-warm">
+            Not sure which? Take the quiz →
           </Link>
         </div>
 
@@ -356,45 +356,47 @@ function PlaybookGrid() {
           />
           <CardBody className="relative grid items-center gap-6 sm:grid-cols-[1.4fr_1fr]">
             <div>
-              <Badge tone="dark" uppercase>Most popular</Badge>
+              <Badge tone="warm" uppercase>Not sure which country?</Badge>
               <h3 className="display mt-3 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
-                All three playbooks · The Iberia bundle
+                Use the free tools first. Buy the one that fits.
               </h3>
               <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                Spain, Portugal and Gibraltar in one place. The exact tool to compare and decide
-                without buying a wrong £397 mistake. Includes the comparison module and the
-                cross-border interactions chapter not sold separately.
+                Most readers spend 3 to 7 days deciding between Spain, Portugal and Gibraltar.
+                The 12-question quiz and the side-by-side country comparator are both free and
+                designed to save you that wasted £397 on the wrong playbook.
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3">
                 <Link
-                  href="/playbook/bundle"
+                  href="/quiz"
                   className="inline-flex items-center gap-2 rounded-pill bg-warm px-6 py-3 text-[14px] font-semibold text-white shadow-glow hover:-translate-y-px transition-all"
                 >
-                  Get the bundle · £797
+                  Take the 12-q quiz · free
                   <span aria-hidden>→</span>
                 </Link>
-                <span className="text-[13px] text-muted">
-                  <span className="line-through">£1,291 separately</span>{' '}
-                  <span className="font-semibold text-ink">save £494</span>
-                </span>
+                <Link
+                  href="/calculators/compare-countries"
+                  className="inline-flex items-center gap-2 rounded-pill border border-border bg-white px-5 py-3 text-[14px] font-semibold text-ink hover:border-ink"
+                >
+                  Side-by-side comparison
+                </Link>
               </div>
             </div>
             <div className="grid gap-2 text-sm text-muted sm:grid-cols-1">
               <div className="flex items-center gap-2 rounded-card border border-border bg-white px-4 py-3">
                 <span aria-hidden>✓</span>
-                <span>All three country playbooks</span>
+                <span>4 minutes, branching logic</span>
               </div>
               <div className="flex items-center gap-2 rounded-card border border-border bg-white px-4 py-3">
                 <span aria-hidden>✓</span>
-                <span>Cross-border interactions module</span>
+                <span>Weighted on tax, cost, family, climate</span>
               </div>
               <div className="flex items-center gap-2 rounded-card border border-border bg-white px-4 py-3">
                 <span aria-hidden>✓</span>
-                <span>12 months of update access</span>
+                <span>Personalised playbook recommendation</span>
               </div>
               <div className="flex items-center gap-2 rounded-card border border-border bg-white px-4 py-3">
                 <span aria-hidden>✓</span>
-                <span>Vetted adviser referrals</span>
+                <span>Saved locally, return any time</span>
               </div>
             </div>
           </CardBody>
@@ -551,7 +553,7 @@ function HowItWorks() {
       n: '02',
       title: 'Buy the playbook',
       body:
-        'Single country (£397/£497) or the bundle (£797). Instant access via magic-link email. No password to forget.',
+        'Single payment, £397 for Spain or Portugal, £497 for Gibraltar. Instant access via magic-link email. No password to forget.',
     },
     {
       n: '03',
@@ -609,10 +611,10 @@ function FoundersBlurb() {
           <div className="absolute inset-0 grain opacity-50" />
           <div className="absolute bottom-4 left-4 right-4 rounded-card bg-white/90 p-4 backdrop-blur">
             <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
-              Cádiz, Andalucía
+              British, working from Iberia
             </div>
             <div className="display mt-1 text-lg font-semibold text-ink">
-              Dom and Sofia, year three on the coast
+              Built by Dominic Roworth
             </div>
           </div>
         </div>
@@ -620,13 +622,19 @@ function FoundersBlurb() {
         <div>
           <Badge tone="warm" uppercase>About</Badge>
           <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
-            We built what we wish we&apos;d had two years ago
+            Why this exists
           </h2>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
-            Dom spent eight years as a UK financial planner. Sofia is from Cádiz and walked Dom
-            through the Spanish bureaucracy that no UK adviser had a clue about. Together we
-            mapped the playbook, then wrote it down, then sourced every claim. The Spain playbook
-            came first, then friends started asking about Portugal and Gibraltar, and here we are.
+            More than 80,000 UK citizens move to Spain, Portugal or Gibraltar each year, and
+            almost all of them learn the system the hard way. Wrong visa route. Missed Beckham
+            Law election. Sold the UK house at the wrong time. Lost £15,000 they didn&apos;t need
+            to.
+          </p>
+          <p className="mt-4 text-[17px] leading-relaxed text-muted">
+            WarmerCoast is the structured, sourced playbook for doing this properly. Written by
+            Dominic Roworth, updated for 2026 rules including the new Gibraltar-EU border treaty,
+            and built around a single goal: don&apos;t let any reader make a five-figure mistake
+            that twenty minutes of structured reading could have caught.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
@@ -691,10 +699,10 @@ function ClosingCTA() {
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
-              href="/playbook/bundle"
+              href="/quiz"
               className="inline-flex items-center gap-2 rounded-pill bg-warm px-6 py-3.5 text-[15px] font-semibold text-white shadow-glow hover:-translate-y-px transition-all"
             >
-              Get the bundle · £797
+              Find your playbook · free quiz
               <span aria-hidden>→</span>
             </Link>
             <Link

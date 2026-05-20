@@ -20,10 +20,10 @@ const placeholders = [
   },
   {
     quote:
-      'Honest about what Gibraltar actually is, what Cat 2 buys you, what it doesn\'t. I came in skeptical and bought the bundle by the end of module two.',
+      'Honest about what Gibraltar actually is, what Cat 2 buys you, and what it doesn\'t. The frontier-worker module alone justified the price.',
     name: 'Mark and Lisa T.',
     where: 'Sevenoaks → Gibraltar',
-    product: 'Bundle',
+    product: 'Gibraltar',
     rating: 5,
   },
   {
@@ -44,7 +44,7 @@ const placeholders = [
   },
   {
     quote:
-      'Sofia\'s walkthrough of the padrón process in Cádiz was the most calming hour of my move. Felt like having a friend on the inside.',
+      'The padrón walkthrough was the most calming hour of my move. Step by step, exactly what to bring, exactly what they ask. Saved me a wasted Monday morning at the town hall.',
     name: 'Catherine N.',
     where: 'York → Cádiz',
     product: 'Spain',

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { COUNTRY_META, COUNTRIES, type Country, PRODUCTS } from '@/lib/site';
+import { COUNTRY_META, COUNTRIES, type Country } from '@/lib/site';
 import { PLAYBOOK_MODULES } from '@/lib/playbook-modules';
 import { getEntitlements } from '@/lib/entitlements';
 
@@ -118,10 +118,10 @@ export default async function AppHome() {
                 </p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   <Link
-                    href="/playbook/bundle"
+                    href="/quiz"
                     className="rounded-pill bg-ink px-5 py-2.5 text-sm font-semibold text-white hover:-translate-y-px transition-all"
                   >
-                    See the bundle · £{PRODUCTS.bundle.price}
+                    Which country fits you?
                   </Link>
                   {COUNTRIES.map((c) => (
                     <Link

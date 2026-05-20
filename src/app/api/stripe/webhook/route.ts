@@ -137,10 +137,7 @@ async function sendPurchaseEmail({ to, productSlug, supabase }: SendPurchaseEmai
     console.error('generateLink failed, falling back', e);
   }
 
-  const productName =
-    productSlug === 'bundle'
-      ? 'Iberia Bundle'
-      : productSlug.charAt(0).toUpperCase() + productSlug.slice(1) + ' Playbook';
+  const productName = productSlug.charAt(0).toUpperCase() + productSlug.slice(1) + ' Playbook';
 
   try {
     await fetch('https://api.resend.com/emails', {
