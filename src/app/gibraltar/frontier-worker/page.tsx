@@ -28,6 +28,11 @@ export default function Page() {
         {
           id: 'eu-treaty-impact',
           title: 'What the UK-EU treaty actually changes for frontier workers',
+          glance: {
+            value: '15 July 2026',
+            label: 'Provisional application of the UK-EU Gibraltar treaty',
+            note: 'No physical border with Spain · EES does not apply at land frontier',
+          },
           body: (
             <>
               <p>

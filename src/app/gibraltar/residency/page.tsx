@@ -28,6 +28,11 @@ export default function Page() {
         {
           id: 'cat-2',
           title: 'Category 2 Individual: how the cap really works',
+          glance: {
+            value: '£44,740',
+            label: 'Maximum annual Gibraltar tax · regardless of income',
+            note: '£2m net worth required · £37,000 minimum tax floor',
+          },
           body: (
             <>
               <p>

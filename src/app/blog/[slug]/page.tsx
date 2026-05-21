@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { Badge } from '@/components/ui/Badge';
+import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
 
 export const revalidate = 600;
@@ -14,9 +16,11 @@ interface Post {
   excerpt: string;
   content: string;
   cover_image: string;
+  cover_image_alt: string | null;
   category: string;
   read_time_minutes: number;
   published_at: string;
+  updated_at: string;
   author_name: string;
   meta_title: string;
   meta_description: string;
@@ -51,6 +55,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       description: post.excerpt,
       type: 'article',
       images: post.cover_image ? [post.cover_image] : [],
+      publishedTime: post.published_at,
+      modifiedTime: post.updated_at,
+      authors: [post.author_name],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.cover_image ? [post.cover_image] : [],
     },
   };
 }
@@ -59,90 +72,190 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   const post = await getPost(params.slug);
   if (!post) notFound();
 
-  // Find related: shared category, same site
-  let related: { slug: string; title: string }[] = [];
+  let related: { slug: string; title: string; excerpt: string }[] = [];
   try {
     const supabase = createClient();
     const { data } = await supabase
       .from('blog_posts')
-      .select('slug,title')
+      .select('slug,title,excerpt')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
       .eq('category', post.category)
       .neq('id', post.id)
       .limit(4);
-    related = (data as { slug: string; title: string }[]) ?? [];
+    related = (data as { slug: string; title: string; excerpt: string }[]) ?? [];
   } catch {}
 
+  const altText = post.cover_image_alt || post.title;
+  const isAbsolute = post.cover_image?.startsWith('http');
+
   return (
-    <article className="bg-white py-14 sm:py-20">
-      <div className="container-content max-w-3xl">
-        <Link href="/blog" className="text-sm font-semibold text-muted hover:text-ink">
-          ← Blog
+    <article className="bg-white">
+      <div className="container-content max-w-3xl pt-10 sm:pt-14">
+        <Link href="/blog" className="inline-flex items-center gap-1 text-sm font-semibold text-muted hover:text-ink">
+          <span aria-hidden>←</span> Blog
         </Link>
-        <div className="mt-5 flex items-center gap-2">
+        <div className="mt-5 flex flex-wrap items-center gap-2">
           <Badge tone="warm">{post.category}</Badge>
           <span className="text-xs text-muted">{post.read_time_minutes} min read</span>
         </div>
         <h1 className="display mt-4 text-display-1 font-medium tracking-tight text-ink text-balance">
           {post.title}
         </h1>
-        <p className="mt-5 text-[18px] leading-relaxed text-muted">{post.excerpt}</p>
-        <div className="mt-6 flex items-center gap-3 text-sm text-muted">
-          <span className="font-semibold text-ink">{post.author_name}</span>
+        <p className="mt-5 text-[18px] leading-relaxed text-ink/85 font-medium">{post.excerpt}</p>
+        <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-faint">
+          <span className="inline-flex items-center gap-1.5">
+            <span aria-hidden className="inline-block h-6 w-6 rounded-pill bg-gradient-to-br from-warm-light to-warm" />
+            By <Link href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">{post.author_name}</Link>
+          </span>
           <span>·</span>
           <span>{new Date(post.published_at).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          {post.updated_at && post.updated_at !== post.published_at && (
+            <>
+              <span>·</span>
+              <span>Updated {new Date(post.updated_at).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </>
+          )}
         </div>
+      </div>
 
-        {post.cover_image && (
-          <div
-            aria-hidden
-            className="mt-8 aspect-[16/8] w-full overflow-hidden rounded-card border border-border bg-cover bg-center"
-            style={{ backgroundImage: `url(${post.cover_image})` }}
-          />
-        )}
+      {post.cover_image && (
+        <div className="container-content max-w-4xl mt-8">
+          <div className="relative aspect-[16/8] w-full overflow-hidden rounded-card border border-border bg-surface">
+            {isAbsolute ? (
+              <Image
+                src={post.cover_image}
+                alt={altText}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1024px"
+                className="object-cover"
+              />
+            ) : (
+              <Image
+                src={post.cover_image}
+                alt={altText}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1024px"
+                className="object-cover"
+                unoptimized
+              />
+            )}
+          </div>
+        </div>
+      )}
 
+      <div className="container-content max-w-3xl py-10 sm:py-14">
         <div
-          className="prose mt-10 max-w-none text-[17px] leading-relaxed text-ink/90 prose-headings:display prose-headings:tracking-tight prose-headings:text-ink prose-a:text-warm prose-a:no-underline hover:prose-a:underline prose-img:rounded-card"
+          className="prose prose-base max-w-none text-[17px] leading-[1.8] text-ink/90 prose-headings:display prose-headings:tracking-tight prose-headings:text-ink prose-headings:mt-10 prose-headings:mb-4 prose-h2:text-[28px] prose-h2:font-semibold prose-h3:text-[22px] prose-strong:text-ink prose-a:text-warm prose-a:underline-offset-2 hover:prose-a:underline prose-img:rounded-card prose-img:border prose-img:border-border prose-blockquote:border-l-4 prose-blockquote:border-warm prose-blockquote:not-italic prose-blockquote:font-medium prose-blockquote:text-ink/90 prose-blockquote:pl-5 prose-li:my-1.5"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        {related.length > 0 && (
-          <div className="mt-14 rounded-card border border-border bg-surface p-6">
-            <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
-              Related articles
+        {/* Author bio card */}
+        <Card variant="bordered" className="mt-14">
+          <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
+            <div
+              className="relative h-16 w-16 shrink-0 overflow-hidden rounded-pill bg-gradient-to-br from-warm-light to-warm"
+              aria-hidden
+            >
+              <Image src="/icon.svg" alt="" fill className="opacity-90" />
             </div>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            <div className="flex-1">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faint">
+                Written by
+              </div>
+              <div className="display mt-1 text-[20px] font-semibold tracking-tight text-ink">
+                {post.author_name}
+              </div>
+              <p className="mt-2 text-[14px] leading-relaxed text-muted">
+                Writes WarmerCoast&apos;s sourced guides on moving from the UK to Spain, Portugal
+                or Gibraltar. Every page reviewed against primary government sources for 2026.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2 text-sm">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-3 py-1.5 font-semibold text-ink hover:border-ink"
+                >
+                  About the author →
+                </Link>
+                <a
+                  href="https://www.linkedin.com/in/dominicroworth/"
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-3 py-1.5 font-semibold text-ink hover:border-ink"
+                >
+                  LinkedIn ↗
+                </a>
+              </div>
+            </div>
+          </CardBody>
+        </Card>
+
+        {related.length > 0 && (
+          <div className="mt-12">
+            <div className="text-xs font-semibold uppercase tracking-[0.1em] text-faint">
+              Related reading
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {related.map((r) => (
-                <li key={r.slug}>
-                  <Link
-                    href={`/blog/${r.slug}`}
-                    className="block rounded-card border border-border bg-white p-3 text-sm font-semibold text-ink hover:border-ink/30"
-                  >
-                    {r.title}
-                  </Link>
-                </li>
+                <Card key={r.slug} variant="bordered" interactive>
+                  <CardBody>
+                    <Link href={`/blog/${r.slug}`} className="block">
+                      <div className="display text-[17px] font-semibold tracking-tight text-ink">
+                        {r.title}
+                      </div>
+                      {r.excerpt && <p className="mt-1.5 text-sm text-muted line-clamp-2">{r.excerpt}</p>}
+                      <div className="mt-3 text-xs font-semibold text-warm">Read →</div>
+                    </Link>
+                  </CardBody>
+                </Card>
               ))}
-            </ul>
+            </div>
           </div>
         )}
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Article',
-              headline: post.title,
-              description: post.excerpt,
-              image: post.cover_image,
-              datePublished: post.published_at,
-              author: { '@type': 'Person', name: post.author_name },
-              publisher: { '@type': 'Organization', name: 'WarmerCoast', url: SITE.url },
-            }),
-          }}
-        />
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            image: post.cover_image,
+            datePublished: post.published_at,
+            dateModified: post.updated_at || post.published_at,
+            author: {
+              '@type': 'Person',
+              name: post.author_name,
+              url: 'https://warmercoast.com/about',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'WarmerCoast',
+              url: SITE.url,
+              logo: { '@type': 'ImageObject', url: `${SITE.url}/icon.svg` },
+            },
+            mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE.url}/blog/${post.slug}` },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog` },
+              { '@type': 'ListItem', position: 3, name: post.title, item: `${SITE.url}/blog/${post.slug}` },
+            ],
+          }),
+        }}
+      />
     </article>
   );
 }

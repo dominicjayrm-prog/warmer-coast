@@ -14,6 +14,7 @@ interface Body {
   meta_title?: string;
   meta_description?: string;
   cover_image?: string;
+  cover_image_alt?: string;
   content?: string;
   read_time_minutes?: number;
   status?: string;
@@ -48,6 +49,7 @@ export async function POST(request: Request) {
     seo_description: body.meta_description ?? (body.excerpt ?? '').slice(0, 155),
     cover_image: body.cover_image ?? '',
     featured_image: body.cover_image ?? '',
+    cover_image_alt: body.cover_image_alt ?? body.title ?? '',
     content: body.content,
     read_time_minutes: body.read_time_minutes ?? 5,
     status,

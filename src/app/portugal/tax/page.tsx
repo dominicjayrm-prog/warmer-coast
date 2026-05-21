@@ -28,6 +28,11 @@ export default function Page() {
         {
           id: 'ifici',
           title: 'IFICI / NHR 2.0: who actually qualifies',
+          glance: {
+            value: '20% flat',
+            label: 'On qualifying employment / self-employment income',
+            note: '10-year window · Portuguese tax residency from 1 Jan 2024+',
+          },
           body: (
             <>
               <p>

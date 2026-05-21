@@ -28,6 +28,11 @@ export default function Page() {
         {
           id: 'd7-visa',
           title: 'D7 visa: the passive-income route',
+          glance: {
+            value: '€820/mo',
+            label: 'Minimum passive income · €9,840/year',
+            note: 'Pensions, dividends, rental income qualify',
+          },
           body: (
             <>
               <p>
@@ -57,6 +62,11 @@ export default function Page() {
         {
           id: 'd8-visa',
           title: 'D8 digital nomad visa: the remote-worker route',
+          glance: {
+            value: '€3,680/mo',
+            label: '4× Portuguese minimum wage · IFICI-compatible',
+            note: 'Plus €11,040 savings (12× minimum wage)',
+          },
           body: (
             <>
               <p>
