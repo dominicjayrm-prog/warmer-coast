@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 interface Post {
   id: string;
