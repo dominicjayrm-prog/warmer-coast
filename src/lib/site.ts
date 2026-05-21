@@ -2,7 +2,7 @@ export const SITE = {
   name: 'WarmerCoast',
   domain: 'warmercoast.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://warmercoast.com',
-  siteKey: process.env.WARMERCOAST_SITE_KEY || 'warmercoast.com',
+  siteKey: 'warmercoast.com',
   founder: 'Dominic Roworth',
   description:
     'Practical relocation playbooks for British adults moving to Spain, Portugal, or Gibraltar. Tax, visas, banking, schools, the whole move planned.',
