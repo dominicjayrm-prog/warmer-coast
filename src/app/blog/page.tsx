@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
@@ -27,18 +27,24 @@ interface Post {
 
 export default async function BlogIndex() {
   let posts: Post[] = [];
+  let queryError: string | null = null;
   try {
-    const supabase = createClient();
-    const { data } = await supabase
+    const supabase = adminDb();
+    const { data, error } = await supabase
       .from('blog_posts')
       .select('slug,title,excerpt,cover_image,category,read_time_minutes,published_at,author_name')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
       .order('published_at', { ascending: false })
       .limit(60);
+    if (error) {
+      queryError = error.message;
+      console.error('[blog] supabase query error:', error);
+    }
     posts = (data as Post[]) ?? [];
-  } catch {
-    posts = [];
+  } catch (e) {
+    queryError = e instanceof Error ? e.message : String(e);
+    console.error('[blog] supabase client error:', e);
   }
 
   return (
@@ -69,6 +75,11 @@ export default async function BlogIndex() {
                 from the shared <code className="rounded bg-surface px-1 py-0.5">blog_posts</code>{' '}
                 table filtered by <code className="rounded bg-surface px-1 py-0.5">site = &lsquo;warmercoast.com&rsquo;</code>.
               </p>
+              {queryError && (
+                <p className="mt-3 text-xs text-warm">
+                  Diagnostic: <code className="rounded bg-surface px-1 py-0.5">{queryError}</code>
+                </p>
+              )}
               <Link
                 href="/calculators"
                 className="mt-5 inline-flex items-center gap-2 rounded-pill bg-ink px-5 py-2.5 text-sm font-semibold text-white"
