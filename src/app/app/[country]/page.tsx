@@ -57,6 +57,15 @@ export default async function CountryPlaybook({ params }: { params: { country: s
           module, progress syncs across devices.
         </p>
 
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Link
+            href={`/app/${country}/documents`}
+            className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:border-ink"
+          >
+            Forms &amp; uploads →
+          </Link>
+        </div>
+
         <div className="mt-10 flex flex-col gap-3">
           {modules.map((m) => {
             const done = progressByModule.get(m.n) === true;
