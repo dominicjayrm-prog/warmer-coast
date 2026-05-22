@@ -8,6 +8,7 @@ import { SocialProofStrip } from '@/components/marketing/SocialProofStrip';
 import { Testimonials } from '@/components/marketing/Testimonials';
 import { TimeframeGate } from '@/components/marketing/TimeframeGate';
 import { ActivityTicker } from '@/components/marketing/ActivityTicker';
+import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
 import { Accordion } from '@/components/ui/Accordion';
 import { NewsletterCapture } from '@/components/marketing/NewsletterCapture';
 import { COUNTRY_META } from '@/lib/site';
@@ -129,6 +130,10 @@ export default function HomePage() {
       <FreeTools />
       <HowItWorks />
       <Testimonials />
+      <LatestPostsStrip
+        heading="Latest sourced guides"
+        subhead="2026 deep-dives on Spain Beckham Law, Portugal IFICI, the Gibraltar treaty, the Spain DNV. Every claim sourced against primary government material."
+      />
       <FoundersBlurb />
       <FAQSection />
       <ClosingCTA />

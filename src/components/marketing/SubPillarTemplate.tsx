@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { COUNTRY_META, type Country } from '@/lib/site';
+import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
 
 export interface SpokeLink {
   href: string;
@@ -329,7 +330,13 @@ export function SubPillarTemplate({
         </section>
       )}
 
-      <section className="bg-white py-16">
+      <LatestPostsStrip
+        heading={`Related ${meta.name} reading`}
+        subhead="Sourced 2026 deep-dives on the most important tax, visa and residency topics."
+        tone="white"
+      />
+
+      <section className="bg-surface/60 py-16">
         <div className="container-content max-w-3xl text-center">
           <h2 className="display text-display-3 font-semibold tracking-tight text-ink text-balance">
             Get the full {meta.name} playbook
