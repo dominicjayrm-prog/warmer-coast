@@ -261,6 +261,298 @@ export const FORM_SCHEMAS: Record<string, FormSchema> = {
       'Decision typically 6-10 weeks, expedited where the application is clean.',
     ],
   },
+
+  hepss_application: {
+    id: 'hepss_application',
+    title: 'HEPSS application brief',
+    intro:
+      'HEPSS (High Executive Possessing Specialist Skills) caps assessable income at £160,000 for senior employees of Gibraltar-licensed companies. Effective tax ceiling ~£44,000. HEPSS is employer-led - your Gibraltar employer files the application on your behalf. This brief captures the data they will need from you.',
+    pdfTitle: 'HEPSS application brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'The Gibraltar role',
+        fields: [
+          { id: 'gibraltarEmployer', label: 'Gibraltar employer name', type: 'text', required: true },
+          { id: 'gibraltarEmployerLicence', label: 'Employer FSC / Gambling Commission / regulatory licence number', type: 'text', required: true, help: 'HEPSS requires the employer to hold a qualifying regulatory licence.' },
+          { id: 'roleTitle', label: 'Your role title', type: 'text', required: true, hint: 'e.g. Chief Compliance Officer, Director of Engineering' },
+          { id: 'roleStartDate', label: 'Role start date', type: 'date', required: true },
+          { id: 'annualSalary', label: 'Annual gross salary (£GBP)', type: 'currency', required: true, hint: 'Must be £160,000+ to qualify' },
+          { id: 'specialistSkills', label: 'Specialist skills the role requires', type: 'textarea', required: true, fullWidth: true, help: 'Why this role could not reasonably be filled locally. Director-level experience, regulated qualifications, niche technology, executive search recruitment.' },
+        ],
+      },
+      {
+        title: 'Prior non-residence',
+        fields: [
+          { id: 'priorGibraltarResidency', label: 'Were you Gibraltar-resident in any of the prior 3 years?', type: 'select', required: true, options: [
+            { value: 'no', label: 'No' },
+            { value: 'yes', label: 'Yes (you cannot apply for HEPSS)' },
+          ] },
+          { id: 'currentResidence', label: 'Current country of tax residence', type: 'text', required: true },
+        ],
+      },
+      {
+        title: 'Qualifying accommodation',
+        fields: [
+          { id: 'accommodationType', label: 'Accommodation type', type: 'select', required: true, options: [
+            { value: 'purchase', label: 'Purchase' },
+            { value: 'long_lease', label: 'Long lease (7+ years)' },
+            { value: 'tbd', label: 'To be arranged after approval' },
+          ] },
+          { id: 'gibraltarAddress', label: 'Gibraltar address (if known)', type: 'textarea', fullWidth: true },
+          { id: 'movingWithFamily', label: 'Family members joining you', type: 'textarea', help: 'Spouse, children, ages. Family is admitted as dependants - HEPSS tax status does not extend to them.' },
+        ],
+      },
+    ],
+    nextSteps: [
+      'Share this brief with your prospective Gibraltar employer&apos;s HR / in-house counsel.',
+      'The employer files the HEPSS application with the Finance Centre - typically through their Gibraltar law firm.',
+      'Decision typically 4-6 weeks for clean applications.',
+      'HEPSS status applies from the date of the certificate. Your tax cap at £160,000 of assessable income kicks in immediately.',
+    ],
+  },
+
+  nie_ex15: {
+    id: 'nie_ex15',
+    title: 'Spanish NIE application (EX-15)',
+    intro:
+      'The Número de Identidad de Extranjero is your Spanish foreigner ID number. Required for almost every Spanish transaction. Apply at the Spanish consulate in the UK before you move (cleanest) OR at a National Police station in Spain after arrival. This brief captures the data for Form EX-15.',
+    pdfTitle: 'NIE EX-15 application brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'Reason for NIE',
+        fields: [
+          { id: 'reasonForNie', label: 'Reason for needing the NIE', type: 'select', required: true, options: [
+            { value: 'visa_application', label: 'Spanish visa application' },
+            { value: 'property_purchase', label: 'Spanish property purchase' },
+            { value: 'employment', label: 'Spanish employment' },
+            { value: 'inheritance', label: 'Spanish inheritance' },
+            { value: 'investment', label: 'Spanish investment' },
+            { value: 'other', label: 'Other administrative' },
+          ] },
+          { id: 'reasonDetail', label: 'Brief detail of the reason', type: 'textarea', fullWidth: true },
+        ],
+      },
+      {
+        title: 'Application location',
+        fields: [
+          { id: 'applicationLocation', label: 'Where will you apply?', type: 'select', required: true, options: [
+            { value: 'consulate_london', label: 'Spanish Consulate London' },
+            { value: 'consulate_manchester', label: 'Spanish Consulate Manchester' },
+            { value: 'consulate_edinburgh', label: 'Spanish Consulate Edinburgh' },
+            { value: 'spain_police', label: 'National Police station in Spain' },
+          ] },
+          { id: 'expectedSpanishAddress', label: 'Spanish address (future or current)', type: 'textarea', fullWidth: true },
+          { id: 'currentUkAddress', label: 'Current UK address', type: 'textarea', required: true, fullWidth: true },
+        ],
+      },
+    ],
+    nextSteps: [
+      'Book your cita previa appointment online if applying in Spain (sede.administracionespublicas.gob.es) or via the consulate website.',
+      'Pay the tasa 790 fee (~€12) at a Spanish bank or via the AEAT online payment portal.',
+      'Bring this brief, the EX-15 form, your passport, tasa receipt, and justification documents to the appointment.',
+      'NIE typically issued same day in Spain or within 5 working days at the consulate.',
+    ],
+  },
+
+  modelo_030: {
+    id: 'modelo_030',
+    title: 'Spanish tax address registration (Modelo 030)',
+    intro:
+      'Modelo 030 registers your Spanish residential address with the Agencia Tributaria. Required for filing your first Spanish tax return, activating Cl@ve PIN, and receiving tax correspondence. Quick filing once you have NIE and empadronamiento.',
+    pdfTitle: 'Modelo 030 brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'Spanish fiscal data',
+        fields: [
+          { id: 'nieNumber', label: 'NIE number', type: 'text', required: true, hint: 'X1234567L format' },
+          { id: 'spanishAddress', label: 'Spanish residential address', type: 'textarea', required: true, fullWidth: true, hint: 'Street, number, floor, postal code, municipality, province' },
+          { id: 'empadronamientoDate', label: 'Date of empadronamiento (town hall registration)', type: 'date', required: true },
+          { id: 'previousFiscalAddress', label: 'Previous fiscal address (if previously Spanish-registered)', type: 'textarea', fullWidth: true },
+          { id: 'taxResidencyType', label: 'Tax residency status you are declaring', type: 'select', required: true, options: [
+            { value: 'new_resident', label: 'New Spanish tax resident (first registration)' },
+            { value: 'address_change', label: 'Address change only' },
+          ] },
+        ],
+      },
+    ],
+    nextSteps: [
+      'File Modelo 030 online via sede.agenciatributaria.gob.es (requires Cl@ve PIN or digital certificate) OR in person at any Hacienda office.',
+      'Apply for Cl@ve PIN at the same time if not already obtained - allows online filing for subsequent forms including Modelo 149.',
+      'Once registered, your fiscal address is locked in for tax correspondence and your first Modelo 100 return will be expected.',
+    ],
+  },
+
+  d7_application: {
+    id: 'd7_application',
+    title: 'Portugal D7 visa application brief',
+    intro:
+      'The Portuguese D7 is the passive-income residency visa for retirees and rentiers. Threshold ~€820/month primary applicant (100% SMN 2026). No salaried Portuguese work allowed during D7. 2-year initial residence, 3-year renewals, citizenship at year 5. This brief captures the data for your consulate filing.',
+    pdfTitle: 'D7 application brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'Move details',
+        fields: [
+          { id: 'plannedArrivalDate', label: 'Planned Portugal arrival date', type: 'date', required: true },
+          { id: 'portugueseAddress', label: 'Portuguese address (lease or property)', type: 'textarea', required: true, fullWidth: true },
+          { id: 'whyPortugal', label: 'Reason for choosing Portugal', type: 'textarea', required: true, fullWidth: true, help: 'Lifestyle, family, climate. Avoid pure tax-arbitrage language.' },
+        ],
+      },
+      {
+        title: 'Income evidence (passive only)',
+        fields: [
+          { id: 'ukStatePension', label: 'Annual UK State Pension (£GBP, gross)', type: 'currency' },
+          { id: 'ukPrivatePension', label: 'Annual UK private / workplace pension (£GBP, gross)', type: 'currency' },
+          { id: 'ukRentalIncome', label: 'Annual UK rental income (£GBP, net)', type: 'currency' },
+          { id: 'dividendIncome', label: 'Annual dividend / investment income (£GBP)', type: 'currency' },
+          { id: 'savingsForSupport', label: 'Liquid savings backing the application (£GBP)', type: 'currency', hint: 'If savings used to support income threshold' },
+          { id: 'totalAnnualIncome', label: 'Total annual passive income (£GBP)', type: 'currency', required: true, help: 'Must clear €820/month primary (~€9,840/year) plus dependant additions.' },
+        ],
+      },
+      {
+        title: 'Family inclusion',
+        fields: [
+          { id: 'includingSpouse', label: 'Including spouse as dependant?', type: 'select', options: [
+            { value: 'no', label: 'No' },
+            { value: 'yes', label: 'Yes' },
+          ] },
+          { id: 'childrenCount', label: 'Number of children moving with you', type: 'number', min: 0, max: 12 },
+        ],
+      },
+    ],
+    nextSteps: [
+      'Book consulate appointment at your nearest Portuguese consulate.',
+      'Submit: D7 form, apostilled birth + marriage + ACRO, certified translations, income evidence, savings evidence, medical certificate, private health insurance, photo.',
+      'Decision typically 60-120 days.',
+      'Enter Portugal within 90 days of visa, apply for Título de Residência at AIMA within 30 days of arrival.',
+      'Note: D7 holders are NOT IFICI-eligible. Standard Portuguese IRS applies to worldwide income.',
+    ],
+  },
+
+  d8_application: {
+    id: 'd8_application',
+    title: 'Portugal D8 digital nomad visa application brief',
+    intro:
+      'The Portuguese D8 is the digital nomad residency visa for remote workers and qualifying freelancers. Threshold ~€3,680/month primary (4x SMN 2026). 2-year initial residence. IFICI eligibility ONLY if your role is in a listed qualifying activity (most generic remote work does not qualify). This brief captures the data for your consulate filing.',
+    pdfTitle: 'D8 application brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'Move and accommodation',
+        fields: [
+          { id: 'plannedArrivalDate', label: 'Planned Portugal arrival date', type: 'date', required: true },
+          { id: 'portugueseAddress', label: 'Portuguese address (lease or property)', type: 'textarea', required: true, fullWidth: true },
+          { id: 'preferredCity', label: 'Preferred Portuguese city', type: 'select', options: [
+            { value: 'lisbon', label: 'Lisbon' },
+            { value: 'porto', label: 'Porto' },
+            { value: 'cascais', label: 'Cascais' },
+            { value: 'algarve', label: 'Algarve' },
+            { value: 'madeira', label: 'Madeira' },
+            { value: 'azores', label: 'Azores' },
+            { value: 'other', label: 'Other' },
+          ] },
+        ],
+      },
+      {
+        title: 'Income and employment track',
+        fields: [
+          { id: 'employmentTrack', label: 'Application track', type: 'select', required: true, options: [
+            { value: 'employee', label: 'Employee track (single non-Portuguese employer)' },
+            { value: 'self_employed', label: 'Self-employed (multiple clients)' },
+          ] },
+          { id: 'employerName', label: 'Employer or principal client name', type: 'text', required: true },
+          { id: 'employerCountry', label: 'Employer country', type: 'text', required: true, hint: 'Must NOT be Portugal for employee track' },
+          { id: 'monthlyIncome', label: 'Average monthly income (€EUR, gross)', type: 'currency', required: true, hint: 'Must clear €3,680/month threshold' },
+          { id: 'incomeSource', label: 'Income source description', type: 'textarea', required: true, fullWidth: true, help: 'For self-employed: confirm Portuguese clients under 25% of total.' },
+        ],
+      },
+      {
+        title: 'IFICI eligibility check',
+        fields: [
+          { id: 'ificiQualifyingActivity', label: 'Is your role in a listed IFICI qualifying activity?', type: 'select', options: [
+            { value: 'unknown', label: 'Unknown - need to verify' },
+            { value: 'category_a', label: 'Category A - Scientific research / higher education' },
+            { value: 'category_b', label: 'Category B - Productive investment project role' },
+            { value: 'category_c', label: 'Category C - Startup Portugal certified employer' },
+            { value: 'category_d', label: 'Category D - Listed high-value-added profession' },
+            { value: 'category_e', label: 'Category E - Madeira / Azores incentivised activity' },
+            { value: 'none', label: 'No - role does not qualify for IFICI' },
+          ] },
+          { id: 'ificiEvidence', label: 'Evidence supporting IFICI qualifying activity', type: 'textarea', fullWidth: true, help: 'e.g. Startup Portugal certificate number, ANI innovation certification, listed profession ID.' },
+        ],
+      },
+    ],
+    nextSteps: [
+      'Book Portuguese consulate appointment.',
+      'Submit: D8 form, apostilled documents, employer letter, income evidence, private health insurance, medical certificate, financial bank statements.',
+      'Decision typically 60-90 days.',
+      'Enter Portugal within 90 days of visa, apply for Título de Residência at AIMA within 30 days.',
+      'If IFICI-eligible: file IFICI application by 31 March of year following Portuguese tax residency commencement.',
+    ],
+  },
+
+  ifici_election: {
+    id: 'ifici_election',
+    title: 'Portugal IFICI election brief',
+    intro:
+      'IFICI (Incentivo Fiscal à Investigação Científica e Inovação) is the successor to NHR. 20% flat Portuguese tax on qualifying activity income for 10 years. Foreign-source dividends, interest, gains, rental largely Portugal-exempt. Election filed by 31 March of the year following Portuguese tax residency. This brief gathers the data your contabilista will need to file.',
+    pdfTitle: 'IFICI election brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'Portuguese identifiers',
+        fields: [
+          { id: 'nifNumber', label: 'NIF (Portuguese tax number)', type: 'text', required: true, hint: '9-digit format' },
+          { id: 'portugueseAddress', label: 'Portuguese residential address', type: 'textarea', required: true, fullWidth: true },
+          { id: 'atestadoDate', label: 'Date of Atestado de Residência', type: 'date', required: true },
+        ],
+      },
+      {
+        title: 'Qualifying activity',
+        fields: [
+          { id: 'qualifyingCategory', label: 'IFICI qualifying activity category', type: 'select', required: true, options: [
+            { value: 'category_a', label: 'A - Scientific research / higher education' },
+            { value: 'category_b', label: 'B - Productive investment project role' },
+            { value: 'category_c', label: 'C - Startup Portugal certified employer' },
+            { value: 'category_d', label: 'D - Listed high-value-added profession' },
+            { value: 'category_e', label: 'E - Madeira / Azores incentivised activity' },
+          ] },
+          { id: 'qualifyingEvidence', label: 'Evidence of qualifying activity', type: 'textarea', required: true, fullWidth: true, help: 'Employer name, certification number, contract reference, research institution name.' },
+          { id: 'priorPortugueseResidency', label: 'Were you Portuguese tax resident in any of the prior 5 calendar years?', type: 'select', required: true, options: [
+            { value: 'no', label: 'No' },
+            { value: 'yes', label: 'Yes (you cannot elect IFICI)' },
+          ] },
+        ],
+      },
+      {
+        title: 'Move and election timing',
+        fields: [
+          { id: 'taxResidencyDate', label: 'Date of Portuguese tax residency commencement', type: 'date', required: true, help: 'Typically the date you crossed the 183-day threshold or established centre of vital interests.' },
+          { id: 'electionDeadline', label: 'IFICI election deadline (auto-calculated)', type: 'text', help: '31 March of the year following your tax residency year. Filed by your contabilista.' },
+          { id: 'estimatedPortugueseIncome', label: 'Estimated annual Portuguese-source qualifying income (€EUR)', type: 'currency', required: true },
+        ],
+      },
+      {
+        title: 'Family election',
+        fields: [
+          { id: 'spouseElecting', label: 'Will your spouse also elect IFICI?', type: 'select', options: [
+            { value: 'no', label: 'No / not applicable' },
+            { value: 'yes', label: 'Yes - independent election' },
+          ] },
+          { id: 'childrenUnder25', label: 'Number of children under 25 also moving', type: 'number', min: 0, max: 12 },
+        ],
+      },
+    ],
+    nextSteps: [
+      'Share this brief with your Portuguese contabilista.',
+      'Contabilista files the IFICI application via the portaldofinanças portal by 31 March of the year following your residency commencement.',
+      'Agency decision typically 30-90 days.',
+      'IFICI status applies retroactively from the date of your Portuguese tax residency. The 10-year regime window starts from there.',
+    ],
+  },
 };
 
 export function getFormSchema(id: string): FormSchema | undefined {
