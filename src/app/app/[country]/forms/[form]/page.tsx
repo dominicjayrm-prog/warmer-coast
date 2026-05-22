@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/Badge';
 import { COUNTRIES, COUNTRY_META, type Country } from '@/lib/site';
 import { getEntitlements, hasAccess } from '@/lib/entitlements';
 import { getFormTemplate } from '@/lib/forms';
+import { getFormSchema } from '@/lib/forms/schemas';
+import { FormFiller } from '@/components/forms/FormFiller';
 
 export const metadata: Metadata = {
   title: 'Form',
@@ -32,6 +34,7 @@ export default async function FormFillPage({
   }
 
   const meta = COUNTRY_META[country];
+  const schema = getFormSchema(template.id);
 
   return (
     <section className="bg-white py-10 sm:py-14">
@@ -50,37 +53,42 @@ export default async function FormFillPage({
           {meta.name} · {template.authority}
         </Badge>
         <h1 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
-          {template.name}
+          {schema?.title ?? template.name}
         </h1>
-        <p className="mt-3 text-[17px] text-muted">{template.blurb}</p>
+        <p className="mt-3 text-[17px] text-muted">{schema?.intro ?? template.blurb}</p>
 
-        <div className="mt-10 rounded-card border border-dashed border-border bg-surface/40 p-6">
-          <div className="text-xs font-semibold uppercase tracking-[0.1em] text-faint">
-            In-app filler
-          </div>
-          <p className="mt-2 text-sm text-muted">
-            The native React form for {template.name} is being built. In the meantime, download the
-            blank PDF and either fill it offline or use the upload-scan flow on the documents page.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {template.officialPdfUrl && (
-              <a
-                href={template.officialPdfUrl}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-pill bg-ink px-4 py-2 text-sm font-semibold text-white"
+        {schema ? (
+          <FormFiller schema={schema} country={country} />
+        ) : (
+          <div className="mt-10 rounded-card border border-dashed border-border bg-surface/40 p-6">
+            <div className="text-xs font-semibold uppercase tracking-[0.1em] text-faint">
+              In-app filler
+            </div>
+            <p className="mt-2 text-sm text-muted">
+              The native React form for {template.name} is being built. In the meantime, download
+              the blank PDF and either fill it offline or use the upload-scan flow on the documents
+              page.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {template.officialPdfUrl && (
+                <a
+                  href={template.officialPdfUrl}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-pill bg-ink px-4 py-2 text-sm font-semibold text-white"
+                >
+                  Download blank PDF ↗
+                </a>
+              )}
+              <Link
+                href={`/app/${country}/documents`}
+                className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:border-ink"
               >
-                Download blank PDF ↗
-              </a>
-            )}
-            <Link
-              href={`/app/${country}/documents`}
-              className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-white px-4 py-2 text-sm font-semibold text-ink hover:border-ink"
-            >
-              Back to documents
-            </Link>
+                Back to documents
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
