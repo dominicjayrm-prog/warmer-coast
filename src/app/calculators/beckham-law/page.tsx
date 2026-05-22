@@ -80,6 +80,26 @@ export default function Page() {
           </div>
         </div>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: 'Beckham Law calculator',
+            description:
+              'Interactive calculator estimating UK vs Spain tax savings under the 24% impatriate regime (Beckham Law) for six years.',
+            url: 'https://warmercoast.com/calculators/beckham-law',
+            applicationCategory: 'FinanceApplication',
+            operatingSystem: 'Web',
+            isAccessibleForFree: true,
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+            inLanguage: 'en-GB',
+            audience: { '@type': 'PeopleAudience', geographicArea: 'United Kingdom' },
+          }),
+        }}
+      />
     </section>
   );
 }

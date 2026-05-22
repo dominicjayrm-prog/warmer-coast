@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Move to Spain from the UK | Visas, Beckham Law, banking, schools',
   description:
     'The honest UK to Spain relocation guide. Beckham Law, non-lucrative visa, digital nomad visa, modelo 720, padrón, NIE, schools, healthcare. Sourced.',
-  alternates: { canonical: 'https://warmercoast.com/spain' },
+  alternates: { canonical: '/spain' },
 };
 
 export default function SpainPillar() {

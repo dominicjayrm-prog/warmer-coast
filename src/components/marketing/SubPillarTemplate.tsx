@@ -4,6 +4,8 @@ import type { ReactNode } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { COUNTRY_META, type Country } from '@/lib/site';
+import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
+import { CountryAlternativesCallout } from '@/components/marketing/CountryAlternativesCallout';
 
 export interface SpokeLink {
   href: string;
@@ -257,6 +259,8 @@ export function SubPillarTemplate({
                 </div>
               )}
 
+              <CountryAlternativesCallout current={country} />
+
               {/* Author bio card */}
               <Card variant="bordered" className="mt-14">
                 <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
@@ -329,7 +333,13 @@ export function SubPillarTemplate({
         </section>
       )}
 
-      <section className="bg-white py-16">
+      <LatestPostsStrip
+        heading={`Related ${meta.name} reading`}
+        subhead="Sourced 2026 deep-dives on the most important tax, visa and residency topics."
+        tone="white"
+      />
+
+      <section className="bg-surface/60 py-16">
         <div className="container-content max-w-3xl text-center">
           <h2 className="display text-display-3 font-semibold tracking-tight text-ink text-balance">
             Get the full {meta.name} playbook

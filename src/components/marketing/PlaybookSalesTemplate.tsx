@@ -5,6 +5,7 @@ import { Accordion, type AccordionItem } from '@/components/ui/Accordion';
 import { COUNTRY_META, PRODUCTS, type ProductSlug } from '@/lib/site';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
 import { CheckoutButton } from '@/components/checkout/CheckoutButton';
+import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
 
 interface Module {
   n: number;
@@ -302,7 +303,13 @@ export function PlaybookSalesTemplate({
         </div>
       </section>
 
-      <section id={`buy-${slug}`} className="bg-white py-20">
+      <LatestPostsStrip
+        heading={`Free deep-dives for ${COUNTRY_META[slug].name} movers`}
+        subhead="Sourced, 2026-verified articles. Read them before you buy to see exactly how we work."
+        tone="white"
+      />
+
+      <section id={`buy-${slug}`} className="bg-surface/60 py-20">
         <div className="container-content max-w-2xl text-center">
           <h2 className="display text-display-2 font-semibold tracking-tight text-ink text-balance">
             Ready when you are.

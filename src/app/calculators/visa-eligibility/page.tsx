@@ -49,6 +49,26 @@ export default function Page() {
           </CardBody>
         </Card>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: 'UK to Iberia visa eligibility quiz',
+            description:
+              'Twelve-question branching quiz that recommends the right Spanish, Portuguese or Gibraltar residency route for British applicants in 2026.',
+            url: 'https://warmercoast.com/calculators/visa-eligibility',
+            applicationCategory: 'UtilitiesApplication',
+            operatingSystem: 'Web',
+            isAccessibleForFree: true,
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+            inLanguage: 'en-GB',
+            audience: { '@type': 'PeopleAudience', geographicArea: 'United Kingdom' },
+          }),
+        }}
+      />
     </section>
   );
 }
