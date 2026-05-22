@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { COUNTRY_META, type Country } from '@/lib/site';
 import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
+import { CountryAlternativesCallout } from '@/components/marketing/CountryAlternativesCallout';
 
 export interface SpokeLink {
   href: string;
@@ -257,6 +258,8 @@ export function SubPillarTemplate({
                   </div>
                 </div>
               )}
+
+              <CountryAlternativesCallout current={country} />
 
               {/* Author bio card */}
               <Card variant="bordered" className="mt-14">

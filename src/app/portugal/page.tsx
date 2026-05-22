@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Move to Portugal from the UK | NHR 2.0, D7, D8, IRS, banking',
   description:
     'The honest UK to Portugal relocation guide. NHR 2.0 (IFICI), D7 vs D8, IRS basics, healthcare, schooling, banking. Algarve vs Lisbon vs Porto reality.',
-  alternates: { canonical: 'https://warmercoast.com/portugal' },
+  alternates: { canonical: '/portugal' },
 };
 
 export default function PortugalPillar() {

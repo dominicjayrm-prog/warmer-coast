@@ -51,6 +51,25 @@ export default function Page() {
           ))}
         </div>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'WarmerCoast relocation calculators',
+            description:
+              'Free interactive calculators for British adults moving to Spain, Portugal or Gibraltar.',
+            itemListElement: tools.map((t, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              url: `https://warmercoast.com${t.href}`,
+              name: t.title,
+            })),
+          }),
+        }}
+      />
     </section>
   );
 }

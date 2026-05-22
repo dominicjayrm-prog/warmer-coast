@@ -26,6 +26,26 @@ export default function Page() {
           <CompareCountries />
         </div>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebApplication',
+            name: 'Spain vs Portugal vs Gibraltar comparator',
+            description:
+              'Side-by-side comparison of Spain, Portugal and Gibraltar for British movers: tax, cost of living, visa difficulty, English coverage, schools.',
+            url: 'https://warmercoast.com/calculators/compare-countries',
+            applicationCategory: 'LifestyleApplication',
+            operatingSystem: 'Web',
+            isAccessibleForFree: true,
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+            inLanguage: 'en-GB',
+            audience: { '@type': 'PeopleAudience', geographicArea: 'United Kingdom' },
+          }),
+        }}
+      />
     </section>
   );
 }

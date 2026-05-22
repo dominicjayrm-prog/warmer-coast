@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Move to Gibraltar from the UK 2026 | Cat 2, HEPSS, EU treaty border',
   description:
     'How to move to Gibraltar from the UK in 2026. Category 2 high-net-worth residency, HEPSS for specialists, frontier-worker mechanics, the new UK-EU treaty and Schengen border rules from 15 July 2026.',
-  alternates: { canonical: 'https://warmercoast.com/gibraltar' },
+  alternates: { canonical: '/gibraltar' },
 };
 
 export default function GibraltarPillar() {
