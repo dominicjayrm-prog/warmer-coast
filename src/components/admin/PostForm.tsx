@@ -164,20 +164,47 @@ export function PostForm({ initial, mode }: Props) {
                 <option>News</option>
               </select>
             </Field>
-            <Field label="Cover image URL">
-              <input
-                value={post.cover_image}
-                onChange={(e) => update('cover_image', e.target.value)}
-                placeholder="https://... or /blog-images/..."
-                className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
-              />
-              {post.cover_image && (
-                <div
-                  aria-hidden
-                  className="mt-2 h-24 w-full rounded-md border border-border bg-cover bg-center"
-                  style={{ backgroundImage: `url(${post.cover_image})` }}
+            <Field label="Cover image">
+              <div className="flex flex-col gap-2">
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  onChange={async (e) => {
+                    const f = e.target.files?.[0];
+                    if (!f) return;
+                    e.target.value = '';
+                    const form = new FormData();
+                    form.append('file', f);
+                    try {
+                      const r = await fetch('/api/admin/blog-image', { method: 'POST', body: form });
+                      const j = await r.json();
+                      if (!r.ok) throw new Error(j.error ?? 'Upload failed');
+                      update('cover_image', j.url);
+                      if (!post.cover_image_alt) update('cover_image_alt', f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '));
+                    } catch (err) {
+                      alert(err instanceof Error ? err.message : 'Upload failed');
+                    }
+                  }}
+                  className="block w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm file:mr-3 file:rounded-md file:border-0 file:bg-ink file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white hover:file:bg-ink/90"
                 />
-              )}
+                <input
+                  value={post.cover_image}
+                  onChange={(e) => update('cover_image', e.target.value)}
+                  placeholder="Or paste a URL: https://..."
+                  className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
+                />
+                {post.cover_image && (
+                  <div
+                    aria-hidden
+                    className="h-32 w-full rounded-md border border-border bg-cover bg-center"
+                    style={{ backgroundImage: `url(${post.cover_image})` }}
+                  />
+                )}
+                <span className="text-[11px] text-faint">
+                  JPG / PNG / WebP up to 5 MB. Recommended size 1600&times;900 (16:9). Uploaded
+                  images are served from the public blog-images bucket.
+                </span>
+              </div>
             </Field>
             <Field label="Cover image alt text (SEO + accessibility)">
               <input
