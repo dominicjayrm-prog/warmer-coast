@@ -15,7 +15,8 @@ export default function Page() {
           Welcome back
         </h1>
         <p className="mt-3 text-muted">
-          Enter your email, we&apos;ll send a magic link. No password to remember.
+          Sign in with your email and password. New buyer? Click <strong>Create account</strong>{' '}
+          and use the same email you bought with - your playbook access activates automatically.
         </p>
         <div className="mt-8">
           <Suspense fallback={null}>
