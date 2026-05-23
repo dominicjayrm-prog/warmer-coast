@@ -48,6 +48,8 @@ export function PostForm({ initial, mode }: Props) {
   const router = useRouter();
   const [post, setPost] = useState<PostInput>({ ...defaultPost, ...initial });
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [savedAt, setSavedAt] = useState<Date | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [autoSlug, setAutoSlug] = useState(mode === 'create');
 
@@ -63,10 +65,33 @@ export function PostForm({ initial, mode }: Props) {
     }
   }
 
+  async function uploadCover(file: File) {
+    setUploading(true);
+    setError(null);
+    const form = new FormData();
+    form.append('file', file);
+    try {
+      const r = await fetch('/api/admin/blog-image', { method: 'POST', body: form });
+      const j = await r.json();
+      if (!r.ok || !j.url) throw new Error(j.error ?? 'Upload failed');
+      const filenameAlt = file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ');
+      setPost((p) => ({
+        ...p,
+        cover_image: j.url,
+        cover_image_alt: p.cover_image_alt || filenameAlt,
+      }));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Upload failed');
+    } finally {
+      setUploading(false);
+    }
+  }
+
   async function submit(e: FormEvent<HTMLFormElement>, publish?: boolean) {
     e.preventDefault();
     setSaving(true);
     setError(null);
+    setSavedAt(null);
     const payload = {
       ...post,
       status: publish !== undefined ? (publish ? 'published' : 'draft') : post.status,
@@ -87,6 +112,10 @@ export function PostForm({ initial, mode }: Props) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error ?? 'Save failed');
+      if (publish !== undefined) {
+        setPost((p) => ({ ...p, status: publish ? 'published' : 'draft' }));
+      }
+      setSavedAt(new Date());
       if (mode === 'create') {
         router.push(`/admin/blog/${data.id}`);
       } else {
@@ -164,29 +193,23 @@ export function PostForm({ initial, mode }: Props) {
                 <option>News</option>
               </select>
             </Field>
-            <Field label="Cover image">
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold text-ink">Cover image</span>
               <div className="flex flex-col gap-2">
                 <input
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
-                  onChange={async (e) => {
+                  disabled={uploading}
+                  onChange={(e) => {
                     const f = e.target.files?.[0];
-                    if (!f) return;
                     e.target.value = '';
-                    const form = new FormData();
-                    form.append('file', f);
-                    try {
-                      const r = await fetch('/api/admin/blog-image', { method: 'POST', body: form });
-                      const j = await r.json();
-                      if (!r.ok) throw new Error(j.error ?? 'Upload failed');
-                      update('cover_image', j.url);
-                      if (!post.cover_image_alt) update('cover_image_alt', f.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' '));
-                    } catch (err) {
-                      alert(err instanceof Error ? err.message : 'Upload failed');
-                    }
+                    if (f) void uploadCover(f);
                   }}
-                  className="block w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm file:mr-3 file:rounded-md file:border-0 file:bg-ink file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white hover:file:bg-ink/90"
+                  className="block w-full rounded-md border border-border bg-white px-2 py-1.5 text-sm file:mr-3 file:rounded-md file:border-0 file:bg-ink file:px-3 file:py-1 file:text-xs file:font-semibold file:text-white hover:file:bg-ink/90 disabled:opacity-60"
                 />
+                {uploading && (
+                  <div className="text-xs text-warm">Uploading image...</div>
+                )}
                 <input
                   value={post.cover_image}
                   onChange={(e) => update('cover_image', e.target.value)}
@@ -205,7 +228,7 @@ export function PostForm({ initial, mode }: Props) {
                   images are served from the public blog-images bucket.
                 </span>
               </div>
-            </Field>
+            </div>
             <Field label="Cover image alt text (SEO + accessibility)">
               <input
                 value={post.cover_image_alt}
@@ -305,8 +328,14 @@ export function PostForm({ initial, mode }: Props) {
               )}
             </div>
             {error && <p className="text-xs text-gibraltar">{error}</p>}
+            {savedAt && !error && (
+              <p className="text-xs font-semibold text-success">
+                ✓ Saved {savedAt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+              </p>
+            )}
             <p className="text-[11px] text-faint">
               Publishes to <code className="rounded bg-surface px-1">/blog/{post.slug || 'slug'}</code>.
+              Live blog cached up to 60s after save.
             </p>
           </CardBody>
         </Card>
