@@ -67,10 +67,20 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     console.error('post update error', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
+  if (!data) {
+    console.error('post update returned no rows - likely RLS blocking write');
+    return NextResponse.json(
+      {
+        error:
+          'Save did not update any row. Most likely cause: SUPABASE_SERVICE_ROLE_KEY env var is missing on Vercel AND your admin email is not in the RLS allowlist. Check Vercel env vars or add your email to the blog_posts_admin_update policy.',
+      },
+      { status: 500 },
+    );
+  }
 
   revalidatePath('/blog');
-  if (data?.slug) revalidatePath(`/blog/${data.slug}`);
-  if (body.slug && body.slug !== data?.slug) revalidatePath(`/blog/${body.slug}`);
+  if (data.slug) revalidatePath(`/blog/${data.slug}`);
+  if (body.slug && body.slug !== data.slug) revalidatePath(`/blog/${body.slug}`);
 
   return NextResponse.json({ ok: true });
 }
@@ -90,9 +100,15 @@ export async function DELETE(_request: Request, { params }: { params: { id: stri
     .select('slug')
     .maybeSingle();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (!data) {
+    return NextResponse.json(
+      { error: 'Delete affected no rows - likely RLS blocking. See SUPABASE_SERVICE_ROLE_KEY env var or RLS allowlist.' },
+      { status: 500 },
+    );
+  }
 
   revalidatePath('/blog');
-  if (data?.slug) revalidatePath(`/blog/${data.slug}`);
+  if (data.slug) revalidatePath(`/blog/${data.slug}`);
 
   return NextResponse.json({ ok: true });
 }
