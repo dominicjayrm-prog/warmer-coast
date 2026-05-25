@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'The honest UK to Portugal relocation guide. NHR 2.0 (IFICI), D7 vs D8, IRS basics, healthcare, schooling, banking. Algarve vs Lisbon vs Porto reality.',
   alternates: { canonical: '/portugal' },
+  openGraph: { url: '/portugal' },
 };
 
 export default function PortugalPillar() {

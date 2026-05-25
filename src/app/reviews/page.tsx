@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Reviews · WarmerCoast',
   description: 'Verified reviews from British movers who used the WarmerCoast Spain, Portugal and Gibraltar relocation playbooks.',
   alternates: { canonical: '/reviews' },
+  openGraph: { url: '/reviews' },
 };
 
 export const revalidate = 600;

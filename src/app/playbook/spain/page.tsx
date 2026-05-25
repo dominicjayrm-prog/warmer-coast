@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'The structured Spain relocation playbook. Beckham Law, visas, banking, schools, year-one tax. £397, instant access, 30-day strong refund.',
   alternates: { canonical: '/playbook/spain' },
+  openGraph: { url: '/playbook/spain' },
 };
 
 export default function Page() {

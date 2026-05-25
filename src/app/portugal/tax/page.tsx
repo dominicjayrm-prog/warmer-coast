@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How Portuguese tax works for UK movers in 2026. IFICI / NHR 2.0 20% flat rate, qualifying activities, IRS brackets 13-48%, UK pension treatment under the double tax treaty, capital gains rules.',
   alternates: { canonical: '/portugal/tax' },
+  openGraph: { url: '/portugal/tax' },
 };
 
 export default function Page() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How Spanish tax residency works for British citizens in 2026. 183-day rule, centre of economic interests, Modelo 720 foreign-asset declaration, Beckham Law 24% flat rate, UK-Spain DTA pension mechanics, ISA treatment, CGT on UK property.',
   alternates: { canonical: '/spain/tax-residency' },
+  openGraph: { url: '/spain/tax-residency' },
 };
 
 export default function Page() {

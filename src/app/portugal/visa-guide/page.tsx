@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Every Portuguese visa route open to British applicants in 2026. D7 passive income €820/mo, D8 digital nomad €3,680/mo, Golden Visa fund route, family reunification. Income thresholds, documents, timelines.',
   alternates: { canonical: '/portugal/visa-guide' },
+  openGraph: { url: '/portugal/visa-guide' },
 };
 
 export default function Page() {

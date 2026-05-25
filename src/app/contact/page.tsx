@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Contact WarmerCoast',
   description: 'Get in touch with WarmerCoast. We reply to every email within 48 hours.',
   alternates: { canonical: '/contact' },
+  openGraph: { url: '/contact' },
 };
 
 export default function Page() {

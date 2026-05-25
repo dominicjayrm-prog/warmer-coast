@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to move to Gibraltar from the UK in 2026. Category 2 high-net-worth residency, HEPSS for specialists, frontier-worker mechanics, the new UK-EU treaty and Schengen border rules from 15 July 2026.',
   alternates: { canonical: '/gibraltar' },
+  openGraph: { url: '/gibraltar' },
 };
 
 export default function GibraltarPillar() {

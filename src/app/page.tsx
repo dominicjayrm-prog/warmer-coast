@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description:
     'Honest UK to Iberia relocation playbooks. Beckham Law, NHR 2.0, Gibraltar Cat 2. Visas, tax, banking, schools, sourced. Built in Cádiz.',
   alternates: { canonical: SITE.url },
+  openGraph: { url: SITE.url },
 };
 
 const trustChips = [
@@ -515,7 +516,7 @@ function FreeTools() {
       <div className="container-content">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <Badge tone="sea" uppercase>Eight free calculators</Badge>
+            <Badge tone="sea" uppercase>Nine free calculators</Badge>
             <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
               Free tools good enough that you might not need the playbook
             </h2>

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to open a Spanish bank account as a UK national in 2026. NIE first, then bank choice. Sabadell Expat, BBVA, Santander One, multi-currency strategy with Wise and Revolut.',
   alternates: { canonical: '/spain/banking' },
+  openGraph: { url: '/spain/banking' },
 };
 
 export default function Page() {

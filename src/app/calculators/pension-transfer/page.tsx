@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'UK pension transfer estimator for Iberia movers',
   description: 'Estimate QROPS/OTS impact, lifetime allowance, and the right pension structure for moving from the UK to Spain, Portugal or Gibraltar.',
   alternates: { canonical: '/calculators/pension-transfer' },
+  openGraph: { url: '/calculators/pension-transfer' },
 };
 
 export default function Page() {

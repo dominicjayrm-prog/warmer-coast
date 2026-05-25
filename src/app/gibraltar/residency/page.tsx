@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How British citizens become Gibraltar residents in 2026. Category 2 (£2m net worth, capped tax ~£44k), HEPSS for specialist roles, ordinary residency. Net worth thresholds, vetting timelines, approved accommodation, the new UK-EU treaty.',
   alternates: { canonical: '/gibraltar/residency' },
+  openGraph: { url: '/gibraltar/residency' },
 };
 
 export default function Page() {

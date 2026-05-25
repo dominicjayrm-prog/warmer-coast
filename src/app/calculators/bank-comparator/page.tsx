@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: 'Bank comparator for British movers to Spain, Portugal, Gibraltar',
   description: 'Compare Spanish, Portuguese, and Gibraltar banks plus Wise/Revolut multi-currency options for British movers.',
   alternates: { canonical: '/calculators/bank-comparator' },
+  openGraph: { url: '/calculators/bank-comparator' },
 };
 
 export default function Page() {

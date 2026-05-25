@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to open a Gibraltar bank account as a UK citizen in 2026. Gibraltar International Bank, Jyske Bank, NatWest International, due diligence, Sterling and Euro multi-currency accounts.',
   alternates: { canonical: '/gibraltar/banking' },
+  openGraph: { url: '/gibraltar/banking' },
 };
 
 export default function Page() {

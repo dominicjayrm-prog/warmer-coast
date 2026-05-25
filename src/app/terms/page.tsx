@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms of service | WarmerCoast',
   description: 'WarmerCoast terms of service. Educational content licence, refund mechanics, limitation of liability, governing law (England and Wales).',
   alternates: { canonical: '/terms' },
+  openGraph: { url: '/terms' },
 };
 
 export default function Page() {

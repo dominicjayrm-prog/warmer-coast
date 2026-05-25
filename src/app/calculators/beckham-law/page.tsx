@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     'Interactive Beckham Law calculator for British movers to Spain. Compare UK tax to the 24% Spanish impatriate regime, see annual and 6-year savings.',
   alternates: { canonical: '/calculators/beckham-law' },
+  openGraph: { url: '/calculators/beckham-law' },
 };
 
 export default function Page() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'The honest UK to Spain relocation guide. Beckham Law, non-lucrative visa, digital nomad visa, modelo 720, padrón, NIE, schools, healthcare. Sourced.',
   alternates: { canonical: '/spain' },
+  openGraph: { url: '/spain' },
 };
 
 export default function SpainPillar() {

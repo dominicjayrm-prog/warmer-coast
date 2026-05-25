@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Real Portuguese cost of living in 2026 for British movers. Lisbon rent vs Porto, Algarve coast vs inland, monthly budget per household size, healthcare, schools, sourced data.',
   alternates: { canonical: '/portugal/cost-of-living' },
+  openGraph: { url: '/portugal/cost-of-living' },
 };
 
 export default function Page() {

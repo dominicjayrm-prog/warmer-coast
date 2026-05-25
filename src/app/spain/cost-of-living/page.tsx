@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Real 2026 Spanish cost of living for British movers. Andalucía vs Valencia vs Madrid vs Cataluña vs the islands. Rent, groceries, healthcare, schools. Sourced from INE, Numbeo, ONS.',
   alternates: { canonical: '/spain/cost-of-living' },
+  openGraph: { url: '/spain/cost-of-living' },
 };
 
 export default function Page() {

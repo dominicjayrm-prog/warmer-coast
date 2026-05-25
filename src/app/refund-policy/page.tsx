@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Refund policy | WarmerCoast',
   description: 'Our 30-day strong conditional refund policy. Honoured, simple to claim. Less than 4% of buyers ever ask. Read the full mechanics here.',
   alternates: { canonical: '/refund-policy' },
+  openGraph: { url: '/refund-policy' },
 };
 
 export default function Page() {

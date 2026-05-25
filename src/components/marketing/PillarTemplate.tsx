@@ -294,7 +294,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
             Ready for the full {meta.name} playbook?
           </h2>
           <p className="mt-3 text-white/70">
-            8 sequenced modules, interactive checklists, sourced calculations, lifetime updates.
+            {meta.modules} sequenced modules, interactive checklists, sourced calculations, lifetime updates.
           </p>
           <Link
             href={`/playbook/${country}`}

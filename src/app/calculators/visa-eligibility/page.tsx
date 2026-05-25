@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     '12-question visa eligibility quiz. Branching logic, recommendation by country and route. Email-gated final result.',
   alternates: { canonical: '/calculators/visa-eligibility' },
+  openGraph: { url: '/calculators/visa-eligibility' },
 };
 
 export default function Page() {

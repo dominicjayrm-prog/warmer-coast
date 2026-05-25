@@ -25,6 +25,7 @@ export const COUNTRY_META: Record<
     flag: string;
     headline: string;
     price: number;
+    modules: number;
     blurb: string;
   }
 > = {
@@ -35,6 +36,7 @@ export const COUNTRY_META: Record<
     flag: '🇪🇸',
     headline: 'Move to Spain without the tax mistakes that cost most expats £20k+',
     price: 397,
+    modules: 8,
     blurb:
       'Beckham Law, non-lucrative visas, modelo 720, padrón, NIE. The full playbook for British adults moving to the Costa del Sol, Valencia, Barcelona, or the islands.',
   },
@@ -45,6 +47,7 @@ export const COUNTRY_META: Record<
     flag: '🇵🇹',
     headline: 'Move to Portugal with NHR 2.0, the D7, and tax structuring that actually works',
     price: 397,
+    modules: 7,
     blurb:
       'D7 vs D8 vs Golden Visa, NHR 2.0 successor scheme, IRS basics, healthcare, schooling, banking. Everything you wish you knew before the Algarve.',
   },
@@ -55,6 +58,7 @@ export const COUNTRY_META: Record<
     flag: '🇬🇮',
     headline: 'The Gibraltar Cat 2 route, frontier-worker reality, and crossing into Spain',
     price: 497,
+    modules: 6,
     blurb:
       'Cat 2 residency, HEPSS, frontier-worker mechanics, banking in a finance hub, schools, the post-Brexit Spain frontier. Premium, narrow market, deep playbook.',
   },

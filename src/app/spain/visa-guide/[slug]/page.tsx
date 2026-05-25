@@ -858,7 +858,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: s.metaTitle,
     description: s.metaDescription,
-    alternates: { canonical: `https://warmercoast.com/spain/visa-guide/${params.slug}` },
+    alternates: { canonical: `/spain/visa-guide/${params.slug}` },
+    openGraph: { url: `/spain/visa-guide/${params.slug}` },
   };
 }
 

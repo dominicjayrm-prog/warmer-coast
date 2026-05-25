@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How Gibraltar tax works for UK movers in 2026. ABS vs GIBS dual system, Cat 2 £118,000 income cap, HEPSS ceiling, UK government and private pensions under the double tax treaty.',
   alternates: { canonical: '/gibraltar/tax' },
+  openGraph: { url: '/gibraltar/tax' },
 };
 
 export default function Page() {

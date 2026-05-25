@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to open a Portuguese bank account as a UK national in 2026. NIF first, then bank choice. Millennium BCP, Novobanco, ActivoBank, multi-currency strategy with Wise.',
   alternates: { canonical: '/portugal/banking' },
+  openGraph: { url: '/portugal/banking' },
 };
 
 export default function Page() {

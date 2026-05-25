@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'The structured Gibraltar relocation playbook. Cat 2 mechanics, HEPSS, frontier-worker reality, banking, schools. £497, instant access.',
   alternates: { canonical: '/playbook/gibraltar' },
+  openGraph: { url: '/playbook/gibraltar' },
 };
 
 export default function Page() {

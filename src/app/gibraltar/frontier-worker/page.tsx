@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to live in Spain and work in Gibraltar as a UK citizen in 2026. The UK-EU treaty from 15 July 2026, EES exemption at the land border, tax residency, social security A1 certificate, where to live.',
   alternates: { canonical: '/gibraltar/frontier-worker' },
+  openGraph: { url: '/gibraltar/frontier-worker' },
 };
 
 export default function Page() {

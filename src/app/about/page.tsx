@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     'WarmerCoast is built by Dominic Roworth, a UK-born relocation researcher based on the Mediterranean coast. Honest, sourced playbooks for moving to Spain, Portugal or Gibraltar from the UK.',
   alternates: { canonical: '/about' },
+  openGraph: { url: '/about' },
 };
 
 const personDom = {
