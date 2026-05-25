@@ -615,15 +615,17 @@ function FoundersBlurb() {
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content grid items-center gap-10 lg:grid-cols-[1fr_1.1fr]">
         <div
-          aria-hidden
           className="relative aspect-[5/4] overflow-hidden rounded-card border border-border"
-          style={{
-            background:
-              'linear-gradient(135deg, #FFE9D5 0%, #FFB870 35%, #E67E3C 65%, #2E8585 100%)',
-          }}
         >
-          <div className="absolute inset-0 grain opacity-50" />
-          <div className="absolute bottom-4 left-4 right-4 rounded-card bg-white/90 p-4 backdrop-blur">
+          <Image
+            src="/gibraltar.jpg"
+            alt="The Rock of Gibraltar — one of the three British-mover destinations covered by WarmerCoast"
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" aria-hidden />
+          <div className="absolute bottom-4 left-4 right-4 rounded-card bg-white/95 p-4 backdrop-blur">
             <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
               British, working from Iberia
             </div>
