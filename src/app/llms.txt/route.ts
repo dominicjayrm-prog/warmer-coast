@@ -77,8 +77,14 @@ export async function GET() {
 ## Reference
 - [2026 relocation thresholds, sourced](${SITE.url}/thresholds) -single-page reference for UK 2026/27 tax bands, Spain Beckham Law cap, NLV/DNV income, Modelo 720, Portugal D7, IFICI, Gibraltar Cat 2 — every figure cites a primary source
 
+## Head-to-head comparisons
+- [Spain vs Portugal for British movers in 2026](${SITE.url}/spain-vs-portugal) -Beckham Law vs IFICI, NLV vs D7, wealth tax, citizenship pathway, English coverage, dimension by dimension
+- [Spain vs Gibraltar for British movers in 2026](${SITE.url}/spain-vs-gibraltar) -where Beckham Law wins, where Cat 2 wins, the £180-200k income tier that flips the answer, frontier-worker setup
+- [Portugal vs Gibraltar for British movers in 2026](${SITE.url}/portugal-vs-gibraltar) -IFICI vs Cat 2, D7 vs £2m net worth, EU citizenship vs sterling-zone banking
+
 ## About
 - [About Dominic Roworth](${SITE.url}/about)
+- [Author profile: Dominic Roworth](${SITE.url}/author/dominic-roworth) -all articles written by Dominic with Schema.org Person markup
 - [Reviews](${SITE.url}/reviews) - verified buyer reviews, each tied to a Stripe purchase
 - [Contact](${SITE.url}/contact)
 

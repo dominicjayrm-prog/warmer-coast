@@ -76,7 +76,7 @@ export function SubPillarTemplate({
     '@type': 'Article',
     headline: h1,
     description: intro,
-    author: { '@type': 'Person', name: 'Dominic Roworth', url: 'https://warmercoast.com/about' },
+    author: { '@type': 'Person', '@id': 'https://warmercoast.com/about#dominic-roworth', name: 'Dominic Roworth', url: 'https://warmercoast.com/author/dominic-roworth', image: 'https://warmercoast.com/dominic-roworth.jpg' },
     publisher: { '@type': 'Organization', name: 'WarmerCoast', url: 'https://warmercoast.com' },
     datePublished: '2026-01-15',
     dateModified: reviewedOn,
@@ -112,7 +112,7 @@ export function SubPillarTemplate({
           <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-faint">
             <span className="inline-flex items-center gap-1.5">
               <span className="inline-block h-6 w-6 rounded-pill bg-gradient-to-br from-warm-light to-warm" aria-hidden />
-              By <Link href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">Dominic Roworth</Link>
+              By <Link href="/author/dominic-roworth" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">Dominic Roworth</Link>
             </span>
             <span>·</span>
             <span>Reviewed {new Date(reviewedOn).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>

@@ -15,10 +15,12 @@ export const metadata: Metadata = {
 const personDom = {
   '@context': 'https://schema.org',
   '@type': 'Person',
+  '@id': 'https://warmercoast.com/about#dominic-roworth',
   name: 'Dominic Roworth',
   jobTitle: 'Founder, WarmerCoast',
   worksFor: { '@type': 'Organization', name: 'WarmerCoast' },
   url: 'https://warmercoast.com/about',
+  image: 'https://warmercoast.com/dominic-roworth.jpg',
   sameAs: [
     'https://www.linkedin.com/in/dominicroworth/',
     'https://www.instagram.com/dj.rar',
@@ -67,9 +69,15 @@ export default function AboutPage() {
         <div className="container-content max-w-3xl">
           <Card variant="bordered">
             <CardBody className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-7">
-              <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-pill border border-border bg-gradient-to-br from-warm-glow to-warm">
-                {/* Replace with a real headshot at /public/dominic.jpg whenever you upload one. */}
-                <Image src="/icon.svg" alt="" fill className="opacity-90" />
+              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-pill border border-border">
+                <Image
+                  src="/dominic-roworth.jpg"
+                  alt="Dominic Roworth, founder of WarmerCoast"
+                  fill
+                  sizes="112px"
+                  className="object-cover"
+                  priority
+                />
               </div>
               <div className="flex-1">
                 <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">

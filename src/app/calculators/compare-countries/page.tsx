@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { CompareCountries } from '@/components/calculators/CompareCountries';
+import { RelatedResources } from '@/components/marketing/RelatedResources';
 
 export const metadata: Metadata = {
   title: 'Spain vs Portugal vs Gibraltar | Decide where to move',
@@ -27,6 +28,18 @@ export default function Page() {
           <CompareCountries />
         </div>
       </div>
+
+      <RelatedResources
+        tone="surface"
+        heading="Or go deeper on a specific pair"
+        subheading="The interactive comparator above weighs all three. The head-to-head pages below tell you the verdict — sourced, dimension by dimension."
+        items={[
+          { kind: 'Compare', href: '/spain-vs-portugal', label: 'Spain vs Portugal — full comparison', blurb: 'Beckham Law vs IFICI, NLV vs D7, wealth tax, citizenship, English coverage.' },
+          { kind: 'Compare', href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar — full comparison', blurb: 'The income tier where Cat 2 starts beating Beckham Law.' },
+          { kind: 'Compare', href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar — full comparison', blurb: 'IFICI vs Cat 2, D7 vs £2m net worth, EU citizenship vs sterling-zone banking.' },
+          { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'Every income, tax and visa figure across all three countries with primary-source links.' },
+        ]}
+      />
 
       <script
         type="application/ld+json"

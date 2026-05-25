@@ -17,6 +17,9 @@ const columns = [
       { href: '/spain', label: 'Spain' },
       { href: '/portugal', label: 'Portugal' },
       { href: '/gibraltar', label: 'Gibraltar' },
+      { href: '/spain-vs-portugal', label: 'Spain vs Portugal' },
+      { href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar' },
+      { href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar' },
     ],
   },
   {
@@ -38,6 +41,7 @@ const columns = [
     title: 'Company',
     links: [
       { href: '/about', label: 'About Dominic' },
+      { href: '/author/dominic-roworth', label: 'Author: Dominic Roworth' },
       { href: '/reviews', label: 'Reviews' },
       { href: '/blog', label: 'Blog' },
       { href: '/contact', label: 'Contact' },

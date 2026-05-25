@@ -283,13 +283,16 @@ export default function Page() {
       <RelatedResources
         tone="white"
         heading="Where to go from here"
-        subheading="The thresholds page is a reference. These are the deep dives that explain how to use them."
+        subheading="The thresholds page is a reference. These are the deep dives and comparisons that explain how to use them."
         items={[
           { kind: 'Pillar', href: '/spain', label: 'Spain for British movers', blurb: 'The whole topic: tax, visas, banking, residency, schools. Sourced from gov.uk and AEAT.' },
           { kind: 'Pillar', href: '/portugal', label: 'Portugal for British movers', blurb: 'D7, IFICI, IRS basics, banking and life-admin. The full topical cluster.' },
           { kind: 'Pillar', href: '/gibraltar', label: 'Gibraltar for British movers', blurb: 'Cat 2, frontier-worker mechanics, banking in a finance hub, the new EU border treaty.' },
+          { kind: 'Compare', href: '/spain-vs-portugal', label: 'Spain vs Portugal', blurb: 'Beckham Law vs IFICI, NLV vs D7, dimension by dimension.' },
+          { kind: 'Compare', href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar', blurb: 'Where Beckham wins, where Cat 2 wins, and the income tier that flips the answer.' },
+          { kind: 'Compare', href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar', blurb: 'IFICI vs Cat 2, EU citizenship vs sterling-zone banking.' },
           { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law tax-saving calculator', blurb: 'Standard IRPF vs Beckham 24% flat — find the break-even for your income.' },
-          { kind: 'Calculator', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Side-by-side: tax, cost, visa difficulty, English-speaking, weather, schools.' },
+          { kind: 'Calculator', href: '/calculators/compare-countries', label: 'Interactive comparator', blurb: 'Side-by-side: tax, cost, visa difficulty, English-speaking, weather, schools.' },
           { kind: 'Calculator', href: '/calculators/residency-timeline', label: 'When does the 183-day clock start?', blurb: 'Map your move dates against UK split-year treatment and your new country’s rules.' },
         ]}
       />
