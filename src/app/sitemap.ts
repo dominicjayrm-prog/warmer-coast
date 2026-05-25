@@ -27,6 +27,11 @@ const staticRoutes: Route[] = [
   // Sourced reference hub — re-verified quarterly, treated as fresh
   { path: '/thresholds', priority: 0.9, changeFrequency: 'weekly' },
 
+  // Head-to-head comparison pages — each targets a specific high-intent query
+  { path: '/spain-vs-portugal', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/spain-vs-gibraltar', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/portugal-vs-gibraltar', priority: 0.85, changeFrequency: 'monthly' },
+
   // Sub-pillars
   { path: '/spain/visa-guide', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/spain/tax-residency', priority: 0.8, changeFrequency: 'monthly' },
@@ -59,6 +64,7 @@ const staticRoutes: Route[] = [
 
   // Trust / E-E-A-T
   { path: '/about', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/author/dominic-roworth', priority: 0.6, changeFrequency: 'weekly' },
   { path: '/reviews', priority: 0.6, changeFrequency: 'weekly' },
   { path: '/contact', priority: 0.4, changeFrequency: 'yearly' },
 

@@ -117,8 +117,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <p className="mt-5 text-[18px] leading-relaxed text-ink/85 font-medium">{post.excerpt}</p>
         <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-faint">
           <span className="inline-flex items-center gap-1.5">
-            <span aria-hidden className="inline-block h-6 w-6 rounded-pill bg-gradient-to-br from-warm-light to-warm" />
-            By <Link href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">{post.author_name}</Link>
+            <span aria-hidden className="inline-block h-6 w-6 overflow-hidden rounded-pill border border-border bg-surface">
+              <img src="/dominic-roworth.jpg" alt="" className="h-full w-full object-cover" />
+            </span>
+            By <Link href="/author/dominic-roworth" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">{post.author_name}</Link>
           </span>
           <span>·</span>
           <span>{new Date(post.published_at).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
@@ -270,8 +272,10 @@ export default async function BlogPost({ params }: { params: { slug: string } })
             dateModified: post.updated_at || post.published_at,
             author: {
               '@type': 'Person',
+              '@id': 'https://warmercoast.com/about#dominic-roworth',
               name: post.author_name,
-              url: 'https://warmercoast.com/about',
+              url: 'https://warmercoast.com/author/dominic-roworth',
+              image: 'https://warmercoast.com/dominic-roworth.jpg',
             },
             publisher: {
               '@type': 'Organization',

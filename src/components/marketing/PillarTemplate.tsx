@@ -16,8 +16,9 @@ const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
     { kind: 'Deep dive', href: '/spain/visa-guide', label: 'Spain visa guide: NLV vs DNV', blurb: 'Income thresholds, document packs, consulate quirks, the 6-month Beckham election window.' },
     { kind: 'Deep dive', href: '/spain/banking', label: 'Spanish banking for UK movers', blurb: 'Sabadell, BBVA, Santander, Openbank — what each requires from a British applicant.' },
     { kind: 'Deep dive', href: '/spain/cost-of-living', label: 'Spain cost of living for British movers', blurb: 'Madrid, Barcelona, Valencia, Sevilla, Málaga — real monthly outgoings in 2026.' },
+    { kind: 'Compare', href: '/spain-vs-portugal', label: 'Spain vs Portugal compared', blurb: 'Beckham vs IFICI, NLV vs D7, wealth tax, citizenship — dimension by dimension.' },
+    { kind: 'Compare', href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar compared', blurb: 'Where Beckham wins, where Cat 2 wins, and the income tier that flips the answer.' },
     { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law tax-saving calculator', blurb: 'Standard IRPF vs Beckham flat 24%. Find your break-even.' },
-    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Side-by-side on tax, cost, visa difficulty, English-speaking, weather, schools.' },
     { kind: 'Playbook', href: '/playbook/spain', label: 'The Spain Playbook · £397', blurb: '8 sequenced modules, vetted asesor referrals, padrón video walkthrough, lifetime updates.' },
   ],
   portugal: [
@@ -26,8 +27,9 @@ const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
     { kind: 'Deep dive', href: '/portugal/visa-guide', label: 'Portugal visa guide: D7 vs D8', blurb: 'Passive-income D7 vs digital-nomad D8, the closed Golden Visa, family reunification.' },
     { kind: 'Deep dive', href: '/portugal/banking', label: 'Portuguese banking for UK movers', blurb: 'ActivoBank, Millennium BCP, fiscal-representative requirement, multi-currency strategy.' },
     { kind: 'Deep dive', href: '/portugal/cost-of-living', label: 'Portugal cost of living for British movers', blurb: 'Lisbon, Porto, Algarve — and what changed after the 2022-2024 rental surge.' },
+    { kind: 'Compare', href: '/spain-vs-portugal', label: 'Spain vs Portugal compared', blurb: 'The decision most British movers wrestle with first.' },
+    { kind: 'Compare', href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar compared', blurb: 'IFICI vs Cat 2, D7 vs £2m net worth, citizenship paths, banking.' },
     { kind: 'Calculator', href: '/calculators/cost-of-living', label: 'UK vs Portugal cost comparator', blurb: 'Monthly breakdown by city. Numbeo + ONS sourced.' },
-    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'See where Portugal wins on tax, where it loses, and where it really shines for retirees.' },
     { kind: 'Playbook', href: '/playbook/portugal', label: 'The Portugal Playbook · £397', blurb: '7 sequenced modules, vetted contabilista referrals, year-one IRS walkthrough.' },
   ],
   gibraltar: [
@@ -36,8 +38,9 @@ const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
     { kind: 'Deep dive', href: '/gibraltar/tax', label: 'Gibraltar tax system: ABS, GIBS, Cat 2, HEPSS', blurb: 'How the bands actually work, the £118k cap mechanism, and which UK income stays UK-taxed.' },
     { kind: 'Deep dive', href: '/gibraltar/frontier-worker', label: 'Frontier worker: live Spain, work Gibraltar', blurb: 'The post-Brexit border, the 2026 EU treaty, tax-treaty mechanics, day counting.' },
     { kind: 'Deep dive', href: '/gibraltar/banking', label: 'Gibraltar banking for UK movers', blurb: 'GBP banking inside Iberia. Vetting, source-of-funds, frontier-worker setup.' },
+    { kind: 'Compare', href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar compared', blurb: 'Beckham Law vs Cat 2 — and the income tier that flips the answer.' },
+    { kind: 'Compare', href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar compared', blurb: 'For the HNW Algarve-vs-Rock decision: IFICI vs Cat 2, EU vs sterling.' },
     { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law (Spain) calculator', blurb: 'Useful if you’re also considering Spain as a Cat 2 alternative.' },
-    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Where Cat 2 wins, where it loses, and the income level where it becomes a no-brainer.' },
     { kind: 'Playbook', href: '/playbook/gibraltar', label: 'The Gibraltar Playbook · £497', blurb: '6 deep modules, frontier-worker mechanics, banking in a finance hub, schools, Spain-side.' },
   ],
 };
@@ -119,8 +122,10 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs, revi
     description: hero.intro,
     author: {
       '@type': 'Person',
+      '@id': 'https://warmercoast.com/about#dominic-roworth',
       name: 'Dominic Roworth',
-      url: 'https://warmercoast.com/about',
+      url: 'https://warmercoast.com/author/dominic-roworth',
+      image: 'https://warmercoast.com/dominic-roworth.jpg',
     },
     publisher: {
       '@type': 'Organization',
@@ -186,7 +191,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs, revi
             </h1>
             <p className="text-[18px] font-medium leading-relaxed text-ink/85">{hero.intro}</p>
             <div className="flex items-center gap-2 text-xs text-faint">
-              <span>By <a href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dominic Roworth</a></span>
+              <span>By <a href="/author/dominic-roworth" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dominic Roworth</a></span>
               <span>·</span>
               <span>Reviewed {new Date(reviewedOn).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
               <span>·</span>
