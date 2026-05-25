@@ -6,6 +6,11 @@ import { BlogEditor } from './BlogEditor';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SeoScanner } from './SeoScanner';
 
+interface Faq {
+  question: string;
+  answer: string;
+}
+
 interface PostInput {
   id?: string;
   title: string;
@@ -21,6 +26,7 @@ interface PostInput {
   status: 'draft' | 'published';
   author_name: string;
   tags: string[];
+  faqs: Faq[];
 }
 
 interface Props {
@@ -42,6 +48,7 @@ const defaultPost: PostInput = {
   status: 'draft',
   author_name: 'Dominic Roworth',
   tags: [],
+  faqs: [],
 };
 
 export function PostForm({ initial, mode }: Props) {
@@ -101,6 +108,7 @@ export function PostForm({ initial, mode }: Props) {
       read_time_minutes:
         Number(post.read_time_minutes) ||
         Math.max(1, Math.round(stripHtml(post.content).split(/\s+/).length / 220)),
+      faqs: post.faqs.filter((f) => f.question.trim() && f.answer.trim()),
     };
     try {
       const url = mode === 'create' ? '/api/admin/posts' : `/api/admin/posts/${initial?.id}`;
@@ -258,6 +266,88 @@ export function PostForm({ initial, mode }: Props) {
                 className="w-24 rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
               />
             </Field>
+          </CardBody>
+        </Card>
+
+        <Card variant="bordered">
+          <CardBody className="flex flex-col gap-3">
+            <div className="flex items-center justify-between">
+              <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
+                FAQs (FAQPage schema)
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setPost((p) => ({
+                    ...p,
+                    faqs: [...p.faqs, { question: '', answer: '' }],
+                  }))
+                }
+                className="rounded-pill border border-border bg-white px-2.5 py-1 text-[11px] font-semibold text-ink hover:border-ink"
+              >
+                + Add FAQ
+              </button>
+            </div>
+            {post.faqs.length === 0 && (
+              <p className="text-[11px] text-faint">
+                Add 3-5 FAQs for FAQPage rich-result eligibility. Each Q&amp;A renders
+                on the page and is emitted as JSON-LD.
+              </p>
+            )}
+            {post.faqs.map((f, i) => (
+              <div
+                key={i}
+                className="flex flex-col gap-1.5 rounded-md border border-border bg-white p-2.5"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-faint">
+                    Q{i + 1}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPost((p) => ({
+                        ...p,
+                        faqs: p.faqs.filter((_, idx) => idx !== i),
+                      }))
+                    }
+                    className="text-[11px] font-semibold text-gibraltar hover:underline"
+                  >
+                    Remove
+                  </button>
+                </div>
+                <input
+                  value={f.question}
+                  onChange={(e) =>
+                    setPost((p) => ({
+                      ...p,
+                      faqs: p.faqs.map((x, idx) =>
+                        idx === i ? { ...x, question: e.target.value } : x,
+                      ),
+                    }))
+                  }
+                  placeholder="Question (use a real query users would search)"
+                  className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
+                />
+                <textarea
+                  value={f.answer}
+                  onChange={(e) =>
+                    setPost((p) => ({
+                      ...p,
+                      faqs: p.faqs.map((x, idx) =>
+                        idx === i ? { ...x, answer: e.target.value } : x,
+                      ),
+                    }))
+                  }
+                  placeholder="Answer (plain text, 1-3 sentences, no HTML)"
+                  rows={3}
+                  className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm resize-none"
+                />
+                <div className="text-[10px] text-faint">
+                  {f.answer.length} chars · aim 60-300
+                </div>
+              </div>
+            ))}
           </CardBody>
         </Card>
 

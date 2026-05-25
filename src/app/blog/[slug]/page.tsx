@@ -9,6 +9,11 @@ import { SITE } from '@/lib/site';
 
 export const revalidate = 60;
 
+interface Faq {
+  question: string;
+  answer: string;
+}
+
 interface Post {
   id: string;
   slug: string;
@@ -25,6 +30,7 @@ interface Post {
   meta_title: string;
   meta_description: string;
   tags: string[] | null;
+  faqs: Faq[] | null;
 }
 
 async function getPost(slug: string): Promise<Post | null> {
@@ -88,6 +94,9 @@ export default async function BlogPost({ params }: { params: { slug: string } })
 
   const altText = post.cover_image_alt || post.title;
   const isAbsolute = post.cover_image?.startsWith('http');
+  const faqs: Faq[] = Array.isArray(post.faqs)
+    ? post.faqs.filter((f) => f && f.question && f.answer)
+    : [];
 
   return (
     <article className="bg-white">
@@ -151,6 +160,35 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           className="prose prose-base max-w-none text-[17px] leading-[1.8] text-ink/90 prose-headings:display prose-headings:tracking-tight prose-headings:text-ink prose-headings:mt-10 prose-headings:mb-4 prose-h2:text-[28px] prose-h2:font-semibold prose-h3:text-[22px] prose-strong:text-ink prose-a:text-warm prose-a:underline-offset-2 hover:prose-a:underline prose-img:rounded-card prose-img:border prose-img:border-border prose-blockquote:border-l-4 prose-blockquote:border-warm prose-blockquote:not-italic prose-blockquote:font-medium prose-blockquote:text-ink/90 prose-blockquote:pl-5 prose-li:my-1.5"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        {faqs.length > 0 && (
+          <section className="mt-14" aria-labelledby="faq-heading">
+            <h2
+              id="faq-heading"
+              className="display text-[28px] font-semibold tracking-tight text-ink"
+            >
+              Frequently asked questions
+            </h2>
+            <div className="mt-5 divide-y divide-border rounded-card border border-border bg-surface/40">
+              {faqs.map((f, i) => (
+                <details key={i} className="group px-5 py-4 open:bg-white">
+                  <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-[17px] font-semibold text-ink">
+                    <span>{f.question}</span>
+                    <span
+                      aria-hidden
+                      className="mt-1 inline-block text-warm transition-transform group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div className="mt-3 text-[15.5px] leading-relaxed text-ink/85">
+                    {f.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Author bio card */}
         <Card variant="bordered" className="mt-14">
@@ -256,6 +294,25 @@ export default async function BlogPost({ params }: { params: { slug: string } })
           }),
         }}
       />
+      {faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: f.answer,
+                },
+              })),
+            }),
+          }}
+        />
+      )}
     </article>
   );
 }
