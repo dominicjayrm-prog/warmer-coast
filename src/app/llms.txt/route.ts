@@ -69,6 +69,9 @@ export async function GET() {
 - [Iberia bank comparator](${SITE.url}/calculators/bank-comparator)
 - [Should you move abroad? quiz](${SITE.url}/quiz)
 
+## Reference
+- [2026 relocation thresholds, sourced](${SITE.url}/thresholds) -single-page reference for UK 2026/27 tax bands, Spain Beckham Law cap, NLV/DNV income, Modelo 720, Portugal D7, IFICI, Gibraltar Cat 2 — every figure cites a primary source
+
 ## About
 - [About Dominic Roworth](${SITE.url}/about)
 - [Reviews](${SITE.url}/reviews) - verified buyer reviews, each tied to a Stripe purchase

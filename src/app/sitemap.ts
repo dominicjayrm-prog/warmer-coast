@@ -34,6 +34,7 @@ const staticRoutes = [
   '/calculators/bank-comparator',
   '/quiz',
   '/blog',
+  '/thresholds',
   '/about',
   '/reviews',
   '/contact',
