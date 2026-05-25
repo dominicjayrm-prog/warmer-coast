@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
+import { RelatedResources } from '@/components/marketing/RelatedResources';
 
 const banks = [
   { name: 'Sabadell · Expat', country: 'Spain', fees: 'Free with €700/mo income', multiCurrency: 'No', appQuality: 4, branchAccess: 5, expatFriendly: 5 },
@@ -70,6 +71,18 @@ export default function Page() {
           policies change quarterly, always confirm direct with the institution.
         </p>
       </div>
+
+      <RelatedResources
+        tone="surface"
+        heading="Country-specific banking deep dives"
+        subheading="The comparator is the short version. The deep dives explain how to actually open an account in each country, NIE/NIF/Cat 2 vetting, and FX strategy."
+        items={[
+          { kind: 'Deep dive', href: '/spain/banking', label: 'Spanish banking for UK movers', blurb: 'Sabadell, BBVA, Santander, Openbank — what each requires from a British applicant.' },
+          { kind: 'Deep dive', href: '/portugal/banking', label: 'Portuguese banking for UK movers', blurb: 'ActivoBank, Millennium BCP, Novo Banco, fiscal-representative requirement.' },
+          { kind: 'Deep dive', href: '/gibraltar/banking', label: 'Gibraltar banking for UK movers', blurb: 'GBP-zone banking inside Iberia. Vetting, source-of-funds, frontier-worker setup.' },
+          { kind: 'Reference', href: '/thresholds', label: '2026 income thresholds for visas', blurb: 'The income figures your bank may ask you to evidence on account opening.' },
+        ]}
+      />
     </section>
   );
 }

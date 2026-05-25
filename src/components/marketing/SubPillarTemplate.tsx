@@ -6,6 +6,7 @@ import { Card, CardBody } from '@/components/ui/Card';
 import { COUNTRY_META, type Country } from '@/lib/site';
 import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
 import { CountryAlternativesCallout } from '@/components/marketing/CountryAlternativesCallout';
+import { RelatedResources, type RelatedResource } from '@/components/marketing/RelatedResources';
 
 export interface SpokeLink {
   href: string;
@@ -38,6 +39,9 @@ interface Props {
   subPillarSlug?: string;
   /** Real ISO date of the last manual review. Don't auto-bump. */
   reviewedOn?: string;
+  /** Cross-links rendered at the very bottom — calculators, sibling sub-pillars, related deep dives. */
+  relatedResources?: RelatedResource[];
+  relatedHeading?: string;
 }
 
 export function SubPillarTemplate({
@@ -52,6 +56,8 @@ export function SubPillarTemplate({
   faqs,
   subPillarSlug,
   reviewedOn = '2026-05-25',
+  relatedResources,
+  relatedHeading,
 }: Props) {
   const meta = COUNTRY_META[country];
   const breadcrumb = subPillarSlug
@@ -335,6 +341,15 @@ export function SubPillarTemplate({
             </div>
           </div>
         </section>
+      )}
+
+      {relatedResources && relatedResources.length > 0 && (
+        <RelatedResources
+          heading={relatedHeading ?? 'Tools and deep dives that pair with this'}
+          subheading="Sourced 2026 references, calculators, and sibling deep dives."
+          items={relatedResources}
+          tone="white"
+        />
       )}
 
       <LatestPostsStrip

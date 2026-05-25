@@ -118,6 +118,13 @@ export default function Page() {
         { q: 'What about winter heating costs?', a: 'Significantly higher than expected. Spanish houses, especially in southern Spain, are often poorly insulated against winter cold. Electric heating bills can hit €150-€250 per month in older properties from December to February. Northern Spain (Asturias, Galicia, País Vasco) has milder summers but proper Atlantic winters.' },
         { q: 'Are Spanish private schools good?', a: 'Spanish concertados (state-subsidised private schools) and fully private Spanish schools generally produce strong academic outcomes. International schools serve families wanting an English-language curriculum and onward UK or US university pathway. Most British movers in Andalucía and Valencia choose Spanish state schools for primary and switch to international for secondary.' },
       ]}
+      relatedResources={[
+        { kind: 'Calculator', href: '/calculators/cost-of-living', label: 'UK city vs Spain city cost comparator', blurb: 'Plug in your UK city and a Spanish target. Numbeo + ONS sourced, monthly breakdown.' },
+        { kind: 'Calculator', href: '/calculators/school-cost', label: 'International school cost estimator', blurb: 'Sliding-scale fees for the main British-curriculum schools in Andalucía, Valencia, Catalonia.' },
+        { kind: 'Compare', href: '/portugal/cost-of-living', label: 'Cost of living: Portugal vs Spain', blurb: 'Where Portugal is cheaper, where it’s not, and how Lisbon now compares to Madrid.' },
+        { kind: 'Deep dive', href: '/spain/banking', label: 'Spanish banking for British movers', blurb: 'The fees and FX bleed that show up in your monthly outgoings if you don’t set it up right.' },
+        { kind: 'Reference', href: '/thresholds', label: '2026 income thresholds for visas', blurb: 'Match your monthly outgoings to the NLV / DNV income proofs Spain requires.' },
+      ]}
     />
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { CostOfLivingCalculator } from '@/components/calculators/CostOfLivingCalculator';
 import { NewsletterCapture } from '@/components/marketing/NewsletterCapture';
+import { RelatedResources } from '@/components/marketing/RelatedResources';
 
 export const metadata: Metadata = {
   title: 'Cost of living comparator | UK vs Spain, Portugal, Gibraltar 2026',
@@ -39,6 +40,19 @@ export default function Page() {
           </div>
         </div>
       </div>
+
+      <RelatedResources
+        tone="surface"
+        heading="The story behind each city number"
+        subheading="The comparator is the short answer. These are the city-level guides that explain why."
+        items={[
+          { kind: 'Deep dive', href: '/spain/cost-of-living', label: 'Spain cost of living for British movers', blurb: 'Madrid, Barcelona, Valencia, Sevilla, Málaga — what your monthly outgoings actually look like.' },
+          { kind: 'Deep dive', href: '/portugal/cost-of-living', label: 'Portugal cost of living for British movers', blurb: 'Lisbon, Porto, Algarve — and what changed after the 2022-2024 rental surge.' },
+          { kind: 'Calculator', href: '/calculators/school-cost', label: 'International school cost estimator', blurb: 'The single biggest variable in family-mover budgets — solved with real fee data.' },
+          { kind: 'Calculator', href: '/calculators/property-tax', label: 'Iberia property purchase tax', blurb: 'IMT, IMI, ITP, IVA, AJD — the tax stack on buying a home, broken out per country.' },
+          { kind: 'Reference', href: '/thresholds', label: '2026 income thresholds, sourced', blurb: 'The minimum income figures your visa requires — pair these with your cost estimate.' },
+        ]}
+      />
     </section>
   );
 }

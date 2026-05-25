@@ -115,6 +115,13 @@ export default function Page() {
         { q: 'Will UK HMRC see my Gibraltar account?', a: 'Yes, under the Common Reporting Standard (CRS). Gibraltar reports account balances annually to your tax residence country. If you remain UK tax resident, HMRC sees the account. This is a transparency feature, not a problem if your tax filing is correct.' },
         { q: 'Do I need a Gibraltar bank as a frontier worker living in Spain?', a: 'Strongly recommended even if you live in Spain. Most Gibraltar employers pay salary into Gibraltar bank accounts, and the new UK-EU treaty makes the cross-border banking layer more important. Many frontier workers use a Gibraltar account plus a Spanish account.' },
       ]}
+      relatedResources={[
+        { kind: 'Calculator', href: '/calculators/bank-comparator', label: 'Bank comparator — Iberia + multi-currency', blurb: 'Side-by-side fees, multi-currency, app quality and expat-friendliness across all four.' },
+        { kind: 'Deep dive', href: '/gibraltar/frontier-worker', label: 'Living Spain, working Gibraltar: the frontier-worker setup', blurb: 'The reason most movers need both a Gibraltar bank and a Spanish bank simultaneously.' },
+        { kind: 'Compare', href: '/spain/banking', label: 'Banking in Spain', blurb: 'For frontier workers — what you’ll need on the Spain side of the border.' },
+        { kind: 'Compare', href: '/portugal/banking', label: 'Banking in Portugal', blurb: 'Less common combination but relevant for Algarve-based remote workers.' },
+        { kind: 'Reference', href: '/thresholds', label: '2026 thresholds for British movers', blurb: 'Cat 2 net-worth requirement, source-of-funds threshold, all the figures in one place.' },
+      ]}
     />
   );
 }
