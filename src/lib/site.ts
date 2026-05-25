@@ -6,7 +6,6 @@ export const SITE = {
   founder: 'Dominic Roworth',
   description:
     'Practical relocation playbooks for British adults moving to Spain, Portugal, or Gibraltar. Tax, visas, banking, schools, the whole move planned.',
-  defaultOgImage: '/og/default.png',
   socials: {
     instagram: 'https://instagram.com/warmercoast',
     youtube: 'https://youtube.com/@warmercoast',
