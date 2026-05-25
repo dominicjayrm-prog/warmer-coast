@@ -6,7 +6,6 @@ import { SITE } from '@/lib/site';
 import { Nav } from '@/components/nav/Nav';
 import { Footer } from '@/components/nav/Footer';
 import { CookieBanner } from '@/components/trust/CookieBanner';
-import { ExitIntentModal } from '@/components/marketing/ExitIntentModal';
 import { Analytics } from '@/components/analytics/Analytics';
 
 const inter = Inter({
@@ -69,7 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <Suspense fallback={null}>
           <CookieBanner />
-          <ExitIntentModal />
           <Analytics />
         </Suspense>
       </body>
