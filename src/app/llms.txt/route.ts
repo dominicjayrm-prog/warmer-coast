@@ -53,14 +53,20 @@ export async function GET() {
 - [Spain tax residency](${SITE.url}/spain/tax-residency) -183-day rule, Beckham Law, modelo 720, UK pensions
 - [Spain banking](${SITE.url}/spain/banking)
 - [Spain cost of living](${SITE.url}/spain/cost-of-living)
+- [Spain healthcare](${SITE.url}/spain/healthcare) -SNS, Convenio Especial (€60/€157), S1, NLV/DNV insurance spec
+- [Spain schools](${SITE.url}/spain/schools) -NABSS British schools, IB, public bilingual, real fee ranges
 - [Portugal visa guide](${SITE.url}/portugal/visa-guide) -D7, D8, Golden Visa
 - [Portugal tax](${SITE.url}/portugal/tax) -NHR 2.0 / IFICI, IRS
 - [Portugal banking](${SITE.url}/portugal/banking)
 - [Portugal cost of living](${SITE.url}/portugal/cost-of-living)
+- [Portugal healthcare](${SITE.url}/portugal/healthcare) -SNS, número de utente, S1, post-2022 user-fee abolition
+- [Portugal schools](${SITE.url}/portugal/schools) -International schools in Lisbon/Porto/Algarve, IB/A-Level, fee ranges
 - [Gibraltar residency](${SITE.url}/gibraltar/residency) -Cat 2, HEPSS, ordinary
 - [Gibraltar tax](${SITE.url}/gibraltar/tax)
 - [Gibraltar frontier worker](${SITE.url}/gibraltar/frontier-worker)
 - [Gibraltar banking](${SITE.url}/gibraltar/banking)
+- [Gibraltar healthcare](${SITE.url}/gibraltar/healthcare) -GHA, reciprocal UK arrangement, Cat 2 private requirement
+- [Gibraltar schools](${SITE.url}/gibraltar/schools) -State Westside/Bayside, Prior Park independent, UK curriculum
 
 ## Free interactive tools
 - [Beckham Law tax saving calculator](${SITE.url}/calculators/beckham-law)
