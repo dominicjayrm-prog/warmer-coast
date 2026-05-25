@@ -30,6 +30,7 @@ const columns = [
       { href: '/calculators/property-tax', label: 'Property tax' },
       { href: '/calculators/school-cost', label: 'School cost' },
       { href: '/calculators/residency-timeline', label: 'Residency timeline' },
+      { href: '/thresholds', label: '2026 thresholds reference' },
       { href: '/quiz', label: 'Should you move? quiz' },
     ],
   },

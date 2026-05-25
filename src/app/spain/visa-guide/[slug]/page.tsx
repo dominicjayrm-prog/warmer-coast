@@ -55,10 +55,10 @@ const spokes: Record<string, Spoke> = {
       'The passive-income route. Best for retirees, people living off investment income, and anyone who genuinely does not need to work while in Spain. Established since the early 2000s, well-understood by every Spanish consulate in the UK.',
     metaTitle: 'Spain Non-Lucrative Visa 2026: Income, Process, Pitfalls',
     metaDescription:
-      'How the Spain NLV works in 2026: ~€30,000 IPREM threshold, no work rule, renewal cycle, residency path. Sourced 2026 guide for British applicants.',
+      'How the Spain NLV works in 2026: €28,800/yr IPREM threshold, no work rule, renewal cycle, residency path. Sourced 2026 guide for British applicants.',
     bullets: [
-      'Primary applicant income: roughly €30,000 per year (400% of IPREM 2026)',
-      'Dependants: add approximately €7,500 per person (100% of IPREM)',
+      'Primary applicant income: €28,800 per year (400% of IPREM 2026 · €2,400/mo)',
+      'Dependants: add €7,200 per person per year (100% of IPREM · €600/mo)',
       'No work in or for Spain whatsoever during NLV status',
       'Initial 1-year visa, then 2-year renewals, permanent residency at 5 years',
       'Apply from the UK at the Spanish Consulate in London, Manchester or Edinburgh',
@@ -89,25 +89,24 @@ const spokes: Record<string, Spoke> = {
       {
         id: 'income-threshold',
         title: 'The 2026 income threshold, properly calculated',
-        glance: { label: 'Primary applicant minimum', value: '~€30,000', note: 'Plus ~€7,500 per dependant' },
+        glance: { label: 'Primary applicant minimum', value: '€28,800', note: 'Plus €7,200 per dependant' },
         body: (
           <>
             <p>
               The threshold is set as a multiple of IPREM (Indicador Público de Renta de Efectos
-              Múltiples), Spain&apos;s public income reference. IPREM 2026 is approximately €600
-              monthly / €7,200 annually for a 12-month calculation, or €8,400 for the standard
-              14-payment Spanish year.
+              Múltiples), Spain&apos;s public income reference. IPREM 2026 is €600 monthly /
+              €7,200 annually, unchanged from 2025.
             </p>
             <p>The NLV requires:</p>
             <ul>
-              <li>Primary applicant: 400% of IPREM annually, roughly €30,000</li>
-              <li>Each dependant: 100% of IPREM, roughly €7,500</li>
+              <li>Primary applicant: 400% of IPREM annually = €28,800 (€2,400 per month)</li>
+              <li>Each dependant: 100% of IPREM = €7,200 (€600 per month)</li>
             </ul>
             <p>
-              A British couple needs around €37,500 demonstrable annual income. A family of four
-              with two children needs around €45,000. The consulate accepts UK pension statements,
-              tax-return income, dividend records and rental income; you must show this is recurring
-              and likely to continue.
+              A British couple needs €36,000 demonstrable annual income. A family of four with two
+              children needs €50,400. The consulate accepts UK pension statements, tax-return
+              income, dividend records and rental income; you must show this is recurring and
+              likely to continue.
             </p>
           </>
         ),
@@ -858,7 +857,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: s.metaTitle,
     description: s.metaDescription,
-    alternates: { canonical: `https://warmercoast.com/spain/visa-guide/${params.slug}` },
+    alternates: { canonical: `/spain/visa-guide/${params.slug}` },
+    openGraph: { url: `/spain/visa-guide/${params.slug}` },
   };
 }
 

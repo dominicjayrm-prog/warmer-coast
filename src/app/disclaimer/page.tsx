@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Disclaimer | WarmerCoast',
   description: 'WarmerCoast is educational content, not regulated financial, legal, tax or immigration advice. Who to engage for situation-specific guidance.',
   alternates: { canonical: '/disclaimer' },
+  openGraph: { url: '/disclaimer' },
 };
 
 export default function Page() {

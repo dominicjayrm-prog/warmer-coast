@@ -192,7 +192,7 @@ export const FORM_SCHEMAS: Record<string, FormSchema> = {
     id: 'cat2_application',
     title: 'Gibraltar Category 2 (Cat 2) residency application',
     intro:
-      'Cat 2 caps your assessable worldwide income at £118,000 per year, producing a tax floor of ~£37,000 and a ceiling of ~£44,740. You need £2 million net worth, qualifying accommodation in Gibraltar, and no plans to be employed in Gibraltar. This brief gathers the data the Finance Centre will need.',
+      'Cat 2 caps your assessable worldwide income at £118,000 per year, producing a tax floor of ~£37,000 and a ceiling of ~£42,380. You need £2 million net worth, qualifying accommodation in Gibraltar, and no plans to be employed in Gibraltar. This brief gathers the data the Finance Centre will need.',
     pdfTitle: 'Cat 2 application brief',
     sections: [
       COMMON_PERSONAL,

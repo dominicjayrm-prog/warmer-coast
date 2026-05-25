@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Real Portuguese cost of living in 2026 for British movers. Lisbon rent vs Porto, Algarve coast vs inland, monthly budget per household size, healthcare, schools, sourced data.',
   alternates: { canonical: '/portugal/cost-of-living' },
+  openGraph: { url: '/portugal/cost-of-living' },
 };
 
 export default function Page() {
@@ -113,6 +114,13 @@ export default function Page() {
         { q: 'How much do I need to live comfortably as a single in Porto?', a: 'About €1,800-€2,400 per month covers a comfortable lifestyle in central Porto: nice 1-bed flat, eating out 3-4 times a week, Portuguese gym membership, occasional weekend trips. Lower if you cook at home, higher if you live in the most central streets.' },
         { q: 'What about winter heating costs?', a: 'Higher than people expect. Portuguese houses are often poorly insulated for cold weather. Winter electric or gas heating bills can hit €150-€250 per month in older properties from December to February. Newer-build apartments are dramatically better.' },
         { q: 'Is Portugal really safer than the UK?', a: 'Crime rates are materially lower. Portugal consistently ranks in the top 10 safest countries globally on the Global Peace Index. Pickpocketing in tourist areas (Lisbon trams, Porto metro) is the only meaningful day-to-day concern.' },
+      ]}
+      relatedResources={[
+        { kind: 'Calculator', href: '/calculators/cost-of-living', label: 'UK city vs Portugal city cost comparator', blurb: 'Plug in your UK city and a Portuguese target. Numbeo + ONS sourced, monthly breakdown.' },
+        { kind: 'Compare', href: '/spain/cost-of-living', label: 'Cost of living: Spain vs Portugal', blurb: 'The honest comparison: Lisbon vs Madrid, Algarve vs Costa del Sol, Porto vs Valencia.' },
+        { kind: 'Deep dive', href: '/portugal/banking', label: 'Portuguese banking for British movers', blurb: 'Account fees, FX, multi-currency strategy — the running costs of being a UK earner abroad.' },
+        { kind: 'Deep dive', href: '/portugal/visa-guide', label: 'D7 vs D8 visa: what to evidence', blurb: 'Match your cost-of-living estimate to the visa income proofs Portugal requires.' },
+        { kind: 'Reference', href: '/thresholds', label: '2026 income thresholds for visas', blurb: 'D7 minimum, D8 minimum, IFICI rules — all sourced from primary sources.' },
       ]}
     />
   );

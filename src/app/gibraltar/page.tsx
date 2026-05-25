@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PillarTemplate } from '@/components/marketing/PillarTemplate';
 
 export const metadata: Metadata = {
@@ -6,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'How to move to Gibraltar from the UK in 2026. Category 2 high-net-worth residency, HEPSS for specialists, frontier-worker mechanics, the new UK-EU treaty and Schengen border rules from 15 July 2026.',
   alternates: { canonical: '/gibraltar' },
+  openGraph: { url: '/gibraltar' },
 };
 
 export default function GibraltarPillar() {
@@ -85,17 +87,19 @@ export default function GibraltarPillar() {
           intro: 'The headline mechanism is a cap on assessable income, not an exemption.',
           body: (
             <p>
-              Under Cat 2, only the first £118,000 of worldwide income is assessable to Gibraltar
-              tax (2026 figure), with a minimum annual tax of approximately £37,000 and a
-              maximum of approximately £44,740. Net worth of at least £2 million is required to
-              qualify, plus availability of approved residential accommodation. Application is
-              via the Finance Centre Director and includes vetting.
+              Under <Link href="/gibraltar/residency" className="text-warm underline-offset-2 hover:underline">Cat 2</Link>,
+              only the first £118,000 of worldwide income is assessable to Gibraltar tax (2026
+              figure), with a minimum annual tax of £37,000 and a maximum of £42,380. Net worth
+              of at least £2 million is required to qualify, plus availability of approved
+              residential accommodation. Full figures and the issuing-authority source are on the{' '}
+              <Link href="/thresholds" className="text-warm underline-offset-2 hover:underline">2026 thresholds page</Link>.
+              Application is via the Finance Centre Director and includes vetting.
             </p>
           ),
           bullets: [
             'Worldwide income above £118k is excluded from Gibraltar assessment',
-            'Minimum tax floor around £37k annually',
-            'Maximum tax ceiling around £44k annually',
+            'Minimum tax floor £37,000 annually',
+            'Maximum tax ceiling £42,380 annually',
             'Net worth requirement £2m, vetting required',
             'Approved residential property in Gibraltar required',
           ],
@@ -107,9 +111,10 @@ export default function GibraltarPillar() {
             'A different route for individuals recruited into Gibraltar to fill skilled roles.',
           body: (
             <p>
-              HEPSS (High Executive Possessing Specialist Skills) caps tax liability at the
-              equivalent of the first £160,000 of income, currently producing an effective tax
-              ceiling around £44,740. The role must be one for which no suitable local candidate
+              HEPSS (High Executive Possessing Specialist Skills) caps the assessable amount at
+              the first £160,000 of earnings — the exact tax ceiling is recalculated each
+              assessment year by the Gibraltar Income Tax Office and is published in the annual
+              EY Gibraltar tax facts. The role must be one for which no suitable local candidate
               is available, and the employer applies on behalf of the individual. Common in
               finance, gaming, and maritime sectors.
             </p>
@@ -121,11 +126,13 @@ export default function GibraltarPillar() {
           intro: 'A common arrangement, materially complicated post-Brexit but still viable.',
           body: (
             <p>
-              Frontier-workers remain a specifically recognised category under post-Brexit
-              treaties. The tax mechanics depend heavily on physical day-counting, social
-              security coordination under the EU-UK Trade and Cooperation Agreement, and
-              whether you exceed Spanish tax residency thresholds (the 183-day rule). The
-              playbook covers each scenario.
+              <Link href="/gibraltar/frontier-worker" className="text-warm underline-offset-2 hover:underline">Frontier-workers</Link>{' '}
+              remain a specifically recognised category under post-Brexit treaties. The tax
+              mechanics depend heavily on physical day-counting, social security coordination
+              under the EU-UK Trade and Cooperation Agreement, and whether you exceed Spanish
+              tax residency thresholds (the 183-day rule —{' '}
+              <Link href="/calculators/residency-timeline" className="text-warm underline-offset-2 hover:underline">use the residency timeline calculator</Link>{' '}
+              to map your dates). The playbook covers each scenario.
             </p>
           ),
         },

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to open a Portuguese bank account as a UK national in 2026. NIF first, then bank choice. Millennium BCP, Novobanco, ActivoBank, multi-currency strategy with Wise.',
   alternates: { canonical: '/portugal/banking' },
+  openGraph: { url: '/portugal/banking' },
 };
 
 export default function Page() {
@@ -124,6 +125,13 @@ export default function Page() {
         { q: 'Do I need a fiscal representative permanently?', a: 'No. Once you become Portuguese tax resident, the fiscal representative is no longer required. You can revoke the representation through Portal das Finanças. Before tax residency, you need one if you hold Portuguese property or assets.' },
         { q: 'Will my Portuguese account be visible to UK HMRC?', a: 'Yes, under the Common Reporting Standard. Portugal exchanges annual financial account information with the UK if you remain UK tax resident, or with whichever country you declared as your tax residence on the account opening forms.' },
         { q: 'What about credit cards in Portugal?', a: 'Most Portuguese banks issue debit cards by default. Credit cards exist but Portuguese banks evaluate creditworthiness on Portuguese credit history, which a new arrival does not have. Many British movers continue using a UK credit card abroad in the first 1-2 years.' },
+      ]}
+      relatedResources={[
+        { kind: 'Calculator', href: '/calculators/bank-comparator', label: 'Bank comparator — Iberia + multi-currency', blurb: 'Side-by-side fees, multi-currency, app quality and expat-friendliness across Iberia.' },
+        { kind: 'Compare', href: '/spain/banking', label: 'Banking in Spain vs Portugal', blurb: 'How Sabadell, BBVA, Santander compare to ActivoBank and Millennium BCP.' },
+        { kind: 'Compare', href: '/gibraltar/banking', label: 'Banking in Gibraltar', blurb: 'GBP banking inside the Iberia bubble — useful for frontier-workers and GBP earners.' },
+        { kind: 'Deep dive', href: '/portugal/cost-of-living', label: 'Portugal cost of living for British movers', blurb: 'Where bank fees fit in the bigger monthly outgoings picture.' },
+        { kind: 'Reference', href: '/thresholds', label: '2026 thresholds for British movers', blurb: 'Income thresholds Portuguese banks may ask you to evidence on opening.' },
       ]}
     />
   );

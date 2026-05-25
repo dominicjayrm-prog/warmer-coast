@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'Every Spanish visa route open to British applicants in 2026. Non-lucrative (NLV), digital nomad (DNV €2,849/mo + Beckham Law), work, Golden Visa investment routes, family reunification. Documents, costs, timelines.',
   alternates: { canonical: '/spain/visa-guide' },
+  openGraph: { url: '/spain/visa-guide' },
 };
 
 export default function Page() {

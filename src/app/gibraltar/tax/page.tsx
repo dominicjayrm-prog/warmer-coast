@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How Gibraltar tax works for UK movers in 2026. ABS vs GIBS dual system, Cat 2 £118,000 income cap, HEPSS ceiling, UK government and private pensions under the double tax treaty.',
   alternates: { canonical: '/gibraltar/tax' },
+  openGraph: { url: '/gibraltar/tax' },
 };
 
 export default function Page() {
@@ -19,8 +20,8 @@ export default function Page() {
       bullets={[
         'ABS (Allowance-Based): progressive rates, generous personal allowances and deductions',
         'GIBS (Gross-Income-Based): flat rates, no allowances, simpler — taxpayer chooses lower',
-        'Category 2: worldwide income assessed only on first £118,000, ~£37k floor, ~£44.7k ceiling',
-        'HEPSS: caps assessable income at £160,000 specialist threshold, ~£44k effective ceiling',
+        'Category 2: worldwide income assessed only on first £118,000, £37,000 floor, £42,380 ceiling',
+        'HEPSS: caps assessable income at £160,000 specialist threshold; ceiling published annually by Gibraltar Income Tax Office',
         'UK government pensions: taxed only in UK under the double tax treaty',
         'UK state and private pensions: taxed only in Gibraltar once Gibraltar-resident',
       ]}
@@ -63,7 +64,7 @@ export default function Page() {
                 Cat 2 holders are taxed only on the first £118,000 of worldwide income,
                 regardless of total earnings. The combined effect of the ABS calculation on
                 that capped slice, the personal allowance, and the minimum tax floor produces
-                an annual liability between roughly £37,000 and £44,740. Whether you earn
+                an annual liability between roughly £37,000 and £42,380. Whether you earn
                 £200,000 or £20,000,000, your Gibraltar tax bill stays within that band.
               </p>
               <p>

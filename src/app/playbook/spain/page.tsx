@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'The structured Spain relocation playbook. Beckham Law, visas, banking, schools, year-one tax. £397, instant access, 30-day strong refund.',
   alternates: { canonical: '/playbook/spain' },
+  openGraph: { url: '/playbook/spain' },
 };
 
 export default function Page() {
@@ -41,7 +42,7 @@ export default function Page() {
         { title: 'Padrón walkthrough (video)', body: 'A real padrón appointment, recorded and narrated. What to bring, what they actually ask, what to do if they push back.' },
         { title: 'Vetted asesor fiscal referrals', body: 'Three independent asesores we\'ve personally vetted. No kickbacks.' },
       ]}
-      guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask, which is why we can keep this policy."
+      guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Almost no one asks — which is why we can keep this policy."
       timeline={[
         { when: '6-12 months out', what: 'File HMRC Form P85, review UK ISAs and pension drawdown, decide whether to sell UK property before or after the move.' },
         { when: '3-6 months out', what: 'Choose visa route (NLV or DNV), apostille birth/marriage certificates, secure sworn translations.' },

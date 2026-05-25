@@ -26,13 +26,14 @@ interface Post {
   author_name: string;
   tags: string[] | null;
   faqs: Faq[] | null;
+  canonical_url: string | null;
 }
 
 export default async function EditPostPage({ params }: { params: { id: string } }) {
   const supabase = adminDb();
   const { data } = await supabase
     .from('blog_posts')
-    .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,cover_image_alt,content,read_time_minutes,status,author_name,tags,faqs')
+    .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,cover_image_alt,content,read_time_minutes,status,author_name,tags,faqs,canonical_url')
     .eq('id', params.id)
     .eq('site', SITE.siteKey)
     .maybeSingle();
@@ -83,6 +84,7 @@ export default async function EditPostPage({ params }: { params: { id: string } 
             author_name: post.author_name,
             tags: post.tags ?? [],
             faqs: Array.isArray(post.faqs) ? post.faqs : [],
+            canonical_url: post.canonical_url ?? '',
           }}
         />
       </div>

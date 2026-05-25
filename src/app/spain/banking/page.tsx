@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     'How to open a Spanish bank account as a UK national in 2026. NIE first, then bank choice. Sabadell Expat, BBVA, Santander One, multi-currency strategy with Wise and Revolut.',
   alternates: { canonical: '/spain/banking' },
+  openGraph: { url: '/spain/banking' },
 };
 
 export default function Page() {
@@ -131,6 +132,13 @@ export default function Page() {
         { q: 'How long does opening a Spanish account take?', a: 'Walk-in to Sabadell Expat or Santander branch with documents: same-day account open. Openbank app-only: 24-48 hours. BBVA Online: 2-5 working days. All faster than equivalent UK high-street processes for non-residents.' },
         { q: 'Will my Spanish account be visible to UK HMRC?', a: 'Yes, under the Common Reporting Standard. Spain reports account balances annually to your declared tax residency country. If you remain UK tax resident, HMRC sees the account. Once Spanish tax resident, Spain treats it as a domestic account.' },
         { q: 'What is Bizum and do I need it?', a: 'Bizum is Spain\'s near-universal instant peer-to-peer payment network, similar to UK Faster Payments via mobile number. Splitting restaurant bills, paying for AirBnB cleaners, transferring to friends. Activate it on your Spanish bank app — almost every Spaniard uses it.' },
+      ]}
+      relatedResources={[
+        { kind: 'Calculator', href: '/calculators/bank-comparator', label: 'Bank comparator — Iberia + multi-currency', blurb: 'Side-by-side fees, multi-currency, app quality and expat-friendliness across Iberia.' },
+        { kind: 'Compare', href: '/portugal/banking', label: 'Banking in Portugal vs Spain', blurb: 'How Millennium BCP and ActivoBank stack up against Sabadell, BBVA and Santander.' },
+        { kind: 'Compare', href: '/gibraltar/banking', label: 'Banking in Gibraltar', blurb: 'Sterling-zone banking inside Iberia — useful if you’re still UK-tax-resident or earning GBP.' },
+        { kind: 'Deep dive', href: '/spain/cost-of-living', label: 'Spain cost of living for British movers', blurb: 'Where your bank fees fit in the bigger monthly outgoings picture.' },
+        { kind: 'Reference', href: '/thresholds', label: '2026 thresholds for British movers', blurb: 'Income thresholds your bank may ask you to evidence on account opening.' },
       ]}
     />
   );

@@ -24,7 +24,7 @@ export function CountryAlternativesCallout({
     portugal:
       'IFICI 20% flat tax for 10 years on qualifying activity. D7 for retirees.',
     gibraltar:
-      'Cat 2 caps tax at ~£44,740. Treaty with EU means open border with Spain from 15 July 2026.',
+      'Cat 2 caps tax at ~£42,380. Treaty with EU means open border with Spain from 15 July 2026.',
   };
 
   const others = (Object.keys(COUNTRY_META) as Country[]).filter((c) => c !== current);

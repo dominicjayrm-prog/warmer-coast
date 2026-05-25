@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     'WarmerCoast is built by Dominic Roworth, a UK-born relocation researcher based on the Mediterranean coast. Honest, sourced playbooks for moving to Spain, Portugal or Gibraltar from the UK.',
   alternates: { canonical: '/about' },
+  openGraph: { url: '/about' },
 };
 
 const personDom = {
@@ -168,8 +169,45 @@ export default function AboutPage() {
           </div>
 
           <h2 className="display mt-12 text-display-3 font-semibold tracking-tight text-ink text-balance">
-            How I work
+            Where every number on this site comes from
           </h2>
+          <p className="mt-4 text-[17px] leading-relaxed text-muted">
+            Tax and visa content is a YMYL category — &ldquo;your money or your life&rdquo; — so
+            every figure has a primary source. I cite the issuing authority directly. If a figure
+            doesn&apos;t link to one of these, I haven&apos;t finished my homework on it yet and
+            you should treat it as a flag.
+          </p>
+          <ul className="mt-5 flex flex-col gap-2 text-[15px] text-ink/90">
+            <li>
+              <strong>UK tax &amp; HMRC forms</strong> —{' '}
+              <a href="https://www.gov.uk/income-tax-rates" target="_blank" rel="noopener noreferrer" className="text-warm underline-offset-2 hover:underline">gov.uk</a> (HMRC publications, Income Tax bands, P85, Form 17, Statutory Residence Test).
+            </li>
+            <li>
+              <strong>Spanish tax</strong> —{' '}
+              <a href="https://sede.agenciatributaria.gob.es" target="_blank" rel="noopener noreferrer" className="text-warm underline-offset-2 hover:underline">Agencia Tributaria (AEAT)</a> — Beckham Law (Art. 93 LIRPF), Modelo 100, Modelo 720, Modelo 149.
+            </li>
+            <li>
+              <strong>Spanish visa policy</strong> — Ministry of Foreign Affairs consular pages and the{' '}
+              <a href="https://www.boe.es" target="_blank" rel="noopener noreferrer" className="text-warm underline-offset-2 hover:underline">BOE</a> (Boletín Oficial del Estado) for IPREM and SMI annual confirmations.
+            </li>
+            <li>
+              <strong>Portuguese tax &amp; immigration</strong> —{' '}
+              <a href="https://info.portaldasfinancas.gov.pt" target="_blank" rel="noopener noreferrer" className="text-warm underline-offset-2 hover:underline">Portal das Finanças</a> for IFICI, IRS rates, NIF;{' '}
+              <a href="https://aima.gov.pt" target="_blank" rel="noopener noreferrer" className="text-warm underline-offset-2 hover:underline">AIMA</a> for D7, D8, golden visa and residency permits.
+            </li>
+            <li>
+              <strong>Gibraltar tax &amp; residency</strong> —{' '}
+              <a href="https://www.gibraltar.gov.gi/income-tax-office" target="_blank" rel="noopener noreferrer" className="text-warm underline-offset-2 hover:underline">HM Government of Gibraltar Income Tax Office</a> for Cat 2, HEPSS, ABS/GIBS bands; annual EY Gibraltar tax facts for the assessment-year position.
+            </li>
+            <li>
+              <strong>UK-Iberia treaty mechanics</strong> — the published double-taxation
+              agreements between the UK and Spain (2013), the UK and Portugal (1968, as amended),
+              and HMRC&apos;s DT guidance manuals.
+            </li>
+          </ul>
+
+          <h2 className="display mt-12 text-display-3 font-semibold tracking-tight text-ink text-balance">
+            How I work</h2>
           <p className="mt-4 text-[17px] leading-relaxed text-muted">
             Every page has a &ldquo;reviewed&rdquo; date. When a tax rule changes, the relevant
             module gets updated and a note appears at the top. When a reader asks a question that

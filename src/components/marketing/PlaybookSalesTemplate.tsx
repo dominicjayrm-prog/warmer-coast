@@ -6,6 +6,7 @@ import { COUNTRY_META, PRODUCTS, type ProductSlug } from '@/lib/site';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
 import { CheckoutButton } from '@/components/checkout/CheckoutButton';
 import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
+import { Testimonials } from '@/components/marketing/Testimonials';
 
 interface Module {
   n: number;
@@ -58,7 +59,7 @@ export function PlaybookSalesTemplate({
           <div className="flex flex-col gap-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="dark" uppercase>Playbook</Badge>
-              <Badge tone="warm">★ 4.9 (247 buyers)</Badge>
+              <Badge tone="warm">30-day strong refund</Badge>
             </div>
             <h1 className="display text-display-1 font-medium tracking-tight text-ink text-balance">
               {title}
@@ -104,11 +105,10 @@ export function PlaybookSalesTemplate({
       </section>
 
       <section className="border-y border-border bg-surface/60">
-        <div className="container-content grid gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
-          <Stat n="247" label="verified buyers" />
-          <Stat n="4.9" label="average rating · 5★" />
-          <Stat n="<4%" label="refund rate" />
-          <Stat n="£20k+" label="median saved year one" />
+        <div className="container-content grid gap-8 py-12 sm:grid-cols-3">
+          <Stat n="30 days" label="strong refund window" />
+          <Stat n="12 months" label="of updates included" />
+          <Stat n="Sourced" label="every number cites a primary source" />
         </div>
       </section>
 
@@ -291,6 +291,11 @@ export function PlaybookSalesTemplate({
         </div>
       </section>
 
+      <Testimonials
+        productSlug={slug}
+        heading={`What ${COUNTRY_META[slug].name} buyers say`}
+      />
+
       <section className="bg-surface/60 py-20 sm:py-24">
         <div className="container-content grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <div>
@@ -339,11 +344,6 @@ export function PlaybookSalesTemplate({
               availability: 'https://schema.org/InStock',
               url: `https://warmercoast.com/playbook/${slug}`,
             },
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.9',
-              reviewCount: '247',
-            },
           }),
         }}
       />
@@ -358,6 +358,22 @@ export function PlaybookSalesTemplate({
               { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/spain' },
               { '@type': 'ListItem', position: 3, name: product.name, item: `https://warmercoast.com/playbook/${slug}` },
             ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs
+              .filter((f) => typeof f.a === 'string')
+              .map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a as string },
+              })),
           }),
         }}
       />

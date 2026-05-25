@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description:
     'Long-form, sourced articles on UK to Iberia relocation. Tax, visas, banking, schools, real cost of living.',
   alternates: { canonical: '/blog' },
+  openGraph: { url: '/blog' },
 };
 
 interface Post {
@@ -119,6 +120,48 @@ export default async function BlogIndex() {
           </div>
         )}
       </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            '@id': `${SITE.url}/blog`,
+            url: `${SITE.url}/blog`,
+            name: 'WarmerCoast Blog',
+            description:
+              'Long-form, sourced articles on UK to Iberia relocation. Tax, visas, banking, schools, real cost of living.',
+            publisher: {
+              '@type': 'Organization',
+              name: 'WarmerCoast',
+              url: SITE.url,
+              logo: { '@type': 'ImageObject', url: `${SITE.url}/icon.svg` },
+            },
+            blogPost: posts.map((p) => ({
+              '@type': 'BlogPosting',
+              headline: p.title,
+              description: p.excerpt,
+              url: `${SITE.url}/blog/${p.slug}`,
+              datePublished: p.published_at,
+              author: { '@type': 'Person', name: p.author_name },
+              image: p.cover_image || undefined,
+            })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE.url}/blog` },
+            ],
+          }),
+        }}
+      />
     </section>
   );
 }

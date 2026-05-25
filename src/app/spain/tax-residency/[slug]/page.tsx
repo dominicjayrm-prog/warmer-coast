@@ -1048,7 +1048,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: s.metaTitle,
     description: s.metaDescription,
-    alternates: { canonical: `https://warmercoast.com/spain/tax-residency/${params.slug}` },
+    alternates: { canonical: `/spain/tax-residency/${params.slug}` },
+    openGraph: { url: `/spain/tax-residency/${params.slug}` },
   };
 }
 

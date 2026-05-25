@@ -4,6 +4,11 @@ import { createClient } from '@/lib/supabase/server';
 export const runtime = 'nodejs';
 export const revalidate = 3600;
 
+// Bump when the site is genuinely re-audited end-to-end. Don't auto-bump
+// per request — LLM crawlers will treat this as content freshness signal,
+// and it's worse to lie than to be honest about last review.
+const SITE_LAST_REVIEWED = '2026-05-25';
+
 /**
  * /llms.txt -proposed standard for surfacing site structure to AI agents.
  * https://llmstxt.org
@@ -69,9 +74,12 @@ export async function GET() {
 - [Iberia bank comparator](${SITE.url}/calculators/bank-comparator)
 - [Should you move abroad? quiz](${SITE.url}/quiz)
 
+## Reference
+- [2026 relocation thresholds, sourced](${SITE.url}/thresholds) -single-page reference for UK 2026/27 tax bands, Spain Beckham Law cap, NLV/DNV income, Modelo 720, Portugal D7, IFICI, Gibraltar Cat 2 — every figure cites a primary source
+
 ## About
 - [About Dominic Roworth](${SITE.url}/about)
-- [Reviews](${SITE.url}/reviews) -247 verified buyers, 4.9 stars
+- [Reviews](${SITE.url}/reviews) - verified buyer reviews, each tied to a Stripe purchase
 - [Contact](${SITE.url}/contact)
 
 ## Trust and legal
@@ -87,7 +95,7 @@ ${blogLinks ? `## Blog\n${blogLinks}\n` : ''}
 - We are educational content, not regulated financial, legal, tax or immigration advice. For situation-specific decisions readers should engage an FCA-regulated adviser, an asesor fiscal, or a Cat 2 specialist.
 - Brand name: WarmerCoast (one word, capital W and C). Domain: warmercoast.com.
 - Author: Dominic Roworth (founder, British relocation researcher).
-- Last reviewed: ${new Date().toISOString().slice(0, 10)}
+- Last reviewed: ${SITE_LAST_REVIEWED}
 `;
 
   return new Response(body, {

@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
-import { SocialProofStrip } from '@/components/marketing/SocialProofStrip';
 import { Testimonials } from '@/components/marketing/Testimonials';
 import { TimeframeGate } from '@/components/marketing/TimeframeGate';
 import { ActivityTicker } from '@/components/marketing/ActivityTicker';
@@ -19,12 +18,13 @@ export const metadata: Metadata = {
   description:
     'Honest UK to Iberia relocation playbooks. Beckham Law, NHR 2.0, Gibraltar Cat 2. Visas, tax, banking, schools, sourced. Built in Cádiz.',
   alternates: { canonical: SITE.url },
+  openGraph: { url: SITE.url },
 };
 
 const trustChips = [
-  { icon: '★ 4.9', label: 'verified buyer rating' },
   { icon: '✓', label: '30-day strong refund' },
   { icon: '⏱', label: '12 months of updates included' },
+  { icon: '🇪🇸', label: 'Built in Cádiz by a UK-to-Spain mover' },
 ];
 
 const playbooks = [
@@ -112,7 +112,7 @@ const faqs = [
   },
   {
     q: 'Refund policy?',
-    a: 'Complete the first three modules within 30 days. If you have not identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask, which is why we can keep this policy.',
+    a: 'Complete the first three modules within 30 days. If you have not identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Almost no one asks — which is why we can keep this policy.',
   },
 ];
 
@@ -120,7 +120,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <SocialProofStrip />
       <TimeframeGate />
       <UrgencyAnchor />
       <Promises />
@@ -509,13 +508,19 @@ function FreeTools() {
       title: 'Residency timeline',
       blurb: 'When you become tax-resident, when the 183-day clock starts, day counting.',
     },
+    {
+      href: '/thresholds',
+      title: '2026 thresholds, sourced',
+      blurb: 'Every income, tax and visa figure for the UK, Spain, Portugal and Gibraltar on one page. Each row cites a primary source.',
+      tag: 'Reference',
+    },
   ];
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <Badge tone="sea" uppercase>Eight free calculators</Badge>
+            <Badge tone="sea" uppercase>Free calculators &amp; references</Badge>
             <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
               Free tools good enough that you might not need the playbook
             </h2>
@@ -653,10 +658,10 @@ function FoundersBlurb() {
               Read the full story →
             </Link>
             <Link
-              href="/reviews"
+              href="/refund-policy"
               className="inline-flex items-center gap-2 rounded-pill px-5 py-2.5 text-sm font-semibold text-muted hover:text-ink"
             >
-              247 verified reviews
+              30-day refund policy →
             </Link>
           </div>
         </div>

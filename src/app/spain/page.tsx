@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PillarTemplate } from '@/components/marketing/PillarTemplate';
 
 export const metadata: Metadata = {
@@ -6,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'The honest UK to Spain relocation guide. Beckham Law, non-lucrative visa, digital nomad visa, modelo 720, padrón, NIE, schools, healthcare. Sourced.',
   alternates: { canonical: '/spain' },
+  openGraph: { url: '/spain' },
 };
 
 export default function SpainPillar() {
@@ -78,12 +80,15 @@ export default function SpainPillar() {
           body: (
             <>
               <p>
-                Today four routes cover 95% of UK applicants. The non-lucrative visa for
-                financially independent applicants. The digital nomad visa for remote employees
-                or self-employed workers earning at least the relevant threshold (approximately
-                €2,849 monthly for solo applicants in 2026, +75% IPREM per dependent). Standard work visas, which require
-                an offer letter from a Spanish entity. And family reunification, for those with
-                a Spanish or EU spouse.
+                Today four routes cover 95% of UK applicants. The{' '}
+                <Link href="/spain/visa-guide/non-lucrative" className="text-warm underline-offset-2 hover:underline">non-lucrative visa</Link>{' '}
+                for financially independent applicants. The{' '}
+                <Link href="/spain/visa-guide/digital-nomad" className="text-warm underline-offset-2 hover:underline">digital nomad visa</Link>{' '}
+                for remote employees or self-employed workers earning at least the relevant
+                threshold (€2,849 monthly for solo applicants in 2026, +75% SMI per dependent —{' '}
+                <Link href="/thresholds" className="text-warm underline-offset-2 hover:underline">see the full 2026 threshold table</Link>).
+                Standard work visas, which require an offer letter from a Spanish entity. And
+                family reunification, for those with a Spanish or EU spouse.
               </p>
               <p>
                 The Golden Visa property route formally closed to new property-only investment
@@ -110,13 +115,17 @@ export default function SpainPillar() {
                 You can elect into the regime within six months of registering for social security
                 or obtaining residency, whichever applies. Miss the window and the option is gone.
                 You stay in the regime for the year of the move plus the next five, six years
-                total, after which you transition to standard Spanish progressive tax.
+                total, after which you transition to standard Spanish progressive tax. The full
+                mechanics are in the{' '}
+                <Link href="/spain/tax-residency/beckham-law" className="text-warm underline-offset-2 hover:underline">Beckham Law deep dive</Link>.
               </p>
               <p>
                 The decision is not automatic. Some applicants are better off in standard tax
                 because of the differing treatment of foreign-sourced investment and capital
-                gains. The playbook walks through a worked example for incomes between £50k and
-                £200k, and shows where standard tax actually wins.
+                gains. Use the{' '}
+                <Link href="/calculators/beckham-law" className="text-warm underline-offset-2 hover:underline">Beckham Law calculator</Link>{' '}
+                to see your break-even, then the playbook walks through worked examples for
+                incomes between £50k and £200k.
               </p>
             </>
           ),
@@ -154,26 +163,28 @@ export default function SpainPillar() {
             <>
               <ul className="list-disc pl-5 space-y-2">
                 <li>
-                  <strong>Selling the UK home after becoming Spanish tax resident.</strong> Capital
-                  gain becomes Spanish-taxable at 19 to 28%, where it would have been UK CGT
-                  taxable at 18 or 24% (and possibly principal-residence-relieved).
+                  <strong><Link href="/spain/tax-residency/cgt-on-uk-property" className="text-warm underline-offset-2 hover:underline">Selling the UK home after becoming Spanish tax resident.</Link></strong>{' '}
+                  Capital gain becomes Spanish-taxable at 19 to 28%, where it would have been UK
+                  CGT taxable at 18 or 24% (and possibly principal-residence-relieved).
                 </li>
                 <li>
-                  <strong>Missing the Beckham Law window.</strong> Six months from social security
-                  enrolment. Lost forever after that.
+                  <strong><Link href="/spain/tax-residency/beckham-law" className="text-warm underline-offset-2 hover:underline">Missing the Beckham Law window.</Link></strong>{' '}
+                  Six months from social security enrolment. Lost forever after that.
                 </li>
                 <li>
-                  <strong>Filing modelo 720 incorrectly or late.</strong> Penalties were softened
-                  after the 2022 ECJ ruling but reporting is still mandatory for assets over €50k
-                  in each of three categories.
+                  <strong><Link href="/spain/tax-residency/modelo-720" className="text-warm underline-offset-2 hover:underline">Filing modelo 720 incorrectly or late.</Link></strong>{' '}
+                  Penalties were softened after the 2022 ECJ ruling but reporting is still
+                  mandatory for assets over €50k in each of three categories.
                 </li>
                 <li>
-                  <strong>Drawing the UK pension wrong.</strong> Article 17 of the UK-Spain DTA
-                  exempts government pensions from Spanish tax. Private pensions are different.
+                  <strong><Link href="/spain/tax-residency/uk-pensions" className="text-warm underline-offset-2 hover:underline">Drawing the UK pension wrong.</Link></strong>{' '}
+                  Article 17 of the UK-Spain DTA exempts government pensions from Spanish tax.
+                  Private pensions are different.
                 </li>
                 <li>
-                  <strong>Not closing UK ISAs before becoming Spanish resident.</strong> ISAs are
-                  not recognised in Spain, all income becomes taxable, and the wrapper is wasted.
+                  <strong><Link href="/spain/tax-residency/isa-treatment" className="text-warm underline-offset-2 hover:underline">Not closing UK ISAs before becoming Spanish resident.</Link></strong>{' '}
+                  ISAs are not recognised in Spain, all income becomes taxable, and the wrapper is
+                  wasted.
                 </li>
               </ul>
             </>
@@ -191,7 +202,7 @@ export default function SpainPillar() {
         },
         {
           q: 'How quickly do I become Spanish tax resident?',
-          a: 'The two main triggers: 183 days physical presence in a calendar year, or your centre of economic interests being in Spain. The day-counting nuances are in the residency timeline calculator.',
+          a: 'The two main triggers: 183 days physical presence in a calendar year, or your centre of economic interests being in Spain. The day-counting nuances are in the 183-day rule deep dive and the residency timeline calculator.',
         },
         {
           q: 'Can my UK ISA stay open?',

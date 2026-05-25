@@ -26,7 +26,6 @@ export function ActivityTickerClient({ items }: { items: Item[] }) {
 
   if (!items.length) return null;
   const current = items[index];
-  const hasSeed = items.some((i) => i.isSeed);
 
   return (
     <div className="fixed bottom-3 left-3 z-40 max-w-[min(92vw,360px)] sm:bottom-6 sm:left-6 hidden md:block">
@@ -45,11 +44,6 @@ export function ActivityTickerClient({ items }: { items: Item[] }) {
             <span className="ml-1 text-faint">· {current.ago}</span>
           </div>
         </div>
-        {hasSeed && (
-          <div className="mt-1 text-[10px] uppercase tracking-[0.08em] text-faint">
-            Demo activity, real Stripe data soon
-          </div>
-        )}
       </div>
     </div>
   );

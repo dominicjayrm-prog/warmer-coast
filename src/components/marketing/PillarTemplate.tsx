@@ -5,8 +5,42 @@ import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Accordion, type AccordionItem } from '@/components/ui/Accordion';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
+import { RelatedResources, type RelatedResource } from '@/components/marketing/RelatedResources';
 import { COUNTRY_META } from '@/lib/site';
 import type { Country } from '@/lib/site';
+
+const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
+  spain: [
+    { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'Beckham Law cap, IPREM, NLV, DNV, Modelo 720, all on one page with primary-source citations.' },
+    { kind: 'Deep dive', href: '/spain/tax-residency', label: 'Spain tax residency for British movers', blurb: '183-day rule, centre-of-vital-interests, when the clock starts, treaty tiebreakers.' },
+    { kind: 'Deep dive', href: '/spain/visa-guide', label: 'Spain visa guide: NLV vs DNV', blurb: 'Income thresholds, document packs, consulate quirks, the 6-month Beckham election window.' },
+    { kind: 'Deep dive', href: '/spain/banking', label: 'Spanish banking for UK movers', blurb: 'Sabadell, BBVA, Santander, Openbank — what each requires from a British applicant.' },
+    { kind: 'Deep dive', href: '/spain/cost-of-living', label: 'Spain cost of living for British movers', blurb: 'Madrid, Barcelona, Valencia, Sevilla, Málaga — real monthly outgoings in 2026.' },
+    { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law tax-saving calculator', blurb: 'Standard IRPF vs Beckham flat 24%. Find your break-even.' },
+    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Side-by-side on tax, cost, visa difficulty, English-speaking, weather, schools.' },
+    { kind: 'Playbook', href: '/playbook/spain', label: 'The Spain Playbook · £397', blurb: '8 sequenced modules, vetted asesor referrals, padrón video walkthrough, lifetime updates.' },
+  ],
+  portugal: [
+    { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'D7 minimum income, IFICI rate and duration, every figure links to its primary source.' },
+    { kind: 'Deep dive', href: '/portugal/tax', label: 'Portuguese tax: NHR 2.0 / IFICI explained', blurb: 'Who qualifies for IFICI, the 20% rate mechanics, foreign-income exemptions.' },
+    { kind: 'Deep dive', href: '/portugal/visa-guide', label: 'Portugal visa guide: D7 vs D8', blurb: 'Passive-income D7 vs digital-nomad D8, the closed Golden Visa, family reunification.' },
+    { kind: 'Deep dive', href: '/portugal/banking', label: 'Portuguese banking for UK movers', blurb: 'ActivoBank, Millennium BCP, fiscal-representative requirement, multi-currency strategy.' },
+    { kind: 'Deep dive', href: '/portugal/cost-of-living', label: 'Portugal cost of living for British movers', blurb: 'Lisbon, Porto, Algarve — and what changed after the 2022-2024 rental surge.' },
+    { kind: 'Calculator', href: '/calculators/cost-of-living', label: 'UK vs Portugal cost comparator', blurb: 'Monthly breakdown by city. Numbeo + ONS sourced.' },
+    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'See where Portugal wins on tax, where it loses, and where it really shines for retirees.' },
+    { kind: 'Playbook', href: '/playbook/portugal', label: 'The Portugal Playbook · £397', blurb: '7 sequenced modules, vetted contabilista referrals, year-one IRS walkthrough.' },
+  ],
+  gibraltar: [
+    { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'Cat 2 min/max tax, £118k income cap, net worth requirement — straight from the Gibraltar tax office.' },
+    { kind: 'Deep dive', href: '/gibraltar/residency', label: 'Gibraltar Cat 2 residency in 2026', blurb: 'Net worth test, approved accommodation, Finance Centre vetting, the practical bar.' },
+    { kind: 'Deep dive', href: '/gibraltar/tax', label: 'Gibraltar tax system: ABS, GIBS, Cat 2, HEPSS', blurb: 'How the bands actually work, the £118k cap mechanism, and which UK income stays UK-taxed.' },
+    { kind: 'Deep dive', href: '/gibraltar/frontier-worker', label: 'Frontier worker: live Spain, work Gibraltar', blurb: 'The post-Brexit border, the 2026 EU treaty, tax-treaty mechanics, day counting.' },
+    { kind: 'Deep dive', href: '/gibraltar/banking', label: 'Gibraltar banking for UK movers', blurb: 'GBP banking inside Iberia. Vetting, source-of-funds, frontier-worker setup.' },
+    { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law (Spain) calculator', blurb: 'Useful if you’re also considering Spain as a Cat 2 alternative.' },
+    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Where Cat 2 wins, where it loses, and the income level where it becomes a no-brainer.' },
+    { kind: 'Playbook', href: '/playbook/gibraltar', label: 'The Gibraltar Playbook · £497', blurb: '6 deep modules, frontier-worker mechanics, banking in a finance hub, schools, Spain-side.' },
+  ],
+};
 
 export interface PillarSection {
   id: string;
@@ -36,6 +70,8 @@ interface Props {
   sections: PillarSection[];
   faqs: AccordionItem[];
   breadcrumbName?: string;
+  /** Real ISO date of the last manual review. Don't auto-bump — credibility lives in this being honest. */
+  reviewedOn?: string;
 }
 
 interface HeroImage {
@@ -51,7 +87,7 @@ const HERO_IMAGE: Record<Country, HeroImage> = {
   gibraltar: { src: '/gibraltar.jpg', objectPosition: 'left center' },
 };
 
-export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Props) {
+export function PillarTemplate({ country, hero, subPillars, sections, faqs, reviewedOn = '2026-05-25' }: Props) {
   const meta = COUNTRY_META[country];
   const heroImage = HERO_IMAGE[country];
   const playbookSchema = {
@@ -92,7 +128,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
       url: 'https://warmercoast.com',
     },
     datePublished: '2026-01-15',
-    dateModified: new Date().toISOString().slice(0, 10),
+    dateModified: reviewedOn,
   };
   return (
     <>
@@ -152,7 +188,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
             <div className="flex items-center gap-2 text-xs text-faint">
               <span>By <a href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dominic Roworth</a></span>
               <span>·</span>
-              <span>Reviewed {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</span>
+              <span>Reviewed {new Date(reviewedOn).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
               <span>·</span>
               <span>2026 figures</span>
             </div>
@@ -288,13 +324,19 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
         </div>
       </section>
 
+      <RelatedResources
+        heading={`Free ${meta.name} resources for movers`}
+        subheading="Sourced, no email required. Read these before you buy the playbook."
+        items={RELATED_BY_COUNTRY[country]}
+      />
+
       <section className="relative overflow-hidden bg-night-deep text-white py-20">
         <div className="container-content text-center">
           <h2 className="display text-display-2 font-semibold tracking-tight text-balance">
             Ready for the full {meta.name} playbook?
           </h2>
           <p className="mt-3 text-white/70">
-            8 sequenced modules, interactive checklists, sourced calculations, lifetime updates.
+            {meta.modules} sequenced modules, interactive checklists, sourced calculations, lifetime updates.
           </p>
           <Link
             href={`/playbook/${country}`}

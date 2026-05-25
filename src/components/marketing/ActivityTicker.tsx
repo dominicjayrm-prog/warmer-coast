@@ -19,6 +19,7 @@ export async function ActivityTicker() {
     const { data } = await supabase
       .from('wc_activity_log')
       .select('id,event_type,product_slug,anonymised_name,is_seed,created_at')
+      .eq('is_seed', false)
       .order('created_at', { ascending: false })
       .limit(20);
     activity = (data as ActivityRow[]) ?? [];

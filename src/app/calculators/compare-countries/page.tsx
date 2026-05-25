@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     'Interactive comparison: tax, cost, visa, weather, English-speaking, healthcare, family-friendliness. Weight what matters and see your best fit.',
   alternates: { canonical: '/calculators/compare-countries' },
+  openGraph: { url: '/calculators/compare-countries' },
 };
 
 export default function Page() {

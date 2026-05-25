@@ -27,6 +27,7 @@ interface PostInput {
   author_name: string;
   tags: string[];
   faqs: Faq[];
+  canonical_url: string;
 }
 
 interface Props {
@@ -49,6 +50,7 @@ const defaultPost: PostInput = {
   author_name: 'Dominic Roworth',
   tags: [],
   faqs: [],
+  canonical_url: '',
 };
 
 export function PostForm({ initial, mode }: Props) {
@@ -372,6 +374,17 @@ export function PostForm({ initial, mode }: Props) {
                 className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm resize-none"
               />
               <span className="text-[11px] text-faint">{post.meta_description.length}/155</span>
+            </Field>
+            <Field label="Canonical URL override (advanced)">
+              <input
+                value={post.canonical_url}
+                onChange={(e) => update('canonical_url', e.target.value)}
+                placeholder="/spain/tax-residency/beckham-law"
+                className="rounded-md border border-border bg-white px-2 py-1.5 text-sm outline-none focus:border-warm"
+              />
+              <span className="text-[11px] text-faint">
+                Leave blank for normal behaviour. Set to a path (e.g. /spain/tax-residency/beckham-law) when this post intentionally duplicates a pillar/sub-pillar/deep-dive — Google will then rank that page instead of this URL.
+              </span>
             </Field>
           </CardBody>
         </Card>

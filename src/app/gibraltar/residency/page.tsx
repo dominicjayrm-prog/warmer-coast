@@ -4,8 +4,9 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Gibraltar Residency 2026 | Category 2, HEPSS & Ordinary Residency for UK Citizens',
   description:
-    'How British citizens become Gibraltar residents in 2026. Category 2 (£2m net worth, capped tax ~£44k), HEPSS for specialist roles, ordinary residency. Net worth thresholds, vetting timelines, approved accommodation, the new UK-EU treaty.',
+    'How British citizens become Gibraltar residents in 2026. Category 2 (£2m net worth, capped tax £42,380), HEPSS for specialist roles, ordinary residency. Net worth thresholds, vetting timelines, approved accommodation, the new UK-EU treaty.',
   alternates: { canonical: '/gibraltar/residency' },
+  openGraph: { url: '/gibraltar/residency' },
 };
 
 export default function Page() {
@@ -18,7 +19,7 @@ export default function Page() {
       intro="Three established routes lead to Gibraltar residency for British citizens. Category 2 (Cat 2) for high-net-worth individuals seeking capped tax liability. HEPSS for senior specialists recruited into Gibraltar roles. Ordinary residency for everyone else, including frontier workers who become Gibraltar tax resident. The new UK-EU treaty (provisional from 15 July 2026) does not change the residency routes themselves, but transforms the practical day-to-day reality of living and working in the territory."
       bullets={[
         'Category 2: minimum £2,000,000 net worth, worldwide income assessed only on first £118,000',
-        'Cat 2 tax: minimum annual liability ~£37,000, maximum ~£44,740 — capped regardless of total income',
+        'Cat 2 tax: minimum annual liability ~£37,000, maximum ~£42,380 — capped regardless of total income',
         'HEPSS: senior specialist roles only, employer-driven application, effective tax ceiling ~£44,000',
         'Ordinary residency: 183-day physical presence or centre of vital interests in Gibraltar',
         'All routes: approved Gibraltar residential accommodation required',
@@ -29,7 +30,7 @@ export default function Page() {
           id: 'cat-2',
           title: 'Category 2 Individual: how the cap really works',
           glance: {
-            value: '£44,740',
+            value: '£42,380',
             label: 'Maximum annual Gibraltar tax · regardless of income',
             note: '£2m net worth required · £37,000 minimum tax floor',
           },
@@ -41,7 +42,7 @@ export default function Page() {
                 Worldwide income is only assessed up to the first £118,000. Anything above that
                 is excluded from Gibraltar tax. Combined with the territory&apos;s personal
                 allowance and tax rates, this produces a minimum annual liability of approximately
-                £37,000 and a maximum of around £44,740, regardless of whether you earn £200,000
+                £37,000 and a maximum of around £42,380, regardless of whether you earn £200,000
                 or £20 million.
               </p>
               <p>

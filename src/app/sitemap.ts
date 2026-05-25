@@ -2,54 +2,80 @@ import type { MetadataRoute } from 'next';
 import { SITE } from '@/lib/site';
 import { createClient } from '@/lib/supabase/server';
 
-const staticRoutes = [
-  '',
-  '/spain',
-  '/spain/visa-guide',
-  '/spain/tax-residency',
-  '/spain/banking',
-  '/spain/cost-of-living',
-  '/portugal',
-  '/portugal/visa-guide',
-  '/portugal/tax',
-  '/portugal/banking',
-  '/portugal/cost-of-living',
-  '/gibraltar',
-  '/gibraltar/residency',
-  '/gibraltar/tax',
-  '/gibraltar/frontier-worker',
-  '/gibraltar/banking',
-  '/playbook/spain',
-  '/playbook/portugal',
-  '/playbook/gibraltar',
-  '/calculators',
-  '/calculators/beckham-law',
-  '/calculators/cost-of-living',
-  '/calculators/compare-countries',
-  '/calculators/visa-eligibility',
-  '/calculators/pension-transfer',
-  '/calculators/property-tax',
-  '/calculators/school-cost',
-  '/calculators/residency-timeline',
-  '/calculators/bank-comparator',
-  '/quiz',
-  '/blog',
-  '/about',
-  '/reviews',
-  '/contact',
-  '/privacy',
-  '/terms',
-  '/refund-policy',
-  '/disclaimer',
+type Freq = MetadataRoute.Sitemap[number]['changeFrequency'];
+
+interface Route {
+  path: string;
+  priority: number;
+  changeFrequency: Freq;
+}
+
+const staticRoutes: Route[] = [
+  // Homepage — top priority
+  { path: '', priority: 1.0, changeFrequency: 'weekly' },
+
+  // Revenue pages — playbooks
+  { path: '/playbook/spain', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/playbook/portugal', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/playbook/gibraltar', priority: 0.9, changeFrequency: 'monthly' },
+
+  // Pillar pages — high topical authority
+  { path: '/spain', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/portugal', priority: 0.9, changeFrequency: 'monthly' },
+  { path: '/gibraltar', priority: 0.9, changeFrequency: 'monthly' },
+
+  // Sourced reference hub — re-verified quarterly, treated as fresh
+  { path: '/thresholds', priority: 0.9, changeFrequency: 'weekly' },
+
+  // Sub-pillars
+  { path: '/spain/visa-guide', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/tax-residency', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/banking', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/cost-of-living', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/visa-guide', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/tax', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/banking', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/cost-of-living', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/gibraltar/residency', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/gibraltar/tax', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/gibraltar/frontier-worker', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/gibraltar/banking', priority: 0.8, changeFrequency: 'monthly' },
+
+  // Calculators — high-traffic but tools, not authority
+  { path: '/calculators', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/beckham-law', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/cost-of-living', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/compare-countries', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/visa-eligibility', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/pension-transfer', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/property-tax', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/school-cost', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/residency-timeline', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/calculators/bank-comparator', priority: 0.7, changeFrequency: 'monthly' },
+
+  // Engagement / lead-magnet surfaces
+  { path: '/quiz', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/blog', priority: 0.7, changeFrequency: 'weekly' },
+
+  // Trust / E-E-A-T
+  { path: '/about', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/reviews', priority: 0.6, changeFrequency: 'weekly' },
+  { path: '/contact', priority: 0.4, changeFrequency: 'yearly' },
+
+  // Legal / boilerplate — low priority, low change frequency
+  { path: '/privacy', priority: 0.2, changeFrequency: 'yearly' },
+  { path: '/terms', priority: 0.2, changeFrequency: 'yearly' },
+  { path: '/refund-policy', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/disclaimer', priority: 0.2, changeFrequency: 'yearly' },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  const base: MetadataRoute.Sitemap = staticRoutes.map((path) => ({
+  const base: MetadataRoute.Sitemap = staticRoutes.map(({ path, priority, changeFrequency }) => ({
     url: `${SITE.url}${path}`,
     lastModified: now,
-    changeFrequency: 'weekly',
-    priority: path === '' ? 1.0 : 0.7,
+    changeFrequency,
+    priority,
   }));
 
   try {

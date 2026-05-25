@@ -26,6 +26,7 @@ interface Body {
   author_name?: string;
   tags?: string[];
   faqs?: Faq[];
+  canonical_url?: string;
 }
 
 export async function PATCH(request: Request, { params }: { params: { id: string } }) {
@@ -59,6 +60,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     author_name: body.author_name,
     tags: body.tags,
     faqs: Array.isArray(body.faqs) ? body.faqs : undefined,
+    canonical_url: typeof body.canonical_url === 'string' ? body.canonical_url.trim() || null : undefined,
     updated_at: now,
   };
 
