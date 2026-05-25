@@ -64,7 +64,9 @@ export function CheckoutButton({ slug, accent = '#0F1827', large }: Props) {
       </button>
       {error && (
         <p className="text-xs text-gibraltar">
-          {error}. If Stripe is unconfigured, you&apos;ll be redirected to a coming-soon page.
+          Checkout didn&apos;t open: {error}. Try again, or email{' '}
+          <a href="mailto:hello@warmercoast.com" className="underline">hello@warmercoast.com</a>{' '}
+          and we&apos;ll send you a direct payment link.
         </p>
       )}
     </div>

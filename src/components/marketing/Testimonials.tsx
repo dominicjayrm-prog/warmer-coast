@@ -1,102 +1,96 @@
+import Link from 'next/link';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { createClient } from '@/lib/supabase/server';
+import { SITE } from '@/lib/site';
 
-const placeholders = [
-  {
-    quote:
-      'I almost botched my Beckham Law application by submitting the modelo 030 a fortnight late. The Spain playbook flagged it the first time I opened the visa module. Worth every penny.',
-    name: 'Sarah W.',
-    where: 'Manchester → Valencia',
-    product: 'Spain',
-    rating: 5,
-  },
-  {
-    quote:
-      'The pension transfer chapter alone saved me from a £14k lifetime allowance hit. Calmly explained, sources linked, no guru fluff.',
-    name: 'David R.',
-    where: 'London → Lisbon',
-    product: 'Portugal',
-    rating: 5,
-  },
-  {
-    quote:
-      'Honest about what Gibraltar actually is, what Cat 2 buys you, and what it doesn\'t. The frontier-worker module alone justified the price.',
-    name: 'Mark and Lisa T.',
-    where: 'Sevenoaks → Gibraltar',
-    product: 'Gibraltar',
-    rating: 5,
-  },
-  {
-    quote:
-      'Cost of living comparator is the single most useful free tool I\'ve found in three months of researching the move. Numbers actually matched what we found on the ground.',
-    name: 'Emma L.',
-    where: 'Leeds → Málaga',
-    product: 'Spain',
-    rating: 5,
-  },
-  {
-    quote:
-      'Wish I had this two years ago, I would have done the modelo 720 properly the first time around. Saved me a fine the second time.',
-    name: 'James P.',
-    where: 'Bristol → Cascais',
-    product: 'Portugal',
-    rating: 5,
-  },
-  {
-    quote:
-      'The padrón walkthrough was the most calming hour of my move. Step by step, exactly what to bring, exactly what they ask. Saved me a wasted Monday morning at the town hall.',
-    name: 'Catherine N.',
-    where: 'York → Cádiz',
-    product: 'Spain',
-    rating: 5,
-  },
-];
+export const revalidate = 600;
 
-export function Testimonials() {
+interface Row {
+  id: string;
+  product_slug: string | null;
+  rating: number | null;
+  quote: string;
+  display_name: string | null;
+  display_location: string | null;
+}
+
+export async function Testimonials() {
+  let rows: Row[] = [];
+  try {
+    const supabase = createClient();
+    const { data } = await supabase
+      .from('wc_testimonials')
+      .select('id,product_slug,rating,quote,display_name,display_location')
+      .eq('approved', true)
+      .order('featured', { ascending: false })
+      .order('created_at', { ascending: false })
+      .limit(6);
+    rows = (data as Row[]) ?? [];
+  } catch {}
+
+  if (rows.length === 0) return null;
+
+  const totalRated = rows.filter((r) => r.rating != null);
+  const avg =
+    totalRated.length > 0
+      ? totalRated.reduce((s, r) => s + (r.rating ?? 0), 0) / totalRated.length
+      : null;
+
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <Badge tone="warm" uppercase>From real buyers</Badge>
+            <Badge tone="warm" uppercase>From verified buyers</Badge>
             <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
               People who already did the hard part
             </h2>
           </div>
-          <a href="/reviews" className="text-sm font-semibold text-ink hover:text-warm">
-            All 247 reviews →
-          </a>
+          <Link href="/reviews" className="text-sm font-semibold text-ink hover:text-warm">
+            All reviews →
+          </Link>
         </div>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {placeholders.map((t, i) => (
-            <Card key={i} variant="bordered" className="h-full">
+          {rows.map((t) => (
+            <Card key={t.id} variant="bordered" className="h-full">
               <CardBody className="flex h-full flex-col gap-4">
                 <div className="flex items-center gap-1 text-warm">
-                  {'★★★★★'.split('').map((_, j) => (
+                  {'★'.repeat(t.rating ?? 5).split('').map((_, j) => (
                     <span key={j} aria-hidden>★</span>
                   ))}
-                  <span className="sr-only">{t.rating} out of 5</span>
+                  <span className="sr-only">{t.rating ?? 5} out of 5</span>
                 </div>
                 <blockquote className="text-[16px] leading-relaxed text-ink">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
                 <div className="mt-auto flex items-center justify-between pt-2 border-t border-border">
                   <div>
-                    <div className="text-sm font-semibold text-ink">{t.name}</div>
-                    <div className="text-xs text-muted">{t.where}</div>
+                    <div className="text-sm font-semibold text-ink">{t.display_name ?? 'Verified buyer'}</div>
+                    {t.display_location && <div className="text-xs text-muted">{t.display_location}</div>}
                   </div>
-                  <Badge tone="neutral">{t.product}</Badge>
+                  {t.product_slug && <Badge tone="neutral">{t.product_slug}</Badge>}
                 </div>
               </CardBody>
             </Card>
           ))}
         </div>
 
-        <p className="mt-8 text-center text-xs text-faint">
-          Placeholder testimonials with realistic UK→Iberia move patterns. Real reviews from
-          verified buyers will replace these once we have them, tagged by Stripe purchase.
-        </p>
+        {avg != null && rows.length >= 3 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'AggregateRating',
+                itemReviewed: { '@type': 'Organization', name: 'WarmerCoast', url: SITE.url },
+                ratingValue: avg.toFixed(1),
+                reviewCount: rows.length,
+              }),
+            }}
+          />
+        )}
       </div>
     </section>
   );

@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
-import { SocialProofStrip } from '@/components/marketing/SocialProofStrip';
 import { Testimonials } from '@/components/marketing/Testimonials';
 import { TimeframeGate } from '@/components/marketing/TimeframeGate';
 import { ActivityTicker } from '@/components/marketing/ActivityTicker';
@@ -23,9 +22,9 @@ export const metadata: Metadata = {
 };
 
 const trustChips = [
-  { icon: '★ 4.9', label: 'verified buyer rating' },
   { icon: '✓', label: '30-day strong refund' },
   { icon: '⏱', label: '12 months of updates included' },
+  { icon: '🇪🇸', label: 'Built in Cádiz by a UK-to-Spain mover' },
 ];
 
 const playbooks = [
@@ -121,7 +120,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <SocialProofStrip />
       <TimeframeGate />
       <UrgencyAnchor />
       <Promises />
@@ -654,10 +652,10 @@ function FoundersBlurb() {
               Read the full story →
             </Link>
             <Link
-              href="/reviews"
+              href="/refund-policy"
               className="inline-flex items-center gap-2 rounded-pill px-5 py-2.5 text-sm font-semibold text-muted hover:text-ink"
             >
-              247 verified reviews
+              30-day refund policy →
             </Link>
           </div>
         </div>

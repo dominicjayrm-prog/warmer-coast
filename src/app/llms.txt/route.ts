@@ -71,7 +71,7 @@ export async function GET() {
 
 ## About
 - [About Dominic Roworth](${SITE.url}/about)
-- [Reviews](${SITE.url}/reviews) -247 verified buyers, 4.9 stars
+- [Reviews](${SITE.url}/reviews) - verified buyer reviews, each tied to a Stripe purchase
 - [Contact](${SITE.url}/contact)
 
 ## Trust and legal
