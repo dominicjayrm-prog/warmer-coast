@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PillarTemplate } from '@/components/marketing/PillarTemplate';
 
 export const metadata: Metadata = {
@@ -52,9 +53,11 @@ export default function PortugalPillar() {
           body: (
             <>
               <p>
-                The D7 (passive income visa) suits retirees and applicants with substantial
-                dividend, rental or pension income. 2026 minimum: <strong>€820 per month</strong>{' '}
-                (€9,840 per year).
+                The <Link href="/portugal/visa-guide" className="text-warm underline-offset-2 hover:underline">D7 (passive income visa)</Link>{' '}
+                suits retirees and applicants with substantial dividend, rental or pension
+                income. 2026 minimum: <strong>€920 per month</strong> (€11,040 per year), tied to
+                the Portuguese minimum wage — see the{' '}
+                <Link href="/thresholds" className="text-warm underline-offset-2 hover:underline">2026 threshold reference</Link>.
               </p>
               <p>
                 The D8 (digital nomad visa) requires remote employment or qualifying
@@ -66,7 +69,7 @@ export default function PortugalPillar() {
             </>
           ),
           bullets: [
-            'D7: €820 per month passive income, accessible to retirees',
+            'D7: €920 per month passive income, accessible to retirees',
             'D8: €3,680 per month + €11,040 savings, remote work',
             'Golden Visa: investment-only, no residential property since 2023',
             'Family reunification: based on existing Portuguese or EU resident',
@@ -79,8 +82,9 @@ export default function PortugalPillar() {
             'The original NHR closed to new applicants from 2024. The replacement, IFICI, restricts the 20% flat rate to specific qualifying activities. UK tax residency must have been established after 1 January 2024 to be eligible.',
           body: (
             <p>
-              IFICI offers a 20% flat rate on Portuguese-source employment and self-employment
-              income from qualifying scientific, technological, higher-education and other listed
+              <Link href="/portugal/tax" className="text-warm underline-offset-2 hover:underline">IFICI</Link>{' '}
+              offers a 20% flat rate on Portuguese-source employment and self-employment income
+              from qualifying scientific, technological, higher-education and other listed
               activities, plus exemption on most foreign-source income. The qualifying list is
               tighter than NHR was. You must register with the appropriate authority within the
               first year of tax residency. Pensioners do not get the favourable treatment they

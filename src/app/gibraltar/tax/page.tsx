@@ -20,8 +20,8 @@ export default function Page() {
       bullets={[
         'ABS (Allowance-Based): progressive rates, generous personal allowances and deductions',
         'GIBS (Gross-Income-Based): flat rates, no allowances, simpler — taxpayer chooses lower',
-        'Category 2: worldwide income assessed only on first £118,000, ~£37k floor, ~£44.7k ceiling',
-        'HEPSS: caps assessable income at £160,000 specialist threshold, ~£44k effective ceiling',
+        'Category 2: worldwide income assessed only on first £118,000, £37,000 floor, £42,380 ceiling',
+        'HEPSS: caps assessable income at £160,000 specialist threshold; ceiling published annually by Gibraltar Income Tax Office',
         'UK government pensions: taxed only in UK under the double tax treaty',
         'UK state and private pensions: taxed only in Gibraltar once Gibraltar-resident',
       ]}

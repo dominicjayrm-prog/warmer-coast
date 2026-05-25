@@ -4,7 +4,7 @@ import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 export const metadata: Metadata = {
   title: 'Gibraltar Residency 2026 | Category 2, HEPSS & Ordinary Residency for UK Citizens',
   description:
-    'How British citizens become Gibraltar residents in 2026. Category 2 (£2m net worth, capped tax ~£44k), HEPSS for specialist roles, ordinary residency. Net worth thresholds, vetting timelines, approved accommodation, the new UK-EU treaty.',
+    'How British citizens become Gibraltar residents in 2026. Category 2 (£2m net worth, capped tax £42,380), HEPSS for specialist roles, ordinary residency. Net worth thresholds, vetting timelines, approved accommodation, the new UK-EU treaty.',
   alternates: { canonical: '/gibraltar/residency' },
   openGraph: { url: '/gibraltar/residency' },
 };

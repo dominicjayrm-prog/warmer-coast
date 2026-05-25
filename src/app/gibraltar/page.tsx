@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { PillarTemplate } from '@/components/marketing/PillarTemplate';
 
 export const metadata: Metadata = {
@@ -86,17 +87,19 @@ export default function GibraltarPillar() {
           intro: 'The headline mechanism is a cap on assessable income, not an exemption.',
           body: (
             <p>
-              Under Cat 2, only the first £118,000 of worldwide income is assessable to Gibraltar
-              tax (2026 figure), with a minimum annual tax of approximately £37,000 and a
-              maximum of approximately £42,380. Net worth of at least £2 million is required to
-              qualify, plus availability of approved residential accommodation. Application is
-              via the Finance Centre Director and includes vetting.
+              Under <Link href="/gibraltar/residency" className="text-warm underline-offset-2 hover:underline">Cat 2</Link>,
+              only the first £118,000 of worldwide income is assessable to Gibraltar tax (2026
+              figure), with a minimum annual tax of £37,000 and a maximum of £42,380. Net worth
+              of at least £2 million is required to qualify, plus availability of approved
+              residential accommodation. Full figures and the issuing-authority source are on the{' '}
+              <Link href="/thresholds" className="text-warm underline-offset-2 hover:underline">2026 thresholds page</Link>.
+              Application is via the Finance Centre Director and includes vetting.
             </p>
           ),
           bullets: [
             'Worldwide income above £118k is excluded from Gibraltar assessment',
-            'Minimum tax floor around £37k annually',
-            'Maximum tax ceiling around £44k annually',
+            'Minimum tax floor £37,000 annually',
+            'Maximum tax ceiling £42,380 annually',
             'Net worth requirement £2m, vetting required',
             'Approved residential property in Gibraltar required',
           ],
@@ -123,11 +126,13 @@ export default function GibraltarPillar() {
           intro: 'A common arrangement, materially complicated post-Brexit but still viable.',
           body: (
             <p>
-              Frontier-workers remain a specifically recognised category under post-Brexit
-              treaties. The tax mechanics depend heavily on physical day-counting, social
-              security coordination under the EU-UK Trade and Cooperation Agreement, and
-              whether you exceed Spanish tax residency thresholds (the 183-day rule). The
-              playbook covers each scenario.
+              <Link href="/gibraltar/frontier-worker" className="text-warm underline-offset-2 hover:underline">Frontier-workers</Link>{' '}
+              remain a specifically recognised category under post-Brexit treaties. The tax
+              mechanics depend heavily on physical day-counting, social security coordination
+              under the EU-UK Trade and Cooperation Agreement, and whether you exceed Spanish
+              tax residency thresholds (the 183-day rule —{' '}
+              <Link href="/calculators/residency-timeline" className="text-warm underline-offset-2 hover:underline">use the residency timeline calculator</Link>{' '}
+              to map your dates). The playbook covers each scenario.
             </p>
           ),
         },
