@@ -15,17 +15,19 @@ interface Row {
   display_location: string | null;
 }
 
-export async function Testimonials() {
+export async function Testimonials({ productSlug, heading }: { productSlug?: string; heading?: string } = {}) {
   let rows: Row[] = [];
   try {
     const supabase = createClient();
-    const { data } = await supabase
+    let q = supabase
       .from('wc_testimonials')
       .select('id,product_slug,rating,quote,display_name,display_location')
       .eq('approved', true)
       .order('featured', { ascending: false })
       .order('created_at', { ascending: false })
       .limit(6);
+    if (productSlug) q = q.eq('product_slug', productSlug);
+    const { data } = await q;
     rows = (data as Row[]) ?? [];
   } catch {}
 
@@ -44,7 +46,7 @@ export async function Testimonials() {
           <div className="max-w-xl">
             <Badge tone="warm" uppercase>From verified buyers</Badge>
             <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
-              People who already did the hard part
+              {heading ?? 'People who already did the hard part'}
             </h2>
           </div>
           <Link href="/reviews" className="text-sm font-semibold text-ink hover:text-warm">

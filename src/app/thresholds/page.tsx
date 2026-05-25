@@ -99,7 +99,7 @@ const sections: Section[] = [
       },
       {
         what: 'Digital nomad visa (DNV) minimum income',
-        value: '€2,762 / mo (200% SMI)',
+        value: '€2,849 / mo (200% SMI)',
         detail: '+75% of SMI for the first dependant, +25% for each additional. Tied to the Spanish minimum wage — recalibrates whenever the SMI moves. Verify against the published SMI for the year you apply.',
         source: { label: 'Spanish Ministry of Inclusion: DNV income threshold 2026', url: 'https://www.inclusion.gob.es' },
       },

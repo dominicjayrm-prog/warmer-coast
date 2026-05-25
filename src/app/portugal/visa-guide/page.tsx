@@ -18,7 +18,7 @@ export default function Page() {
       h1="Portuguese visa guide for UK citizens"
       intro="Brexit made British nationals third-country applicants for Portuguese residency. Two routes cover almost everyone moving from the UK: the D7 passive-income visa and the D8 digital nomad visa. The Golden Visa residential property route closed in October 2023 — only fund and capital-transfer investments still qualify. Family reunification and student routes cover specific cases. This is the 2026 income threshold and document-pack breakdown for each."
       bullets={[
-        'D7 (passive income, retirees and FIRE): €820 per month minimum (€9,840 per year)',
+        'D7 (passive income, retirees and FIRE): €920 per month minimum (€11,040 per year)',
         'D8 (digital nomad, remote workers): €3,680 per month + €11,040 savings',
         'Golden Visa: fund investment routes from €500,000, no longer residential property',
         'Family reunification: derived right via Portuguese or EU resident spouse/parent',
@@ -30,8 +30,8 @@ export default function Page() {
           id: 'd7-visa',
           title: 'D7 visa: the passive-income route',
           glance: {
-            value: '€820/mo',
-            label: 'Minimum passive income · €9,840/year',
+            value: '€920/mo',
+            label: 'Minimum passive income · €11,040/year',
             note: 'Pensions, dividends, rental income qualify',
           },
           body: (
@@ -41,7 +41,7 @@ export default function Page() {
                 with stable passive income. It suits retirees living on UK pensions, FIRE
                 applicants drawing from investment portfolios, and anyone with substantial
                 rental, dividend or royalty income. The minimum income threshold in 2026 is
-                €820 per month (€9,840 per year), with proportional uplifts for dependants.
+                €920 per month (€11,040 per year), with proportional uplifts for dependants.
               </p>
               <p>
                 The route requires proof that the income is stable and not earned from work

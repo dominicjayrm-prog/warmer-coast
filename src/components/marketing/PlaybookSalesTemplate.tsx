@@ -6,6 +6,7 @@ import { COUNTRY_META, PRODUCTS, type ProductSlug } from '@/lib/site';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
 import { CheckoutButton } from '@/components/checkout/CheckoutButton';
 import { LatestPostsStrip } from '@/components/marketing/LatestPostsStrip';
+import { Testimonials } from '@/components/marketing/Testimonials';
 
 interface Module {
   n: number;
@@ -290,6 +291,11 @@ export function PlaybookSalesTemplate({
         </div>
       </section>
 
+      <Testimonials
+        productSlug={slug}
+        heading={`What ${COUNTRY_META[slug].name} buyers say`}
+      />
+
       <section className="bg-surface/60 py-20 sm:py-24">
         <div className="container-content grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <div>
@@ -352,6 +358,22 @@ export function PlaybookSalesTemplate({
               { '@type': 'ListItem', position: 2, name: 'Playbooks', item: 'https://warmercoast.com/playbook/spain' },
               { '@type': 'ListItem', position: 3, name: product.name, item: `https://warmercoast.com/playbook/${slug}` },
             ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs
+              .filter((f) => typeof f.a === 'string')
+              .map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a as string },
+              })),
           }),
         }}
       />

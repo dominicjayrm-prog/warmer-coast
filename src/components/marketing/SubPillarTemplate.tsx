@@ -36,6 +36,8 @@ interface Props {
   sources?: { label: string; href: string }[];
   faqs?: { q: string; a: string }[];
   subPillarSlug?: string;
+  /** Real ISO date of the last manual review. Don't auto-bump. */
+  reviewedOn?: string;
 }
 
 export function SubPillarTemplate({
@@ -49,6 +51,7 @@ export function SubPillarTemplate({
   sources,
   faqs,
   subPillarSlug,
+  reviewedOn = '2026-05-25',
 }: Props) {
   const meta = COUNTRY_META[country];
   const breadcrumb = subPillarSlug
@@ -105,7 +108,7 @@ export function SubPillarTemplate({
               By <Link href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">Dominic Roworth</Link>
             </span>
             <span>·</span>
-            <span>Reviewed {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</span>
+            <span>Reviewed {new Date(reviewedOn).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
             <span>·</span>
             <span>2026 figures</span>
           </div>

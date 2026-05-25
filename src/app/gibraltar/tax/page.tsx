@@ -64,7 +64,7 @@ export default function Page() {
                 Cat 2 holders are taxed only on the first £118,000 of worldwide income,
                 regardless of total earnings. The combined effect of the ABS calculation on
                 that capped slice, the personal allowance, and the minimum tax floor produces
-                an annual liability between roughly £37,000 and £44,740. Whether you earn
+                an annual liability between roughly £37,000 and £42,380. Whether you earn
                 £200,000 or £20,000,000, your Gibraltar tax bill stays within that band.
               </p>
               <p>

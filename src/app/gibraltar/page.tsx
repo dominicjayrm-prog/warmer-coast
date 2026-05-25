@@ -88,7 +88,7 @@ export default function GibraltarPillar() {
             <p>
               Under Cat 2, only the first £118,000 of worldwide income is assessable to Gibraltar
               tax (2026 figure), with a minimum annual tax of approximately £37,000 and a
-              maximum of approximately £44,740. Net worth of at least £2 million is required to
+              maximum of approximately £42,380. Net worth of at least £2 million is required to
               qualify, plus availability of approved residential accommodation. Application is
               via the Finance Centre Director and includes vetting.
             </p>
@@ -108,9 +108,10 @@ export default function GibraltarPillar() {
             'A different route for individuals recruited into Gibraltar to fill skilled roles.',
           body: (
             <p>
-              HEPSS (High Executive Possessing Specialist Skills) caps tax liability at the
-              equivalent of the first £160,000 of income, currently producing an effective tax
-              ceiling around £44,740. The role must be one for which no suitable local candidate
+              HEPSS (High Executive Possessing Specialist Skills) caps the assessable amount at
+              the first £160,000 of earnings — the exact tax ceiling is recalculated each
+              assessment year by the Gibraltar Income Tax Office and is published in the annual
+              EY Gibraltar tax facts. The role must be one for which no suitable local candidate
               is available, and the employer applies on behalf of the individual. Common in
               finance, gaming, and maritime sectors.
             </p>

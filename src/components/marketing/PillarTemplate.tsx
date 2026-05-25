@@ -36,6 +36,8 @@ interface Props {
   sections: PillarSection[];
   faqs: AccordionItem[];
   breadcrumbName?: string;
+  /** Real ISO date of the last manual review. Don't auto-bump — credibility lives in this being honest. */
+  reviewedOn?: string;
 }
 
 interface HeroImage {
@@ -51,7 +53,7 @@ const HERO_IMAGE: Record<Country, HeroImage> = {
   gibraltar: { src: '/gibraltar.jpg', objectPosition: 'left center' },
 };
 
-export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Props) {
+export function PillarTemplate({ country, hero, subPillars, sections, faqs, reviewedOn = '2026-05-25' }: Props) {
   const meta = COUNTRY_META[country];
   const heroImage = HERO_IMAGE[country];
   const playbookSchema = {
@@ -152,7 +154,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs }: Pr
             <div className="flex items-center gap-2 text-xs text-faint">
               <span>By <a href="/about" className="text-muted hover:text-ink underline-offset-2 hover:underline">Dominic Roworth</a></span>
               <span>·</span>
-              <span>Reviewed {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long' })}</span>
+              <span>Reviewed {new Date(reviewedOn).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
               <span>·</span>
               <span>2026 figures</span>
             </div>

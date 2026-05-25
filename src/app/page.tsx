@@ -508,13 +508,19 @@ function FreeTools() {
       title: 'Residency timeline',
       blurb: 'When you become tax-resident, when the 183-day clock starts, day counting.',
     },
+    {
+      href: '/thresholds',
+      title: '2026 thresholds, sourced',
+      blurb: 'Every income, tax and visa figure for the UK, Spain, Portugal and Gibraltar on one page. Each row cites a primary source.',
+      tag: 'Reference',
+    },
   ];
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content">
         <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
-            <Badge tone="sea" uppercase>Nine free calculators</Badge>
+            <Badge tone="sea" uppercase>Free calculators &amp; references</Badge>
             <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
               Free tools good enough that you might not need the playbook
             </h2>
