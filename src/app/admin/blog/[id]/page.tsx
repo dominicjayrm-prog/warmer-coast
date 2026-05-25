@@ -5,6 +5,11 @@ import { SITE } from '@/lib/site';
 import { Badge } from '@/components/ui/Badge';
 import { PostForm } from '@/components/admin/PostForm';
 
+interface Faq {
+  question: string;
+  answer: string;
+}
+
 interface Post {
   id: string;
   title: string;
@@ -20,13 +25,14 @@ interface Post {
   status: string;
   author_name: string;
   tags: string[] | null;
+  faqs: Faq[] | null;
 }
 
 export default async function EditPostPage({ params }: { params: { id: string } }) {
   const supabase = adminDb();
   const { data } = await supabase
     .from('blog_posts')
-    .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,cover_image_alt,content,read_time_minutes,status,author_name,tags')
+    .select('id,title,slug,category,excerpt,meta_title,meta_description,cover_image,cover_image_alt,content,read_time_minutes,status,author_name,tags,faqs')
     .eq('id', params.id)
     .eq('site', SITE.siteKey)
     .maybeSingle();
@@ -76,6 +82,7 @@ export default async function EditPostPage({ params }: { params: { id: string } 
             status: post.status === 'published' ? 'published' : 'draft',
             author_name: post.author_name,
             tags: post.tags ?? [],
+            faqs: Array.isArray(post.faqs) ? post.faqs : [],
           }}
         />
       </div>

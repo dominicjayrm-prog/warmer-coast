@@ -6,6 +6,11 @@ import { SITE } from '@/lib/site';
 
 export const runtime = 'nodejs';
 
+interface Faq {
+  question: string;
+  answer: string;
+}
+
 interface Body {
   title?: string;
   slug?: string;
@@ -20,6 +25,7 @@ interface Body {
   status?: string;
   author_name?: string;
   tags?: string[];
+  faqs?: Faq[];
 }
 
 export async function PATCH(request: Request, { params }: { params: { id: string } }) {
@@ -52,6 +58,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     published: status === 'published',
     author_name: body.author_name,
     tags: body.tags,
+    faqs: Array.isArray(body.faqs) ? body.faqs : undefined,
     updated_at: now,
   };
 
