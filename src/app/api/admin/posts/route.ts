@@ -26,6 +26,7 @@ interface Body {
   author_name?: string;
   tags?: string[];
   faqs?: Faq[];
+  canonical_url?: string;
 }
 
 export async function POST(request: Request) {
@@ -65,6 +66,7 @@ export async function POST(request: Request) {
     author_name: body.author_name ?? 'Dominic Roworth',
     tags: body.tags ?? [],
     faqs: Array.isArray(body.faqs) ? body.faqs : [],
+    canonical_url: typeof body.canonical_url === 'string' ? body.canonical_url.trim() || null : null,
     language: 'en',
     published_at: status === 'published' ? now : now,
     updated_at: now,

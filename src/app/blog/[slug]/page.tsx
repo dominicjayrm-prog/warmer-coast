@@ -31,6 +31,7 @@ interface Post {
   meta_description: string;
   tags: string[] | null;
   faqs: Faq[] | null;
+  canonical_url: string | null;
 }
 
 async function getPost(slug: string): Promise<Post | null> {
@@ -52,12 +53,13 @@ async function getPost(slug: string): Promise<Post | null> {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = await getPost(params.slug);
   if (!post) return {};
+  const canonical = post.canonical_url?.trim() || `/blog/${post.slug}`;
   return {
     title: post.meta_title || post.title,
     description: post.meta_description || post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical },
     openGraph: {
-      url: `/blog/${post.slug}`,
+      url: canonical,
       title: post.title,
       description: post.excerpt,
       type: 'article',

@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { SubPillarTemplate } from '@/components/marketing/SubPillarTemplate';
 
 export const metadata: Metadata = {
-  title: 'Spain Tax Residency 2026 | Beckham Law, Modelo 720, 183-Day Rule for UK Movers',
+  title: 'Spain Tax Residency for UK Movers 2026: 183-Day Rule, Modelo 720, Treaty Reliefs',
   description:
-    'How Spanish tax residency works for British citizens in 2026. 183-day rule, centre of economic interests, Modelo 720 foreign-asset declaration, Beckham Law 24% flat rate, UK-Spain DTA pension mechanics, ISA treatment, CGT on UK property.',
+    'How Spanish tax residency works for British citizens in 2026. The 183-day rule, centre-of-economic-interests trigger, Modelo 720 foreign-asset declaration, UK-Spain DTA pension mechanics, ISA treatment, and CGT on UK property. Beckham Law mechanics covered in a dedicated deep dive.',
   alternates: { canonical: '/spain/tax-residency' },
   openGraph: { url: '/spain/tax-residency' },
 };
@@ -86,6 +86,12 @@ export default function Page() {
                 foreign-source investment income can be less favourable for buyers with major
                 non-UK portfolio income. The playbook walks through worked examples at £75k,
                 £125k and £200k income levels showing where standard tax actually wins.
+              </p>
+              <p className="text-[15px]">
+                <strong>Go deeper:</strong>{' '}
+                <a href="/spain/tax-residency/beckham-law" className="text-warm underline-offset-2 hover:underline">
+                  Beckham Law in 2026: the mechanics, the election, the trade-offs →
+                </a>
               </p>
             </>
           ),
