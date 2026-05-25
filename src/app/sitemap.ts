@@ -27,10 +27,28 @@ const staticRoutes: Route[] = [
   // Sourced reference hub — re-verified quarterly, treated as fresh
   { path: '/thresholds', priority: 0.9, changeFrequency: 'weekly' },
 
+  // High-intent cross-border deep dives
+  { path: '/uk-statutory-residence-test', priority: 0.85, changeFrequency: 'monthly' },
+  { path: '/qrops-vs-sipp-abroad', priority: 0.85, changeFrequency: 'monthly' },
+
   // Head-to-head comparison pages — each targets a specific high-intent query
   { path: '/spain-vs-portugal', priority: 0.85, changeFrequency: 'monthly' },
   { path: '/spain-vs-gibraltar', priority: 0.85, changeFrequency: 'monthly' },
   { path: '/portugal-vs-gibraltar', priority: 0.85, changeFrequency: 'monthly' },
+
+  // City-level destination pages — long-tail "moving to X from UK" intent
+  { path: '/moving-to-malaga', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-lisbon', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-marbella', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-valencia', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-madrid', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-porto', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-barcelona', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-the-algarve', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-cascais', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-sevilla', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-mallorca', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/moving-to-tenerife', priority: 0.8, changeFrequency: 'monthly' },
 
   // Sub-pillars
   { path: '/spain/visa-guide', priority: 0.8, changeFrequency: 'monthly' },
@@ -39,12 +57,19 @@ const staticRoutes: Route[] = [
   { path: '/spain/cost-of-living', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/spain/healthcare', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/spain/schools', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/patrimonio', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/solidaridad', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/sucesiones', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/spain/autonomo', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/portugal/visa-guide', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/portugal/tax', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/portugal/banking', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/portugal/cost-of-living', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/portugal/healthcare', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/portugal/schools', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/nif', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/niss', priority: 0.8, changeFrequency: 'monthly' },
+  { path: '/portugal/irs-jovem', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/gibraltar/residency', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/gibraltar/tax', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/gibraltar/frontier-worker', priority: 0.8, changeFrequency: 'monthly' },
