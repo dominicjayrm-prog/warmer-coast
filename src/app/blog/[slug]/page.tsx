@@ -118,7 +118,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-faint">
           <span className="inline-flex items-center gap-1.5">
             <span aria-hidden className="inline-block h-6 w-6 overflow-hidden rounded-pill border border-border bg-surface">
-              <img src="/dominic-roworth.jpg" alt="" className="h-full w-full object-cover" />
+              <img src="/dominic-roworth.jpg" alt="" className="h-full w-full object-cover object-top" />
             </span>
             By <Link href="/author/dominic-roworth" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">{post.author_name}</Link>
           </span>
@@ -198,11 +198,14 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         {/* Author bio card */}
         <Card variant="bordered" className="mt-14">
           <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
-            <div
-              className="relative h-16 w-16 shrink-0 overflow-hidden rounded-pill bg-gradient-to-br from-warm-light to-warm"
-              aria-hidden
-            >
-              <Image src="/icon.svg" alt="" fill className="opacity-90" />
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-pill border border-border">
+              <Image
+                src="/dominic-roworth.jpg"
+                alt={`Photograph of ${post.author_name}`}
+                fill
+                sizes="64px"
+                className="object-cover object-top"
+              />
             </div>
             <div className="flex-1">
               <div className="text-[11px] font-semibold uppercase tracking-[0.1em] text-faint">

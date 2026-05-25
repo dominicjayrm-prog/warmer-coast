@@ -75,7 +75,7 @@ export default function AboutPage() {
                   alt="Dominic Roworth, founder of WarmerCoast"
                   fill
                   sizes="112px"
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                 />
               </div>

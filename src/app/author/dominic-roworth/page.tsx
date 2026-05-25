@@ -50,15 +50,24 @@ export default async function AuthorPage() {
   let posts: Post[] = [];
   try {
     const supabase = adminDb();
+    // Pull every published post and filter in app code. Tolerates variations
+    // in how author_name is stored (case, whitespace, just "Dominic", or
+    // null on legacy rows). Dominic is the sole author so an empty author_name
+    // counts too — better to over-include here than silently miss a post.
     const { data } = await supabase
       .from('blog_posts')
-      .select('slug,title,excerpt,cover_image,category,read_time_minutes,published_at')
+      .select('slug,title,excerpt,cover_image,category,read_time_minutes,published_at,author_name')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
-      .eq('author_name', AUTHOR.name)
       .order('published_at', { ascending: false })
-      .limit(120);
-    posts = (data as Post[]) ?? [];
+      .limit(200);
+    const rows = (data as (Post & { author_name: string | null })[] | null) ?? [];
+    const normalised = AUTHOR.name.trim().toLowerCase();
+    posts = rows.filter((r) => {
+      const a = (r.author_name ?? '').trim().toLowerCase();
+      // Match exact name, first-name only, or empty (Dominic is sole author).
+      return a === normalised || a === 'dominic' || a === '';
+    });
   } catch {}
 
   const authorUrl = `${SITE.url}/author/${SLUG}`;
@@ -142,7 +151,7 @@ export default async function AuthorPage() {
                 alt={`Photograph of ${AUTHOR.name}, founder of WarmerCoast`}
                 fill
                 sizes="160px"
-                className="object-cover"
+                className="object-cover object-top"
                 priority
               />
             </div>
