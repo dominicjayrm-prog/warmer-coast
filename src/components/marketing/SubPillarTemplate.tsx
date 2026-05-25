@@ -72,7 +72,8 @@ export function SubPillarTemplate({
     description: intro,
     author: { '@type': 'Person', name: 'Dominic Roworth', url: 'https://warmercoast.com/about' },
     publisher: { '@type': 'Organization', name: 'WarmerCoast', url: 'https://warmercoast.com' },
-    dateModified: new Date().toISOString().slice(0, 10),
+    datePublished: '2026-01-15',
+    dateModified: reviewedOn,
   };
   const faqSchema = faqs && faqs.length > 0
     ? {

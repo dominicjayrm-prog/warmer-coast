@@ -50,9 +50,60 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE.url}/#website`,
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  inLanguage: 'en-GB',
+  publisher: { '@id': `${SITE.url}/#organization` },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE.url}/icon.svg`,
+  },
+  founder: {
+    '@type': 'Person',
+    name: SITE.founder,
+    url: `${SITE.url}/about`,
+  },
+  sameAs: [
+    SITE.socials.instagram,
+    SITE.socials.youtube,
+    'https://www.linkedin.com/in/dominicroworth/',
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@warmercoast.com',
+    contactType: 'customer support',
+    areaServed: 'GB',
+    availableLanguage: ['en-GB'],
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={`${inter.variable} ${fraunces.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="min-h-screen bg-white text-ink">
         <a
           href="#main"

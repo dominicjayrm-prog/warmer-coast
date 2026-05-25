@@ -112,7 +112,7 @@ const faqs = [
   },
   {
     q: 'Refund policy?',
-    a: 'Complete the first three modules within 30 days. If you have not identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask, which is why we can keep this policy.',
+    a: 'Complete the first three modules within 30 days. If you have not identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Almost no one asks — which is why we can keep this policy.',
   },
 ];
 

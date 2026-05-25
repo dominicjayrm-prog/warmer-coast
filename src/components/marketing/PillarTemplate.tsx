@@ -5,8 +5,36 @@ import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Accordion, type AccordionItem } from '@/components/ui/Accordion';
 import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
+import { RelatedResources, type RelatedResource } from '@/components/marketing/RelatedResources';
 import { COUNTRY_META } from '@/lib/site';
 import type { Country } from '@/lib/site';
+
+const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
+  spain: [
+    { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'Beckham Law cap, IPREM, NLV, DNV, Modelo 720, all on one page with primary-source citations.' },
+    { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law tax-saving calculator', blurb: 'Run your numbers: standard IRPF vs Beckham flat 24%. Find the break-even.' },
+    { kind: 'Deep dive', href: '/spain/tax-residency', label: 'Spain tax residency for British movers', blurb: '183-day rule, centre-of-vital-interests, when the clock starts, treaty tiebreakers.' },
+    { kind: 'Deep dive', href: '/spain/visa-guide', label: 'Spain visa guide: NLV vs DNV', blurb: 'Income thresholds, document packs, consulate quirks, the 6-month Beckham election window.' },
+    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Side-by-side on tax, cost, visa difficulty, English-speaking, weather, schools.' },
+    { kind: 'Playbook', href: '/playbook/spain', label: 'The Spain Playbook · £397', blurb: '8 sequenced modules, vetted asesor referrals, padrón video walkthrough, lifetime updates.' },
+  ],
+  portugal: [
+    { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'D7 minimum income, IFICI rate and duration, every figure links to its primary source.' },
+    { kind: 'Deep dive', href: '/portugal/tax', label: 'Portuguese tax: NHR 2.0 / IFICI explained', blurb: 'Who actually qualifies for IFICI, the 20% rate mechanics, foreign-income exemptions.' },
+    { kind: 'Deep dive', href: '/portugal/visa-guide', label: 'Portugal visa guide: D7 vs D8', blurb: 'Passive-income D7 vs digital-nomad D8, the closed Golden Visa, family reunification.' },
+    { kind: 'Calculator', href: '/calculators/cost-of-living', label: 'Cost of living: UK vs Portugal', blurb: 'Monthly breakdown by city. Numbeo + ONS sourced.' },
+    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'See where Portugal wins on tax, where it loses, and where it really shines for retirees.' },
+    { kind: 'Playbook', href: '/playbook/portugal', label: 'The Portugal Playbook · £397', blurb: '7 sequenced modules, vetted contabilista referrals, year-one IRS walkthrough.' },
+  ],
+  gibraltar: [
+    { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'Cat 2 min/max tax, £118k income cap, net worth requirement — straight from the Gibraltar tax office.' },
+    { kind: 'Deep dive', href: '/gibraltar/residency', label: 'Gibraltar Cat 2 residency in 2026', blurb: 'Net worth test, approved accommodation, Finance Centre vetting, the practical bar.' },
+    { kind: 'Deep dive', href: '/gibraltar/frontier-worker', label: 'Frontier worker reality: live Spain, work Gibraltar', blurb: 'The post-Brexit border, the new EU treaty, tax-treaty mechanics, day counting.' },
+    { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law (Spain) calculator', blurb: 'Useful if you’re also considering Spain as a Cat 2 alternative.' },
+    { kind: 'Compare', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Where Cat 2 wins, where it loses, and the income level where it becomes a no-brainer.' },
+    { kind: 'Playbook', href: '/playbook/gibraltar', label: 'The Gibraltar Playbook · £497', blurb: '6 deep modules, frontier-worker mechanics, banking in a finance hub, schools, Spain-side.' },
+  ],
+};
 
 export interface PillarSection {
   id: string;
@@ -94,7 +122,7 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs, revi
       url: 'https://warmercoast.com',
     },
     datePublished: '2026-01-15',
-    dateModified: new Date().toISOString().slice(0, 10),
+    dateModified: reviewedOn,
   };
   return (
     <>
@@ -289,6 +317,12 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs, revi
           <Accordion items={faqs} />
         </div>
       </section>
+
+      <RelatedResources
+        heading={`Free ${meta.name} resources for movers`}
+        subheading="Sourced, no email required. Read these before you buy the playbook."
+        items={RELATED_BY_COUNTRY[country]}
+      />
 
       <section className="relative overflow-hidden bg-night-deep text-white py-20">
         <div className="container-content text-center">

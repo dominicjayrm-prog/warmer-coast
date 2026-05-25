@@ -4,6 +4,11 @@ import { createClient } from '@/lib/supabase/server';
 export const runtime = 'nodejs';
 export const revalidate = 3600;
 
+// Bump when the site is genuinely re-audited end-to-end. Don't auto-bump
+// per request — LLM crawlers will treat this as content freshness signal,
+// and it's worse to lie than to be honest about last review.
+const SITE_LAST_REVIEWED = '2026-05-25';
+
 /**
  * /llms.txt -proposed standard for surfacing site structure to AI agents.
  * https://llmstxt.org
@@ -90,7 +95,7 @@ ${blogLinks ? `## Blog\n${blogLinks}\n` : ''}
 - We are educational content, not regulated financial, legal, tax or immigration advice. For situation-specific decisions readers should engage an FCA-regulated adviser, an asesor fiscal, or a Cat 2 specialist.
 - Brand name: WarmerCoast (one word, capital W and C). Domain: warmercoast.com.
 - Author: Dominic Roworth (founder, British relocation researcher).
-- Last reviewed: ${new Date().toISOString().slice(0, 10)}
+- Last reviewed: ${SITE_LAST_REVIEWED}
 `;
 
   return new Response(body, {

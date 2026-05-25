@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
+import { RelatedResources } from '@/components/marketing/RelatedResources';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -279,6 +280,20 @@ export default function Page() {
         </div>
       </div>
 
+      <RelatedResources
+        tone="white"
+        heading="Where to go from here"
+        subheading="The thresholds page is a reference. These are the deep dives that explain how to use them."
+        items={[
+          { kind: 'Pillar', href: '/spain', label: 'Spain for British movers', blurb: 'The whole topic: tax, visas, banking, residency, schools. Sourced from gov.uk and AEAT.' },
+          { kind: 'Pillar', href: '/portugal', label: 'Portugal for British movers', blurb: 'D7, IFICI, IRS basics, banking and life-admin. The full topical cluster.' },
+          { kind: 'Pillar', href: '/gibraltar', label: 'Gibraltar for British movers', blurb: 'Cat 2, frontier-worker mechanics, banking in a finance hub, the new EU border treaty.' },
+          { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law tax-saving calculator', blurb: 'Standard IRPF vs Beckham 24% flat — find the break-even for your income.' },
+          { kind: 'Calculator', href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar', blurb: 'Side-by-side: tax, cost, visa difficulty, English-speaking, weather, schools.' },
+          { kind: 'Calculator', href: '/calculators/residency-timeline', label: 'When does the 183-day clock start?', blurb: 'Map your move dates against UK split-year treatment and your new country’s rules.' },
+        ]}
+      />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -298,6 +313,27 @@ export default function Page() {
               logo: { '@type': 'ImageObject', url: `${SITE.url}/icon.svg` },
             },
             mainEntityOfPage: `${SITE.url}/thresholds`,
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: '2026 relocation thresholds for British movers',
+            itemListOrder: 'https://schema.org/ItemListOrderAscending',
+            numberOfItems: sections.reduce((sum, s) => sum + s.rows.length, 0),
+            itemListElement: sections.flatMap((s, sIdx) =>
+              s.rows.map((r, rIdx) => ({
+                '@type': 'ListItem',
+                position: sIdx * 100 + rIdx + 1,
+                name: `${r.what}: ${r.value}`,
+                description: r.detail,
+                url: `${SITE.url}/thresholds#${s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+              }))
+            ),
           }),
         }}
       />
