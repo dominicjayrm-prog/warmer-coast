@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SITE } from '@/lib/site';
 import { createClient } from '@/lib/supabase/server';
+import { FILE_BLOG_POSTS } from '@/content/blog/registry';
 
 type Freq = MetadataRoute.Sitemap[number]['changeFrequency'];
 
@@ -114,6 +115,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency,
     priority,
   }));
+
+  // File-based blog posts — ship with deploy.
+  FILE_BLOG_POSTS.forEach((post) => {
+    base.push({
+      url: `${SITE.url}/blog/${post.slug}`,
+      lastModified: new Date(post.updated_at),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    });
+  });
 
   try {
     const supabase = createClient();

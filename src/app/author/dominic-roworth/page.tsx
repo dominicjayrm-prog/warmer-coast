@@ -5,6 +5,7 @@ import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
+import { FILE_BLOG_POSTS } from '@/content/blog/registry';
 
 export const dynamic = 'force-dynamic';
 
@@ -69,6 +70,22 @@ export default async function AuthorPage() {
       return a === normalised || a === 'dominic' || a === '';
     });
   } catch {}
+
+  // Merge in file-based posts authored by Dominic.
+  const normalisedAuthor = AUTHOR.name.trim().toLowerCase();
+  const filePosts: Post[] = FILE_BLOG_POSTS.filter(
+    (p) => p.author_name.trim().toLowerCase() === normalisedAuthor
+  ).map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    cover_image: p.cover_image,
+    category: p.category,
+    read_time_minutes: p.read_time_minutes,
+    published_at: p.published_at,
+  }));
+  posts = [...filePosts, ...posts]
+    .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
 
   const authorUrl = `${SITE.url}/author/${SLUG}`;
   const imageAbs = `${SITE.url}${AUTHOR.imageUrl}`;
