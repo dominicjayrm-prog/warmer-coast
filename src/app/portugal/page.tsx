@@ -26,6 +26,8 @@ export default function PortugalPillar() {
         { href: '/portugal/tax', label: 'Tax', blurb: 'IRS basics, IFICI, capital gains, pensions.' },
         { href: '/portugal/banking', label: 'Banking', blurb: 'NIF, Portuguese banks, Wise integration.' },
         { href: '/portugal/cost-of-living', label: 'Cost of living', blurb: 'Real numbers per region.' },
+        { href: '/portugal/healthcare', label: 'Healthcare', blurb: 'SNS, utente, S1, D7 insurance, taxas moderadoras.' },
+        { href: '/portugal/schools', label: 'Schools', blurb: 'International schools, IB/A-Level, Lisbon/Porto/Algarve.' },
       ]}
       sections={[
         {

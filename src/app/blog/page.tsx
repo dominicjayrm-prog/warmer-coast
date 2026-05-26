@@ -4,6 +4,7 @@ import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
+import { FILE_BLOG_POSTS } from '@/content/blog/registry';
 
 export const dynamic = 'force-dynamic';
 
@@ -47,6 +48,20 @@ export default async function BlogIndex() {
     queryError = e instanceof Error ? e.message : String(e);
     console.error('[blog] supabase client error:', e);
   }
+
+  // Merge in file-based posts (code-resident, ship with deploy, no DB needed).
+  const filePosts: Post[] = FILE_BLOG_POSTS.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    cover_image: p.cover_image,
+    category: p.category,
+    read_time_minutes: p.read_time_minutes,
+    published_at: p.published_at,
+    author_name: p.author_name,
+  }));
+  posts = [...filePosts, ...posts]
+    .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
 
   return (
     <section className="bg-white py-14 sm:py-20">

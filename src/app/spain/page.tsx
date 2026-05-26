@@ -42,6 +42,16 @@ export default function SpainPillar() {
           label: 'Cost of living',
           blurb: 'Real 2026 numbers across the main regions.',
         },
+        {
+          href: '/spain/healthcare',
+          label: 'Healthcare',
+          blurb: 'SNS, S1, Convenio Especial, NLV/DNV insurance spec.',
+        },
+        {
+          href: '/spain/schools',
+          label: 'Schools',
+          blurb: 'NABSS British schools, IB, public bilingual, fees.',
+        },
       ]}
       sections={[
         {

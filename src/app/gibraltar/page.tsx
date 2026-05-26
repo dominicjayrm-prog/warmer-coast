@@ -26,6 +26,8 @@ export default function GibraltarPillar() {
         { href: '/gibraltar/tax', label: 'Tax', blurb: 'Capped liability, qualifying income, ATR.' },
         { href: '/gibraltar/frontier-worker', label: 'Frontier-worker', blurb: 'Living Spain, working Gibraltar.' },
         { href: '/gibraltar/banking', label: 'Banking', blurb: 'GibTel sector banks, Sterling and Euro.' },
+        { href: '/gibraltar/healthcare', label: 'Healthcare', blurb: 'GHA, reciprocal arrangements, Cat 2 private cover.' },
+        { href: '/gibraltar/schools', label: 'Schools', blurb: 'State schools, Prior Park, UK curriculum, admissions.' },
       ]}
       sections={[
         {

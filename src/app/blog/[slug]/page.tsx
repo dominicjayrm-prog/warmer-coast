@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
+import { FILE_BLOG_POSTS, findFileBlogPost } from '@/content/blog/registry';
 
 export const revalidate = 60;
 
@@ -35,6 +36,10 @@ interface Post {
 }
 
 async function getPost(slug: string): Promise<Post | null> {
+  // File-based posts take precedence — they ship with the deploy and don't
+  // depend on Supabase availability.
+  const filePost = findFileBlogPost(slug);
+  if (filePost) return filePost as Post;
   try {
     const supabase = createClient();
     const { data } = await supabase
@@ -94,6 +99,11 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       .limit(4);
     related = (data as { slug: string; title: string; excerpt: string }[]) ?? [];
   } catch {}
+  // Top up with file-based posts in the same category (excluding the current).
+  const filePostsInCategory = FILE_BLOG_POSTS.filter(
+    (p) => p.category === post.category && p.slug !== post.slug
+  ).map((p) => ({ slug: p.slug, title: p.title, excerpt: p.excerpt }));
+  related = [...related, ...filePostsInCategory].slice(0, 4);
 
   const altText = post.cover_image_alt || post.title;
   const isAbsolute = post.cover_image?.startsWith('http');

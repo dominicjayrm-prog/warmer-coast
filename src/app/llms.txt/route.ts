@@ -53,14 +53,27 @@ export async function GET() {
 - [Spain tax residency](${SITE.url}/spain/tax-residency) -183-day rule, Beckham Law, modelo 720, UK pensions
 - [Spain banking](${SITE.url}/spain/banking)
 - [Spain cost of living](${SITE.url}/spain/cost-of-living)
+- [Spain healthcare](${SITE.url}/spain/healthcare) -SNS, Convenio Especial (€60/€157), S1, NLV/DNV insurance spec
+- [Spain schools](${SITE.url}/spain/schools) -NABSS British schools, IB, public bilingual, real fee ranges
+- [Spain Patrimonio (wealth tax)](${SITE.url}/spain/patrimonio) -region-by-region, Madrid/Andalucía zero vs Cataluña full scale
+- [Spain Solidaridad surcharge](${SITE.url}/spain/solidaridad) -national €3m+ wealth tax, brackets, Patrimonio credit
+- [Spain Sucesiones (inheritance tax)](${SITE.url}/spain/sucesiones) -region-by-region, spouses NOT exempt unlike UK IHT
+- [Spain autónomo](${SITE.url}/spain/autonomo) -€88 first-year tarifa plana, 15-bracket cuota system, DNV/Beckham interaction
 - [Portugal visa guide](${SITE.url}/portugal/visa-guide) -D7, D8, Golden Visa
 - [Portugal tax](${SITE.url}/portugal/tax) -NHR 2.0 / IFICI, IRS
 - [Portugal banking](${SITE.url}/portugal/banking)
 - [Portugal cost of living](${SITE.url}/portugal/cost-of-living)
+- [Portugal healthcare](${SITE.url}/portugal/healthcare) -SNS, número de utente, S1, post-2022 user-fee abolition
+- [Portugal schools](${SITE.url}/portugal/schools) -International schools in Lisbon/Porto/Algarve, IB/A-Level, fee ranges
+- [Portugal NIF (tax number)](${SITE.url}/portugal/nif) -in-person + remote fiscal-rep process for British movers
+- [Portugal NISS (social security)](${SITE.url}/portugal/niss) -required for employment + freelance, recibos verdes mechanics
+- [Portugal IRS Jovem (under 35)](${SITE.url}/portugal/irs-jovem) -100%/75%/50%/25% taper over 10 years, capped at 55× IAS
 - [Gibraltar residency](${SITE.url}/gibraltar/residency) -Cat 2, HEPSS, ordinary
 - [Gibraltar tax](${SITE.url}/gibraltar/tax)
 - [Gibraltar frontier worker](${SITE.url}/gibraltar/frontier-worker)
 - [Gibraltar banking](${SITE.url}/gibraltar/banking)
+- [Gibraltar healthcare](${SITE.url}/gibraltar/healthcare) -GHA, reciprocal UK arrangement, Cat 2 private requirement
+- [Gibraltar schools](${SITE.url}/gibraltar/schools) -State Westside/Bayside, Prior Park independent, UK curriculum
 
 ## Free interactive tools
 - [Beckham Law tax saving calculator](${SITE.url}/calculators/beckham-law)
@@ -76,6 +89,24 @@ export async function GET() {
 
 ## Reference
 - [2026 relocation thresholds, sourced](${SITE.url}/thresholds) -single-page reference for UK 2026/27 tax bands, Spain Beckham Law cap, NLV/DNV income, Modelo 720, Portugal D7, IFICI, Gibraltar Cat 2 — every figure cites a primary source
+
+## UK-side and cross-border deep dives
+- [UK Statutory Residence Test (SRT)](${SITE.url}/uk-statutory-residence-test) -automatic overseas tests, automatic UK tests, sufficient ties, split-year treatment, all 8 Cases
+- [QROPS vs International SIPP for British expats](${SITE.url}/qrops-vs-sipp-abroad) -25% overseas transfer charge, OTA, October 2024 rule change, country-by-country answer
+
+## City-level destination guides
+- [Moving to Málaga from the UK](${SITE.url}/moving-to-malaga) -Andalucía zero-Patrimonio, cost, neighbourhoods, schools
+- [Moving to Lisbon from the UK](${SITE.url}/moving-to-lisbon) -post-2022 rent surge reality, IFICI eligibility, Cascais-line family corridor
+- [Moving to Marbella from the UK](${SITE.url}/moving-to-marbella) -Costa del Sol British hub, NABSS school cluster, HNW lifestyle
+- [Moving to Valencia from the UK](${SITE.url}/moving-to-valencia) -mid-budget Spanish city, 2026 Patrimonio reform €1m allowance
+- [Moving to Madrid from the UK](${SITE.url}/moving-to-madrid) -100% Patrimonio rebate, Beckham Law density, elite international schools
+- [Moving to Porto from the UK](${SITE.url}/moving-to-porto) -25-35% cheaper than Lisbon, Oporto British School, climate trade-off
+- [Moving to Barcelona from the UK](${SITE.url}/moving-to-barcelona) -Mediterranean lifestyle vs Cataluña punitive Patrimonio
+- [Moving to the Algarve from the UK](${SITE.url}/moving-to-the-algarve) -British retirement default, D7 mechanics, town-by-town cost
+- [Moving to Cascais from the UK](${SITE.url}/moving-to-cascais) -British family corridor, St Julian's School, Lisbon commute
+- [Moving to Sevilla from the UK](${SITE.url}/moving-to-sevilla) -underserved Andalucía pick, real Spanish integration, summer heat
+- [Moving to Mallorca from the UK](${SITE.url}/moving-to-mallorca) -Balearic €3m Patrimonio allowance, HNW island lifestyle
+- [Moving to Tenerife from the UK](${SITE.url}/moving-to-tenerife) -year-round climate, IGIC 7% vs mainland 21%, long-flight trade-off
 
 ## Head-to-head comparisons
 - [Spain vs Portugal for British movers in 2026](${SITE.url}/spain-vs-portugal) -Beckham Law vs IFICI, NLV vs D7, wealth tax, citizenship pathway, English coverage, dimension by dimension
