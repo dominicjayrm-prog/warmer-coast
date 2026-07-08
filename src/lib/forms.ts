@@ -110,7 +110,7 @@ export const FORM_TEMPLATES: FormTemplate[] = [
     country: 'portugal',
     name: 'IFICI election application',
     blurb:
-      'Election for the Portuguese incentivo regime (NHR successor). Filed by 31 March of the year following residency.',
+      'Registration for the Portuguese IFICI regime (NHR successor). Filed by 15 January of the year following residency — a hard window.',
     authority: 'Autoridade Tributária (AT)',
     module: 3,
     flavour: 'nativeFill',
@@ -150,7 +150,7 @@ export const FORM_TEMPLATES: FormTemplate[] = [
     blurb:
       'Notify HMRC you are leaving the UK. Required regardless of whether you are moving to Spain, Portugal or Gibraltar.',
     authority: 'HM Revenue & Customs',
-    module: 2,
+    module: 1,
     officialPdfUrl: 'https://www.gov.uk/government/publications/income-tax-leaving-the-uk-getting-your-tax-right-p85',
     flavour: 'nativeFill',
     timeMinutes: 10,
@@ -161,9 +161,9 @@ export const FORM_TEMPLATES: FormTemplate[] = [
     country: 'gibraltar',
     name: 'Category 2 application',
     blurb:
-      'Application for Gibraltar Cat 2 residency status. Caps assessable worldwide income at £118,000. £2m net worth required.',
+      'Application for Gibraltar Cat 2 residency status. Caps assessable worldwide income at £118,000 (tax band £37,000-£42,380). £2m net worth required.',
     authority: 'Finance Centre, Gibraltar',
-    module: 3,
+    module: 2,
     flavour: 'nativeFill',
     timeMinutes: 25,
     order: 2,
@@ -173,9 +173,9 @@ export const FORM_TEMPLATES: FormTemplate[] = [
     country: 'gibraltar',
     name: 'HEPSS application (employer-led)',
     blurb:
-      'Application for High Executive Possessing Specialist Skills status. Filed by your Gibraltar employer. Caps effective tax at ~£44k.',
+      'Application for High Executive Possessing Specialist Skills status. Filed by your Gibraltar employer. Tax capped on the first £160,000 of earnings (≈ £39,940/yr).',
     authority: 'Finance Centre, Gibraltar',
-    module: 4,
+    module: 3,
     flavour: 'nativeFill',
     timeMinutes: 20,
     order: 3,
@@ -185,9 +185,9 @@ export const FORM_TEMPLATES: FormTemplate[] = [
     country: 'gibraltar',
     name: 'Income Tax Return (ABS or GIBS election)',
     blurb:
-      'Annual return. Annually choose between Allowance-Based Scheme and Gross-Income-Based Scheme.',
+      'Annual return for the year ended 30 June, due 30 November. Choose annually between the Allowance-Based and Gross-Income-Based schemes — whichever is lower.',
     authority: 'Income Tax Office, Gibraltar',
-    module: 8,
+    module: 6,
     flavour: 'nativeFill',
     timeMinutes: 30,
     order: 4,

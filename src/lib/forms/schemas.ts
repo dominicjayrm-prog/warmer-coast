@@ -548,12 +548,66 @@ export const FORM_SCHEMAS: Record<string, FormSchema> = {
     ],
     nextSteps: [
       'Share this brief with your Portuguese contabilista.',
-      'Contabilista files the IFICI application via the portaldofinanças portal by 31 March of the year following your residency commencement.',
+      'Contabilista files the IFICI registration with the AT (or FCT/IAPMEI/AICEP for their categories) by 15 January of the year following your residency commencement.',
       'Agency decision typically 30-90 days.',
       'IFICI status applies retroactively from the date of your Portuguese tax residency. The 10-year regime window starts from there.',
     ],
   },
+
+  gibraltar_income_tax: {
+    id: 'gibraltar_income_tax',
+    title: 'Gibraltar annual return - ABS vs GIBS brief',
+    intro:
+      'Gibraltar taxpayers choose each year between the Allowance-Based Scheme (ABS) and the Gross-Income-Based Scheme (GIBS) - whichever produces the lower bill. This brief gathers the year’s figures so you (or your Gibraltar accountant) can make the election and file by 30 November. Cat 2 and HEPSS holders: your capped basis applies automatically, but the return is still due.',
+    pdfTitle: 'Gibraltar annual return brief',
+    sections: [
+      COMMON_PERSONAL,
+      {
+        title: 'Status and tax year',
+        fields: [
+          { id: 'taxYear', label: 'Gibraltar tax year', type: 'text', required: true, hint: 'e.g. 1 July 2026 - 30 June 2027' },
+          { id: 'status', label: 'Your Gibraltar status', type: 'select', required: true, options: [
+            { value: 'ordinary', label: 'Ordinary resident taxpayer' },
+            { value: 'cat2', label: 'Category 2' },
+            { value: 'hepss', label: 'HEPSS' },
+            { value: 'frontier', label: 'Frontier worker (non-resident)' },
+          ] },
+          { id: 'taxRef', label: 'Income Tax Office reference', type: 'text', hint: 'On any ITO correspondence' },
+        ],
+      },
+      {
+        title: 'Income for the year',
+        description: 'Gross figures for the Gibraltar tax year (1 July - 30 June).',
+        fields: [
+          { id: 'employmentIncome', label: 'Employment income (gross)', type: 'currency', min: 0 },
+          { id: 'selfEmploymentIncome', label: 'Self-employment / business income', type: 'currency', min: 0 },
+          { id: 'pensionIncome', label: 'Pension income', type: 'currency', min: 0 },
+          { id: 'rentalIncome', label: 'Gibraltar rental income', type: 'currency', min: 0 },
+          { id: 'otherIncome', label: 'Other assessable income', type: 'currency', min: 0, help: 'Bank interest and quoted dividends are generally not taxable in Gibraltar - list only if advised otherwise.' },
+        ],
+      },
+      {
+        title: 'Allowances (ABS route only)',
+        description: 'Only relevant if the ABS election could beat GIBS for you - typically lower incomes with high allowances.',
+        fields: [
+          { id: 'mortgageInterest', label: 'Home mortgage interest paid', type: 'currency', min: 0 },
+          { id: 'medicalInsurance', label: 'Medical insurance premiums', type: 'currency', min: 0 },
+          { id: 'dependants', label: 'Number of dependants', type: 'number', min: 0, max: 12 },
+        ],
+      },
+    ],
+    nextSteps: [
+      'Give this brief to your Gibraltar accountant - or take it to the Income Tax Office counter.',
+      'They will compute both ABS and GIBS and elect the lower for the year. The election is annual: it can change next year.',
+      'Filing deadline: 30 November following the 30 June year end. Late filing penalties start at £50 and escalate.',
+      'Cat 2 holders: your assessable income is capped at £118,000 - the return confirms the £37,000-£42,380 band liability.',
+    ],
+  },
 };
+
+// Gibraltar movers file the same HMRC P85 as everyone else - alias the schema
+// so the p85_gib template renders the real filler instead of a placeholder.
+FORM_SCHEMAS.p85_gib = { ...FORM_SCHEMAS.p85, id: 'p85_gib' };
 
 export function getFormSchema(id: string): FormSchema | undefined {
   return FORM_SCHEMAS[id];

@@ -38,9 +38,9 @@ export default function Page() {
         'You expect a guru funnel with countdown timers and one-on-one Voxer access',
       ]}
       bonuses={[
-        { title: 'Spain Starter Checklist (PDF)', body: 'The exact 14-page pre-move list. Printable. Updated 2026.' },
-        { title: 'Padrón walkthrough (video)', body: 'A real padrón appointment, recorded and narrated. What to bring, what they actually ask, what to do if they push back.' },
-        { title: 'Vetted asesor fiscal referrals', body: 'Three independent asesores we\'ve personally vetted. No kickbacks.' },
+        { title: 'Interactive move checklists', body: '60+ sequenced checklist items across the 8 modules, with deadlines flagged and your progress saved to your account.' },
+        { title: 'Official-form fillers', body: 'Guided fillers for P85, Modelo 149, EX-15, Modelo 030 and more — validated inputs, saved drafts, and a filing-ready PDF brief for each.' },
+        { title: 'Vetted asesor fiscal referrals', body: 'Independent cross-border asesores we\'ve personally vetted — sent on request after purchase. No kickbacks.' },
       ]}
       guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials. Almost no one asks — which is why we can keep this policy."
       timeline={[

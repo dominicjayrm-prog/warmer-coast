@@ -3,6 +3,7 @@
 import { useMemo, useState, type ReactNode } from 'react';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Slider, Select } from '@/components/ui/Input';
+import { NewsletterCapture } from '@/components/marketing/NewsletterCapture';
 
 interface InputDef {
   id: string;
@@ -21,9 +22,12 @@ interface Props {
   compute: (values: Record<string, number | string>) => { label: string; value: ReactNode; accent?: string }[];
   notes?: string[];
   sources?: { label: string; href: string }[];
+  /** Renders a NewsletterCapture under the results, tagged with this source. */
+  captureSource?: string;
+  captureCta?: string;
 }
 
-export function SimpleCalculator({ inputs, initialValues, compute, notes, sources }: Props) {
+export function SimpleCalculator({ inputs, initialValues, compute, notes, sources, captureSource, captureCta }: Props) {
   const [values, setValues] = useState<Record<string, number | string>>(initialValues);
   const results = useMemo(() => compute(values), [values, compute]);
 
@@ -88,6 +92,17 @@ export function SimpleCalculator({ inputs, initialValues, compute, notes, source
                   <li key={i}>{n}</li>
                 ))}
               </ul>
+            </div>
+          )}
+          {captureSource && (
+            <div className="rounded-card border border-border bg-white p-4">
+              <div className="text-sm font-semibold text-ink">Email yourself these results</div>
+              <p className="mt-1 text-xs text-muted">
+                Plus the 2026 figures behind them, and updates when thresholds change.
+              </p>
+              <div className="mt-3">
+                <NewsletterCapture source={captureSource} cta={captureCta ?? 'Send my numbers'} />
+              </div>
             </div>
           )}
           {sources && sources.length > 0 && (

@@ -358,9 +358,9 @@ export const post202605WiseRevolut: FileBlogPost = {
   excerpt:
     'The 2026 FX stack for British movers — sourced. Wise (~0.5%), Revolut, currency brokers (Currencies Direct, OFX), or traditional bank wires (~2.5%). On £63,000 of year-one transfers the gap between best and worst is £1,260. Worked examples for solo movers, families, retirees, Gibraltar Cat 2. Plus the Bizum / MB WAY trap nobody warns you about.',
   content,
-  cover_image: '/cadiz-coastline.png',
+  cover_image: '/blog/transfer-money-uk-spain-2026.jpg',
   cover_image_alt:
-    'Cádiz coastline in southern Spain — relocation destination covered by the WarmerCoast Spain Playbook',
+    'Airplane wing over the Mediterranean coast at sunset — moving money and life from the UK to Spain',
   category: 'Banking',
   read_time_minutes: 10,
   published_at: '2026-05-27T07:00:00.000Z',

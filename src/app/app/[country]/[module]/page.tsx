@@ -7,6 +7,15 @@ import { COUNTRY_META, COUNTRIES, type Country } from '@/lib/site';
 import { listModules } from '@/lib/modules-db';
 import { ModuleChecklist } from '@/components/app/ModuleChecklist';
 import { getEntitlements, hasAccess } from '@/lib/entitlements';
+import { formsForCountry } from '@/lib/forms';
+import { LiveTaxCalculator } from '@/components/calculators/LiveTaxCalculator';
+
+/** Modules where the live tax calculator belongs inline as the worked-example tool. */
+const CALCULATOR_MODULES: Record<Country, string[]> = {
+  spain: ['beckham-law', 'year-one-tax'],
+  portugal: ['ifici', 'year-one-tax'],
+  gibraltar: ['cat-2', 'hepss'],
+};
 
 export const metadata: Metadata = {
   title: 'Module',
@@ -104,6 +113,50 @@ export default async function ModulePage({
               </section>
             ))}
           </div>
+
+          {CALCULATOR_MODULES[country].includes(mod.slug) && (
+            <div className="mt-10">
+              <h2 className="display text-[22px] font-semibold tracking-tight text-ink">
+                Run your own numbers
+              </h2>
+              <p className="mt-1 text-sm text-muted">
+                The same engine as the worked examples above — set your income and compare.
+              </p>
+              <div className="mt-4">
+                <LiveTaxCalculator initialCountry={country} />
+              </div>
+            </div>
+          )}
+
+          {(() => {
+            const moduleForms = formsForCountry(country).filter((f) => f.module === mod.n);
+            if (moduleForms.length === 0) return null;
+            return (
+              <div className="mt-10">
+                <h2 className="display text-[22px] font-semibold tracking-tight text-ink">
+                  Forms for this module
+                </h2>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {moduleForms.map((f) => (
+                    <Link
+                      key={f.id}
+                      href={`/app/${country}/forms/${f.id}`}
+                      className="group rounded-card border border-border bg-white p-4 transition-all hover:-translate-y-px hover:border-ink/40 hover:shadow-card"
+                    >
+                      <div className="text-[11px] font-semibold uppercase tracking-[0.08em] text-muted">
+                        {f.authority} · ~{f.timeMinutes} min
+                      </div>
+                      <div className="mt-1 font-semibold text-ink">{f.name}</div>
+                      <p className="mt-1 text-[13px] leading-relaxed text-muted">{f.blurb}</p>
+                      <div className="mt-2 text-[13px] font-semibold" style={{ color: meta.accent }}>
+                        Open the filler →
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
 
           <div className="mt-12">
             <h2 className="display text-[22px] font-semibold tracking-tight text-ink">Checklist</h2>

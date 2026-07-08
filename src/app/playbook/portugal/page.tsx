@@ -37,9 +37,9 @@ export default function Page() {
         'You\'re looking for a Golden Visa property guide (route closed in 2023)',
       ]}
       bonuses={[
-        { title: 'Portugal Starter Checklist (PDF)', body: 'Pre-move and arrival checklist. Printable. 2026 thresholds.' },
-        { title: 'NIF without a fiscal rep (video)', body: 'The 2026 process for obtaining a Portuguese tax number from the UK.' },
-        { title: 'Vetted advogado referrals', body: 'Three Portuguese lawyers we\'ve personally vetted. No kickbacks.' },
+        { title: 'Interactive move checklists', body: '50+ sequenced checklist items across the 7 modules, with deadlines flagged and your progress saved to your account.' },
+        { title: 'Official-form fillers', body: 'Guided fillers for P85, the D7/D8 applications and the IFICI registration — validated inputs, saved drafts, filing-ready PDF briefs.' },
+        { title: 'Vetted advogado referrals', body: 'Independent Portuguese lawyers and contabilistas we\'ve personally vetted — sent on request after purchase. No kickbacks.' },
       ]}
       guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes you would have made without the playbook, email us for a full refund and keep the materials."
       timeline={[

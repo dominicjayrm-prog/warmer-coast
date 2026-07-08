@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Card, CardBody } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { COUNTRY_META, COUNTRIES, type Country } from '@/lib/site';
-import { PLAYBOOK_MODULES } from '@/lib/playbook-modules';
+import { listModules } from '@/lib/modules-db';
 import { getEntitlements } from '@/lib/entitlements';
 
 export const metadata: Metadata = {
@@ -40,6 +40,14 @@ export default async function AppHome() {
     }
   });
 
+  // Same source of truth as the country pages (DB with code fallback), so the
+  // dashboard percentage can never drift from the module list actually shown.
+  const moduleCounts = new Map<Country, number>(
+    await Promise.all(
+      owned.map(async (c) => [c, (await listModules(c)).length] as [Country, number]),
+    ),
+  );
+
   return (
     <section className="bg-white py-14">
       <div className="container-content">
@@ -66,7 +74,7 @@ export default async function AppHome() {
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {owned.map((c) => {
               const meta = COUNTRY_META[c];
-              const total = PLAYBOOK_MODULES[c].length;
+              const total = moduleCounts.get(c) ?? 0;
               const done = progressMap.get(`${c}-completed`) ?? 0;
               const pct = total > 0 ? Math.round((done / total) * 100) : 0;
               return (

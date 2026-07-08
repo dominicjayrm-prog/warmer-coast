@@ -6,6 +6,7 @@ import { formatGBP } from '@/lib/tax';
 export function PropertyTaxCalc() {
   return (
     <SimpleCalculator
+      captureSource="calculator_property_tax"
       inputs={[
         { id: 'price', label: 'Property price (£)', type: 'slider', min: 100_000, max: 2_000_000, step: 10_000, format: (n) => formatGBP(n) },
         {

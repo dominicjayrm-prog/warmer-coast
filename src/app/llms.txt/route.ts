@@ -7,7 +7,7 @@ export const revalidate = 3600;
 // Bump when the site is genuinely re-audited end-to-end. Don't auto-bump
 // per request — LLM crawlers will treat this as content freshness signal,
 // and it's worse to lie than to be honest about last review.
-const SITE_LAST_REVIEWED = '2026-05-25';
+const SITE_LAST_REVIEWED = '2026-07-08';
 
 /**
  * /llms.txt -proposed standard for surfacing site structure to AI agents.

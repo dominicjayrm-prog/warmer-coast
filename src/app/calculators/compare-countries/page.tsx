@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { CompareCountries } from '@/components/calculators/CompareCountries';
 import { RelatedResources } from '@/components/marketing/RelatedResources';
+import { NewsletterCapture } from '@/components/marketing/NewsletterCapture';
 
 export const metadata: Metadata = {
   title: 'Spain vs Portugal vs Gibraltar | Decide where to move',
@@ -26,6 +27,16 @@ export default function Page() {
 
         <div className="mt-10">
           <CompareCountries />
+        </div>
+
+        <div className="mt-8 rounded-card border border-border bg-white p-6">
+          <h2 className="display text-xl font-semibold tracking-tight text-ink">Email yourself the comparison</h2>
+          <p className="mt-2 text-sm text-muted">
+            Your weighted result plus the threshold table behind it — and updates when the 2026 figures move.
+          </p>
+          <div className="mt-4">
+            <NewsletterCapture source="calculator_compare_countries" cta="Send my comparison" />
+          </div>
         </div>
       </div>
 

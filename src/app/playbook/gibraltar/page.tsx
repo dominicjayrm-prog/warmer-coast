@@ -36,11 +36,11 @@ export default function Page() {
         'You expect significant savings vs UK cost of living (Gibraltar is expensive)',
       ]}
       bonuses={[
-        { title: 'Cat 2 application checklist (PDF)', body: 'Documents, source-of-funds templates, vetting prep. 2026 ready.' },
-        { title: 'Frontier crossing reality (video)', body: 'Real cross-border timing, peak vs off-peak, what changed post-Brexit.' },
-        { title: 'Vetted Cat 2 specialist referrals', body: 'Three Gibraltar-based specialists we\'ve personally vetted.' },
+        { title: 'Cat 2 application checklists', body: 'The source-of-funds dossier structure, document list and vetting prep — interactive, with progress saved.' },
+        { title: 'Official-form fillers', body: 'Guided fillers for P85, the Cat 2 and HEPSS applications and the annual ABS/GIBS return — saved drafts, filing-ready PDF briefs.' },
+        { title: 'Vetted Cat 2 specialist referrals', body: 'Gibraltar law and accountancy firms we\'ve personally vetted — sent on request after purchase.' },
       ]}
-      guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes or structural pitfalls you would have made without the playbook, email us for a full refund and keep the materials. Less than 4% of buyers ever ask."
+      guarantee="Complete the first 3 modules within 30 days. If you haven't identified at least £1,000 in tax mistakes or structural pitfalls you would have made without the playbook, email us for a full refund and keep the materials. Almost no one asks — which is why we can keep this policy."
       timeline={[
         { when: '6-12 months out', what: 'File HMRC Form P85, compile source-of-funds dossier for Cat 2 vetting, choose between Cat 2 (HNW) and HEPSS (specialist senior role) and frontier-worker routes.' },
         { when: '3-6 months out', what: 'Secure approved Gibraltar residential accommodation (own or rent), prepare £2m net worth documentation for Cat 2.' },

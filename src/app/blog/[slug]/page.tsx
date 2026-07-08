@@ -128,7 +128,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
         <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-faint">
           <span className="inline-flex items-center gap-1.5">
             <span aria-hidden className="inline-block h-6 w-6 overflow-hidden rounded-pill border border-border bg-surface">
-              <img src="/dominic-roworth.jpg" alt="" className="h-full w-full object-cover object-top" />
+              <Image src="/dominic-roworth.jpg" alt="" width={24} height={24} className="h-full w-full object-cover object-top" />
             </span>
             By <Link href="/author/dominic-roworth" className="text-muted hover:text-ink underline-offset-2 hover:underline font-semibold">{post.author_name}</Link>
           </span>

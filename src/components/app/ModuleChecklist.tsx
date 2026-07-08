@@ -46,18 +46,19 @@ export function ModuleChecklist({
           { onConflict: 'user_id,country,module_number,item_id' },
         );
 
-        if (next.size === items.length) {
-          await supabase.from('wc_user_progress').upsert(
-            {
-              user_id: user.id,
-              country,
-              module_number: moduleNumber,
-              completed: true,
-              completed_at: new Date().toISOString(),
-            },
-            { onConflict: 'user_id,country,module_number' },
-          );
-        }
+        // Keep module-level progress in sync both ways: ticking the last item
+        // completes the module; unticking any item un-completes it.
+        const allDone = next.size === items.length;
+        await supabase.from('wc_user_progress').upsert(
+          {
+            user_id: user.id,
+            country,
+            module_number: moduleNumber,
+            completed: allDone,
+            completed_at: allDone ? new Date().toISOString() : null,
+          },
+          { onConflict: 'user_id,country,module_number' },
+        );
       } catch (e) {
         console.error('checklist save failed', e);
       }

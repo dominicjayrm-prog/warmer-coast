@@ -16,6 +16,7 @@ const annualPerChild: Record<string, number> = {
 export function SchoolCostCalc() {
   return (
     <SimpleCalculator
+      captureSource="calculator_school_cost"
       inputs={[
         {
           id: 'school',

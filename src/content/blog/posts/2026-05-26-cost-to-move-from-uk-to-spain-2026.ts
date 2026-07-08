@@ -274,7 +274,11 @@ const content = `
   <a href="/moving-to-barcelona">Barcelona</a>,
   <a href="/moving-to-sevilla">Sevilla</a>,
   <a href="/moving-to-mallorca">Mallorca</a>,
-  <a href="/moving-to-tenerife">Tenerife</a>.
+  <a href="/moving-to-tenerife">Tenerife</a> — and for the Portugal comparison,
+  <a href="/moving-to-lisbon">Lisbon</a>,
+  <a href="/moving-to-porto">Porto</a>,
+  <a href="/moving-to-the-algarve">the Algarve</a> and
+  <a href="/moving-to-cascais">Cascais</a>.
 </p>
 
 <h2>What our buyers wish they&apos;d budgeted for</h2>
@@ -334,9 +338,9 @@ export const post202605CostToMoveSpain: FileBlogPost = {
   excerpt:
     'The honest 2026 cost breakdown — by phase, with real ranges. Pre-move admin £400-£1,500. Visa £150-£800 plus optional £1,500-£4,000 lawyer. Move £1,200-£15,000. First-month admin £500-£2,500. Rental setup £2,500-£9,000. Year-1 tax £800-£3,500. Plus the hidden costs nobody talks about and a worked example for a family of 4 moving to Valencia.',
   content,
-  cover_image: '/cadiz-coastline.png',
+  cover_image: '/blog/cost-to-move-spain-2026.jpg',
   cover_image_alt:
-    'Cádiz coastline in southern Spain — one of the Andalucía destinations covered by the WarmerCoast Spain Playbook',
+    'Whitewashed Andalusian coastal town at golden hour — the Spain move this cost guide budgets for',
   category: 'Spain',
   read_time_minutes: 11,
   published_at: '2026-05-26T07:00:00.000Z',

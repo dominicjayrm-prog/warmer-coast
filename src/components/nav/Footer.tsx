@@ -20,6 +20,25 @@ const columns = [
       { href: '/spain-vs-portugal', label: 'Spain vs Portugal' },
       { href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar' },
       { href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar' },
+      { href: '/uk-statutory-residence-test', label: 'UK residence test (SRT)' },
+      { href: '/qrops-vs-sipp-abroad', label: 'QROPS vs SIPP abroad' },
+    ],
+  },
+  {
+    title: 'Destinations',
+    links: [
+      { href: '/moving-to-malaga', label: 'Málaga' },
+      { href: '/moving-to-marbella', label: 'Marbella' },
+      { href: '/moving-to-valencia', label: 'Valencia' },
+      { href: '/moving-to-madrid', label: 'Madrid' },
+      { href: '/moving-to-barcelona', label: 'Barcelona' },
+      { href: '/moving-to-sevilla', label: 'Sevilla' },
+      { href: '/moving-to-mallorca', label: 'Mallorca' },
+      { href: '/moving-to-tenerife', label: 'Tenerife' },
+      { href: '/moving-to-lisbon', label: 'Lisbon' },
+      { href: '/moving-to-porto', label: 'Porto' },
+      { href: '/moving-to-the-algarve', label: 'The Algarve' },
+      { href: '/moving-to-cascais', label: 'Cascais' },
     ],
   },
   {
@@ -79,7 +98,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-6">
             {columns.map((c) => (
               <div key={c.title}>
                 <div className="text-xs font-semibold uppercase tracking-[0.1em] text-white/50">

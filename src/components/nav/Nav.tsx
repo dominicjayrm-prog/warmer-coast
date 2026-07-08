@@ -14,14 +14,23 @@ const tools = [
   { href: '/calculators/beckham-law', label: 'Beckham Law calculator' },
   { href: '/calculators/cost-of-living', label: 'Cost of living comparator' },
   { href: '/calculators/compare-countries', label: 'Spain vs Portugal vs Gibraltar' },
-  { href: '/calculators/visa-eligibility', label: 'Visa eligibility quiz' },
+  { href: '/calculators/visa-eligibility', label: 'Visa route finder' },
   { href: '/quiz', label: 'Should you move abroad? (quiz)' },
+];
+
+const guides = [
+  { href: '/thresholds', label: '2026 thresholds — every figure, sourced' },
+  { href: '/spain-vs-portugal', label: 'Spain vs Portugal' },
+  { href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar' },
+  { href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar' },
+  { href: '/uk-statutory-residence-test', label: 'UK Statutory Residence Test' },
+  { href: '/qrops-vs-sipp-abroad', label: 'QROPS vs SIPP abroad' },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [openMobile, setOpenMobile] = useState(false);
-  const [openPanel, setOpenPanel] = useState<'playbooks' | 'tools' | null>(null);
+  const [openPanel, setOpenPanel] = useState<'playbooks' | 'tools' | 'guides' | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -78,7 +87,28 @@ export function Nav() {
           <Link href="/gibraltar" className="px-3 py-2 hover:text-ink">Gibraltar</Link>
 
           <DropdownTrigger
-            label="Free tools"
+            label="Guides"
+            isOpen={openPanel === 'guides'}
+            onToggle={() => setOpenPanel(openPanel === 'guides' ? null : 'guides')}
+          >
+            <DropdownPanel>
+              <div className="grid gap-1">
+                {guides.map((g) => (
+                  <Link
+                    key={g.href}
+                    href={g.href}
+                    className="rounded-card px-4 py-2.5 hover:bg-surface"
+                    onClick={() => setOpenPanel(null)}
+                  >
+                    {g.label}
+                  </Link>
+                ))}
+              </div>
+            </DropdownPanel>
+          </DropdownTrigger>
+
+          <DropdownTrigger
+            label="Tools"
             isOpen={openPanel === 'tools'}
             onToggle={() => setOpenPanel(openPanel === 'tools' ? null : 'tools')}
           >
@@ -152,7 +182,14 @@ export function Nav() {
                 </Link>
               ))}
             </MobileSection>
-            <MobileSection title="Free tools">
+            <MobileSection title="Guides">
+              {guides.map((g) => (
+                <Link key={g.href} href={g.href} className="block py-2" onClick={() => setOpenMobile(false)}>
+                  {g.label}
+                </Link>
+              ))}
+            </MobileSection>
+            <MobileSection title="Tools">
               {tools.map((t) => (
                 <Link key={t.href} href={t.href} className="block py-2" onClick={() => setOpenMobile(false)}>
                   {t.label}
