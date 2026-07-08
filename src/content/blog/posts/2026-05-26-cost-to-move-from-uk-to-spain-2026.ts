@@ -207,6 +207,12 @@ const content = `
 
 <h2>Hidden costs nobody talks about</h2>
 
+<p>
+  (The FX line below has its own full guide —
+  <a href="/blog/how-to-transfer-money-uk-to-spain-2026">Wise vs Revolut vs banks: how to
+  move money UK→Spain</a> — worth reading before your first transfer.)
+</p>
+
 <ul>
   <li><strong>UK FX bleed in year one.</strong> Moving GBP to EUR via traditional banks during your first year typically loses 1-3% per transaction. On &pound;30,000 of moving-related transfers that&apos;s &pound;300-&pound;900 of avoidable FX cost. Wise or Revolut compress this to ~0.4%. See the <a href="/calculators/bank-comparator">bank comparator</a>.</li>
   <li><strong>UK self-assessment final filing.</strong> The year you leave the UK, you still file UK SA — costs &pound;300-&pound;800 if using an accountant for split-year treatment. The <a href="/uk-statutory-residence-test">UK SRT deep dive</a> covers when you need professional help.</li>
@@ -319,6 +325,14 @@ const content = `
   efficient under Beckham Law or in zero-Patrimonio regions like Madrid or Andalucía.
   Plan honestly and the move pays for itself within 18-30 months for most working-age
   movers. Plan optimistically and the first 90 days will be financially uncomfortable.
+</p>
+
+<p>
+  Route-specific deep dives on the visa fees this article budgets:
+  the <a href="/blog/spain-non-lucrative-visa-british-retirees-2026">NLV retiree guide</a>,
+  the <a href="/blog/spain-digital-nomad-visa-2026-complete-guide">Digital Nomad Visa guide</a>,
+  and the <a href="/blog/spain-beckham-law-2026-guide">Beckham Law decision guide</a> for the
+  tax structuring that pays for the whole move.
 </p>
 
 <p>

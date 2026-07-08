@@ -14,7 +14,9 @@ const content = `
 <p>
   This is the 2026 sourced version — real fee structures, worked examples, country-specific
   quirks (Bizum in Spain, MB WAY in Portugal, GBP-zone Gibraltar), and the order to set up
-  accounts in.
+  accounts in. It pairs with our
+  <a href="/blog/cost-to-move-from-uk-to-spain-2026">full cost-of-moving breakdown</a> — the
+  transfers this guide optimises are the ones that budget assumes.
 </p>
 
 <h2>The 30-second TL;DR</h2>
@@ -310,6 +312,13 @@ const content = `
   Best outcome (Wise or Revolut Premium): roughly £340-£365. Worst outcome (UK high-street
   bank): £2,190. The gap is £1,850 in 6 months — about &euro;2,150 — and it&apos;s entirely
   invisible if you let the default option happen.
+</p>
+
+<p>
+  Retirees moving on pension income: the visa side of your money flow is covered in the
+  <a href="/blog/portugal-d7-visa-british-retirees-2026">Portugal D7 guide</a> and the
+  <a href="/blog/spain-non-lucrative-visa-british-retirees-2026">Spain NLV guide</a> — both
+  visas care about exactly the income evidence these transfers create.
 </p>
 
 <h2>Common mistakes British movers make</h2>
