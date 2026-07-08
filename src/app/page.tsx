@@ -821,7 +821,7 @@ function UrgencyAnchor() {
           </div>
         </div>
         <Link
-          href="/gibraltar/frontier-worker"
+          href="/blog/gibraltar-eu-border-treaty-15-july-2026"
           className="shrink-0 inline-flex items-center gap-1.5 rounded-pill border border-warm bg-white px-4 py-2 text-sm font-semibold text-warm hover:bg-warm hover:text-white transition-all"
         >
           Read the breakdown →

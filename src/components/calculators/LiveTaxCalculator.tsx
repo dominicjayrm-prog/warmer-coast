@@ -14,13 +14,16 @@ interface Props {
   variant?: 'hero' | 'embedded';
 }
 
-// Gibraltar's Cat 2 carries a £37,000 minimum tax, so savings vs the UK only
-// begin around £125k of income. Opening the widget at £65k on Gibraltar pages
-// showed a "£0 saved" hero that read as broken — start Gibraltar at an income
-// where the scheme is actually designed to operate.
+// Open each destination at an income where its scheme genuinely beats UK
+// PAYE — otherwise the hero of the site reads "You save £0" and looks broken:
+//  - Beckham's flat 24% only undercuts UK tax above ≈ £79k (and shines above
+//    £100k where the UK personal-allowance taper bites).
+//  - IFICI's 20% crosses earlier but the same logic applies.
+//  - Cat 2's £37,000 floor needs ≈ £125k+ to make sense.
+// Below-crossover incomes get an honest explainer instead of a bare £0.
 const DEFAULT_INCOME: Record<Country, number> = {
-  spain: 65_000,
-  portugal: 65_000,
+  spain: 95_000,
+  portugal: 95_000,
   gibraltar: 150_000,
 };
 
@@ -52,7 +55,15 @@ export function LiveTaxCalculator({
     if (!touched) setIncome(DEFAULT_INCOME[c]);
   }
 
-  const gibraltarBelowFloor = country === 'gibraltar' && result.yearlySavings === 0;
+  const belowCrossover = result.yearlySavings === 0;
+  const crossoverNote: Record<Country, string> = {
+    spain:
+      'At this income the Beckham flat 24% costs more than UK PAYE — the regime pays above roughly £80k of salary (strongly above £100k, where the UK personal-allowance taper bites), or when you have foreign investment income it exempts entirely. Slide the income up to see the crossover.',
+    portugal:
+      'At this income the IFICI flat 20% is close to (or above) UK PAYE — the regime pays above roughly £60k, and the foreign-income exemption can matter more than the rate. Slide the income up to see the crossover.',
+    gibraltar:
+      'Cat 2 carries a £37,000 minimum annual tax — it is built for incomes above ~£125k (and £2m+ net worth), where the £42,380 ceiling turns into a huge advantage. Below that level, Spain or Portugal usually wins: slide the income up or switch destination to see the crossover.',
+  };
 
   return (
     <Card variant="elevated" className="relative overflow-visible">
@@ -198,12 +209,9 @@ export function LiveTaxCalculator({
           </div>
         </div>
 
-        {gibraltarBelowFloor && (
-          <p className="mt-3 rounded-card border border-gibraltar/30 bg-gibraltar/5 px-3 py-2 text-[12px] leading-relaxed text-ink/80">
-            Cat 2 carries a <strong>£37,000 minimum annual tax</strong> — it is built for incomes
-            above ~£125k (and £2m+ net worth), where the £42,380 ceiling turns into a huge
-            advantage. Below that level, Spain or Portugal usually wins: slide the income up or
-            switch destination to see the crossover.
+        {belowCrossover && (
+          <p className="mt-3 rounded-card border border-warning/40 bg-warning/5 px-3 py-2 text-[12px] leading-relaxed text-ink/80">
+            {crossoverNote[country]}
           </p>
         )}
 

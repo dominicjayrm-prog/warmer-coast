@@ -108,7 +108,7 @@ export function Nav() {
           </DropdownTrigger>
 
           <DropdownTrigger
-            label="Free tools"
+            label="Tools"
             isOpen={openPanel === 'tools'}
             onToggle={() => setOpenPanel(openPanel === 'tools' ? null : 'tools')}
           >
@@ -189,7 +189,7 @@ export function Nav() {
                 </Link>
               ))}
             </MobileSection>
-            <MobileSection title="Free tools">
+            <MobileSection title="Tools">
               {tools.map((t) => (
                 <Link key={t.href} href={t.href} className="block py-2" onClick={() => setOpenMobile(false)}>
                   {t.label}
