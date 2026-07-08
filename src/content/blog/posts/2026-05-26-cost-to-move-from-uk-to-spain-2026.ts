@@ -274,7 +274,11 @@ const content = `
   <a href="/moving-to-barcelona">Barcelona</a>,
   <a href="/moving-to-sevilla">Sevilla</a>,
   <a href="/moving-to-mallorca">Mallorca</a>,
-  <a href="/moving-to-tenerife">Tenerife</a>.
+  <a href="/moving-to-tenerife">Tenerife</a> — and for the Portugal comparison,
+  <a href="/moving-to-lisbon">Lisbon</a>,
+  <a href="/moving-to-porto">Porto</a>,
+  <a href="/moving-to-the-algarve">the Algarve</a> and
+  <a href="/moving-to-cascais">Cascais</a>.
 </p>
 
 <h2>What our buyers wish they&apos;d budgeted for</h2>

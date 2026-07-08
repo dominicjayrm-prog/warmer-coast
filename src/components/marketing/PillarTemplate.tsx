@@ -9,6 +9,49 @@ import { RelatedResources, type RelatedResource } from '@/components/marketing/R
 import { COUNTRY_META } from '@/lib/site';
 import type { Country } from '@/lib/site';
 
+interface CityLink {
+  href: string;
+  name: string;
+  blurb: string;
+}
+
+const DESTINATIONS_BY_COUNTRY: Record<Country, { eyebrow: string; heading: string; cities: CityLink[] }> = {
+  spain: {
+    eyebrow: 'Where in Spain?',
+    heading: 'City-by-city guides for British movers',
+    cities: [
+      { href: '/moving-to-malaga', name: 'Málaga', blurb: 'The connected Andalucía hub — zero regional wealth tax, big-city amenities.' },
+      { href: '/moving-to-marbella', name: 'Marbella', blurb: 'The Costa del Sol British heartland: NABSS schools, HNW services.' },
+      { href: '/moving-to-valencia', name: 'Valencia', blurb: 'Mid-budget city + beach; 2026 Patrimonio reform lifted the allowance to €1m.' },
+      { href: '/moving-to-madrid', name: 'Madrid', blurb: '100% Patrimonio rebate, Beckham-Law job density, elite international schools.' },
+      { href: '/moving-to-barcelona', name: 'Barcelona', blurb: 'Mediterranean lifestyle — priced against Cataluña\'s tougher wealth tax.' },
+      { href: '/moving-to-sevilla', name: 'Sevilla', blurb: 'The underserved Andalucía pick for real Spanish integration.' },
+      { href: '/moving-to-mallorca', name: 'Mallorca', blurb: 'Island life with the Balearics\' €3m wealth-tax allowance.' },
+      { href: '/moving-to-tenerife', name: 'Tenerife', blurb: 'Year-round 20°C+ and the Canary IGIC regime (7% vs mainland 21%).' },
+    ],
+  },
+  portugal: {
+    eyebrow: 'Where in Portugal?',
+    heading: 'City-by-city guides for British movers',
+    cities: [
+      { href: '/moving-to-lisbon', name: 'Lisbon', blurb: 'The capital: IFICI job market, post-surge rents, the international-school belt.' },
+      { href: '/moving-to-cascais', name: 'Cascais', blurb: 'The British family corridor — St Julian\'s, beaches, 30 min to Lisbon.' },
+      { href: '/moving-to-porto', name: 'Porto', blurb: '25-35% cheaper than Lisbon with the Oporto British School legacy.' },
+      { href: '/moving-to-the-algarve', name: 'The Algarve', blurb: 'The retirement default: D7 country, town-by-town costs, 300 days of sun.' },
+    ],
+  },
+  gibraltar: {
+    eyebrow: 'Life around the Rock',
+    heading: 'Spain-side bases British movers pair with Gibraltar',
+    cities: [
+      { href: '/moving-to-marbella', name: 'Marbella / Sotogrande', blurb: '45 minutes west — where many Gibraltar workers\' families live (mind the tax residency).' },
+      { href: '/moving-to-malaga', name: 'Málaga', blurb: 'The airport hub and big-city option an hour up the coast.' },
+      { href: '/moving-to-sevilla', name: 'Sevilla', blurb: 'Andalucía\'s capital — 2h inland for a genuinely Spanish base.' },
+      { href: '/gibraltar/frontier-worker', name: 'Frontier-worker guide', blurb: 'Live Spain, work Gibraltar: the tax mechanics that decide which side wins.' },
+    ],
+  },
+};
+
 const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
   spain: [
     { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'Beckham Law cap, IPREM, NLV, DNV, Modelo 720, all on one page with primary-source citations.' },
@@ -326,6 +369,39 @@ export function PillarTemplate({ country, hero, subPillars, sections, faqs, revi
             </h2>
           </div>
           <Accordion items={faqs} />
+        </div>
+      </section>
+
+      <section className="bg-white py-14">
+        <div className="container-content">
+          <div className="max-w-2xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.12em] text-warm">
+              {DESTINATIONS_BY_COUNTRY[country].eyebrow}
+            </span>
+            <h2 className="display mt-2 text-display-3 font-semibold tracking-tight text-ink">
+              {DESTINATIONS_BY_COUNTRY[country].heading}
+            </h2>
+          </div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {DESTINATIONS_BY_COUNTRY[country].cities.map((c) => (
+              <Link
+                key={c.href}
+                href={c.href}
+                className="group rounded-card border border-border bg-white p-4 transition-all hover:-translate-y-px hover:border-ink/40 hover:shadow-card"
+              >
+                <div className="display text-[17px] font-semibold tracking-tight text-ink">
+                  {c.name}
+                </div>
+                <div className="mt-1 text-[13px] leading-relaxed text-muted">{c.blurb}</div>
+                <div
+                  className="mt-3 text-[13px] font-semibold group-hover:translate-x-0.5 transition-transform"
+                  style={{ color: meta.accent }}
+                >
+                  City guide →
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

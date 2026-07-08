@@ -459,6 +459,52 @@ function CountrySummary() {
             );
           })}
         </div>
+
+        <div className="mt-10 grid gap-3 sm:grid-cols-3">
+          {[
+            { href: '/spain-vs-portugal', label: 'Spain vs Portugal', blurb: 'Beckham vs IFICI, NLV vs D7 — the verdict, dimension by dimension.' },
+            { href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar', blurb: 'The income tier where Cat 2 starts beating Beckham Law.' },
+            { href: '/portugal-vs-gibraltar', label: 'Portugal vs Gibraltar', blurb: 'EU citizenship at 5 years vs the £42,380 tax cap.' },
+          ].map((c) => (
+            <Link
+              key={c.href}
+              href={c.href}
+              className="group rounded-card border border-white/10 bg-white/5 p-5 transition-all hover:border-white/30 hover:bg-white/10"
+            >
+              <div className="flex items-center justify-between">
+                <span className="display text-[17px] font-semibold tracking-tight">{c.label}</span>
+                <span aria-hidden className="text-warm-light group-hover:translate-x-1 transition-transform">→</span>
+              </div>
+              <p className="mt-2 text-[13px] leading-relaxed text-white/60">{c.blurb}</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 text-[13px] text-white/60">
+          <span className="font-semibold uppercase tracking-[0.1em] text-[11px] text-white/40">Destinations:</span>
+          {[
+            ['/moving-to-malaga', 'Málaga'],
+            ['/moving-to-marbella', 'Marbella'],
+            ['/moving-to-valencia', 'Valencia'],
+            ['/moving-to-madrid', 'Madrid'],
+            ['/moving-to-barcelona', 'Barcelona'],
+            ['/moving-to-sevilla', 'Sevilla'],
+            ['/moving-to-mallorca', 'Mallorca'],
+            ['/moving-to-tenerife', 'Tenerife'],
+            ['/moving-to-lisbon', 'Lisbon'],
+            ['/moving-to-porto', 'Porto'],
+            ['/moving-to-the-algarve', 'The Algarve'],
+            ['/moving-to-cascais', 'Cascais'],
+          ].map(([href, label]) => (
+            <Link
+              key={href}
+              href={href}
+              className="rounded-pill border border-white/15 px-3 py-1 hover:border-white/40 hover:text-white transition-colors"
+            >
+              {label}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

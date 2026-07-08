@@ -78,6 +78,20 @@ const staticRoutes: Route[] = [
   { path: '/gibraltar/healthcare', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/gibraltar/schools', priority: 0.8, changeFrequency: 'monthly' },
 
+  // Spoke deep-dives (statically generated [slug] routes)
+  { path: '/spain/tax-residency/183-day-rule', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/tax-residency/beckham-law', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/tax-residency/modelo-720', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/tax-residency/uk-pensions', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/tax-residency/cgt-on-uk-property', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/tax-residency/isa-treatment', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/visa-guide/non-lucrative', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/visa-guide/digital-nomad', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/visa-guide/work-visa', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/visa-guide/golden-alternatives', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/visa-guide/family-reunification', priority: 0.75, changeFrequency: 'monthly' },
+  { path: '/spain/visa-guide/student-visa', priority: 0.75, changeFrequency: 'monthly' },
+
   // Calculators — high-traffic but tools, not authority
   { path: '/calculators', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/calculators/beckham-law', priority: 0.7, changeFrequency: 'monthly' },
@@ -107,11 +121,14 @@ const staticRoutes: Route[] = [
   { path: '/disclaimer', priority: 0.2, changeFrequency: 'yearly' },
 ];
 
+// Bumped on real content passes; per-request "now" made every page claim
+// freshness daily, which search engines learn to distrust.
+const CONTENT_REVIEWED = new Date('2026-07-08');
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const now = new Date();
   const base: MetadataRoute.Sitemap = staticRoutes.map(({ path, priority, changeFrequency }) => ({
     url: `${SITE.url}${path}`,
-    lastModified: now,
+    lastModified: CONTENT_REVIEWED,
     changeFrequency,
     priority,
   }));
