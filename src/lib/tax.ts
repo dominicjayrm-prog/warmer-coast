@@ -1,10 +1,19 @@
 export type Country = 'spain' | 'portugal' | 'gibraltar';
 
+// UK income tax 2026/27 (rUK bands) including the personal-allowance taper:
+// PA of £12,570 withdrawn £1 per £2 of income over £100,000 (gone at
+// £125,140), which produces the real 60% effective zone. Band widths are
+// measured on taxable income; the 40% band ends where income hits £125,140.
 export function ukIncomeTax(income: number): number {
-  if (income <= 12_570) return 0;
-  if (income <= 50_270) return (income - 12_570) * 0.2;
-  if (income <= 125_140) return 7_540 + (income - 50_270) * 0.4;
-  return 37_088 + (income - 125_140) * 0.45;
+  if (income <= 0) return 0;
+  const pa = Math.max(0, 12_570 - Math.max(0, (income - 100_000) / 2));
+  const taxable = Math.max(0, income - pa);
+  const basicWidth = 37_700;
+  const higherWidth = Math.max(0, 125_140 - pa - basicWidth);
+  const basic = Math.min(taxable, basicWidth);
+  const higher = Math.min(Math.max(taxable - basicWidth, 0), higherWidth);
+  const additional = Math.max(taxable - basicWidth - higherWidth, 0);
+  return basic * 0.2 + higher * 0.4 + additional * 0.45;
 }
 
 // Beckham Law: 24% flat on UK-sourced employment income up to £600k (Spain only).
@@ -17,6 +26,32 @@ export function beckhamLawTax(income: number): number {
 // Portugal IFICI (NHR 2.0) approximation: 20% flat on qualifying employment income.
 export function portugalIficiTax(income: number): number {
   return income * 0.2;
+}
+
+// Standard Spanish IRPF general scale (state + typical regional half, 2026
+// approximation): 19/24/30/37/45/47. Personal minimum modelled as a 19%
+// credit on €5,550. Used for pension/general income where Beckham does not
+// apply. Thresholds are € figures used 1:1 against GBP inputs — a slightly
+// conservative simplification, disclosed in the tools that use it.
+export function spainGeneralTax(income: number): number {
+  if (income <= 0) return 0;
+  const bands: [number, number][] = [
+    [12_450, 0.19],
+    [20_200, 0.24],
+    [35_200, 0.3],
+    [60_000, 0.37],
+    [300_000, 0.45],
+    [Infinity, 0.47],
+  ];
+  let tax = 0;
+  let prev = 0;
+  for (const [cap, rate] of bands) {
+    if (income > prev) tax += (Math.min(income, cap) - prev) * rate;
+    prev = cap;
+    if (income <= cap) break;
+  }
+  const personalCredit = 5_550 * 0.19;
+  return Math.max(0, tax - personalCredit);
 }
 
 // Standard Portuguese IRS (very rough banded approximation, 2026 brackets).
@@ -116,7 +151,12 @@ export interface CalcResult {
   effectiveRate: { uk: number; country: number };
 }
 
-export function compareCountry(income: number, country: Country): CalcResult {
+export interface CompareOptions {
+  /** Portugal only: IFICI is activity-gated — non-qualifiers pay standard IRS. */
+  portugalRegime?: 'ifici' | 'standard';
+}
+
+export function compareCountry(income: number, country: Country, opts?: CompareOptions): CalcResult {
   const uk = ukIncomeTax(income);
   let country_ = 0;
   let label = '';
@@ -126,8 +166,13 @@ export function compareCountry(income: number, country: Country): CalcResult {
       label = 'Beckham Law (Spain)';
       break;
     case 'portugal':
-      country_ = portugalIficiTax(income);
-      label = 'IFICI / NHR 2.0 (Portugal)';
+      if (opts?.portugalRegime === 'standard') {
+        country_ = portugalStandardTax(income);
+        label = 'Standard IRS (Portugal)';
+      } else {
+        country_ = portugalIficiTax(income);
+        label = 'IFICI / NHR 2.0 (Portugal)';
+      }
       break;
     case 'gibraltar':
       // Cat 2 is the route most British movers use (HNW residency) — HEPSS

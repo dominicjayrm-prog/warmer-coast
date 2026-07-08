@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { RelatedResources } from '@/components/marketing/RelatedResources';
+import { NewsletterCapture } from '@/components/marketing/NewsletterCapture';
 
 const banks = [
   { name: 'Sabadell · Expat', country: 'Spain', fees: 'Free with €700/mo income', multiCurrency: 'No', appQuality: 4, branchAccess: 5, expatFriendly: 5 },
@@ -70,6 +71,16 @@ export default function Page() {
           Subjective ratings based on buyer feedback and our own use. Not exhaustive. Bank
           policies change quarterly, always confirm direct with the institution.
         </p>
+
+        <div className="mt-8 rounded-card border border-border bg-white p-6">
+          <h2 className="display text-xl font-semibold tracking-tight text-ink">Get the account-opening checklists</h2>
+          <p className="mt-2 text-sm text-muted">
+            What each bank asks a new arrival for — documents, order of operations, and the FX setup that saves £900+/year.
+          </p>
+          <div className="mt-4">
+            <NewsletterCapture source="calculator_bank_comparator" cta="Send the checklists" />
+          </div>
+        </div>
       </div>
 
       <RelatedResources

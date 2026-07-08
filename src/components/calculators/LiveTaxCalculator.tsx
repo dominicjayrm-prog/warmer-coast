@@ -14,18 +14,45 @@ interface Props {
   variant?: 'hero' | 'embedded';
 }
 
+// Gibraltar's Cat 2 carries a £37,000 minimum tax, so savings vs the UK only
+// begin around £125k of income. Opening the widget at £65k on Gibraltar pages
+// showed a "£0 saved" hero that read as broken — start Gibraltar at an income
+// where the scheme is actually designed to operate.
+const DEFAULT_INCOME: Record<Country, number> = {
+  spain: 65_000,
+  portugal: 65_000,
+  gibraltar: 150_000,
+};
+
 export function LiveTaxCalculator({
-  initialIncome = 65_000,
+  initialIncome,
   initialCountry = 'spain',
   variant = 'hero',
 }: Props) {
-  const [income, setIncome] = useState(initialIncome);
+  const [income, setIncome] = useState(initialIncome ?? DEFAULT_INCOME[initialCountry]);
   const [country, setCountry] = useState<Country>(initialCountry);
+  const [touched, setTouched] = useState(initialIncome != null);
+  const [ificiQualifies, setIficiQualifies] = useState(true);
 
-  const result = useMemo(() => compareCountry(income, country), [income, country]);
+  const result = useMemo(
+    () =>
+      compareCountry(income, country, {
+        portugalRegime: ificiQualifies ? 'ifici' : 'standard',
+      }),
+    [income, country, ificiQualifies],
+  );
   const sixYears = result.yearlySavings * 6;
   const accent = COUNTRY_META[country].accent;
   const accentSoft = COUNTRY_META[country].accentSoft;
+
+  function pickCountry(c: Country) {
+    setCountry(c);
+    // If the user hasn't set their own income yet, snap to the destination's
+    // sensible default so each scheme opens in its designed range.
+    if (!touched) setIncome(DEFAULT_INCOME[c]);
+  }
+
+  const gibraltarBelowFloor = country === 'gibraltar' && result.yearlySavings === 0;
 
   return (
     <Card variant="elevated" className="relative overflow-visible">
@@ -54,10 +81,13 @@ export function LiveTaxCalculator({
               label="UK income (gross)"
               value={income}
               min={20000}
-              max={200000}
+              max={300000}
               step={1000}
               accent={accent}
-              onChange={(e) => setIncome(Number(e.target.value))}
+              onChange={(e) => {
+                setIncome(Number(e.target.value));
+                setTouched(true);
+              }}
               valueDisplay={<span className="display text-[22px]">{formatGBP(income)}</span>}
             />
 
@@ -73,7 +103,7 @@ export function LiveTaxCalculator({
                     <button
                       type="button"
                       key={c}
-                      onClick={() => setCountry(c)}
+                      onClick={() => pickCountry(c)}
                       className={cn(
                         'flex flex-col items-center gap-1 rounded-card border px-3 py-3 transition-all',
                         active
@@ -94,6 +124,46 @@ export function LiveTaxCalculator({
                 })}
               </div>
             </div>
+
+            {country === 'portugal' && (
+              <div>
+                <div className="text-xs font-semibold uppercase tracking-[0.1em] text-muted">
+                  Do you qualify for IFICI?
+                </div>
+                <div className="mt-2 grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIficiQualifies(true)}
+                    className={cn(
+                      'rounded-card border px-3 py-2 text-[13px] font-semibold transition-all',
+                      ificiQualifies
+                        ? 'border-sea bg-sea/10 text-ink'
+                        : 'border-border text-muted hover:border-ink/30',
+                    )}
+                    aria-pressed={ificiQualifies}
+                  >
+                    Yes — qualifying activity
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIficiQualifies(false)}
+                    className={cn(
+                      'rounded-card border px-3 py-2 text-[13px] font-semibold transition-all',
+                      !ificiQualifies
+                        ? 'border-sea bg-sea/10 text-ink'
+                        : 'border-border text-muted hover:border-ink/30',
+                    )}
+                    aria-pressed={!ificiQualifies}
+                  >
+                    No — standard IRS
+                  </button>
+                </div>
+                <p className="mt-1.5 text-[11px] leading-relaxed text-faint">
+                  IFICI&apos;s 20% flat rate is activity-gated (research, certified startups,
+                  qualifying sectors). Pensions never qualify.
+                </p>
+              </div>
+            )}
           </div>
 
           <div
@@ -128,6 +198,15 @@ export function LiveTaxCalculator({
           </div>
         </div>
 
+        {gibraltarBelowFloor && (
+          <p className="mt-3 rounded-card border border-gibraltar/30 bg-gibraltar/5 px-3 py-2 text-[12px] leading-relaxed text-ink/80">
+            Cat 2 carries a <strong>£37,000 minimum annual tax</strong> — it is built for incomes
+            above ~£125k (and £2m+ net worth), where the £42,380 ceiling turns into a huge
+            advantage. Below that level, Spain or Portugal usually wins: slide the income up or
+            switch destination to see the crossover.
+          </p>
+        )}
+
         <div className="mt-6 flex flex-wrap items-center gap-3 text-sm">
           <Link
             href={`/playbook/${country}`}
@@ -146,9 +225,10 @@ export function LiveTaxCalculator({
 
         {variant === 'hero' && (
           <p className="mt-4 text-[11px] leading-relaxed text-faint">
-            Estimate only, simplified bands, ignores allowances and social security. Real numbers
-            depend on residence status, employment vs self-employed, family. The full playbook walks
-            you through the actual calculation with worked examples.
+            Estimate only. UK side includes the personal-allowance taper; scheme side is the
+            headline rate and ignores allowances and social security. Real numbers depend on
+            residence status, employment vs self-employed, family. The full playbook walks you
+            through the actual calculation with worked examples.
           </p>
         )}
       </CardBody>
