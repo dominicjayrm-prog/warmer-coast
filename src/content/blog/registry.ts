@@ -34,8 +34,10 @@ export interface FileBlogPost {
 
 import { post202605CostToMoveSpain } from './posts/2026-05-26-cost-to-move-from-uk-to-spain-2026';
 import { post202605WiseRevolut } from './posts/2026-05-27-how-to-transfer-money-uk-to-spain-2026';
+import { post202607GibraltarTreaty } from './posts/2026-07-08-gibraltar-eu-border-treaty-live';
 
 export const FILE_BLOG_POSTS: FileBlogPost[] = [
+  post202607GibraltarTreaty,
   post202605WiseRevolut,
   post202605CostToMoveSpain,
 ];
