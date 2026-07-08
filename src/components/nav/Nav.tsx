@@ -39,8 +39,28 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close open dropdowns on Escape and on any click outside the header —
+  // keyboard users were previously trapped with no way to dismiss a panel.
+  useEffect(() => {
+    if (!openPanel) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpenPanel(null);
+    };
+    const onClick = (e: MouseEvent) => {
+      const header = document.getElementById('site-header');
+      if (header && !header.contains(e.target as Node)) setOpenPanel(null);
+    };
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('mousedown', onClick);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('mousedown', onClick);
+    };
+  }, [openPanel]);
+
   return (
     <header
+      id="site-header"
       className={cn(
         'sticky top-0 z-50 transition-all duration-300',
         scrolled ? 'glass-nav border-b border-border' : 'bg-white/60',
@@ -151,7 +171,7 @@ export function Nav() {
 
         <button
           type="button"
-          aria-label="Open menu"
+          aria-label={openMobile ? 'Close menu' : 'Open menu'}
           aria-expanded={openMobile}
           onClick={() => setOpenMobile((v) => !v)}
           className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-pill border border-border text-ink"
@@ -233,6 +253,7 @@ function DropdownTrigger({
         type="button"
         onClick={onToggle}
         aria-expanded={isOpen}
+        aria-haspopup="true"
         className={cn(
           'inline-flex items-center gap-1 rounded-pill px-3 py-2 hover:text-ink',
           isOpen && 'text-ink',

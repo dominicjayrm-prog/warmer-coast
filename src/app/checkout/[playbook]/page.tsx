@@ -52,10 +52,12 @@ export default function Page({ params }: { params: { playbook: string } }) {
             </div>
             <CheckoutButton slug={slug} accent={accent} large />
             <p className="text-xs text-faint">
-              If Stripe isn&apos;t configured yet, you&apos;ll see a setup notice. Plug in your{' '}
-              <code className="rounded bg-surface px-1 py-0.5">STRIPE_SECRET_KEY</code> and product{' '}
-              <code className="rounded bg-surface px-1 py-0.5">STRIPE_PRICE_*</code> env vars to
-              activate.
+              Secure payment via Stripe. VAT handled automatically at checkout. Problems
+              paying? Email{' '}
+              <a href="mailto:hello@warmercoast.com" className="underline underline-offset-2 hover:text-ink">
+                hello@warmercoast.com
+              </a>{' '}
+              and we&apos;ll sort it within the day.
             </p>
           </CardBody>
         </Card>
