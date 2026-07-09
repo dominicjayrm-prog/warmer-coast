@@ -100,7 +100,9 @@ const content = `
   Pure upside. Spain on your doorstep without day-count anxiety at the fence, family visits
   without queue-lottery planning, and Málaga airport (an hour away, 15+ daily UK routes)
   becomes a genuinely usable second airport. Keep the day log anyway — the treaty changed the
-  crossing, not the tax-residency evidence game.
+  crossing, not the tax-residency evidence game, and your Spanish days still count against
+  the <a href="/blog/can-i-live-in-spain-6-months-and-uk-6-months">90/180 Schengen limit</a>
+  that EES now tracks biometrically.
 </p>
 
 <h3>Frontier workers living in Spain</h3>

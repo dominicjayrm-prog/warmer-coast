@@ -318,7 +318,11 @@ const content = `
   Retirees moving on pension income: the visa side of your money flow is covered in the
   <a href="/blog/portugal-d7-visa-british-retirees-2026">Portugal D7 guide</a> and the
   <a href="/blog/spain-non-lucrative-visa-british-retirees-2026">Spain NLV guide</a> — both
-  visas care about exactly the income evidence these transfers create.
+  visas care about exactly the income evidence these transfers create. And if your plan is
+  half the year in Spain and half in the UK rather than a full move, read
+  <a href="/blog/can-i-live-in-spain-6-months-and-uk-6-months">whether 6 months Spain /
+  6 months UK actually works in 2026</a> before you set up any recurring transfer — the
+  90/180 rule caps the no-visa version at far less time than most people assume.
 </p>
 
 <h2>Common mistakes British movers make</h2>

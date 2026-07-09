@@ -328,6 +328,15 @@ const content = `
 </p>
 
 <p>
+  Not sure you want to move outright? Plenty of readers land here planning to split the
+  year instead — half in Spain, half in the UK. That plan collides with the 90/180
+  Schengen rule and both countries&apos; tax-residency tests in ways most people don&apos;t
+  expect: <a href="/blog/can-i-live-in-spain-6-months-and-uk-6-months">can you actually
+  live in Spain for 6 months and the UK for 6 months?</a> covers what&apos;s legal, what
+  isn&apos;t, and the three structures that work in 2026.
+</p>
+
+<p>
   Route-specific deep dives on the visa fees this article budgets:
   the <a href="/blog/spain-non-lucrative-visa-british-retirees-2026">NLV retiree guide</a>,
   the <a href="/blog/spain-digital-nomad-visa-2026-complete-guide">Digital Nomad Visa guide</a>,
