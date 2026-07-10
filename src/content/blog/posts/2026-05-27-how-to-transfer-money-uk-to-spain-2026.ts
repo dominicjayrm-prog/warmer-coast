@@ -315,7 +315,10 @@ const content = `
 </p>
 
 <p>
-  Retirees moving on pension income: the visa side of your money flow is covered in the
+  Retirees moving on pension income: how the State Pension itself behaves abroad — triple-lock
+  uprating, the DWP&apos;s own conversion rate, and the lump-sum timing trap — is covered in
+  <a href="/blog/what-happens-to-my-uk-state-pension-if-i-move-to-spain">what happens to your
+  UK State Pension when you move to Spain</a>. The visa side of your money flow is covered in the
   <a href="/blog/portugal-d7-visa-british-retirees-2026">Portugal D7 guide</a> and the
   <a href="/blog/spain-non-lucrative-visa-british-retirees-2026">Spain NLV guide</a> — both
   visas care about exactly the income evidence these transfers create. And if your plan is
@@ -328,7 +331,7 @@ const content = `
 <h2>Common mistakes British movers make</h2>
 
 <ul>
-  <li><strong>Closing the UK bank account before opening the Spanish one.</strong> You end up with no account at all for 2-4 weeks. Keep the UK account running for at least 12 months.</li>
+  <li><strong>Closing the UK bank account before opening the Spanish one.</strong> You end up with no account at all for 2-4 weeks. Keep the UK account running for at least 12 months — <a href="/blog/can-i-keep-my-uk-bank-account-if-i-move-to-spain">whether your bank will let you keep it as a Spanish resident</a> is its own question, so ask before you move.</li>
   <li><strong>Using HSBC or Barclays international wire for monthly income transfer.</strong> The opaque spread eats £80-£200/month of income for a typical mover.</li>
   <li><strong>Forgetting Wise has a real EUR IBAN.</strong> You can give the Wise EUR IBAN to your UK employer/pension provider and receive EUR directly without ever touching a Spanish bank wire.</li>
   <li><strong>Buying GBP→EUR on a Saturday via Revolut Standard.</strong> 1.5% weekend markup. Always weekday or upgrade tier.</li>

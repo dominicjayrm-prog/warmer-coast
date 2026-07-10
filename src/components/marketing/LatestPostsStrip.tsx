@@ -3,7 +3,7 @@ import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
-import { FILE_BLOG_POSTS } from '@/content/blog/registry';
+import { visibleFileBlogPosts } from '@/content/blog/registry';
 
 interface Post {
   slug: string;
@@ -42,6 +42,7 @@ export async function LatestPostsStrip({
       .select('slug,title,excerpt,category,read_time_minutes,published_at')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .order('published_at', { ascending: false })
       .limit(limit);
     if (category) query = query.eq('category', category);
@@ -52,7 +53,7 @@ export async function LatestPostsStrip({
   }
 
   // Merge in file-based posts (filtered by category if specified).
-  const filePosts: Post[] = FILE_BLOG_POSTS
+  const filePosts: Post[] = visibleFileBlogPosts()
     .filter((p) => !category || p.category === category)
     .map((p) => ({
       slug: p.slug,

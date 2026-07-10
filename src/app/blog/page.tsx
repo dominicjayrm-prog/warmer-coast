@@ -4,7 +4,7 @@ import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
-import { FILE_BLOG_POSTS } from '@/content/blog/registry';
+import { visibleFileBlogPosts } from '@/content/blog/registry';
 
 export const dynamic = 'force-dynamic';
 
@@ -37,6 +37,7 @@ export default async function BlogIndex() {
       .select('slug,title,excerpt,cover_image,category,read_time_minutes,published_at,author_name')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .order('published_at', { ascending: false })
       .limit(60);
     if (error) {
@@ -50,7 +51,7 @@ export default async function BlogIndex() {
   }
 
   // Merge in file-based posts (code-resident, ship with deploy, no DB needed).
-  const filePosts: Post[] = FILE_BLOG_POSTS.map((p) => ({
+  const filePosts: Post[] = visibleFileBlogPosts().map((p) => ({
     slug: p.slug,
     title: p.title,
     excerpt: p.excerpt,

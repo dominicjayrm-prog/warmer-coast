@@ -114,7 +114,7 @@ const content = `
     <a href="/spain/tax-residency/beckham-law">Beckham Law deep dive</a> explains
     the 6-month window.</li>
   <li><strong>Asesor fiscal retainer first month:</strong> &euro;200-&euro;500 to get registered, set up quarterly reminders, and walk through Modelo 720 if applicable.</li>
-  <li><strong>Spanish bank account opening:</strong> Free if conditions met; some banks charge &euro;15-&euro;30/month if no income deposit. See the <a href="/spain/banking">Spain banking deep dive</a>.</li>
+  <li><strong>Spanish bank account opening:</strong> Free if conditions met; some banks charge &euro;15-&euro;30/month if no income deposit. See the <a href="/spain/banking">Spain banking deep dive</a> — and check <a href="/blog/can-i-keep-my-uk-bank-account-if-i-move-to-spain">whether your UK bank will keep you</a> before you hand back the keys.</li>
   <li><strong>Local lawyer (abogado) for rental review:</strong> &euro;200-&euro;500 optional but recommended for first-year lease.</li>
 </ul>
 

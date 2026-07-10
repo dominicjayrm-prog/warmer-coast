@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
-import { FILE_BLOG_POSTS, findFileBlogPost } from '@/content/blog/registry';
+import { visibleFileBlogPosts, findFileBlogPost } from '@/content/blog/registry';
 
 export const revalidate = 60;
 
@@ -48,6 +48,7 @@ async function getPost(slug: string): Promise<Post | null> {
       .eq('site', SITE.siteKey)
       .eq('slug', slug)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .maybeSingle();
     return (data as Post) ?? null;
   } catch {
@@ -97,12 +98,13 @@ export default async function BlogPost({ params }: { params: { slug: string } })
       .select('slug,title,excerpt,category')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .neq('id', post.id)
       .order('published_at', { ascending: false })
       .limit(20);
     dbPosts = (data as typeof dbPosts) ?? [];
   } catch {}
-  const filePool = FILE_BLOG_POSTS.filter((p) => p.slug !== post.slug).map((p) => ({
+  const filePool = visibleFileBlogPosts().filter((p) => p.slug !== post.slug).map((p) => ({
     slug: p.slug,
     title: p.title,
     excerpt: p.excerpt,

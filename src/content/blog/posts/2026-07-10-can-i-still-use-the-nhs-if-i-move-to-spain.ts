@@ -71,7 +71,9 @@ const content = `
 
 <p>
   Now the good news, and it is genuinely excellent. If you receive the <strong>UK State
-  Pension</strong> (or certain other exportable benefits), you're entitled to an
+  Pension</strong> (or certain other exportable benefits — the pension itself
+  <a href="/blog/what-happens-to-my-uk-state-pension-if-i-move-to-spain">follows you to
+  Spain with its triple-lock rises intact</a>), you're entitled to an
   <strong>S1 form</strong> — and the S1 changes everything:
 </p>
 

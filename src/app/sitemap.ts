@@ -1,7 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { SITE } from '@/lib/site';
 import { createClient } from '@/lib/supabase/server';
-import { FILE_BLOG_POSTS } from '@/content/blog/registry';
+import { visibleFileBlogPosts } from '@/content/blog/registry';
+
+// Refresh periodically so scheduled file posts enter the sitemap when due.
+export const revalidate = 600;
 
 type Freq = MetadataRoute.Sitemap[number]['changeFrequency'];
 
@@ -134,7 +137,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // File-based blog posts — ship with deploy.
-  FILE_BLOG_POSTS.forEach((post) => {
+  visibleFileBlogPosts().forEach((post) => {
     base.push({
       url: `${SITE.url}/blog/${post.slug}`,
       lastModified: new Date(post.updated_at),
@@ -149,7 +152,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .from('blog_posts')
       .select('slug,updated_at')
       .eq('site', SITE.siteKey)
-      .eq('status', 'published');
+      .eq('status', 'published')
+      .lte('published_at', new Date().toISOString());
     ((data as { slug: string; updated_at: string }[] | null) ?? []).forEach((post) => {
       base.push({
         url: `${SITE.url}/blog/${post.slug}`,

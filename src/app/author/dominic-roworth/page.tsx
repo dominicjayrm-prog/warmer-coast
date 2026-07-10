@@ -5,7 +5,7 @@ import { adminDb } from '@/lib/admin';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
-import { FILE_BLOG_POSTS } from '@/content/blog/registry';
+import { visibleFileBlogPosts } from '@/content/blog/registry';
 
 export const dynamic = 'force-dynamic';
 
@@ -60,6 +60,7 @@ export default async function AuthorPage() {
       .select('slug,title,excerpt,cover_image,category,read_time_minutes,published_at,author_name')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .order('published_at', { ascending: false })
       .limit(200);
     const rows = (data as (Post & { author_name: string | null })[] | null) ?? [];
@@ -73,7 +74,7 @@ export default async function AuthorPage() {
 
   // Merge in file-based posts authored by Dominic.
   const normalisedAuthor = AUTHOR.name.trim().toLowerCase();
-  const filePosts: Post[] = FILE_BLOG_POSTS.filter(
+  const filePosts: Post[] = visibleFileBlogPosts().filter(
     (p) => p.author_name.trim().toLowerCase() === normalisedAuthor
   ).map((p) => ({
     slug: p.slug,
