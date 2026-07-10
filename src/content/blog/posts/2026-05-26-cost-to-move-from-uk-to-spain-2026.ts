@@ -168,7 +168,9 @@ const content = `
 <p>
   Before you&apos;re fully integrated into the SNS, you typically run private health
   insurance for 6-18 months. Once you switch to SNS via employment, autónomo, S1
-  or the Convenio Especial, the private bill stops.
+  or the Convenio Especial, the private bill stops. (And no, your NHS entitlement
+  doesn&apos;t come with you — <a href="/blog/can-i-still-use-the-nhs-if-i-move-to-spain">here&apos;s
+  exactly what British movers keep and lose</a>, including the S1 route back in.)
 </p>
 
 <ul>

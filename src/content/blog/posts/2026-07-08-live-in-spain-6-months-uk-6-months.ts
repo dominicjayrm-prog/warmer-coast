@@ -134,7 +134,9 @@ ${'<div class="not-prose rounded-card border border-warning/40 bg-warning/5 p-4 
 <p>
   Two ~90-day blocks a year (classically October–December and March–May), UK tax residency
   undisturbed, no Spanish filings, GHIC card plus travel insurance for healthcare
-  (the GHIC covers necessary state treatment on visits — it is not residency healthcare).
+  (the GHIC covers necessary state treatment on visits — it is not residency healthcare;
+  what happens to your <a href="/blog/can-i-still-use-the-nhs-if-i-move-to-spain">NHS
+  entitlement under each pattern</a> is its own decision-driver, especially for retirees).
   Rent rather than buy, or accept that a Spanish holiday home brings non-resident property
   taxes and, above thresholds, Spanish wealth-tax exposure on Spanish assets. Cost of the
   pattern: two sets of flights, winter rentals (€700–€1,500/month on the

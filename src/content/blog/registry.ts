@@ -36,8 +36,10 @@ import { post202605CostToMoveSpain } from './posts/2026-05-26-cost-to-move-from-
 import { post202605WiseRevolut } from './posts/2026-05-27-how-to-transfer-money-uk-to-spain-2026';
 import { post202607GibraltarTreaty } from './posts/2026-07-08-gibraltar-eu-border-treaty-live';
 import { post202607SixMonthsSpain } from './posts/2026-07-08-live-in-spain-6-months-uk-6-months';
+import { post202607NhsSpain } from './posts/2026-07-10-can-i-still-use-the-nhs-if-i-move-to-spain';
 
 export const FILE_BLOG_POSTS: FileBlogPost[] = [
+  post202607NhsSpain,
   post202607SixMonthsSpain,
   post202607GibraltarTreaty,
   post202605WiseRevolut,
