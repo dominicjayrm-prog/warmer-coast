@@ -13,7 +13,12 @@ const content = `
 <p>
   This is the practical breakdown: what actually changes on the ground, what pointedly does
   not change (the tax system), and how it shifts the live-in-Spain-vs-live-on-the-Rock
-  decision that runs through our whole <a href="/gibraltar">Gibraltar guide</a>.
+  decision that runs through our whole <a href="/gibraltar">Gibraltar guide</a>. For the
+  treaty's full background and history, see our evergreen
+  <a href="/blog/gibraltar-uk-eu-treaty-2026">Gibraltar UK–EU treaty guide</a>; if the Rock's
+  tax offer is what brought you here, the step-by-step
+  <a href="/blog/gibraltar-cat-2-application-2026-complete-guide">Cat 2 application guide</a>
+  is the deep dive.
 </p>
 
 <h2>What changes on 15 July</h2>
@@ -95,7 +100,9 @@ const content = `
   Pure upside. Spain on your doorstep without day-count anxiety at the fence, family visits
   without queue-lottery planning, and Málaga airport (an hour away, 15+ daily UK routes)
   becomes a genuinely usable second airport. Keep the day log anyway — the treaty changed the
-  crossing, not the tax-residency evidence game.
+  crossing, not the tax-residency evidence game, and your Spanish days still count against
+  the <a href="/blog/can-i-live-in-spain-6-months-and-uk-6-months">90/180 Schengen limit</a>
+  that EES now tracks biometrically.
 </p>
 
 <h3>Frontier workers living in Spain</h3>

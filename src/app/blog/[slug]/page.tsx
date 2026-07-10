@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/server';
 import { Badge } from '@/components/ui/Badge';
 import { Card, CardBody } from '@/components/ui/Card';
 import { SITE } from '@/lib/site';
-import { FILE_BLOG_POSTS, findFileBlogPost } from '@/content/blog/registry';
+import { visibleFileBlogPosts, findFileBlogPost } from '@/content/blog/registry';
 
 export const revalidate = 60;
 
@@ -48,6 +48,7 @@ async function getPost(slug: string): Promise<Post | null> {
       .eq('site', SITE.siteKey)
       .eq('slug', slug)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .maybeSingle();
     return (data as Post) ?? null;
   } catch {
@@ -86,24 +87,36 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   const post = await getPost(params.slug);
   if (!post) notFound();
 
-  let related: { slug: string; title: string; excerpt: string }[] = [];
+  // Related posts: same-category first, then fill with recent posts from any
+  // category so the block is never empty (categories are inconsistent across
+  // DB and file posts — 'tax'/'visa'/'Gibraltar'/'Spain'/'Banking').
+  let dbPosts: { slug: string; title: string; excerpt: string; category: string }[] = [];
   try {
     const supabase = createClient();
     const { data } = await supabase
       .from('blog_posts')
-      .select('slug,title,excerpt')
+      .select('slug,title,excerpt,category')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
-      .eq('category', post.category)
+      .lte('published_at', new Date().toISOString())
       .neq('id', post.id)
-      .limit(4);
-    related = (data as { slug: string; title: string; excerpt: string }[]) ?? [];
+      .order('published_at', { ascending: false })
+      .limit(20);
+    dbPosts = (data as typeof dbPosts) ?? [];
   } catch {}
-  // Top up with file-based posts in the same category (excluding the current).
-  const filePostsInCategory = FILE_BLOG_POSTS.filter(
-    (p) => p.category === post.category && p.slug !== post.slug
-  ).map((p) => ({ slug: p.slug, title: p.title, excerpt: p.excerpt }));
-  related = [...related, ...filePostsInCategory].slice(0, 4);
+  const filePool = visibleFileBlogPosts().filter((p) => p.slug !== post.slug).map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    category: p.category,
+  }));
+  const pool = [...filePool, ...dbPosts].filter(
+    (p, i, arr) => arr.findIndex((q) => q.slug === p.slug) === i,
+  );
+  const norm = (c: string) => c.trim().toLowerCase();
+  const sameCategory = pool.filter((p) => norm(p.category) === norm(post.category));
+  const others = pool.filter((p) => norm(p.category) !== norm(post.category));
+  const related = [...sameCategory, ...others].slice(0, 4);
 
   const altText = post.cover_image_alt || post.title;
   const isAbsolute = post.cover_image?.startsWith('http');

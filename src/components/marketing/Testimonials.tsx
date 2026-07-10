@@ -31,7 +31,60 @@ export async function Testimonials({ productSlug, heading }: { productSlug?: str
     rows = (data as Row[]) ?? [];
   } catch {}
 
-  if (rows.length === 0) return null;
+  // Pre-launch honest fallback: with zero approved testimonials the homepage
+  // rendered no social-proof section at all. Show verifiable trust facts
+  // instead of fake reviews until real ones arrive.
+  if (rows.length === 0) {
+    return (
+      <section className="bg-white py-20 sm:py-28">
+        <div className="container-content">
+          <div className="max-w-xl">
+            <Badge tone="warm" uppercase>Why trust WarmerCoast</Badge>
+            <h2 className="display mt-4 text-display-2 font-semibold tracking-tight text-ink text-balance">
+              No fake reviews. Verifiable facts instead.
+            </h2>
+            <p className="mt-3 text-muted">
+              Every review that appears here will be tied to a verified Stripe purchase. Until
+              then, judge us on what you can check yourself:
+            </p>
+          </div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            <Card variant="bordered">
+              <CardBody>
+                <div className="display text-[36px] font-semibold tracking-tightest text-ink">90+</div>
+                <div className="mt-1 text-sm font-semibold text-ink">free sourced guides</div>
+                <p className="mt-2 text-sm text-muted">
+                  Pillars, city guides, comparisons, calculators — every figure cites gov.uk,
+                  AEAT, Portal das Finanças or the Gibraltar ITO. Read them before spending a
+                  penny.
+                </p>
+              </CardBody>
+            </Card>
+            <Card variant="bordered">
+              <CardBody>
+                <div className="display text-[36px] font-semibold tracking-tightest text-ink">2026</div>
+                <div className="mt-1 text-sm font-semibold text-ink">figures, verified</div>
+                <p className="mt-2 text-sm text-muted">
+                  IPREM, SMI, IFICI, Cat 2 bands and the new Gibraltar treaty — checked against
+                  primary sources and dated on every page, with a public corrections policy.
+                </p>
+              </CardBody>
+            </Card>
+            <Card variant="bordered">
+              <CardBody>
+                <div className="display text-[36px] font-semibold tracking-tightest text-ink">30d</div>
+                <div className="mt-1 text-sm font-semibold text-ink">strong refund, kept simple</div>
+                <p className="mt-2 text-sm text-muted">
+                  Full refund within 30 days and you keep the materials — the whole policy is
+                  four sentences on the <Link href="/refund-policy" className="text-warm underline-offset-2 hover:underline">refund page</Link>.
+                </p>
+              </CardBody>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const totalRated = rows.filter((r) => r.rating != null);
   const avg =

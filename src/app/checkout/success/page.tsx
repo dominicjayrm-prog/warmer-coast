@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/Badge';
+import { PRODUCTS, type ProductSlug } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Welcome to WarmerCoast',
@@ -12,7 +13,10 @@ export default function Page({
 }: {
   searchParams: { session_id?: string; product?: string };
 }) {
-  const product = searchParams.product ?? 'playbook';
+  // Never echo unvalidated query input — resolve against the product registry.
+  const slug = searchParams.product;
+  const product =
+    slug && slug in PRODUCTS ? PRODUCTS[slug as ProductSlug].name : 'WarmerCoast playbook';
   return (
     <section className="bg-white py-20 sm:py-28">
       <div className="container-content max-w-2xl text-center">

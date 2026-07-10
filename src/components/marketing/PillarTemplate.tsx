@@ -62,7 +62,7 @@ const RELATED_BY_COUNTRY: Record<Country, RelatedResource[]> = {
     { kind: 'Compare', href: '/spain-vs-portugal', label: 'Spain vs Portugal compared', blurb: 'Beckham vs IFICI, NLV vs D7, wealth tax, citizenship — dimension by dimension.' },
     { kind: 'Compare', href: '/spain-vs-gibraltar', label: 'Spain vs Gibraltar compared', blurb: 'Where Beckham wins, where Cat 2 wins, and the income tier that flips the answer.' },
     { kind: 'Calculator', href: '/calculators/beckham-law', label: 'Beckham Law tax-saving calculator', blurb: 'Standard IRPF vs Beckham flat 24%. Find your break-even.' },
-    { kind: 'Playbook', href: '/playbook/spain', label: 'The Spain Playbook · £397', blurb: '8 sequenced modules, vetted asesor referrals, padrón video walkthrough, lifetime updates.' },
+    { kind: 'Playbook', href: '/playbook/spain', label: 'The Spain Playbook · £397', blurb: '8 sequenced modules, interactive checklists, form fillers, vetted asesor referrals.' },
   ],
   portugal: [
     { kind: 'Reference', href: '/thresholds', label: '2026 thresholds, sourced', blurb: 'D7 minimum income, IFICI rate and duration, every figure links to its primary source.' },
@@ -126,7 +126,7 @@ interface HeroImage {
 }
 
 const HERO_IMAGE: Record<Country, HeroImage> = {
-  spain: { src: '/cadiz-coastline.png', objectPosition: 'right center' },
+  spain: { src: '/cadiz-coastline.jpg', objectPosition: 'right center' },
   portugal: { src: '/portugal.jpg', objectPosition: 'right center' },
   // New Gibraltar image has the Rock on the left, so we anchor left and
   // the calculator card overlays the empty sea on the right.

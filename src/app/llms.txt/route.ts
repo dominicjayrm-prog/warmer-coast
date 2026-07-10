@@ -1,5 +1,6 @@
 import { SITE } from '@/lib/site';
 import { createClient } from '@/lib/supabase/server';
+import { visibleFileBlogPosts } from '@/content/blog/registry';
 
 export const runtime = 'nodejs';
 export const revalidate = 3600;
@@ -17,7 +18,8 @@ const SITE_LAST_REVIEWED = '2026-07-08';
  * AI crawlers can use as ground-truth context when generating answers.
  */
 export async function GET() {
-  let blogLinks = '';
+  // File posts ship with the deploy — they must appear even if Supabase is down.
+  let dbRows: { slug: string; title: string; excerpt: string }[] = [];
   try {
     const supabase = createClient();
     const { data } = await supabase
@@ -25,14 +27,21 @@ export async function GET() {
       .select('slug,title,excerpt')
       .eq('site', SITE.siteKey)
       .eq('status', 'published')
+      .lte('published_at', new Date().toISOString())
       .order('published_at', { ascending: false })
       .limit(40);
-    blogLinks = ((data as { slug: string; title: string; excerpt: string }[] | null) ?? [])
-      .map((p) => `- [${p.title}](${SITE.url}/blog/${p.slug}): ${p.excerpt}`)
-      .join('\n');
+    dbRows = (data as typeof dbRows | null) ?? [];
   } catch {
-    blogLinks = '';
+    dbRows = [];
   }
+  const fileRows = visibleFileBlogPosts().map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+  }));
+  const blogLinks = [...fileRows, ...dbRows]
+    .map((p) => `- [${p.title}](${SITE.url}/blog/${p.slug}): ${p.excerpt}`)
+    .join('\n');
 
   const body = `# WarmerCoast
 

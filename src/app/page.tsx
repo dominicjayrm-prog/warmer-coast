@@ -13,6 +13,9 @@ import { NewsletterCapture } from '@/components/marketing/NewsletterCapture';
 import { COUNTRY_META } from '@/lib/site';
 import { SITE } from '@/lib/site';
 
+// Revalidate so the latest-posts strip picks up scheduled blog posts.
+export const revalidate = 600;
+
 export const metadata: Metadata = {
   title: 'Move to Spain, Portugal or Gibraltar from the UK | WarmerCoast',
   description:

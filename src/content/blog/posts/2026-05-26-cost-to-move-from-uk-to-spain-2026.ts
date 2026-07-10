@@ -114,7 +114,7 @@ const content = `
     <a href="/spain/tax-residency/beckham-law">Beckham Law deep dive</a> explains
     the 6-month window.</li>
   <li><strong>Asesor fiscal retainer first month:</strong> &euro;200-&euro;500 to get registered, set up quarterly reminders, and walk through Modelo 720 if applicable.</li>
-  <li><strong>Spanish bank account opening:</strong> Free if conditions met; some banks charge &euro;15-&euro;30/month if no income deposit. See the <a href="/spain/banking">Spain banking deep dive</a>.</li>
+  <li><strong>Spanish bank account opening:</strong> Free if conditions met; some banks charge &euro;15-&euro;30/month if no income deposit. See the <a href="/spain/banking">Spain banking deep dive</a> — and check <a href="/blog/can-i-keep-my-uk-bank-account-if-i-move-to-spain">whether your UK bank will keep you</a> before you hand back the keys.</li>
   <li><strong>Local lawyer (abogado) for rental review:</strong> &euro;200-&euro;500 optional but recommended for first-year lease.</li>
 </ul>
 
@@ -168,7 +168,9 @@ const content = `
 <p>
   Before you&apos;re fully integrated into the SNS, you typically run private health
   insurance for 6-18 months. Once you switch to SNS via employment, autónomo, S1
-  or the Convenio Especial, the private bill stops.
+  or the Convenio Especial, the private bill stops. (And no, your NHS entitlement
+  doesn&apos;t come with you — <a href="/blog/can-i-still-use-the-nhs-if-i-move-to-spain">here&apos;s
+  exactly what British movers keep and lose</a>, including the S1 route back in.)
 </p>
 
 <ul>
@@ -206,6 +208,12 @@ const content = `
 </p>
 
 <h2>Hidden costs nobody talks about</h2>
+
+<p>
+  (The FX line below has its own full guide —
+  <a href="/blog/how-to-transfer-money-uk-to-spain-2026">Wise vs Revolut vs banks: how to
+  move money UK→Spain</a> — worth reading before your first transfer.)
+</p>
 
 <ul>
   <li><strong>UK FX bleed in year one.</strong> Moving GBP to EUR via traditional banks during your first year typically loses 1-3% per transaction. On &pound;30,000 of moving-related transfers that&apos;s &pound;300-&pound;900 of avoidable FX cost. Wise or Revolut compress this to ~0.4%. See the <a href="/calculators/bank-comparator">bank comparator</a>.</li>
@@ -319,6 +327,23 @@ const content = `
   efficient under Beckham Law or in zero-Patrimonio regions like Madrid or Andalucía.
   Plan honestly and the move pays for itself within 18-30 months for most working-age
   movers. Plan optimistically and the first 90 days will be financially uncomfortable.
+</p>
+
+<p>
+  Not sure you want to move outright? Plenty of readers land here planning to split the
+  year instead — half in Spain, half in the UK. That plan collides with the 90/180
+  Schengen rule and both countries&apos; tax-residency tests in ways most people don&apos;t
+  expect: <a href="/blog/can-i-live-in-spain-6-months-and-uk-6-months">can you actually
+  live in Spain for 6 months and the UK for 6 months?</a> covers what&apos;s legal, what
+  isn&apos;t, and the three structures that work in 2026.
+</p>
+
+<p>
+  Route-specific deep dives on the visa fees this article budgets:
+  the <a href="/blog/spain-non-lucrative-visa-british-retirees-2026">NLV retiree guide</a>,
+  the <a href="/blog/spain-digital-nomad-visa-2026-complete-guide">Digital Nomad Visa guide</a>,
+  and the <a href="/blog/spain-beckham-law-2026-guide">Beckham Law decision guide</a> for the
+  tax structuring that pays for the whole move.
 </p>
 
 <p>

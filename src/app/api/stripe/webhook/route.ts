@@ -90,12 +90,32 @@ export async function POST(request: Request) {
 
     if (event.type === 'charge.refunded') {
       const charge = event.data.object as Record<string, unknown>;
-      const sessionId = (charge.metadata as Record<string, string> | undefined)?.checkout_session;
+      // Charges don't carry session metadata by default — resolve the checkout
+      // session from the payment_intent via the Stripe API, then match the
+      // purchase row (keyed by stripe_session_id).
+      const paymentIntent = charge.payment_intent as string | undefined;
+      const secret = process.env.STRIPE_SECRET_KEY;
+      let sessionId =
+        (charge.metadata as Record<string, string> | undefined)?.checkout_session ?? null;
+      if (!sessionId && paymentIntent && secret) {
+        try {
+          const res = await fetch(
+            `https://api.stripe.com/v1/checkout/sessions?payment_intent=${paymentIntent}&limit=1`,
+            { headers: { Authorization: `Bearer ${secret}` } },
+          );
+          const data = (await res.json()) as { data?: { id?: string }[] };
+          sessionId = data.data?.[0]?.id ?? null;
+        } catch (e) {
+          console.error('refund session lookup failed', e);
+        }
+      }
       if (sessionId) {
         await supabase
           .from('wc_purchases')
           .update({ status: 'refunded', refunded_at: new Date().toISOString() })
           .eq('stripe_session_id', sessionId);
+      } else {
+        console.error('charge.refunded: could not resolve checkout session', paymentIntent);
       }
     }
 
