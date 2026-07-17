@@ -160,7 +160,10 @@ ${'<div class="not-prose rounded-card border border-warning/40 bg-warning/5 p-4 
   total days. This is the pattern our whole <a href="/spain">Spain guide</a> — and the
   <a href="/blog/cost-to-move-from-uk-to-spain-2026">cost-of-moving breakdown</a> — is built
   around. It is also the only pattern where the sunshine maths can come with a tax upgrade
-  (Beckham Law for workers; regional zero-wealth-tax positioning for retirees).
+  (Beckham Law for workers; regional zero-wealth-tax positioning for retirees). One
+  under-publicised deadline comes with it: once resident, your UK driving licence has a
+  <a href="/blog/can-i-drive-in-spain-on-my-uk-licence">six-month exchange window at the
+  DGT</a> — miss it and you're re-sitting a Spanish driving test.
 </p>
 
 <h3>Pattern 3: Residency held loosely (the risky middle)</h3>
