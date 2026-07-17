@@ -39,8 +39,10 @@ import { post202607SixMonthsSpain } from './posts/2026-07-08-live-in-spain-6-mon
 import { post202607NhsSpain } from './posts/2026-07-10-can-i-still-use-the-nhs-if-i-move-to-spain';
 import { post202607StatePension } from './posts/2026-07-11-what-happens-to-my-uk-state-pension-if-i-move-to-spain';
 import { post202607UkBankAccount } from './posts/2026-07-12-can-i-keep-my-uk-bank-account-if-i-move-to-spain';
+import { post202607UkLicence } from './posts/2026-07-17-can-i-drive-in-spain-on-my-uk-licence';
 
 export const FILE_BLOG_POSTS: FileBlogPost[] = [
+  post202607UkLicence,
   post202607UkBankAccount,
   post202607StatePension,
   post202607NhsSpain,
