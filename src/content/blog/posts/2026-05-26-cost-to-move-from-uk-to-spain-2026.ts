@@ -89,7 +89,7 @@ const content = `
   <li><strong>One-way flights for the family + 4-6 hold bags:</strong> &pound;600-&pound;1,500 depending on season and how many bags you check.</li>
   <li><strong>Limited belongings via international shipping (10-20 boxes):</strong> &pound;800-&pound;2,500 using DHL or FedEx commercial.</li>
   <li><strong>Full house move (3-4 bedroom UK home content to Spain):</strong> &pound;6,000-&pound;15,000 via international removals firm. Door-to-door, customs handled, 2-4 week transit. The 2024-2025 fuel surcharges pushed these prices up materially from pre-2020 levels.</li>
-  <li><strong>Bringing pets:</strong> &pound;400-&pound;900 per dog/cat for post-Brexit pet passport documentation, EU health certificate, transport carrier and ferry/flight surcharges. Cat-friendly Eurotunnel + drive is cheaper than air for families travelling together.</li>
+  <li><strong>Bringing pets:</strong> &pound;400-&pound;900 per dog/cat all-in — Animal Health Certificate (&pound;100-&pound;250; GB-held EU pet passports stopped working on 22 April 2026), rabies jab, carrier and ferry/tunnel surcharges. Eurotunnel + drive or the Portsmouth-Santander pet cabins beat flying — <a href="/blog/can-i-take-my-dog-to-spain">the full pet-relocation guide</a> covers routes and Spain&apos;s new dog-insurance law.</li>
   <li><strong>Initial temporary accommodation (3-6 weeks while you secure rental):</strong> &pound;1,500-&pound;4,500 in coastal towns; less inland.</li>
 </ul>
 

@@ -40,8 +40,10 @@ import { post202607NhsSpain } from './posts/2026-07-10-can-i-still-use-the-nhs-i
 import { post202607StatePension } from './posts/2026-07-11-what-happens-to-my-uk-state-pension-if-i-move-to-spain';
 import { post202607UkBankAccount } from './posts/2026-07-12-can-i-keep-my-uk-bank-account-if-i-move-to-spain';
 import { post202607UkLicence } from './posts/2026-07-17-can-i-drive-in-spain-on-my-uk-licence';
+import { post202607DogToSpain } from './posts/2026-07-21-can-i-take-my-dog-to-spain';
 
 export const FILE_BLOG_POSTS: FileBlogPost[] = [
+  post202607DogToSpain,
   post202607UkLicence,
   post202607UkBankAccount,
   post202607StatePension,

@@ -143,6 +143,10 @@ ${'<div class="not-prose rounded-card border border-warning/40 bg-warning/5 p-4 
   <a href="/moving-to-the-algarve">Algarve-style</a> coasts in low season — see our
   <a href="/moving-to-malaga">Málaga</a> and <a href="/moving-to-valencia">Valencia</a>
   guides for area pricing), and iron discipline with the day count. Zero visa paperwork.
+  Travelling with a dog? Since 22 April 2026 GB residents need a
+  <a href="/blog/can-i-take-my-dog-to-spain">fresh &pound;100-&pound;250 Animal Health
+  Certificate for every trip</a> — the old Spanish-vet pet-passport trick no longer works
+  for non-residents.
 </p>
 
 <h3>Pattern 2: Spanish residency, UK visits (the honest flip)</h3>
