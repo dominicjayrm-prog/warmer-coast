@@ -138,8 +138,10 @@ const content = `
 </ul>
 
 <p>
-  The exchange belongs in the same first-month sprint as the padrón, the bank account
-  and the healthcare registration — the full ordered checklist, with the DGT and IMT
+  The exchange belongs in the same first-month sprint as the padrón, the bank account,
+  the healthcare registration and — if you brought one —
+  <a href="/blog/can-i-take-my-dog-to-spain">your dog&apos;s Spanish pet passport and
+  liability insurance</a>. The full ordered checklist, with the DGT and IMT
   steps slotted in, is in the <a href="/playbook/spain">Spain Playbook</a> and
   <a href="/playbook/portugal">Portugal Playbook</a>. Figures above are dated and
   sourced on the <a href="/thresholds">2026 thresholds page</a>.
