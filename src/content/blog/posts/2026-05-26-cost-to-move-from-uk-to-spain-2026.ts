@@ -137,6 +137,7 @@ const content = `
   <li><strong>Utility setup fees (water, electricity, gas, internet):</strong> &euro;150-&euro;400 across all suppliers.</li>
   <li><strong>Basic furniture for an unfurnished or part-furnished flat:</strong> &euro;1,500-&euro;5,000+ depending on starting position. Most Spanish rentals are part-furnished (white goods, basic kitchen) but you bring or buy soft furnishings, bedding, dining furniture.</li>
   <li><strong>Spanish driving licence exchange:</strong> &euro;60-&euro;80 (DGT Tasa 2.3 &euro;28.87 + psicot&eacute;cnico &euro;30-&euro;50), test-free under the UK-Spain agreement — but only within <a href="/blog/can-i-drive-in-spain-on-my-uk-licence">6 months of residency, and the DGT queue eats the window</a>.</li>
+  <li><strong>Importing your UK car (if you must):</strong> &euro;200-&euro;800 in fees with the change-of-residence exemption — which must be claimed <a href="/blog/can-i-take-my-uk-car-to-spain">within 60 days of residency</a>, or the 10% duty + 21% IVA + CO2-banded matriculation tax stack lands. For most ordinary cars, selling in the UK and buying left-hand drive in Spain wins.</li>
 </ul>
 
 <p>

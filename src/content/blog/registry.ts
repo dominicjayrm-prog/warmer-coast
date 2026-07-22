@@ -41,8 +41,10 @@ import { post202607StatePension } from './posts/2026-07-11-what-happens-to-my-uk
 import { post202607UkBankAccount } from './posts/2026-07-12-can-i-keep-my-uk-bank-account-if-i-move-to-spain';
 import { post202607UkLicence } from './posts/2026-07-17-can-i-drive-in-spain-on-my-uk-licence';
 import { post202607DogToSpain } from './posts/2026-07-21-can-i-take-my-dog-to-spain';
+import { post202607UkCarToSpain } from './posts/2026-07-22-can-i-take-my-uk-car-to-spain';
 
 export const FILE_BLOG_POSTS: FileBlogPost[] = [
+  post202607UkCarToSpain,
   post202607DogToSpain,
   post202607UkLicence,
   post202607UkBankAccount,

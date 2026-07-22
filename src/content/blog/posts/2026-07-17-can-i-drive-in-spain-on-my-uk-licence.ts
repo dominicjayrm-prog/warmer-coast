@@ -93,6 +93,9 @@ const content = `
 <h2>What about the return leg — and your no-claims?</h2>
 
 <p>
+  (Bringing the car itself is a separate — and much more expensive — question:
+  <a href="/blog/can-i-take-my-uk-car-to-spain">the 60-day import-exemption deadline and
+  the sell-vs-ship maths are here</a>.)
   Two questions everyone asks at the DGT counter. First: <em>"Do I lose my UK licence
   forever?"</em> No — Spain is on the DVLA's exchange list, so if you one day move home,
   the Spanish licence swaps back into a UK one the same test-free way. Second:
